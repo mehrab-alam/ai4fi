@@ -4,10 +4,20 @@ import HeroRightVideo from '../../../../public/hero-right-video.mp4'
 import BorderBeamAnimation from '../../../components/common/AnimatedBorder'
 import { useTheme } from '../../../context/ThemeContext'
 import { cn } from '../../../services/utils'
+import TrustedPartners from './Partners'
+import SvgIcons from '../../../components/SvgIcons'
+import { motion } from 'motion/react'
 
 const HeroSection2 = () => {
   const videoRef = useRef<HTMLVideoElement>(null)
   const {theme} = useTheme()
+  const partners = [
+  SvgIcons.amazone,
+   SvgIcons.google,
+   SvgIcons.netflix,
+   SvgIcons.shopify,
+   SvgIcons.youtube,
+  ];
 
   useEffect(() => {
     const video = videoRef.current
@@ -36,7 +46,7 @@ const HeroSection2 = () => {
   }, [])
 
   return (
-    <div className={`${theme === 'dark' ? 'md:h-screen min-h-screen bg-gradient-to-br from-black via-black to-black text-white overflow-hidden' : 'md:h-screen min-h-screen bg-background text-foreground overflow-hidden'}`}>
+    <div className={` md:h-full min-h-screen ${theme === 'dark' ? ' bg-gradient-to-br from-black via-black to-black text-white overflow-hidden' : ' bg-background text-foreground overflow-hidden'}`}>
     {/* Animated starfield background */}
 
       {/* {theme === 'dark' && (
@@ -64,9 +74,9 @@ const HeroSection2 = () => {
     </div>
 }
     {/* Content */}
-    <div className="relative z-10">
+    <div className="relative z-10 ">
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-32">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:pt-32 md:pb-20">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-8 mt-20">
@@ -119,7 +129,26 @@ const HeroSection2 = () => {
            />
           </div>
         </div>
+
       </section>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 md:pb-16'>
+        <h2 className='text-center  mb-5 font-bold leading-tight'>
+          Our Trusted Partners
+        </h2>
+     <div className='grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-8'>
+          {partners.map((partner, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              className='group'>
+            <i className="leading-0 text-[7rem] text-muted-foreground"> {partner}</i>
+            </motion.div>
+          ))}
+        </div>
+        </div>
+
     </div>
 
     <style>{`

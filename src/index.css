@@ -6,7 +6,8 @@
   --background: #ffffff;
   --foreground: #020817; /* slate-950 */
 
-  --card: #e1ecf0;
+  --card: ups#e8eaeb;
+  /* --card: #e1ecf0; */
   --card-foreground: #020817;
  
   --popover: #ffffff;
@@ -73,17 +74,20 @@
 
 
 @layer base {
-  h1, h2, h3, h4, h5, h6, p {
+  h1, h2, h3, h4, h5, h6 {
     color: var(--foreground);
   }
+  p {
+    color: var(--muted-foreground);
+  }
 
-  h1 { font-size: 2.25rem; font-weight: 800;color:var(--foreground) }
-  h2 { font-size: 1.875rem; font-weight: 700;color:var(--foreground) }
-  h3 { font-size: 1.5rem; font-weight: 600;color:var(--foreground) }
-  h4 { font-size: 1.25rem; font-weight: 600;color:var(--foreground) }
-  h5 { font-size: 1.125rem; font-weight: 600;color:var(--secondary-foreground) }
+  h1 { font-size: 4rem; font-weight: 800;color:var(--foreground) }
+  h2 { font-size: 2.6rem; font-weight: 700;color:var(--foreground) }
+  h3 { font-size: 2.2rem; font-weight: 600;color:var(--foreground) }
+  h4 { font-size: 2rem; font-weight: 600;color:var(--foreground) }
+  h5 { font-size: 1.5rem; font-weight: 600;color:var(--secondary-foreground) }
   h6 { font-size: 1rem; font-weight: 600;color:var(--secondary-foreground) }
-  p { font-size: 1rem; font-weight: 400;color:var(--secondary-foreground) }
+  p { font-size: 1.2rem; font-weight: 400;color:var(--muted-foreground) }
 }
 
 html {
@@ -281,11 +285,11 @@ select option:checked {
 
 @layer utilities {
   .bg-brand-color {
-    background: linear-gradient(135deg, #2b8cee, #17a1cf, #22c365);
+    background: linear-gradient(135deg, #22d3ee, #c084fc, #f472b6);
   }
   
   .text-brand-gradient {
-    background: linear-gradient(135deg, #2b8cee, #17a1cf, #22c365);
+    background: linear-gradient(135deg, #22d3ee, #c084fc, #f472b6);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
