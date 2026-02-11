@@ -55,8 +55,8 @@ export default function ImageCarousel({ images, rtl }: { images: any[]; rtl: boo
       <Slider {...settings}>
         {images.map((item) => (
           <div key={item} className='px-2 group'>
-            <div className='bg-gray-200 rounded-lg overflow-hidden w-full h-[430px] relative '>
-              <img src={`${item.src}`} alt={`Gallery image ${item.alt}`} className='w-full h-full object-fit ' />
+            <div className='bg-gray-200 rounded-lg overflow-hidden w-full relative '>
+              <img src={`${item.src}`} alt={`Gallery image ${item.alt}`} className='w-full h-full object-contain ' />
 
               <div
                 className={`absolute inset-0 bg-black/40 transition-opacity ${
