@@ -33,7 +33,7 @@ const TrialRoom = () => {
           <h2 className=' font-bold mb-4 text-foreground'>Trial Room</h2>
           <p className='text-lg md:text-xl'> Experience fashion smarter—our AI models help you visualize outfits, fits, and styles before you choose.</p>
         </motion.div>
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between flex-row-reverse  items-center">
         <div className='flex flex-col gap-10 items-center'>
         {steps.map((step, index) => (
                  <motion.div
@@ -54,7 +54,7 @@ const TrialRoom = () => {
                ))}
         </div>
         <div>
-            <img src="./trial_room.jpeg" alt="" className="max-w-4xl h-auto "/>
+            <img src="./trial_room.jpeg" alt="" className="max-w-2xl h-auto "/>
         </div>
         </div>
       </div>

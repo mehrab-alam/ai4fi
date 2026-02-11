@@ -22,7 +22,7 @@ const TrustedPartners = () => {
           <h2 className='text-3xl md:text-4xl font-bold mb-4 text-foreground'>Our Trusted Partners </h2>
         </motion.div>
 
-        <div className='grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-8'>
+        <div className='grid place-items-center grid-cols-1 md:grid-cols-5 gap-6 md:gap-8'>
           {partners.map((partner, index) => (
             <motion.div
               key={index}

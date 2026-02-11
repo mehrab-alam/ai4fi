@@ -32,16 +32,16 @@ const HowItWorks = () => {
   return (
     <section className='py-16 px-4 sm:px-6 lg:px-12 max-w-full mx-auto bg-background'>
       {/* Steps Section */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className='text-center mb-12'>
         <h2 className='text-4xl font-bold mb-4 text-foreground'>How It Works</h2>
         <p className='text-muted-foreground text-lg'>Three simple steps to transform your fashion showcase</p>
-      </motion.div>
+      </motion.div> */}
 
-      <div className='grid md:grid-cols-3 gap-8 mb-16'>
+      {/* <div className='grid md:grid-cols-3 gap-8 mb-16'>
         {steps.map((step, index) => (
           <motion.div
             key={index}
@@ -54,22 +54,27 @@ const HowItWorks = () => {
             <p className='text-muted-foreground text-sm'>{step.description}</p>
           </motion.div>
         ))}
-      </div>
+      </div> */}
 
       <div className='grid md:grid-cols-2 gap-12 items-start'>
         {/* Challenges Section */}
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <h2 className='text-4xl font-bold mb-6 text-foreground'>The Challenges of Traditional Fashion Photography</h2>
-          <div className='bg-card relative rounded-2xl p-6 border border-border'>
+          <div className=' relative flex flex-col gap-4 '>
             {challenges.map((challenge, index) => (
-              <div key={index} className='flex items-start space-x-3 mb-4 last:mb-0'>
-                <div className='h-6 w-6 flex items-center justify-center rounded-full bg-gradient-to-br from-cyan-500 to-sky-500 text-white font-bold text-xl'>
+              <div key={index} className='flex bg-card backdrop-blur-xl rounded-2xl p-4 items-start space-x-3 mb-4 last:mb-0'>
+                <div className='h-8 w-8 flex items-center justify-center p-2 rounded-full bg-brand-color text-white font-bold text-xl'>
                   {index + 1}
                 </div>
                 <p className='text-muted-foreground text-md'>{challenge}</p>
+                {index + 1 < challenges.length && (
+  <div className="absolute left-[20px] top-full w-px h-10 border-l-2 border-dashed border-border -translate-x-1/2" />
+)}
               </div>
             ))}
+            
           </div>
+          
         </motion.div>
 
         {/* Image Comparison Section */}
