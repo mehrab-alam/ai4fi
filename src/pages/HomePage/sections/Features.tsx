@@ -3,56 +3,56 @@ import { Brain, Sparkles, Gauge, Paintbrush, Users, Zap, Globe, ShieldCheck } fr
 
 const features = [
   {
-    icon: <Brain className='w-6 h-6 text-primary' />,
+    icon: <Brain className='w-6 h-6 text-white' />,
     title: "AI Model Generation",
     description: "Generate diverse, realistic virtual models using cutting-edge AI technology that adapts to your specific requirements.",
     gradient: "from-cyan-500 to-blue-500",
     delay: 0.1,
   },
   {
-    icon: <Sparkles className='w-6 h-6 text-primary' />,
+    icon: <Sparkles className='w-6 h-6 text-white' />,
     title: "Virtual Try-On Experience",
     description: "See how garments look on different body types and poses instantly with photorealistic rendering quality.",
     gradient: "from-sky-500 to-cyan-500",
     delay: 0.2,
   },
   {
-    icon: <Gauge className='w-6 h-6 text-primary' />,
+    icon: <Gauge className='w-6 h-6 text-white' />,
     title: "Cost-Effective & Scalable",
     description: "Reduce photoshoot costs by up to 90% while increasing your product showcase capabilities without limits.",
     gradient: "from-blue-500 to-cyan-500",
     delay: 0.3,
   },
   {
-    icon: <Paintbrush className='w-6 h-6 text-primary' />,
+    icon: <Paintbrush className='w-6 h-6 text-white' />,
     title: "Customization & Branding",
     description: "Tailor the virtual models to match your brand's unique identity with custom styling, poses, and environments.",
     gradient: "from-cyan-500 to-sky-500",
     delay: 0.4,
   },
   {
-    icon: <Users className='w-6 h-6 text-primary' />,
+    icon: <Users className='w-6 h-6 text-white' />,
     title: "Diverse Representation",
     description: "Showcase your products on models of all ethnicities, body types, and ages to reach broader audiences.",
     gradient: "from-sky-500 to-cyan-500",
     delay: 0.5,
   },
   {
-    icon: <Zap className='w-6 h-6 text-primary' />,
+    icon: <Zap className='w-6 h-6 text-white' />,
     title: "Rapid Production",
     description: "Generate hundreds of product images in minutes instead of weeks, accelerating your go-to-market strategy.",
     gradient: "from-blue-500 to-sky-500",
     delay: 0.6,
   },
   {
-    icon: <Globe className='w-6 h-6 text-primary' />,
+    icon: <Globe className='w-6 h-6 text-white' />,
     title: "Global Marketplace Integration",
     description: "Seamlessly export AI-generated content to major e-commerce platforms with our one-click integration system.",
     gradient: "from-cyan-500 to-blue-500",
     delay: 0.7,
   },
   {
-    icon: <ShieldCheck className='w-6 h-6 text-primary' />,
+    icon: <ShieldCheck className='w-6 h-6 text-white' />,
     title: "Ethical AI Guarantee",
     description: "Our AI systems are built with ethical considerations in mind, ensuring fair representation and transparency.",
     gradient: "from-sky-500 to-blue-500",
@@ -81,7 +81,7 @@ const Features = () => {
             whileInView={{ width: "80px" }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className='h-1 bg-gradient-to-r from-cyan-500 to-sky-500 mx-auto mb-6 rounded-full'
+            className='h-1 bg-brand-color mx-auto mb-6 rounded-full'
           />
           <p className='text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto'>
             Transform your fashion showcase with AI-powered innovation that delivers stunning results at a fraction of traditional costs
@@ -90,44 +90,68 @@ const Features = () => {
 
         <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8'>
           {features.map((feature, index) => (
+          
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: feature.delay }}
-              whileHover={{ y: -5 }}
-              className='group h-full'>
-              <div className='bg-card backdrop-blur-xl rounded-xl p-6 h-full border border-border relative overflow-hidden shadow-lg'>
-                <div className='absolute -top-10 -right-10 w-20 h-20 bg-cyan-500 bg-opacity-10 rounded-full blur-xl' />
+        key={index}
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6, delay: feature.delay }}
+  whileHover={{ y: -8 }}
+  className='group h-full relative'
+>
+  {/* The Premium Glass Container */}
+  <div className="h-full glass-card rounded-xl p-8 border border-border  shadow-xl transition-all duration-500 overflow-hidden group-hover:shadow-text-brand-color">
+    
+    {/* Animated background glow following the theme */}
+    <div className="absolute -top-12 -right-12 w-32 h-32 bg-brand-color rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
 
-                <div className={`bg-gradient-to-br ${feature.gradient} p-3 rounded-lg inline-block mb-5 shadow-lg`}>{feature.icon}</div>
+    {/* Bouncing Gradient Icon Block */}
+    <div className="relative inline-block mb-8">
+      <div className="absolute inset-0 bg-brand-color/20 blur-xl rounded-full" />
+      <motion.div
+        animate={{ y: [0, -6, 0] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        className="relative p-4 bg-brand-color rounded-2xl border border-border/40  shadow-sm"
+      >
+        {/* Using your custom brand gradient class on the icon */}
+        <div className="text-whitet flex items-center justify-center">
+          {feature.icon}
+        </div>
+      </motion.div>
+    </div>
 
-                <h3 className='text-xl font-bold mb-3 text-card-foreground group-hover:text-brand transition-colors duration-300'>
-                  {feature.title}
-                </h3>
+    {/* Title with Gradient Highlight */}
+    <h3 className="text-2xl font-bold mb-4 tracking-tight leading-tight">
+      {feature.title}
+    </h3>
 
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileHover={{ width: "40%" }}
-                  className='h-0.5 bg-gradient-to-r from-cyan-400 to-transparent mb-4 rounded-full'
-                />
+    {/* Animated Brand Line */}
+    <motion.div
+      initial={{ width: 0 }}
+      whileInView={{ width: "2.5rem" }}
+      viewport={{ once: true }}
+      className="h-1 bg-brand-color mb-6 rounded-full"
+    />
 
-                <p className='text-muted-foreground group-hover:text-foreground transition-colors duration-300 text-sm leading-relaxed'>
-                  {feature.description}
-                </p>
+    {/* Description with improved readability */}
+    <p className="text-sm md:text-base leading-relaxed group-hover:text-foreground transition-colors duration-300">
+      {feature.description}
+    </p>
 
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  className='mt-4 text-brand text-sm font-medium flex items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
-                  Learn more
-                  <svg className='w-4 h-4 ml-1' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-                    <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
-                  </svg>
-                </motion.div>
-              </div>
-            </motion.div>
+    {/* Premium Learn More CTA */}
+    <motion.div
+      initial={{ opacity: 0, x: -10 }}
+      whileHover={{ opacity: 1, x: 0 }}
+      className='mt-8 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-brand-gradient'
+    >
+      Learn more
+      <svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2.5} d='M9 5l7 7-7 7' />
+      </svg>
+    </motion.div>
+  </div>
+</motion.div>
           ))}
         </div>
 
@@ -136,7 +160,7 @@ const Features = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className='mt-20 bg-card dark:bg-card/50   backdrop-blur-lg p-8 md:p-10 rounded-2xl border border-border'>
+          className='mt-20  glass-card g p-8 md:p-10 rounded-2xl border border-border'>
           <div className='grid grid-cols-2 md:grid-cols-4 gap-8'>
             {[
               { value: "90%", label: "Cost Reduction" },

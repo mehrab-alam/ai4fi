@@ -131,7 +131,7 @@ const HeroSection2 = () => {
         </div>
 
       </section>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 md:pb-16'>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 md:py-16'>
         <h2 className='text-center  mb-5 font-bold leading-tight'>
           Our Trusted Partners
         </h2>

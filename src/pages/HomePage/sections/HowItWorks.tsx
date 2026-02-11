@@ -62,7 +62,7 @@ const HowItWorks = () => {
           <h2 className='text-4xl font-bold mb-6 text-foreground'>The Challenges of Traditional Fashion Photography</h2>
           <div className=' relative flex flex-col gap-4 '>
             {challenges.map((challenge, index) => (
-              <div key={index} className='flex bg-card backdrop-blur-xl rounded-2xl p-4 items-start space-x-3 mb-4 last:mb-0'>
+              <div key={index} className='flex glass-card  rounded-sm p-4 items-start space-x-3 mb-4 last:mb-0'>
                 <div className='h-8 w-8 flex items-center justify-center p-2 rounded-full bg-brand-color text-white font-bold text-xl'>
                   {index + 1}
                 </div>
@@ -83,7 +83,7 @@ const HowItWorks = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className='grid grid-cols-2 gap-4'>
-          <div className='relative aspect-[3/4] rounded-lg overflow-hidden'>
+          <div className='relative aspect-[3/4]  rounded-lg overflow-hidden'>
             <img src='/traditional.jpg' alt='Traditional fashion photoshoot' className='w-full h-full object-cover' />
             <div className='absolute top-2 bg-gradient-to-r from-cyan-500 to-sky-500 left-2 backdrop-blur-sm px-3 py-1 rounded-full text-white text-xs font-semibold'>
               Traditional

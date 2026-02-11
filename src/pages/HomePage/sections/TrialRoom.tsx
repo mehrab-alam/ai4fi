@@ -3,6 +3,7 @@
 
 import { motion } from "framer-motion";
 import { Paintbrush, Upload, ImageIcon } from "lucide-react";
+import { useTheme } from "../../../context/ThemeContext";
 const steps = [
   {
     icon: <Paintbrush className='w-6 h-6 text-white' />,
@@ -21,9 +22,10 @@ const steps = [
   },
 ];
 const TrialRoom = () => {
+  const {theme} = useTheme()
   return (
-    <section className='py-12 md:py-20 relative overflow-hidden dark:bg-transparent bg-background dark:bg-gradient-to-t from-black to-cyan-950'>
-      <div className='hidden dark:block absolute inset-0 bg-gradient-to-tl from-black to-cyan-950' />
+    <section className='py-12 md:py-20 relative overflow-hidden bg-background '>
+     {theme == 'dark' && <div className='  absolute inset-0 dark:bg-gradient-to-br from-black  to-cyan-600' />}
       <div className='max-w-[80vw] mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -41,7 +43,7 @@ const TrialRoom = () => {
                    initial={{ opacity: 0, y: 20 }}
                    whileInView={{ opacity: 1, y: 0 }}
                    transition={{ duration: 0.8, delay: index * 0.2 }}
-                   className='relative w-[80vw] md:w-[400px] group bg-card rounded-2xl p-6 hover:shadow-md transition-all backdrop-blur-xl  duration-300 border border-border'>
+                   className='relative w-[80vw] md:w-[400px] group glass-card rounded-2xl p-6   transition-all  duration-300 border border-border'>
                    <div className='bg-brand-color text-white p-3 rounded-xl inline-block mb-4'>{step.icon}</div>
                    <h3 className='text-xl text-card-foreground font-bold mb-2'>{step.title}</h3>
                    <p className='text-muted-foreground text-sm'>{step.description}</p>
@@ -54,7 +56,7 @@ const TrialRoom = () => {
                ))}
         </div>
         <div>
-            <img src="./trial_room.jpeg" alt="" className="max-w-2xl h-auto "/>
+            <img src="./trial_room.jpeg" alt="" className="max-w-3xl h-auto "/>
         </div>
         </div>
       </div>

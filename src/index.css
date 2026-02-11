@@ -3,20 +3,20 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #F8FAFC;
   --foreground: #020817; /* slate-950 */
 
-  /* --card: ups#e8eaeb; */
-  --card: #e1ecf0;
+  --card: #e8eaeb;
+  /* --card: #e1ecf0; */
   --card-foreground: #020817;
- 
+  
   --popover: #ffffff;
   --popover-foreground: #020817;
  
   --primary: #0f172a; /* slate-900 */
   --primary-foreground: #f8fafc; /* slate-50 */
  
-  --secondary: #f1f5f9; /* slate-100 */
+  --secondary: #F1F5F9; /* slate-100 */
   --secondary-foreground: #0f172a;
  
   --muted: #f1f5f9;
@@ -287,6 +287,9 @@ select option:checked {
   .bg-brand-color {
     background: linear-gradient(135deg, #22d3ee, #c084fc, #f472b6);
   }
+  .text-brand {
+    color: #c084fc;
+  }
   
   .text-brand-gradient {
     background: linear-gradient(135deg, #22d3ee, #c084fc, #f472b6);
@@ -294,5 +297,39 @@ select option:checked {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
+  }
+  .text-brand-icon-gradient {
+  background: linear-gradient(135deg, #22d3ee, #c084fc, #f472b6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  /* Add these two lines for better SVG compatibility */
+  display: inline-block;
+  vertical-align: middle;
+}
+.glass-card {
+    /* Uses your card variable with 40% opacity */
+    background: color-mix(in srgb, var(--card), transparent 60%);
+    
+    /* The core "Glass" effects */
+    backdrop-filter: blur(10px) saturate(100%);
+    -webkit-backdrop-filter: blur(10px) saturate(100%);
+    
+    /* A thin, light border that looks like a glass edge */
+    border: 1px solid color-mix(in srgb, var(--border), transparent 50%);
+    
+    /* Extra depth with a subtle shadow */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+    
+    border-radius: 1.5rem; /* Matches your premium rounding */
+    transition: all 0.3s ease;
+  }
+
+  /* Hover effect for interactivity */
+  .glass-card:hover {
+    background: color-mix(in srgb, var(--card), transparent 45%);
+    border-color: var(--brand); /* Highlights with your cyan color on hover */
+    transform: translateY(-4px);
   }
 }
