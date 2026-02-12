@@ -25,8 +25,8 @@ const TrialRoom = () => {
   const {theme} = useTheme()
   return (
     <section className='py-12 md:py-20 relative overflow-hidden bg-background '>
-     {theme == 'dark' && <div className='  absolute inset-0 dark:bg-gradient-to-br from-black  to-cyan-600' />}
-      <div className='max-w-[80vw] mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
+     {theme == 'dark' && <div className='  absolute inset-0 dark:bg-gradient-to-br from-sky-950  to-black' />}
+      <div className='max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

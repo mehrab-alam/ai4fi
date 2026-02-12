@@ -296,7 +296,7 @@ const DemoSection = () => {
           transition={{ duration: 0.8 }}
           className="mt-24 md:mt-32"
         >
-          <div className="relative overflow-hidden rounded-[2rem] bg-card dark:border border-border  shadow-2xl transition-all duration-300">
+          <div className="relative overflow-hidden rounded-[2rem] glass-card dark:border border-border  shadow-2xl transition-all duration-300">
             
             {/* Background Decorative Gradient */}
             <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-brand-color/10 to-transparent pointer-events-none" />

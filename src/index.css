@@ -38,10 +38,10 @@
 }
 
 .dark {
-  --background: #020817; /* slate-950 */
+  --background: #020c24; /* slate-950 */
   --foreground: #f8fafc; /* slate-50 */
  --brand: #0891b2;
-  --card: #0a1a2a;
+  --card: #052c54;
   --card-foreground: #f8fafc;
  
   --popover: #020817;
@@ -285,10 +285,11 @@ select option:checked {
 
 @layer utilities {
   .bg-brand-color {
-    background: linear-gradient(135deg, #22d3ee, #c084fc, #f472b6);
+    /* background: linear-gradient(135dehsl(188, 86%, 53%), 86%, 53%)3ee, #c084fc, #f472b6); */
+    background: linear-gradient(135deg, #06b6d4, #2563eb);
   }
   .text-brand {
-    color: #c084fc;
+    color: #2563eb;
   }
   
   .text-brand-gradient {

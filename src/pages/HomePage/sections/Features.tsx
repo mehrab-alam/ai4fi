@@ -140,16 +140,16 @@ const Features = () => {
     </p>
 
     {/* Premium Learn More CTA */}
-    <motion.div
-      initial={{ opacity: 0, x: -10 }}
-      whileHover={{ opacity: 1, x: 0 }}
-      className='mt-8 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-brand-gradient'
-    >
+
+    <div className='mt-8 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-brand-color opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300'>
       Learn more
       <svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
         <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2.5} d='M9 5l7 7-7 7' />
       </svg>
-    </motion.div>
+    </div>
+
+  
+    
   </div>
 </motion.div>
           ))}
