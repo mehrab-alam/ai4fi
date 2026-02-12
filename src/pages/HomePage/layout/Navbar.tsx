@@ -85,7 +85,7 @@ if(typeof window !== 'undefined'){
                     <motion.span
                       key={item.name}
                       className={`relative px-3 py-2 mx-1 text-sm rounded-lg transition-colors duration-200
-                    ${activeLink === item.name.toLowerCase() ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground font-semibold hover:bg-foreground/5"}`}
+                    ${activeLink === item.name.toLowerCase() ? "text-foreground font-medium" : "text-secondary-foreground hover:text-foreground font-semibold hover:bg-foreground/5"}`}
                       onClick={() => setActiveLink(item.name.toLowerCase())}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}>
@@ -108,7 +108,7 @@ if(typeof window !== 'undefined'){
                     <motion.span
                       key={item.name}
                       className={`relative px-3 py-2 mx-1 text-sm rounded-lg transition-colors duration-200
-                    ${activeLink === item.name.toLowerCase() ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"}`}
+                    ${activeLink === item.name.toLowerCase() ? "text-foreground font-medium" : "text-secondary-foreground hover:text-foreground hover:bg-foreground/5"}`}
                       onClick={() => setActiveLink(item.name.toLowerCase())}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}>
@@ -132,7 +132,7 @@ if(typeof window !== 'undefined'){
             <div className='relative'>
               <motion.button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className='relative px-3 py-2 mx-1 text-sm rounded-lg transition-colors duration-200 text-muted-foreground font-semibold hover:text-foreground hover:bg-foreground/5 flex items-center'
+                className='relative px-3 py-2 mx-1 text-sm rounded-lg transition-colors duration-200 text-secondary-foreground font-semibold hover:text-foreground hover:bg-foreground/5 flex items-center'
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}>
                 <span>Our Offerings</span>
@@ -145,12 +145,12 @@ if(typeof window !== 'undefined'){
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2 }}
-                    className='absolute top-full left-0 mt-2 w-48 bg-card backdrop-blur-xl rounded-lg shadow-lg border border-border'>
+                    className='absolute top-full left-0 mt-2 w-48 bg-secondary  rounded-lg shadow-lg '>
                     {dropdownItems.map((item) => (
                       <Link to={item.href}>
                         <motion.span
                           key={item.name}
-                          className='block px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-colors duration-200'
+                          className='block px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-background transition-colors duration-200'
                           onClick={() => setIsDropdownOpen(false)}>
                           {item.name}
                         </motion.span>
@@ -247,7 +247,7 @@ if(typeof window !== 'undefined'){
                   className={`block px-4 py-3 rounded-lg text-sm font-medium transition-colors duration-200 ${
                     activeLink === item.name.toLowerCase()
                       ? "bg-muted text-foreground"
-                      : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
+                      : "text-secondary-foreground hover:text-muted-foreground hover:bg-foreground/5"
                   }`}
                   onClick={() => {
                     setActiveLink(item.name.toLowerCase());

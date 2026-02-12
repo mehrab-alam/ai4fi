@@ -101,7 +101,7 @@ const HeroSection2 = () => {
               </Link>
 
               <Link to="/contact">
-              <button className="relative w-full sm:w-auto px-8 py-3 border-2 border-foreground/30 hover:border-foreground/60 rounded-lg font-semibold transition hover:bg-foreground/5 text-foreground">
+              <button className="relative w-full glass-card  sm:w-auto px-8 py-3 border-2 border-foreground/30 hover:border-foreground/60 rounded-lg font-semibold transition hover:bg-foreground/5 text-foreground">
               <BorderBeamAnimation />
                 BOOK A DEMO
               </button>

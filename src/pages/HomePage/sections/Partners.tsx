@@ -23,15 +23,15 @@ const TrustedPartners = () => {
         </motion.div>
 
        <div className="flex items-center justify-center">
-         <div className='grid place-items-center grid-cols-1 md:grid-cols-5 gap-6 md:gap-8'>
+         <div  className='grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-8'>
           {partners.map((partner, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
-              className='group'>
-            <i className="leading-0 text-[7rem] text-foreground"> {partner}</i>
+              className='group '>
+            <i className="leading-0 text-[7rem] text-foreground "> {partner}</i>
             </motion.div>
           ))}
         </div>

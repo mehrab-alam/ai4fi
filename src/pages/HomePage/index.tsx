@@ -3,10 +3,11 @@ import CTASection from "./sections/Cta";
 import DemoSection from "./sections/Demo";
 import FeaturedGallery from "./sections/FeaturedGallery";
 import Features from "./sections/Features";
-import HowItWorks from "./sections/HowItWorks";
+
 import AboutUs from "./sections/AboutUs";
 import HeroSection2 from "./sections/HeroSection2";
-import TrialRoom from "./sections/TrialRoom";
+import TrialRoom from "./sections/KeyFeatureItems";
+import KeyFeatures from "./sections/KeyFeatures";
 
 
 const HomePage: FC = () => {
@@ -14,8 +15,7 @@ const HomePage: FC = () => {
   return (
     <div>
       <HeroSection2 />
-      <TrialRoom/>
-      <HowItWorks />
+      <KeyFeatures/>
       <DemoSection />
       <Features />
       <FeaturedGallery />
