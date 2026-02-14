@@ -8,10 +8,10 @@ const PricingPage = () => {
   const [images, setImages] = useState(generationConfig.creditsPerImage * generationConfig.minImages);
 
   return (
-    <div className="py-16 space-y-12">
+    <div className="md:py-16 space-y-12 md:space-y-16 bg-background">
       <div className="space-y-4">
-        <h1 className="text-5xl font-bold text-center bg-gradient-to-r py-2 from-orange-500 to-purple-500 bg-clip-text text-transparent">
-          Simple and Affordable <br /> Pricing Plans
+        <h1 className="text-5xl my-8 md:my-16 font-bold text-center text-foreground py-2">
+          Simple and <span className="text-brand"> Affordable <br /> Pricing Plans</span>
         </h1>
       </div>
 

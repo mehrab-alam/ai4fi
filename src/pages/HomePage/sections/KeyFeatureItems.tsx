@@ -30,7 +30,7 @@ const challenges = [
   "Limited diversity in model representation",
   "Inconsistent lighting and styling across shoots",
 ];
-const KeyFeatureItems:FC<{steps:{icon:ReactNode,title:string,description:string}[],challenges:string[],title:string,banner:string,direction:string}> = ( {steps,challenges,title,banner,direction}) => {  
+const KeyFeatureItems:FC<{steps:{icon:ReactNode,title:string,description:string}[],challengesTitle:string,challenges:string[],title:string,banner:string,direction:string}> = ( {steps,challengesTitle,challenges,title,banner,direction}) => {  
   return (
     <section className='py-12 md:py-20 relative overflow-hidden bg-background '>
       <div className='max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
@@ -65,7 +65,7 @@ const KeyFeatureItems:FC<{steps:{icon:ReactNode,title:string,description:string}
             <img src={banner} alt="" className="max-w-full  h-auto "/>
         </div>
         </div>
-        <Challenges direction={direction} challenges={challenges} title="The Challenges of Traditional Fashion Photography" />
+        <Challenges direction={direction} challenges={challenges} title={challengesTitle} />
       </div>
     </section>
   );

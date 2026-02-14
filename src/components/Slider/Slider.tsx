@@ -37,7 +37,7 @@ export function ImageSlider({ value, onChange }: ImageSliderProps) {
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-4">
-      <p className="text-center text-sm text-gray-400">Adjust your plan based on your business needs.</p>
+      <p className="text-center text-sm text-foreground">Adjust your plan based on your business needs.</p>
 
       <div className="relative">
         <Slider.Root
@@ -48,19 +48,19 @@ export function ImageSlider({ value, onChange }: ImageSliderProps) {
           onValueChange={([v]) => onChange(v)}
           className="relative flex w-full items-center touch-none select-none"
         >
-          <Slider.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-[#eee]">
-            <Slider.Range className="absolute h-full bg-purple-500 rounded-full" />
+          <Slider.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-secondary">
+            <Slider.Range className="absolute h-full bg-brand rounded-full" />
           </Slider.Track>
 
-          <Slider.Thumb className="relative flex items-center justify-center cursor-pointer w-5 h-5 rounded-full border-2 border-purple-600 bg-white shadow">
-            <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 text-xs bg-purple-600 text-white px-1.5 py-0.5 rounded">
+          <Slider.Thumb className="relative flex items-center justify-center cursor-pointer w-5 h-5 rounded-full border-2 border-border bg-white shadow">
+            <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 text-xs bg-brand text-white px-1.5 py-0.5 rounded">
               {formatNumber(value)}
             </div>
           </Slider.Thumb>
         </Slider.Root>
 
         {/* Dynamic Marks */}
-        <div className="flex justify-between mt-2 text-xs text-gray-400 px-1">
+        <div className="flex justify-between mt-2 text-xs text-foreground px-1">
           {marks.map((m, i) => (
             <span key={m}>
               {formatNumber(m)} {i === marks.length - 1 ? "+" : ""}
@@ -69,8 +69,8 @@ export function ImageSlider({ value, onChange }: ImageSliderProps) {
         </div>
       </div>
 
-      <p className="text-center text-sm text-gray-400">
-        1 image = <span className="text-orange-500 font-semibold">{generationConfig.creditsPerImage} credits</span>
+      <p className="text-center text-sm text-foreground">
+        1 image = <span className="text-foreground font-semibold">{generationConfig.creditsPerImage} credits</span>
       </p>
     </div>
   );

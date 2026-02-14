@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
-
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff, Mail } from "lucide-react";
 import authService from "../../services/authService";
 import { toast } from "sonner";
 import { LoadingSpinner } from "../../components/ModelGenerator/ModelConfigForm/ModelConfigForm";
+import AuthLayout from "../../components/Login/AuthLayout";
 
 interface FormData {
   username: string;
@@ -24,7 +23,6 @@ const SignUpForm: React.FC = () => {
     otp: "",
   });
   const [isOtpSent, setIsOtpSent] = useState<boolean>(false);
-  const [isOtpVerified, setIsOtpVerified] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
@@ -50,7 +48,7 @@ const SignUpForm: React.FC = () => {
     }
     setLoading(true);
     try {
-      const res = await authService.signup({ username, email, password, confirmPassword });
+      await authService.signup({ username, email, password, confirmPassword });
       setIsOtpSent(true);
       toast.success("Opt sent please verify your email");
       setLoading(false);
@@ -75,160 +73,127 @@ const SignUpForm: React.FC = () => {
   };
 
   return (
-    <div className='flex flex-col h-auto justify-center items-center  dark:bg-gradient-to-br from-sky-950 to-gray-950 dark:bg-transparent bg-background pb-16 pt-36'>
-      <div className='max-w-7xl w-full flex flex-col md:flex-row justify-center items-center'>
-        {/* Left Div */}
-        <motion.div
-          className='flex flex-col w-full md:w-1/2 justify-center items-start md:items-start text-center md:text-left px-4 py-8'
-          initial={{ x: "-100vw", opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1 }}>
-          <h6 className='text-foreground text-[25px] font-semibold mb-6'>Join Us Today</h6>
-          <h2 className='text-lg sm:text-3xl md:text-4xl lg:text-5xl mb-6 leading-10 text-brand-gradient'>Create your account with us!</h2>
-          <div className='h-px w-3/4 bg-gray-800 mb-6'></div>
-          <div className='flex justify-center  md:justify-start items-center space-x-4'>
-            <Mail className='text-3xl text-foreground' />
-            <div>
-              <p className='text-foreground'>support@yourwebsite.com</p>
-            </div>
-          </div>
-        </motion.div>
+    <AuthLayout 
+      mode='signup'
+      customForm={<form onSubmit={handleSubmit} className="space-y-6">
+        <div className="space-y-4">
+          {/* Email Input Section */}
+          {!isOtpSent && (
+            <>
+              <div className="space-y-2">
+                <label className="block text-sm font-semibold text-foreground">Name</label>
+                <input
+                  type='text'
+                  name='username'
+                  value={formData.username}
+                  onChange={handleChange}
+                  placeholder='Enter your name'
+                  className='w-full px-4 py-3 rounded-lg transition-all'
+                  required />
+              </div>
 
-        {/* Right Div */}
-        <motion.div
-          className='flex flex-col w-full md:w-2/5 shadow-lg p-12 bg-card rounded-lg'
-          initial={{ x: "100vw", opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1 }}>
-          <h4 className='text-brand-gradient text-[30px] font-semibold mb-6'>Create your account</h4>
-          <form onSubmit={handleSubmit}>
-            <div className='space-y-4'>
-              {/* Email Input Section */}
-              {!isOtpSent && (
-                <>
-                  <div>
-                    <p className='mb-2'>Name</p>
-                    <input
-                      type='text'
-                      name='username'
-                      value={formData.username}
-                      onChange={handleChange}
-                      placeholder='Enter your name'
-                      className='w-full px-3 py-2 border border-border rounded-md '
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <p className='mb-2'>Email</p>
-                    <input
-                      type='email'
-                      name='email'
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder='Enter your email'
-                      className='w-full px-3 py-2 border border-border rounded-md'
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <p className='mb-2'>
-                      Password <span className='text-xs text-foreground'>(Must be at least 6 characters)</span>
-                    </p>
-                    <div className='relative'>
-                      <input
-                        type={showPassword ? "text" : "password"}
-                        name='password'
-                        value={formData.password}
-                        onChange={handleChange}
-                        placeholder='Enter your password'
-                        className='w-full px-3 py-2 border border-border rounded-md pr-10'
-                        required
-                      />
-                      <span
-                        className='absolute cursor-pointer right-3 top-3 text-foreground hover:text-gray-700'
-                        onClick={() => setShowPassword(!showPassword)}>
-                        {!showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                      </span>
-                    </div>
-                  </div>
-                  <div className='mt-4'>
-                    <p className='mb-2'>
-                      Confirm Password <span className='text-xs text-foreground'>(Must be at least 6 characters)</span>
-                    </p>
-                    <div className='relative'>
-                      <input
-                        type={showConfirmPassword ? "text" : "password"}
-                        name='confirmPassword'
-                        value={formData.confirmPassword}
-                        onChange={handleChange}
-                        placeholder='Confirm your password'
-                        className='w-full p-3 border border-border rounded-md pr-10'
-                        required
-                      />
-                      <span
-                        className='absolute cursor-pointer right-3 top-3 text-foreground hover:text-gray-700'
-                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
-                        {!showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                      </span>
-                    </div>
-                  </div>
-
-                  <button
-                    type='button'
-                    disabled={loading}
-                    onClick={handleSendOtp}
-                    className={`w-full p-3 text-white rounded-md mt-4 ${loading ? " cursor-not-allowed" : "bg-brand-color"}`}
-                    style={{ borderRadius: "40px", fontSize: 19 }}>
-                    {loading ? "Sending OTP..." : "Send OTP"}
-                  </button>
-                </>
-              )}
-
-              {/* OTP Input Section */}
-              {isOtpSent && !isOtpVerified && (
-                <div>
-                  <p className='mb-2'>OTP</p>
+              <div className="space-y-2">
+                <label className="block text-sm font-semibold text-foreground">Email Address</label>
+                <div className="relative">
                   <input
-                    type='text'
-                    name='otp'
-                    value={formData.otp}
+                    type='email'
+                    name='email'
+                    value={formData.email}
                     onChange={handleChange}
-                    placeholder='Enter OTP'
-                    className='w-full p-3 border border-gray-300 rounded-md text-black'
-                    required
-                  />
+                    placeholder='Enter your email'
+                    className='w-full px-4 py-3 rounded-lg transition-all'
+                    required />
+                  <Mail className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5" />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="block text-sm font-semibold text-foreground">
+                  Password <span className='text-xs text-muted-foreground font-normal'>(Must be at least 6 characters)</span>
+                </label>
+                <div className='relative'>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name='password'
+                    value={formData.password}
+                    onChange={handleChange}
+                    placeholder='Enter your password'
+                    className='w-full px-4 py-3 rounded-lg transition-all pr-12'
+                    required />
                   <button
-                    type='button'
-                    onClick={handleVerifyOtp}
-                    className='w-full p-3 flex items-center justify-center gap-1 bg-brand-color text-white rounded-md mt-4'>
-                    <span>Verify OTP</span> {loading && <LoadingSpinner size={15} />}
+                    type="button"
+                    className='absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors'
+                    onClick={() => setShowPassword(!showPassword)}>
+                    {showPassword ? <Eye size={20} /> : <EyeOff size={20} />}
                   </button>
                 </div>
-              )}
+              </div>
 
-              {isOtpSent && isOtpVerified && (
-                <>
+              <div className="space-y-2">
+                <label className="block text-sm font-semibold text-foreground">
+                  Confirm Password
+                </label>
+                <div className='relative'>
+                  <input
+                    type={showConfirmPassword ? "text" : "password"}
+                    name='confirmPassword'
+                    value={formData.confirmPassword}
+                    onChange={handleChange}
+                    placeholder='Confirm your password'
+                    className='w-full px-4 py-3 rounded-lg transition-all pr-12'
+                    required />
                   <button
-                    type='submit'
-                    className='w-full p-3 bg-brand-color text-white rounded-md shadow-lg'
-                    style={{ borderRadius: "40px", fontSize: 19 }}>
-                    Sign Up
+                    type="button"
+                    className='absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors'
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+                    {showConfirmPassword ? <Eye size={20} /> : <EyeOff size={20} />}
                   </button>
-                </>
-              )}
+                </div>
+              </div>
+
+              <button
+                type='button'
+                disabled={loading}
+                onClick={handleSendOtp}
+                className={`w-full py-4 bg-brand text-white font-bold rounded-xl shadow-lg transition-all active:scale-[0.98] mt-4 ${loading ? "opacity-50 cursor-not-allowed" : "hover:shadow-brand/20 hover:shadow-xl"}`}>
+                {loading ? "Sending OTP..." : "Send OTP"}
+              </button>
+            </>
+          )}
+
+          {/* OTP Input Section */}
+          {isOtpSent && (
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <label className="block text-sm font-semibold text-foreground">OTP Code</label>
+                <input
+                  type='text'
+                  name='otp'
+                  value={formData.otp}
+                  onChange={handleChange}
+                  placeholder='Enter OTP'
+                  className='w-full px-4 py-3 rounded-lg transition-all'
+                  required />
+              </div>
+              <button
+                type='button'
+                onClick={handleVerifyOtp}
+                disabled={loading}
+                className='w-full py-4 flex items-center justify-center gap-2 bg-brand-color text-white font-bold rounded-xl shadow-lg transition-all active:scale-[0.98]'>
+                <span>Verify OTP</span> {loading && <LoadingSpinner size={20} />}
+              </button>
             </div>
-          </form>
-          <p className='mt-6 text-center text-sm text-gray-600'>
-            Already have an account?{" "}
-            <Link to='/login' className='text-brand-gradient  transition font-semibold'>
-              Sign In
-            </Link>
-          </p>
-        </motion.div>
-      </div>
-    </div>
+          )}
+
+          {isOtpSent && (
+            <button
+              type='submit'
+              className='w-full py-4 bg-brand-color text-white font-bold rounded-xl shadow-lg transition-all active:scale-[0.98]'>
+              Complete Sign Up
+            </button>
+          )}
+        </div>
+      </form>}    />
   );
 };
 

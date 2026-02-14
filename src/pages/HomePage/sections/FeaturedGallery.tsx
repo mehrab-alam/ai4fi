@@ -6,6 +6,8 @@ import ImageCarousel from "../../../components/ImageCarosuel/ImageCarosuel";
 const FeaturedGallery = () => {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 768px)" });
 
+ 
+
   const row1Images = [
     {
       id: 1,

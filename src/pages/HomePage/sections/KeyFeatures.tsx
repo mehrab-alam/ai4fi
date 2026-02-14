@@ -12,6 +12,7 @@ const KeyFeatures = () => {
             direction:"ltr",
             banner:"./trial_room.jpeg",
             title: "Virtual Trial Room",
+            challengesTitle:"The Challenges of Traditional Fashion Photography",
             description: "Select from our diverse range of AI-generated models to showcase your fashion.",
             steps:[
   {
@@ -40,6 +41,7 @@ const KeyFeatures = () => {
             direction:"rtl",
             banner:"./photo_studio.jpeg",
             title: "Photo Studio",
+            challengesTitle:"The Challenges of Studio Photography",
             description: "Select from our diverse range of AI-generated models to showcase your fashion.",
            steps: [
   {
@@ -71,6 +73,7 @@ challenges: [
          {
             direction:"ltr",
             banner:"./ad.jpeg",
+            challengesTitle:"The Challenges of Advertisement",
             title: "Advertisement",
             description: "Select from our diverse range of AI-generated models to showcase your fashion.",
            steps: [
@@ -124,6 +127,7 @@ challenges: [
             <div key={index}>
              <KeyFeatureItems
              steps={feature.steps}
+             challengesTitle={feature.challengesTitle}
              challenges={feature.challenges}
              title={feature.title}
              banner={feature.banner}

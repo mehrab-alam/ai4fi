@@ -74,6 +74,16 @@
 
 
 @layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html, body {
+    background-color: var(--background);
+    color: var(--foreground);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     color: var(--foreground);
   }
@@ -332,5 +342,20 @@ select option:checked {
     background: color-mix(in srgb, var(--card), transparent 45%);
     border-color: var(--brand); /* Highlights with your cyan color on hover */
     transform: translateY(-4px);
+  }
+
+  .auth-slider, .auth-slider .slick-list, .auth-slider .slick-track, .auth-slider .slick-slide > div {
+    height: 100% !important;
+  }
+
+  .auth-slider .slick-dots li button:before {
+    color: white !important;
+    font-size: 8px;
+    opacity: 0.5;
+  }
+
+  .auth-slider .slick-dots li.slick-active button:before {
+    color: #0891b2 !important;
+    opacity: 1;
   }
 }
