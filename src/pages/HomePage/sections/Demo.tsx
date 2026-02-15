@@ -22,6 +22,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { HeroVideoDialog } from "../../../components/common/VideoPlayer";
 import authService from "../../../services/authService";
+import SectionHeader from "./SectionHeader";
 
 const DemoSection = () => {
   const navigate = useNavigate();
@@ -128,22 +129,8 @@ const DemoSection = () => {
   return (
     <section id='demo' className='py-20 relative overflow-hidden bg-background'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className='text-center mb-16'>
-          <span className='inline-block px-3 py-1 bg-primary/10 backdrop-blur-sm text-primary text-sm font-medium rounded-full mb-3'>
-            Visual Demonstrations
-          </span>
-          <h2 className='text-4xl md:text-5xl font-bold mb-4 text-foreground'>
-            See AI4FI in Action
-          </h2>
-          <p className='text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto'>
-            Watch how our AI transforms fashion visualization through these interactive demonstrations
-          </p>
-        </motion.div>
+
+        <SectionHeader title="See AI4FI in Action" description="Watch how our AI transforms fashion visualization through these interactive demonstrations" subtitle="Visual Demonstrations" icon={<Zap className="text-muted-foreground" size={18} />} />
 
         {/* Section 1: Introduction Video (Right) and Features (Left) */}
         <motion.div
@@ -286,7 +273,7 @@ const DemoSection = () => {
           </div>
         </motion.div>
 
-       
+
 
         {/* CTA Section - Refactored for Premium SaaS Look */}
         <motion.div
@@ -297,22 +284,22 @@ const DemoSection = () => {
           className="mt-24 md:mt-32"
         >
           <div className="relative overflow-hidden rounded-[2rem] glass-card dark:border border-border  shadow-2xl transition-all duration-300">
-            
+
             {/* Background Decorative Gradient */}
             <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-brand-color/10 to-transparent pointer-events-none" />
 
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-8 md:p-16 gap-12">
-              
+
               {/* Left Content */}
               <div className="flex-1 text-center md:text-left">
                 <h3 className="text-3xl md:text-5xl font-bold  dark:text-white mb-6 tracking-tight leading-tight">
                   Ready to Transform Your <span className="text-brand-gradient">Fashion Content?</span>
                 </h3>
                 <p className="text-lg  mb-10 max-w-xl leading-relaxed">
-                  Join thousands of fashion brands already using AI4FI to create stunning, 
+                  Join thousands of fashion brands already using AI4FI to create stunning,
                   diverse model imagery at a fraction of traditional costs.
                 </p>
-                
+
                 <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
@@ -326,7 +313,7 @@ const DemoSection = () => {
                     }}
                     className="w-full sm:w-auto px-8 py-4 bg-brand-color hover:bg-cyan-600 text-white font-semibold rounded-xl transition-all shadow-lg shadow-cyan-500/25"
                   >
-                    Try It 
+                    Try It
                   </motion.button>
 
                   <Link to='/contact' className="w-full sm:w-auto">
@@ -347,7 +334,7 @@ const DemoSection = () => {
                 <div className="relative">
                   {/* Floating Glow Effect */}
                   <div className="absolute inset-0 bg-brand-color blur-[60px] opacity-20 dark:opacity-40 animate-pulse" />
-                  
+
                   {/* Central Premium Icon Component */}
                   <div className="relative bg-background p-12 rounded-full  shadow-2xl">
                     <div className="relative">
@@ -356,7 +343,7 @@ const DemoSection = () => {
                       <Sparkles className="absolute -top-2 -right-2 w-10 h-10 text-brand animate-bounce" />
                     </div>
                   </div>
-                  
+
                   {/* Small floating tag accent */}
                   <div className="absolute -bottom-6 -left-6 p-4 bg-background rounded-2xl shadow-xl border border-border">
                     <div className="flex items-center gap-2 text-xs font-bold text-brand-gradient  uppercase tracking-wider">

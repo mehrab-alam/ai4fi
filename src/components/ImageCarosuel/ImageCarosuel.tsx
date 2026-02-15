@@ -24,7 +24,7 @@ export default function ImageCarousel({ images, rtl }: { images: any[]; rtl: boo
     dots: false,
     infinite: true,
     speed: 300,
-    slidesToShow: 1,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -49,19 +49,17 @@ export default function ImageCarousel({ images, rtl }: { images: any[]; rtl: boo
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
-
   return (
     <div className='w-full max-w-8xl mx-auto mb-12 '>
       <Slider {...settings}>
         {images.map((item) => (
           <div key={item} className='px-2 group'>
             <div className='bg-gray-200 rounded-lg overflow-hidden w-full relative '>
-              <img src={`${item}`} alt={`Gallery image ${item}`} className='w-full h-full object-contain ' />
+              <img src={`${item.src}`} alt={`Gallery image ${item.alt}`} className='w-full h-full object-contain ' />
 
               <div
-                className={`absolute inset-0 bg-black/40 transition-opacity ${
-                  zoomedImage.includes(`${item}`) ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-                }`}>
+                className={`absolute inset-0 bg-black/40 transition-opacity ${zoomedImage.includes(`${item}`) ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                  }`}>
                 <div className='flex items-center h-full justify-center'>
                   <div className='flex space-x-4'>
                     <ZoomIn
