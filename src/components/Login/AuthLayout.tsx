@@ -21,6 +21,7 @@ const AuthLayout: FC<{
 		arrows: false,
 		fade: true,
 		cssEase: "linear",
+
 		dotsClass: "slick-dots !bottom-4",
 	};
 	const images = [
@@ -58,6 +59,7 @@ const AuthLayout: FC<{
 									alt="Background"
 									className="w-full h-full object-fit opacity-60"
 								/>
+								<div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/20" />
 
 								<div className="absolute bottom-20 left-12 right-12 z-10">
 									<h3 className="text-sm font-medium text-white tracking-widest uppercase mb-2">

@@ -2,11 +2,12 @@ import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
 import ImageCarousel from "../../../components/ImageCarosuel/ImageCarosuel";
+import SectionHeader from "./SectionHeader";
 
 const FeaturedGallery = () => {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 768px)" });
 
- 
+
 
   const row1Images = [
     {
@@ -56,14 +57,9 @@ const FeaturedGallery = () => {
   return (
     <section id='gallery' className='py-12 md:py-20 relative overflow-hidden bg-background'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className='text-center mb-8 md:mb-16'>
-          <h2 className='text-3xl md:text-4xl font-bold mb-4 text-foreground'>Featured AI Models</h2>
-          <p className='text-muted-foreground text-lg md:text-xl'>Discover our diverse range of AI-generated fashion models</p>
-        </motion.div>
+
+        <SectionHeader title=" Featured AI Models" description="Discover our diverse range of AI-generated fashion models" />
+
       </div>
 
       {/* First Row */}
@@ -93,13 +89,10 @@ const FeaturedGallery = () => {
 
       {/* Second Row Title */}
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 text-center py-4'>
-        <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-          <h3 className='text-3xl md:text-4xl font-bold text-foreground mb-4'>Obese Model Collection</h3>
-          <p className='text-muted-foreground font-semibold mb-2'>
-            Experience lifelike AI models, including plus-size, for a true-to-reality shopping experience. Instantly generate 4K visuals
-            with customizable poses, lighting, and backgrounds—boosting sales and reducing returns.
-          </p>
-        </motion.div>
+
+        <SectionHeader title=" Obese Model Collection" description="Experience lifelike AI models, including plus-size, for a true-to-reality shopping experience. Instantly generate 4K visuals
+            with customizable poses, lighting, and backgrounds—boosting sales and reducing returns." />
+
       </div>
 
       {/* Second Row */}

@@ -8,15 +8,17 @@ import AboutUs from "./sections/AboutUs";
 import HeroSection2 from "./sections/HeroSection2";
 import TrialRoom from "./sections/KeyFeatureItems";
 import KeyFeatures from "./sections/KeyFeatures";
+import VideoShowcase from "./sections/VideoShowcase";
 
 
 const HomePage: FC = () => {
-  
+
   return (
     <div>
       <HeroSection2 />
-      <KeyFeatures/>
+      <KeyFeatures />
       <DemoSection />
+      {/* <VideoShowcase /> */}
       <Features />
       <FeaturedGallery />
       <AboutUs />

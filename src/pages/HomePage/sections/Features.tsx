@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Brain, Sparkles, Gauge, Paintbrush, Users, Zap, Globe, ShieldCheck } from "lucide-react";
+import { Brain, Sparkles, Gauge, Paintbrush, Users, Zap, Globe, ShieldCheck, TrendingUp } from "lucide-react";
+import SectionHeader from "./SectionHeader";
 
 const features = [
   {
@@ -64,94 +65,74 @@ const Features = () => {
   return (
     <section id='features' className='py-24 relative overflow-hidden bg-background'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className='text-center mb-16'>
-          <span className='inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-3 backdrop-blur-sm'>
-            Why Choose AI4FI
-          </span>
-          <h2 className='text-4xl md:text-5xl font-bold mb-6 text-foreground'>
-            Cutting-Edge AI Feature
-          </h2>
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: "80px" }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className='h-1 bg-brand-color mx-auto mb-6 rounded-full'
-          />
-          <p className='text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto'>
-            Transform your fashion showcase with AI-powered innovation that delivers stunning results at a fraction of traditional costs
-          </p>
-        </motion.div>
+        <SectionHeader title=" Cutting-Edge AI Feature" description="            Transform your fashion showcase with AI-powered innovation that delivers stunning results at a fraction of traditional costs
+" subtitle="Why Choose AI4FI" icon={<TrendingUp className="text-muted-foreground" size={18} />} />
+
 
         <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8'>
           {features.map((feature, index) => (
-          
+
             <motion.div
-        key={index}
-  initial={{ opacity: 0, y: 30 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.6, delay: feature.delay }}
-  whileHover={{ y: -8 }}
-  className='group h-full relative'
->
-  {/* The Premium Glass Container */}
-  <div className="h-full glass-card rounded-xl p-8 border border-border  shadow-xl transition-all duration-500 overflow-hidden group-hover:shadow-text-brand-color">
-    
-    {/* Animated background glow following the theme */}
-    <div className="absolute -top-12 -right-12 w-32 h-32 bg-brand-color rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: feature.delay }}
+              whileHover={{ y: -8 }}
+              className='group h-full relative'
+            >
+              {/* The Premium Glass Container */}
+              <div className="h-full glass-card rounded-xl p-8 border border-border  shadow-xl transition-all duration-500 overflow-hidden group-hover:shadow-text-brand-color">
 
-    {/* Bouncing Gradient Icon Block */}
-    <div className="relative inline-block mb-8">
-      <div className="absolute inset-0 bg-brand-color/20 blur-xl rounded-full" />
-      <motion.div
-        animate={{ y: [0, -6, 0] }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        className="relative p-4 bg-brand-color rounded-2xl border border-border/40  shadow-sm"
-      >
-        {/* Using your custom brand gradient class on the icon */}
-        <div className="text-whitet flex items-center justify-center">
-          {feature.icon}
-        </div>
-      </motion.div>
-    </div>
+                {/* Animated background glow following the theme */}
+                <div className="absolute -top-12 -right-12 w-32 h-32 bg-brand-color rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
 
-    {/* Title with Gradient Highlight */}
-    <h3 className="text-2xl font-bold mb-4 tracking-tight leading-tight">
-      {feature.title}
-    </h3>
+                {/* Bouncing Gradient Icon Block */}
+                <div className="relative inline-block mb-8">
+                  <div className="absolute inset-0 bg-brand-color/20 blur-xl rounded-full" />
+                  <motion.div
+                    animate={{ y: [0, -6, 0] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    className="relative p-4 bg-brand-color rounded-2xl border border-border/40  shadow-sm"
+                  >
+                    {/* Using your custom brand gradient class on the icon */}
+                    <div className="text-whitet flex items-center justify-center">
+                      {feature.icon}
+                    </div>
+                  </motion.div>
+                </div>
 
-    {/* Animated Brand Line */}
-    <motion.div
-      initial={{ width: 0 }}
-      whileInView={{ width: "2.5rem" }}
-      viewport={{ once: true }}
-      className="h-1 bg-brand-color mb-6 rounded-full"
-    />
+                {/* Title with Gradient Highlight */}
+                <h3 className="text-2xl font-bold mb-4 tracking-tight leading-tight">
+                  {feature.title}
+                </h3>
 
-    {/* Description with improved readability */}
-    <p className="text-sm md:text-base leading-relaxed group-hover:text-foreground transition-colors duration-300">
-      {feature.description}
-    </p>
+                {/* Animated Brand Line */}
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "2.5rem" }}
+                  viewport={{ once: true }}
+                  className="h-1 bg-brand-color mb-6 rounded-full"
+                />
 
-    {/* Premium Learn More CTA */}
+                {/* Description with improved readability */}
+                <p className="text-sm md:text-base leading-relaxed group-hover:text-foreground transition-colors duration-300">
+                  {feature.description}
+                </p>
 
-    <div className='mt-8 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-brand-color opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300'>
-      Learn more
-      <svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2.5} d='M9 5l7 7-7 7' />
-      </svg>
-    </div>
+                {/* Premium Learn More CTA */}
 
-  
-    
-  </div>
-</motion.div>
+                <div className='mt-8 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-brand-color opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300'>
+                  Learn more
+                  <svg className='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                    <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2.5} d='M9 5l7 7-7 7' />
+                  </svg>
+                </div>
+
+
+
+              </div>
+            </motion.div>
           ))}
         </div>
 
