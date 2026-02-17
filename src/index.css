@@ -369,12 +369,24 @@ select option:checked {
 		color: #2563eb;
 	}
 
+	@keyframes gradient-move {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		100% {
+			background-position: 200% 50%;
+		}
+	}
+
 	.text-brand-gradient {
-		background: linear-gradient(135deg, #22d3ee, #c084fc, #f472b6);
+		background: linear-gradient(90deg, #2563eb, #7c3aed, #db2777, #06b6d4, #2563eb);
+		background-size: 200% auto;
 		-webkit-background-clip: text;
 		background-clip: text;
 		-webkit-text-fill-color: transparent;
 		color: transparent;
+		animation: gradient-move 12s linear infinite;
 	}
 
 	.text-brand-icon-gradient {
@@ -440,7 +452,7 @@ select option:checked {
 		}
 
 		50% {
-			border-color: #f472b6;
+			border-color: #c42e7b;
 			box-shadow: 0 0 15px color-mix(in srgb, #f472b6, transparent 30%);
 		}
 

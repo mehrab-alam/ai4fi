@@ -53,8 +53,8 @@ export function ImageSlider({ value, onChange }: ImageSliderProps) {
           </Slider.Track>
 
           <Slider.Thumb className="relative flex items-center justify-center cursor-pointer w-5 h-5 rounded-full border-2 border-border bg-white shadow">
-            <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 text-xs bg-brand text-white px-1.5 py-0.5 rounded">
-              {formatNumber(value)}
+            <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 text-xs bg-brand text-white px-1.5 py-0.5 rounded whitespace-nowrap">
+              {value >= max ? "Custom Plan" : formatNumber(value)}
             </div>
           </Slider.Thumb>
         </Slider.Root>
@@ -63,7 +63,7 @@ export function ImageSlider({ value, onChange }: ImageSliderProps) {
         <div className="flex justify-between mt-2 text-xs text-foreground px-1">
           {marks.map((m, i) => (
             <span key={m}>
-              {formatNumber(m)} {i === marks.length - 1 ? "+" : ""}
+              {i === marks.length - 1 ? "Custom Plan" : formatNumber(m)}
             </span>
           ))}
         </div>

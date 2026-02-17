@@ -21,7 +21,7 @@ const PricingPage = () => {
         <div className="flex justify-center gap-6 flex-wrap">
           {pricingPlans.map((plan, i) => (
             <div key={i} className="max-w-[calc(100vw/4)">
-              <PlanCard key={plan.id} plan={plan} />
+              <PlanCard images={images} key={plan.id} plan={plan} />
             </div>
           ))}
         </div>

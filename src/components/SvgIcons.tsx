@@ -1,3 +1,6 @@
+import { FC } from "react";
+import { cn } from "../services/utils";
+
 export default {
   youtube: (
     <svg width="1em" height="1em" viewBox="0 0 132 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,7 +25,7 @@ export default {
       </defs>
     </svg>
   ),
- 
+
   google: (
     <svg width="1em" height="1em" viewBox="0 0 113 48" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -48,7 +51,7 @@ export default {
       />
     </svg>
   ),
- 
+
   netflix: (
     <svg width="1em" height="1em" viewBox="0 0 111 48" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_201_8066)">
@@ -163,5 +166,398 @@ export default {
       />
     </svg>
   ),
-  
+
 };
+
+export const MultipleSquareIcon: FC<{ className?: string; width?: string; height?: string }> = ({ className, width = "100%", height = "auto" }) => {
+  return <i>
+    <svg
+      fill="none"
+      style={{ width, height }}
+      className={cn("", className)}
+      viewBox="0 0 475 152"
+    >
+      <path
+        fill="var(--background)"
+        stroke="var(--muted-foreground)"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.4}
+        d="m391.957 146.204-35.176-65.911a8.743 8.743 0 0 1 0-8.281l35.176-65.911c1.663-3.116 5.051-5.083 8.756-5.083h28.012c3.705 0 7.092 1.967 8.756 5.083l35.176 65.911a8.743 8.743 0 0 1 0 8.28l-35.176 65.912c-1.663 3.116-5.051 5.083-8.756 5.083h-28.012c-3.705 0-7.092-1.967-8.756-5.083Z"
+      />
+      <path
+        stroke="var(--muted-foreground)"
+        strokeDasharray="3 4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m395.445 149.833 39.724-73.683-39.724-73.683m77.347 73.68h-37.625"
+      />
+      <path
+        fill="var(--background)"
+        stroke="var(--muted-foreground)"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.4}
+        d="m316.99 146.204-35.176-65.911a8.743 8.743 0 0 1 0-8.281L316.99 6.101c1.663-3.116 5.051-5.083 8.756-5.083h28.013c3.704 0 7.092 1.967 8.755 5.083l35.176 65.911a8.738 8.738 0 0 1 0 8.28l-35.176 65.912c-1.663 3.116-5.051 5.083-8.755 5.083h-28.013c-3.705 0-7.092-1.967-8.756-5.083Z"
+      />
+      <path
+        stroke="var(--muted-foreground)"
+        strokeDasharray="3 4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m320.473 149.833 39.724-73.683-39.724-73.683m77.346 73.68h-37.625"
+      />
+      <path
+        fill="var(--background)"
+        stroke="var(--muted-foreground)"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.4}
+        d="m187.149 146.187-35.176-65.912a8.738 8.738 0 0 1 0-8.28l35.176-65.912C188.811 2.967 192.2 1 195.904 1h82.052c3.705 0 7.092 1.967 8.755 5.083l35.176 65.911a8.738 8.738 0 0 1 0 8.281l-35.176 65.912c-1.662 3.116-5.05 5.083-8.755 5.083h-82.052c-3.704 0-7.092-1.967-8.755-5.083Z"
+      />
+      <mask
+        id="a"
+        width={133}
+        height={76}
+        x={191}
+        y={76}
+        maskUnits="userSpaceOnUse"
+        style={{
+          maskType: "alpha",
+        }}
+      >
+        <path
+          fill="#967E7E"
+          d="m230.357 76.14-38.243 70.927c-1.078 1.998.37 4.423 2.64 4.423h81.741a13 13 0 0 0 11.52-6.976l34.988-66.916a1 1 0 0 0-.886-1.463l-91.76.004Z"
+        />
+      </mask>
+      <g stroke="var(--background)" mask="url(#a)">
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -13.924 264.465)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -17.347 272.73)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -20.768 280.988)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -24.192 289.253)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -27.615 297.519)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -31.035 305.775)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -34.457 314.035)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -37.88 322.3)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -41.3 330.556)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -44.722 338.819)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -48.147 347.086)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -51.57 355.35)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -54.987 363.6)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -58.413 371.871)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -61.832 380.125)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -65.253 388.384)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -68.677 396.65)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -72.096 404.906)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -75.518 413.166)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -78.946 421.441)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -82.364 429.693)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -85.786 437.956)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -89.21 446.22)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -92.633 454.485)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -96.05 462.737)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -99.474 471.002)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -102.898 479.267)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -106.32 487.528)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -109.742 495.789)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -113.164 504.05)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -116.585 512.312)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -120.007 520.572)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -123.429 528.833)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -126.85 537.091)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -130.272 545.354)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -133.695 553.618)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -137.116 561.877)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -140.538 570.138)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -143.963 578.408)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -147.381 586.66)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -150.804 594.922)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -154.229 603.19)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -157.65 611.452)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -161.07 619.708)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -164.49 627.964)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -167.916 636.234)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -171.336 644.49)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -174.758 652.753)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -178.18 661.014)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -181.602 669.275)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -185.023 677.534)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -188.445 685.795)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -191.865 694.053)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -195.29 702.321)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -198.716 710.591)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -202.134 718.845)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -205.554 727.101)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -208.981 735.375)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -212.4 743.63)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -215.82 751.884)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -219.246 760.157)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -222.665 768.41)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -226.089 776.676)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -229.512 784.94)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -232.934 793.2)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -236.353 801.457)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -239.777 809.722)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -243.198 817.98)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -246.62 826.241)"
+        />
+        <path
+          d="M0-.5h497.768"
+          transform="scale(-1.02975 -.96934) rotate(-45 -250.043 834.507)"
+        />
+      </g>
+      <path
+        stroke="var(--muted-foreground)"
+        strokeDasharray="3 4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m190.631 149.822 39.724-73.684-39.724-73.683M322.76 76.134h-92.408"
+      />
+      <path
+        stroke="var(--muted-foreground)"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.4}
+        d="m187.149 146.187-35.176-65.912a8.738 8.738 0 0 1 0-8.28l35.176-65.912C188.811 2.967 192.2 1 195.904 1h82.052c3.705 0 7.092 1.967 8.755 5.083l35.176 65.911a8.738 8.738 0 0 1 0 8.281l-35.176 65.912c-1.662 3.116-5.05 5.083-8.755 5.083h-82.052c-3.704 0-7.092-1.967-8.755-5.083Z"
+      />
+      <path
+        fill="var(--background)"
+        stroke="var(--muted-foreground)"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.4}
+        d="M112.184 146.204 77.008 80.293a8.74 8.74 0 0 1 0-8.281l35.176-65.911c1.662-3.116 5.051-5.083 8.755-5.083h28.013c3.704 0 7.092 1.967 8.755 5.083l35.177 65.911a8.743 8.743 0 0 1 0 8.28l-35.177 65.912c-1.662 3.116-5.051 5.083-8.755 5.083h-28.013c-3.704 0-7.092-1.967-8.755-5.083Z"
+      />
+      <path
+        stroke="var(--muted-foreground)"
+        strokeDasharray="3 4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M115.666 149.833 155.39 76.15 115.666 2.467m77.346 73.68h-37.625"
+      />
+      <path
+        fill="var(--background)"
+        stroke="var(--muted-foreground)"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.4}
+        d="M37.219 146.204 2.043 80.293a8.74 8.74 0 0 1 0-8.281L37.219 6.101c1.663-3.116 5.051-5.083 8.755-5.083h28.013c3.705 0 7.092 1.967 8.756 5.083l35.176 65.911a8.743 8.743 0 0 1 0 8.28l-35.176 65.912c-1.663 3.116-5.051 5.083-8.756 5.083H45.975c-3.705 0-7.093-1.967-8.756-5.083Z"
+      />
+      <path
+        stroke="var(--muted-foreground)"
+        strokeDasharray="3 4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m40.707 149.829 39.724-73.683L40.707 2.463m77.346 73.68H80.428"
+      />
+    </svg>
+
+  </i>
+}

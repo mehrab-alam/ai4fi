@@ -29,9 +29,10 @@ export interface PricingPlan {
 interface PlanCardProps {
   plan: PricingPlan;
   borderRadius?: string;
+  images: number;
 }
 
-export function PlanCard({ plan, borderRadius }: PlanCardProps) {
+export function PlanCard({ plan, borderRadius, images }: PlanCardProps) {
   const getCurrencySymbol = (currency: string) => {
     switch (currency) {
       case "INR":
@@ -47,12 +48,12 @@ export function PlanCard({ plan, borderRadius }: PlanCardProps) {
       {plan.id !== "features" && (
         <>
           <div
-          style={{
-            borderRadius:30
-          }}
+            style={{
+              borderRadius: 30
+            }}
             className={cn(
               !plan.highlighted && " glass-card rounded-[30px]",
-              
+
               "rounded-[8px] relative border p-6 w-80 h-[250px] text-left transition border-border",
               plan.highlighted && "bg-brand text-white border-brand scale-110",
               borderRadius ? borderRadius : "rounded-[30px]",
@@ -70,12 +71,13 @@ export function PlanCard({ plan, borderRadius }: PlanCardProps) {
             <div className="flex items-baseline gap-1">
               <p className={cn("text-4xl font-bold mt-4", plan.highlighted && "text-white")}>
                 {getCurrencySymbol(plan.currency)}
-                {plan.price}
+                {(plan.price * images).toFixed(0)}
               </p>
               <span className={cn("text-lg text-muted-foreground", plan.highlighted && "text-white/80")}>/ month</span>
             </div>
 
             <button
+              disabled={images >= 150}
               className={cn(
                 "mt-4 w-full rounded-full py-2 text-sm font-medium transition-all active:scale-[0.98]",
                 plan.highlighted ? "bg-background text-foreground hover:bg-background/90" : "bg-brand text-white hover:opacity-90",

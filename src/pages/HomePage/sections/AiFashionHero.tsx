@@ -1,6 +1,7 @@
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import React, { useState, useEffect } from "react";
 import SvgIcons from "../../../components/SvgIcons";
+import BorderBeamAnimation from "../../../components/common/AnimatedBorder";
 
 /* =======================
    Types
@@ -17,33 +18,43 @@ export interface AiFashionHeroProps {
    Sub-Components
  ======================= */
 
-const FadingImageCard: React.FC<{ images: string[]; label: string }> = ({
+const FadingImageCard: React.FC<{ images: string[]; label: string; startDelay?: number }> = ({
 	images,
 	label,
+	startDelay = 0,
 }) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	useEffect(() => {
-		const interval = setInterval(() => {
-			setCurrentIndex((prev) => (prev + 1) % images.length);
-		}, 5000); // 5s visible + fade time
+		const timeout = setTimeout(() => {
+			const interval = setInterval(() => {
+				setCurrentIndex((prev) => (prev + 1) % images.length);
+			}, 3000);
+			// Store interval id for cleanup
+			(timeout as any).__interval = interval;
+		}, startDelay * 1000);
 
-		return () => clearInterval(interval);
-	}, [images.length]);
+		return () => {
+			clearTimeout(timeout);
+			if ((timeout as any).__interval) clearInterval((timeout as any).__interval);
+		};
+	}, [images.length, startDelay]);
 
 	return (
-		<div className="glass-card relative overflow-hidden flex items-center justify-center text-center md:h-72 md:w-72 h-40 w-40 hover:glass-card-hover group shadow-2xl">
+		<div className="glass-card relative overflow-hidden flex items-center justify-center text-center md:h-64 md:w-64 lg:h-68 lg:w-68 h-40 w-40 hover:glass-card-hover group shadow-2xl">
 			{/* Image Stack */}
-			{images.map((src, index) => (
-				<img
-					key={index}
-					src={src}
-					alt={`${label} ${index + 1}`}
-					className={`absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-2000 ease-in-out ${
-						index === currentIndex ? "opacity-100" : "opacity-0"
-					}`}
+			{/* Image Stack */}
+			<AnimatePresence>
+				<motion.img
+					key={currentIndex}
+					src={images[currentIndex]}
+					alt={`${label} ${currentIndex + 1}`}
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1, transition: { duration: 1.5 } }}
+					exit={{ opacity: 0, transition: { duration: 0, delay: 1 } }}
+					className="absolute rounded-sm inset-0 w-full h-full object-cover object-top"
 				/>
-			))}
+			</AnimatePresence>
 
 			{/* Label Overlay */}
 			<div className="relative z-10 bg-black/40 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 transform transition-transform group-hover:scale-110">
@@ -115,48 +126,98 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 			<section className="px-6 md:px-16 flex items-center justify-between lg:flex-row flex-col  lg:py-0">
 				{/* LEFT */}
 				<div className="space-y-8 lg:w-1/2">
-					<div className="inline-flex items-center gap-2 px-4 py-1.5 border border-border bg-[var(--secondary)] rounded-full text-[10px] md:text-xs uppercase tracking-widest text-[var(--brand)] shadow-sm">
-						<span className="relative flex h-2 w-2">
-							<span className="absolute inline-flex h-full w-full rounded-full bg-[var(--brand)] opacity-75"></span>
-							<span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--brand)]"></span>
-						</span>
-						{heroEyebrow}
-					</div>
+					<motion.div
+						initial={{ y: -40, opacity: 0 }}
+						whileInView={{ y: 0, opacity: 1 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.5, delay: 0, ease: "easeOut" }}
+					>
+						<div className="inline-flex relative items-center gap-2 px-4 py-2.5 border border-border bg-[var(--secondary)] rounded-full text-[10px] md:text-xs uppercase tracking-widest text-muted-foreground shadow-sm">
+							<BorderBeamAnimation />
+							<span className="relative flex h-2 w-2">
+								<span className="absolute inline-flex h-full w-full rounded-full bg-muted-foreground opacity-75"></span>
+								<span className="relative inline-flex rounded-full h-2 w-2 bg-muted-foreground"></span>
+							</span>
+							{heroEyebrow}
+						</div>
+					</motion.div>
 
-					<div>
+					<motion.div
+						initial={{ y: -40, opacity: 0 }}
+						whileInView={{ y: 0, opacity: 1 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+					>
 						<h1 className="font-bold leading-tight">
 							<span className="text-foreground">REVOLUTIONIZE</span>
 							<br />
-							<span className="text-muted-foreground">FASHION WITH AI.</span>
+							<span className="text-brand-gradient">FASHION WITH AI.</span>
 						</h1>
-					</div>
+					</motion.div>
 
-					<p className="max-w-xl text-[var(--secondary-foreground)] text-lg">
-						{heroDescription}
-					</p>
+					<motion.div
+						initial={{ y: -40, opacity: 0 }}
+						whileInView={{ y: 0, opacity: 1 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
+					>
+						<p className="max-w-xl text-[var(--secondary-foreground)] text-lg">
+							{heroDescription}
+						</p>
+					</motion.div>
 
-					<div className="flex flex-wrap gap-4">
-						<button
-							type="button"
-							className="px-8 py-3 rounded-md bg-brand-color text-white hover:opacity-90 transition shadow-lg shadow-brand/20"
-						>
-							{primaryCTA}
-						</button>
+					<motion.div
+						initial={{ y: -40, opacity: 0 }}
+						whileInView={{ y: 0, opacity: 1 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.5, delay: 0.9, ease: "easeOut" }}
+					>
+						<div className="flex flex-wrap gap-4">
+							<button
+								type="button"
+								className="px-8 py-3 rounded-md bg-brand-color text-white hover:opacity-90 transition shadow-lg shadow-brand/20"
+							>
+								{primaryCTA}
+							</button>
 
-						<button
-							type="button"
-							className="px-8 py-3 border border-[var(--border)] rounded-md hover:border-[var(--brand)] transition hover:bg-[var(--secondary)]"
-						>
-							{secondaryCTA}
-						</button>
-					</div>
+							<button
+								type="button"
+								className="px-8 py-3 border border-[var(--border)] rounded-md hover:border-[var(--brand)] transition hover:bg-[var(--secondary)]"
+							>
+								{secondaryCTA}
+							</button>
+						</div>
+					</motion.div>
 				</div>
 
 				{/* RIGHT */}
 				<div className="lg:w-1/2 relative flex items-center justify-center mt-12 lg:mt-0">
 					<div className="grid grid-cols-2 gap-4 md:gap-8 rotate-[-3deg]">
 						{categories.map((cat, i) => (
-							<FadingImageCard key={i} label={cat.label} images={cat.images} />
+							<motion.div
+								key={i}
+								style={{ transformOrigin: "bottom center" }}
+								initial={{ x: 200, opacity: 0 }}
+								whileInView={{
+									x: 0,
+									opacity: 1,
+									rotate: [0, -3, 2.5, -2, 1.5, -0.5, 0],
+								}}
+								viewport={{ once: true, amount: 0.3 }}
+								transition={{
+									delay: i * 0.9,
+									duration: 0.8,
+									x: { duration: 0.4 },
+									opacity: { duration: 0.4 },
+									rotate: {
+										delay: i * 0.9 + 0.4,
+										duration: 0.4,
+										ease: "easeOut",
+									},
+								}}
+							>
+								<FadingImageCard label={cat.label} images={cat.images} startDelay={3.5} />
+							</motion.div>
 						))}
 					</div>
 				</div>

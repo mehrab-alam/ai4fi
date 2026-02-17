@@ -23,6 +23,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { HeroVideoDialog } from "../../../components/common/VideoPlayer";
 import authService from "../../../services/authService";
 import SectionHeader from "./SectionHeader";
+import { MultipleSquareIcon } from "../../../components/SvgIcons";
 
 const DemoSection = () => {
   const navigate = useNavigate();
@@ -332,25 +333,7 @@ const DemoSection = () => {
               {/* Right Visual (Icon-based Premium Design) */}
               <div className="flex-1 hidden md:flex justify-center items-center">
                 <div className="relative">
-                  {/* Floating Glow Effect */}
-                  <div className="absolute inset-0 bg-brand-color blur-[60px] opacity-20 dark:opacity-40 animate-pulse" />
-
-                  {/* Central Premium Icon Component */}
-                  <div className="relative bg-background p-12 rounded-full  shadow-2xl">
-                    <div className="relative">
-                      {/* Using the Shirt and Sparkles from your existing Lucide imports */}
-                      <Image className="w-24 h-24 text-foreground stroke-[1.2]" />
-                      <Sparkles className="absolute -top-2 -right-2 w-10 h-10 text-brand animate-bounce" />
-                    </div>
-                  </div>
-
-                  {/* Small floating tag accent */}
-                  <div className="absolute -bottom-6 -left-6 p-4 bg-background rounded-2xl shadow-xl border border-border">
-                    <div className="flex items-center gap-2 text-xs font-bold text-brand-gradient  uppercase tracking-wider">
-                      <Zap className="w-3 h-3 text-foreground" />
-                      AI Powered
-                    </div>
-                  </div>
+                  <MultipleSquareIcon height="auto" width="30vw" />
                 </div>
               </div>
 
