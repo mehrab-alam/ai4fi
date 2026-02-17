@@ -41,7 +41,7 @@ const FadingImageCard: React.FC<{ images: string[]; label: string; startDelay?: 
 	}, [images.length, startDelay]);
 
 	return (
-		<div className="glass-card relative overflow-hidden flex items-center justify-center text-center md:h-64 md:w-64 lg:h-68 lg:w-68 h-40 w-40 hover:glass-card-hover group shadow-2xl">
+		<div className="glass-card relative z-40 overflow-hidden flex items-center justify-center text-center md:h-64 md:w-64 lg:h-68 lg:w-68 h-40 w-40 hover:glass-card-hover group shadow-2xl">
 			{/* Image Stack */}
 			{/* Image Stack */}
 			<AnimatePresence>
@@ -50,8 +50,8 @@ const FadingImageCard: React.FC<{ images: string[]; label: string; startDelay?: 
 					src={images[currentIndex]}
 					alt={`${label} ${currentIndex + 1}`}
 					initial={{ opacity: 0 }}
-					animate={{ opacity: 1, transition: { duration: 1.5 } }}
-					exit={{ opacity: 0, transition: { duration: 0, delay: 1 } }}
+					animate={{ opacity: 1, transition: { duration: 2 } }}
+					exit={{ opacity: 0, transition: { duration: 0, delay: 2 } }}
 					className="absolute rounded-sm inset-0 w-full h-full object-cover object-top"
 				/>
 			</AnimatePresence>
@@ -132,7 +132,7 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 						viewport={{ once: true }}
 						transition={{ duration: 0.5, delay: 0, ease: "easeOut" }}
 					>
-						<div className="inline-flex relative items-center gap-2 px-4 py-2.5 border border-border bg-[var(--secondary)] rounded-full text-[10px] md:text-xs uppercase tracking-widest text-muted-foreground shadow-sm">
+						<div className="inline-flex relative items-center gap-2 px-4 py-2.5 border border-border bg-[var(--muted-secondary)] rounded-full text-[10px] md:text-xs uppercase tracking-widest text-brand-gradient shadow-sm">
 							<BorderBeamAnimation />
 							<span className="relative flex h-2 w-2">
 								<span className="absolute inline-flex h-full w-full rounded-full bg-muted-foreground opacity-75"></span>
