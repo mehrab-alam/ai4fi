@@ -47,35 +47,38 @@ export function PlanCard({ plan, borderRadius }: PlanCardProps) {
       {plan.id !== "features" && (
         <>
           <div
+          style={{
+            borderRadius:30
+          }}
             className={cn(
-              "rounded-xl relative border p-6 w-80 h-[250px] text-left   transition",
-              plan.highlighted &&
-                "border-purple-500 scale-105  bg-gradient-to-r  from-orange-500 to-purple-500 text-white ]",
-              //   plan.disabled && "opacity-50 pointer-events-none",
+              !plan.highlighted && " glass-card rounded-[30px]",
+              
+              "rounded-[8px] relative border p-6 w-80 h-[250px] text-left transition border-border",
+              plan.highlighted && "bg-brand text-white border-brand scale-110",
               borderRadius ? borderRadius : "rounded-[30px]",
             )}
           >
             <div className="flex item-center justify-between">
-              <div className="text-xl m-0  font-semibold">{plan.name}</div>
+              <div className="text-xl m-0 font-semibold">{plan.name}</div>
 
               {plan.popular && (
-                <div className=" bg-[#000] text-[14px]  w-fit p-[5px_10px]  rounded-[30px] ">Most Popular</div>
+                <div className={cn("bg-foreground text-background text-[14px] w-fit p-[5px_10px] rounded-[30px]", plan.highlighted && "bg-background text-foreground")}>Most Popular</div>
               )}
             </div>
-            <p className="text-sm text-muted-foreground mt-4">{plan.description}</p>
+            <p className={cn("text-sm text-muted-foreground mt-4", plan.highlighted && "text-white/80")}>{plan.description}</p>
 
             <div className="flex items-baseline gap-1">
-              <p className="text-4xl font-bold mt-4">
+              <p className={cn("text-4xl font-bold mt-4", plan.highlighted && "text-white")}>
                 {getCurrencySymbol(plan.currency)}
                 {plan.price}
               </p>
-              <span className={cn("text-lg text-gray-600", plan.highlighted && "text-[#eee]")}>/ month</span>
+              <span className={cn("text-lg text-muted-foreground", plan.highlighted && "text-white/80")}>/ month</span>
             </div>
 
             <button
               className={cn(
-                "mt-4 w-full rounded-full py-2 text-sm font-medium",
-                plan.highlighted ? "bg-white text-purple-600" : "border border-purple-400 text-purple-600",
+                "mt-4 w-full rounded-full py-2 text-sm font-medium transition-all active:scale-[0.98]",
+                plan.highlighted ? "bg-background text-foreground hover:bg-background/90" : "bg-brand text-white hover:opacity-90",
               )}
             >
               {plan.ctaText}

@@ -33,13 +33,10 @@ export const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "login",
-        element: <LoginPage />,
+        path: "pricing",
+        element: <PricingPage />,
       },
-      {
-        path: "signup",
-        element: <SignUpForm />,
-      },
+     
       {
         path: "about",
         element: <AboutUs />,
@@ -63,10 +60,7 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "pricing",
-    element: <PricingPage />,
-  },
+
   {
     path: "/dashboard",
     element: <RootLayout />,
@@ -84,6 +78,16 @@ export const router = createBrowserRouter([
         element: <div className="text-white text-center mt-20">Page not found</div>,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
+  
+  },
+  {
+    path: "/signup",
+    element: <SignUpForm />,
+  
   },
   {
     path: "/model",

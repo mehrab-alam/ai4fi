@@ -75,9 +75,12 @@ const AboutUs = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
-                className='bg-card backdrop-blur-xl rounded-2xl p-8 hover:shadow-lg transition-all duration-300 border border-border'>
-                <div className='bg-gradient-to-br from-cyan-500 to-sky-500 p-3 rounded-xl inline-block mb-4'>{feature.icon}</div>
-                <h3 className='text-xl font-bold mb-3 text-card-foreground'>{feature.title}</h3>
+                
+                className='glass-card p-8 hover:shadow-lg transition-all duration-300 border border-border'>
+    <div className="absolute -top-4 -right-4 w-20 h-20 bg-brand-color rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
+
+                <div className='bg-brand-color text-white p-3 rounded-xl inline-block mb-4'>{feature.icon}</div>
+                <h3 className='text-xl font-bold mb-3 text-foreground'>{feature.title}</h3>
                 <p className='text-muted-foreground'>{feature.description}</p>
               </motion.div>
             ))}

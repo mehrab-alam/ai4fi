@@ -6,12 +6,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useMediaQuery } from "../useMediaQuery";
 import { ZoomIn } from "lucide-react";
-function SampleNextArrow(props: any) {
+export function SampleNextArrow(props: any) {
   const { className, style, onClick } = props;
   return <div className={`${className} right-10 z-10`} style={{ ...style, display: "block" }} onClick={onClick} />;
 }
 
-function SamplePrevArrow(props: any) {
+export function SamplePrevArrow(props: any) {
   const { className, style, onClick } = props;
   return <div className={`${className} left-10 z-10`} style={{ ...style, display: "block" }} onClick={onClick} />;
 }
@@ -49,19 +49,17 @@ export default function ImageCarousel({ images, rtl }: { images: any[]; rtl: boo
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
-
   return (
     <div className='w-full max-w-8xl mx-auto mb-12 '>
       <Slider {...settings}>
         {images.map((item) => (
           <div key={item} className='px-2 group'>
-            <div className='bg-gray-200 rounded-lg overflow-hidden w-full h-[430px] relative '>
-              <img src={`${item.src}`} alt={`Gallery image ${item.alt}`} className='w-full h-full object-fit ' />
+            <div className='bg-gray-200 rounded-lg overflow-hidden w-full relative '>
+              <img src={`${item.src}`} alt={`Gallery image ${item.alt}`} className='w-full h-full object-contain ' />
 
               <div
-                className={`absolute inset-0 bg-black/40 transition-opacity ${
-                  zoomedImage.includes(`${item.src}`) ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-                }`}>
+                className={`absolute inset-0 bg-black/40 transition-opacity ${zoomedImage.includes(`${item}`) ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                  }`}>
                 <div className='flex items-center h-full justify-center'>
                   <div className='flex space-x-4'>
                     <ZoomIn
