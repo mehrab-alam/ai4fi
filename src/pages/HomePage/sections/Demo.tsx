@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import {
 	Play,
 	Pause,
@@ -40,6 +40,17 @@ const DemoSection = () => {
 		features: useRef<HTMLVideoElement>(null),
 		walkthrough: useRef<HTMLVideoElement>(null),
 	};
+
+	// Scroll-driven animation refs & values for the demo section
+	const demoScrollRef = useRef<HTMLDivElement>(null);
+	const { scrollYProgress: demoScrollProgress } = useScroll({
+		target: demoScrollRef,
+		offset: ["start end", "end start"],
+	});
+	const contentX = useTransform(demoScrollProgress, [0, 0.25, 0.45], ["-100%", "-100%", "0%"]);
+	const contentOpacity = useTransform(demoScrollProgress, [0, 0.25, 0.45], [0, 0, 1]);
+	const videoX = useTransform(demoScrollProgress, [0, 0.25, 0.45], ["100%", "100%", "0%"]);
+	const videoOpacity = useTransform(demoScrollProgress, [0, 0.25, 0.45], [0, 0, 1]);
 
 	// Handle video play/pause
 	const toggleVideoPlay = (videoKey: "intro" | "features" | "walkthrough") => {
@@ -128,86 +139,89 @@ const DemoSection = () => {
 	};
 
 	return (
-		<section id="demo" className="py-20 relative overflow-hidden bg-background">
+		<section id="demo" className="py-20 relative bg-background">
 			<div className="max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-				<SectionHeader
-					title="See AI4FI in Action"
-					description="Watch how our AI transforms fashion visualization through these interactive demonstrations"
-					subtitle="Visual Demonstrations"
-					icon={<Zap className="text-muted-foreground" size={18} />}
-				/>
-
-				{/* Section 1: Introduction Video (Right) and Features (Left) */}
-				<motion.div
-					initial={{ opacity: 0, y: 40 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
-					transition={{ duration: 0.8 }}
-					className="mb-24 md:mb-32"
-				>
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-						{/* Features Column (Left on desktop) */}
-						<div className="order-2 md:order-1">
-							<div className="mb-6">
-								<h3 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">
-									AI4FI – Single Pose Model Generator
-								</h3>
-								<p className="text-muted-foreground">
-									No costly photoshoots – just instant, professional AI models!
-									Watch the demo now.
-								</p>
-							</div>
-
-							<div className="gap-6 grid md:grid-cols-2 grid-cols-1">
-								{features.intro.map((feature, index) => (
-									<motion.div
-										key={index}
-										initial={{ opacity: 0, x: -20 }}
-										whileInView={{ opacity: 1, x: 0 }}
-										viewport={{ once: true }}
-										transition={{ duration: 0.5, delay: index * 0.1 }}
-										className="flex items-start"
-									>
-										<div className="mr-4 p-2 bg-muted backdrop-blur-sm rounded-lg">
-											{feature.icon}
-										</div>
-										<div>
-											<h4 className="font-medium text-lg text-foreground mb-1">
-												{feature.title}
-											</h4>
-											<p className="text-muted-foreground text-sm">
-												{feature.description}
-											</p>
-										</div>
-									</motion.div>
-								))}
-							</div>
-						</div>
-
-						{/* Video Column (Right on desktop) */}
-						<div className="order-1 md:order-2 relative">
-							<HeroVideoDialog
-								className=""
-								animationStyle="from-center"
-								videoSrc="https://youtube.com/embed/sxFmNNgnoXE"
-								thumbnailSrc="/thumbnail-2.png"
-								thumbnailAlt="Hero Video"
+				{/* Scroll-driven animation wrapper */}
+				<div ref={demoScrollRef} className="relative min-h-[150vh] mb-24 md:mb-32">
+					{/* Sticky container that stays in view while scrolling */}
+					<div className="sticky top-[80px] pt-8 overflow-hidden">
+						{/* Sticky Section Header */}
+						<div className="mb-10">
+							<SectionHeader
+								title="See AI4FI in Action"
+								description="Watch how our AI transforms fashion visualization through these interactive demonstrations"
+								subtitle="Visual Demonstrations"
+								icon={<Zap className="text-muted-foreground" size={18} />}
 							/>
 						</div>
+
+						{/* Grid with animated columns */}
+						<div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+							{/* Features Column — slides in from LEFT */}
+							<motion.div
+								className="order-2 md:order-1"
+								style={{ x: contentX, opacity: contentOpacity }}
+							>
+								<div className="mb-6">
+									<h3 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">
+										AI4FI – Single Pose Model Generator
+									</h3>
+									<p className="text-muted-foreground">
+										No costly photoshoots – just instant, professional AI models!
+										Watch the demo now.
+									</p>
+								</div>
+
+								<div className="gap-6 grid md:grid-cols-2 grid-cols-1">
+									{features.intro.map((feature, index) => (
+										<div
+											key={index}
+											className="flex items-start"
+										>
+											<div className="mr-4 p-2 bg-muted backdrop-blur-sm rounded-lg">
+												{feature.icon}
+											</div>
+											<div>
+												<h4 className="font-medium text-lg text-foreground mb-1">
+													{feature.title}
+												</h4>
+												<p className="text-muted-foreground text-sm">
+													{feature.description}
+												</p>
+											</div>
+										</div>
+									))}
+								</div>
+							</motion.div>
+
+							{/* Video Column — slides in from RIGHT */}
+							<motion.div
+								className="order-1 md:order-2 relative"
+								style={{ x: videoX, opacity: videoOpacity }}
+							>
+								<HeroVideoDialog
+									className=""
+									animationStyle="from-center"
+									videoSrc="https://youtube.com/embed/sxFmNNgnoXE"
+									thumbnailSrc="/thumbnail-2.png"
+									thumbnailAlt="Hero Video"
+								/>
+							</motion.div>
+						</div>
 					</div>
-				</motion.div>
+				</div>
 
 				{/* Section 2: Features Video (Left) and Features (Right) */}
-				<motion.div
+				{/* <motion.div
 					initial={{ opacity: 0, y: 40 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
 					transition={{ duration: 0.8 }}
 					className="mb-24 md:mb-32"
-				>
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-						{/* Video Column (Left on desktop) */}
-						<div className="relative">
+				> */}
+				{/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center"> */}
+				{/* Video Column (Left on desktop) */}
+				{/* <div className="relative">
 							<HeroVideoDialog
 								className=""
 								animationStyle="from-center"
@@ -215,10 +229,10 @@ const DemoSection = () => {
 								thumbnailSrc="/thumbnail-2.png"
 								thumbnailAlt="Hero Video"
 							/>
-						</div>
+						</div> */}
 
-						{/* Features Column (Right on desktop) */}
-						<div>
+				{/* Features Column (Right on desktop) */}
+				{/* <div>
 							<div className="mb-6">
 								<h3 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">
 									AI4FI – Multi-Pose Model Generator
@@ -255,19 +269,19 @@ const DemoSection = () => {
 							</div>
 						</div>
 					</div>
-				</motion.div>
+				</motion.div> */}
 
 				{/* Section 3: Platform Walkthrough Video (Right) and Features (Left) */}
-				<motion.div
+				{/* <motion.div
 					initial={{ opacity: 0, y: 40 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
 					transition={{ duration: 0.8 }}
 					className="mb-16"
-				>
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-						{/* Features Column (Left on desktop) */}
-						<div className="order-2 md:order-1">
+				> */}
+				{/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center"> */}
+				{/* Features Column (Left on desktop) */}
+				{/* <div className="order-2 md:order-1">
 							<div className="mb-6">
 								<h3 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">
 									AI4FI – Virtual Try-On
@@ -302,10 +316,10 @@ const DemoSection = () => {
 									</motion.div>
 								))}
 							</div>
-						</div>
+						</div> */}
 
-						{/* Video Column (Right on desktop) */}
-						<div className="order-1 md:order-2 relative">
+				{/* Video Column (Right on desktop) */}
+				{/* <div className="order-1 md:order-2 relative">
 							<HeroVideoDialog
 								className=""
 								animationStyle="from-center"
@@ -313,9 +327,9 @@ const DemoSection = () => {
 								thumbnailSrc="/thumbnail-3.png"
 								thumbnailAlt="Hero Video"
 							/>
-						</div>
-					</div>
-				</motion.div>
+						</div> */}
+				{/* </div>
+				</motion.div> */}
 
 				{/* CTA Section - Refactored for Premium SaaS Look */}
 				<motion.div

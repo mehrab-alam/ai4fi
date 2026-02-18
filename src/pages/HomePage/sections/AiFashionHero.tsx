@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "motion/react";
 import React, { useState, useEffect } from "react";
 import SvgIcons from "../../../components/SvgIcons";
 import BorderBeamAnimation from "../../../components/common/AnimatedBorder";
+import { useTheme } from "../../../context/ThemeContext";
 
 /* =======================
    Types
@@ -77,6 +78,7 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 	primaryCTA = "Explore Features",
 	secondaryCTA = "Book a Demo",
 }) => {
+	const { theme } = useTheme();
 	const [currentTick, setCurrentTick] = useState(0);
 
 	useEffect(() => {
@@ -135,131 +137,148 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 		SvgIcons.youtube,
 	];
 	return (
-		<div className="max-w-[90vw] pt-32 pb-16 md:pt-32  relative   min-h-screen mx-auto bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300">
+		<div >
+			{/* ────── Background Image ────── */}
+			<div className="absolute inset-0 z-0 overflow-hidden rounded-xl">
+				<img
+					src={theme === "dark" ? "./dark_bg.png" : "./hero_bg_4k.png"}
+					alt=""
+					className="w-full h-full object-cover"
+				/>
+				<div
+					className="absolute inset-0"
+					style={{
+						background: theme === "dark"
+							? "linear-gradient(to bottom, rgba(2,12,36,0.7), rgba(2,12,36,0.85))"
+							: "linear-gradient(to bottom, rgba(255,255,255,0.75), rgba(255,255,255,0.85))",
+					}}
+				/>
+			</div>
 			{/* ================= HERO ================= */}
-			<div className="absolute  top-0 left-[-15vw] border border-dashed rounded-t-none border-t-0 border-l-0 z-[1] w-[30vw] h-[30vw]   rounded-xl border-border" />
-			<section className="px-6 md:px-16 relative z-[20] flex items-center justify-between lg:flex-row flex-col  lg:py-0">
-				{/* LEFT */}
-				<div className="space-y-8 lg:w-1/2">
-					<motion.div
-						initial={{ y: -40, opacity: 0 }}
-						whileInView={{ y: 0, opacity: 1 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.5, delay: 0, ease: "easeOut" }}
-					>
-						<div className="inline-flex relative items-center gap-2 px-4 py-2.5 border border-border bg-[var(--muted-secondary)] rounded-full text-[10px] md:text-xs uppercase tracking-widest text-brand-gradient shadow-sm">
-							<BorderBeamAnimation />
-							<span className="relative flex h-2 w-2">
-								<span className="absolute inline-flex h-full w-full rounded-full bg-muted-foreground opacity-75"></span>
-								<span className="relative inline-flex rounded-full h-2 w-2 bg-muted-foreground"></span>
-							</span>
-							{heroEyebrow}
+			<div className="max-w-[90vw] pt-32 pb-16 md:pt-32  relative   min-h-screen mx-auto  text-[var(--foreground)] transition-colors duration-300">
+				<section className="px-6 md:px-16 relative z-[20] flex items-center justify-between lg:flex-row flex-col  lg:py-0">
+					{/* LEFT */}
+					<div className="space-y-8 lg:w-1/2">
+						<motion.div
+							initial={{ y: -40, opacity: 0 }}
+							whileInView={{ y: 0, opacity: 1 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.5, delay: 0, ease: "easeOut" }}
+						>
+							<div className="inline-flex relative items-center gap-2 px-4 py-2.5 border border-border bg-[var(--muted-secondary)] rounded-full text-[10px] md:text-xs uppercase tracking-widest text-brand-gradient shadow-sm">
+								<BorderBeamAnimation />
+								<span className="relative flex h-2 w-2">
+									<span className="absolute inline-flex h-full w-full rounded-full bg-muted-foreground opacity-75"></span>
+									<span className="relative inline-flex rounded-full h-2 w-2 bg-muted-foreground"></span>
+								</span>
+								{heroEyebrow}
+							</div>
+						</motion.div>
+
+						<motion.div
+							initial={{ y: -40, opacity: 0 }}
+							whileInView={{ y: 0, opacity: 1 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+						>
+							<h1 className="font-bold leading-tight">
+								<span className="text-foreground">REVOLUTIONIZE</span>
+								<br />
+								<span className="text-brand-gradient">FASHION WITH AI.</span>
+							</h1>
+						</motion.div>
+
+						<motion.div
+							initial={{ y: -40, opacity: 0 }}
+							whileInView={{ y: 0, opacity: 1 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
+						>
+							<p className="max-w-xl text-[var(--secondary-foreground)] text-lg">
+								{heroDescription}
+							</p>
+						</motion.div>
+
+						<motion.div
+							initial={{ y: -40, opacity: 0 }}
+							whileInView={{ y: 0, opacity: 1 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.5, delay: 0.9, ease: "easeOut" }}
+						>
+							<div className="flex flex-wrap gap-4">
+								<button
+									type="button"
+									className="px-8 py-3 md:w-fit w-full rounded-md bg-brand-color text-white hover:opacity-90 transition shadow-lg shadow-brand/20"
+								>
+									{primaryCTA}
+								</button>
+
+								<button
+									type="button"
+									className="px-8 py-3 md:w-fit w-full border border-[var(--border)] rounded-md hover:border-[var(--brand)] transition hover:bg-[var(--secondary)]"
+								>
+									{secondaryCTA}
+								</button>
+							</div>
+						</motion.div>
+					</div>
+
+					{/* RIGHT */}
+					<div className="lg:w-1/2 relative flex items-center justify-center mt-12 lg:mt-0">
+						<div className="md:grid md:grid-cols-2 flex flex-wrap items-center gap-4 md:gap-8 md:rotate-[-3deg]">
+							{categories.map((cat, i) => (
+								<motion.div
+									key={i}
+									style={{ transformOrigin: "bottom center" }}
+									initial={{ x: 200, opacity: 0 }}
+									whileInView={{
+										x: 0,
+										opacity: 1,
+										rotate: [0, -3, 2.5, -2, 1.5, -0.5, 0],
+									}}
+									viewport={{ once: true, amount: 0.3 }}
+									transition={{
+										delay: i * 0.9,
+										duration: 0.8,
+										x: { duration: 0.4 },
+										opacity: { duration: 0.4 },
+										rotate: {
+											delay: i * 0.9 + 0.4,
+											duration: 0.4,
+											ease: "easeOut",
+										},
+									}}
+								>
+									<FadingImageCard
+										label={cat.label}
+										images={cat.images}
+										startDelay={3.5}
+									/>
+								</motion.div>
+							))}
 						</div>
-					</motion.div>
-
-					<motion.div
-						initial={{ y: -40, opacity: 0 }}
-						whileInView={{ y: 0, opacity: 1 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
-					>
-						<h1 className="font-bold leading-tight">
-							<span className="text-foreground">REVOLUTIONIZE</span>
-							<br />
-							<span className="text-brand-gradient">FASHION WITH AI.</span>
-						</h1>
-					</motion.div>
-
-					<motion.div
-						initial={{ y: -40, opacity: 0 }}
-						whileInView={{ y: 0, opacity: 1 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
-					>
-						<p className="max-w-xl text-[var(--secondary-foreground)] text-lg">
-							{heroDescription}
-						</p>
-					</motion.div>
-
-					<motion.div
-						initial={{ y: -40, opacity: 0 }}
-						whileInView={{ y: 0, opacity: 1 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.5, delay: 0.9, ease: "easeOut" }}
-					>
-						<div className="flex flex-wrap gap-4">
-							<button
-								type="button"
-								className="px-8 py-3 md:w-fit w-full rounded-md bg-brand-color text-white hover:opacity-90 transition shadow-lg shadow-brand/20"
-							>
-								{primaryCTA}
-							</button>
-
-							<button
-								type="button"
-								className="px-8 py-3 md:w-fit w-full border border-[var(--border)] rounded-md hover:border-[var(--brand)] transition hover:bg-[var(--secondary)]"
-							>
-								{secondaryCTA}
-							</button>
-						</div>
-					</motion.div>
-				</div>
-
-				{/* RIGHT */}
-				<div className="lg:w-1/2 relative flex items-center justify-center mt-12 lg:mt-0">
-					<div className="md:grid md:grid-cols-2 flex flex-wrap items-center gap-4 md:gap-8 md:rotate-[-3deg]">
-						{categories.map((cat, i) => (
+					</div>
+				</section>
+				<div className=" px-4 sm:px-6 lg:px-8 relative z-10 py-8 md:pb-8 pt-16">
+					<h4 className="text-center  mb-5 font-bold leading-tight">
+						Our Trusted Partners
+					</h4>
+					<div className="md:grid flex flex-wrap items-center justify-between md:place-items-center md:grid-cols-5 gap-6 md:gap-8">
+						{partners.map((partner, index) => (
 							<motion.div
-								key={i}
-								style={{ transformOrigin: "bottom center" }}
-								initial={{ x: 200, opacity: 0 }}
-								whileInView={{
-									x: 0,
-									opacity: 1,
-									rotate: [0, -3, 2.5, -2, 1.5, -0.5, 0],
-								}}
-								viewport={{ once: true, amount: 0.3 }}
-								transition={{
-									delay: i * 0.9,
-									duration: 0.8,
-									x: { duration: 0.4 },
-									opacity: { duration: 0.4 },
-									rotate: {
-										delay: i * 0.9 + 0.4,
-										duration: 0.4,
-										ease: "easeOut",
-									},
-								}}
+								key={index}
+								initial={{ opacity: 0, y: 0 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.8, delay: index * 0.2 }}
+								className="group"
 							>
-								<FadingImageCard
-									label={cat.label}
-									images={cat.images}
-									startDelay={3.5}
-								/>
+								<i className="leading-0 text-[7rem] text-muted-foreground">
+									{" "}
+									{partner}
+								</i>
 							</motion.div>
 						))}
 					</div>
-				</div>
-			</section>
-			<div className=" px-4 sm:px-6 lg:px-8 relative z-10 py-8 md:pb-8 pt-16">
-				<h4 className="text-center  mb-5 font-bold leading-tight">
-					Our Trusted Partners
-				</h4>
-				<div className="md:grid flex flex-wrap items-center justify-between md:place-items-center md:grid-cols-5 gap-6 md:gap-8">
-					{partners.map((partner, index) => (
-						<motion.div
-							key={index}
-							initial={{ opacity: 0, y: 0 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.8, delay: index * 0.2 }}
-							className="group"
-						>
-							<i className="leading-0 text-[7rem] text-muted-foreground">
-								{" "}
-								{partner}
-							</i>
-						</motion.div>
-					))}
 				</div>
 			</div>
 		</div>

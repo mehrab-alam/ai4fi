@@ -63,11 +63,11 @@ const Navbar = () => {
 			animate={{ y: 0, opacity: 1 }}
 			transition={{ duration: 0.5 }}
 			className={`fixed w-full z-50 transition-all duration-300 ${isScrolled
-					? "py-2 bg-background/80 backdrop-blur-xl border-b border-border shadow-sm"
-					: "py-4 bg-transparent"
+				? "py-2 bg-background/80 backdrop-blur-xl border-b border-border shadow-sm"
+				: "py-4 bg-transparent"
 				}`}
 		>
-			<div className="max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8">
+			<div className="max-w-[var(--content-width)] mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex items-center justify-between">
 					{/* Logo */}
 					<Link to="/">
@@ -263,8 +263,8 @@ const Navbar = () => {
 									key={item.name}
 									href={`${item.link}`}
 									className={`block px-4 py-3 rounded-lg  font-medium transition-colors duration-200 ${activeLink === item.name.toLowerCase()
-											? "bg-muted text-foreground"
-											: "text-secondary-foreground hover:text-secondary-foreground hover:bg-foreground/5"
+										? "bg-muted text-foreground"
+										: "text-secondary-foreground hover:text-secondary-foreground hover:bg-foreground/5"
 										}`}
 									onClick={() => {
 										setActiveLink(item.name.toLowerCase());
