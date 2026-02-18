@@ -83,6 +83,37 @@
 	--scrollbar-thumb-hover: #62d5ff;
 }
 
+@media (max-width: 540px) {
+	h1 {
+		font-size: 2.5rem;
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
+
+	h3 {
+		font-size: 1.5rem;
+	}
+
+	h4 {
+		font-size: 1.2rem;
+	}
+
+	h5 {
+		font-size: 1rem;
+	}
+
+	h6 {
+		font-size: 1rem;
+	}
+
+	p {
+		font-size: 1.1rem;
+		font-weight: 500;
+	}
+}
+
 @layer base {
 	* {
 		border-color: var(--border);
@@ -264,11 +295,13 @@ select option:checked {
 	transition: all 0.3s;
 	line-height: 1.4em;
 	border: 2px solid var(--green);
-	background: linear-gradient(to right,
-			rgba(27, 253, 156, 0.1) 1%,
-			transparent 40%,
-			transparent 60%,
-			rgba(27, 253, 156, 0.1) 100%);
+	background: linear-gradient(
+		to right,
+		rgba(27, 253, 156, 0.1) 1%,
+		transparent 40%,
+		transparent 60%,
+		rgba(27, 253, 156, 0.1) 100%
+	);
 	color: var(--green);
 	box-shadow:
 		inset 0 0 10px rgba(27, 253, 156, 0.4),
@@ -290,11 +323,13 @@ select option:checked {
 	height: 100%;
 	top: 0;
 	transition: transform 0.4s ease-in-out;
-	background: linear-gradient(to right,
-			transparent 1%,
-			rgba(27, 253, 156, 0.1) 40%,
-			rgba(27, 253, 156, 0.1) 60%,
-			transparent 100%);
+	background: linear-gradient(
+		to right,
+		transparent 1%,
+		rgba(27, 253, 156, 0.1) 40%,
+		rgba(27, 253, 156, 0.1) 60%,
+		transparent 100%
+	);
 }
 
 .fast-gen-model-btn:hover:before {
@@ -343,13 +378,13 @@ select option:checked {
 	transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.radio-button__input:checked+.radio-button__label .radio-button__custom {
+.radio-button__input:checked + .radio-button__label .radio-button__custom {
 	transform: translateY(-50%) scale(0.9);
 	border: 5px solid #0891b2;
 	color: #0891b2;
 }
 
-.radio-button__input:checked+.radio-button__label {
+.radio-button__input:checked + .radio-button__label {
 	color: #0891b2;
 }
 
@@ -380,7 +415,14 @@ select option:checked {
 	}
 
 	.text-brand-gradient {
-		background: linear-gradient(90deg, #2563eb, #7c3aed, #db2777, #06b6d4, #2563eb);
+		background: linear-gradient(
+			90deg,
+			#2563eb,
+			#7c3aed,
+			#db2777,
+			#06b6d4,
+			#2563eb
+		);
 		background-size: 200% auto;
 		-webkit-background-clip: text;
 		background-clip: text;
@@ -430,7 +472,7 @@ select option:checked {
 	.auth-slider,
 	.auth-slider .slick-list,
 	.auth-slider .slick-track,
-	.auth-slider .slick-slide>div {
+	.auth-slider .slick-slide > div {
 		height: 100% !important;
 	}
 

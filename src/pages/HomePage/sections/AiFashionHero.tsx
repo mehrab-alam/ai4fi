@@ -18,11 +18,11 @@ export interface AiFashionHeroProps {
    Sub-Components
  ======================= */
 
-const FadingImageCard: React.FC<{ images: string[]; label: string; startDelay?: number }> = ({
-	images,
-	label,
-	startDelay = 0,
-}) => {
+const FadingImageCard: React.FC<{
+	images: string[];
+	label: string;
+	startDelay?: number;
+}> = ({ images, label, startDelay = 0 }) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	useEffect(() => {
@@ -36,12 +36,13 @@ const FadingImageCard: React.FC<{ images: string[]; label: string; startDelay?: 
 
 		return () => {
 			clearTimeout(timeout);
-			if ((timeout as any).__interval) clearInterval((timeout as any).__interval);
+			if ((timeout as any).__interval)
+				clearInterval((timeout as any).__interval);
 		};
 	}, [images.length, startDelay]);
 
 	return (
-		<div className="glass-card relative z-40 overflow-hidden flex items-center justify-center text-center md:h-64 md:w-64 lg:h-68 lg:w-68 h-40 w-40 hover:glass-card-hover group shadow-2xl">
+		<div className="glass-card relative z-40 overflow-hidden flex items-center justify-center text-center md:h-64 md:w-64 lg:h-68 lg:w-68 h-32 w-32 hover:glass-card-hover group shadow-2xl">
 			{/* Image Stack */}
 			{/* Image Stack */}
 			<AnimatePresence>
@@ -76,6 +77,19 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 	primaryCTA = "Explore Features",
 	secondaryCTA = "Book a Demo",
 }) => {
+	const [currentTick, setCurrentTick] = useState(0);
+
+	useEffect(() => {
+		const timeout = setTimeout(() => {
+			const interval = setInterval(() => {
+				setCurrentTick((prev) => prev + 1);
+			}, 3000);
+			return () => clearInterval(interval);
+		}, 3500);
+
+		return () => clearTimeout(timeout);
+	}, []);
+
 	const categories = [
 		{
 			label: "Model",
@@ -121,9 +135,10 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 		SvgIcons.youtube,
 	];
 	return (
-		<div className="max-w-[90vw] py-32  min-h-screen mx-auto bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300">
+		<div className="max-w-[90vw] pt-32 pb-16 md:pt-32  relative   min-h-screen mx-auto bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300">
 			{/* ================= HERO ================= */}
-			<section className="px-6 md:px-16 flex items-center justify-between lg:flex-row flex-col  lg:py-0">
+			<div className="absolute  top-0 left-[-15vw] border border-dashed rounded-t-none border-t-0 border-l-0 z-[1] w-[30vw] h-[30vw]   rounded-xl border-border" />
+			<section className="px-6 md:px-16 relative z-[20] flex items-center justify-between lg:flex-row flex-col  lg:py-0">
 				{/* LEFT */}
 				<div className="space-y-8 lg:w-1/2">
 					<motion.div
@@ -175,14 +190,14 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 						<div className="flex flex-wrap gap-4">
 							<button
 								type="button"
-								className="px-8 py-3 rounded-md bg-brand-color text-white hover:opacity-90 transition shadow-lg shadow-brand/20"
+								className="px-8 py-3 md:w-fit w-full rounded-md bg-brand-color text-white hover:opacity-90 transition shadow-lg shadow-brand/20"
 							>
 								{primaryCTA}
 							</button>
 
 							<button
 								type="button"
-								className="px-8 py-3 border border-[var(--border)] rounded-md hover:border-[var(--brand)] transition hover:bg-[var(--secondary)]"
+								className="px-8 py-3 md:w-fit w-full border border-[var(--border)] rounded-md hover:border-[var(--brand)] transition hover:bg-[var(--secondary)]"
 							>
 								{secondaryCTA}
 							</button>
@@ -192,7 +207,7 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 
 				{/* RIGHT */}
 				<div className="lg:w-1/2 relative flex items-center justify-center mt-12 lg:mt-0">
-					<div className="grid grid-cols-2 gap-4 md:gap-8 rotate-[-3deg]">
+					<div className="md:grid md:grid-cols-2 flex flex-wrap items-center gap-4 md:gap-8 md:rotate-[-3deg]">
 						{categories.map((cat, i) => (
 							<motion.div
 								key={i}
@@ -216,17 +231,21 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 									},
 								}}
 							>
-								<FadingImageCard label={cat.label} images={cat.images} startDelay={3.5} />
+								<FadingImageCard
+									label={cat.label}
+									images={cat.images}
+									startDelay={3.5}
+								/>
 							</motion.div>
 						))}
 					</div>
 				</div>
 			</section>
-			<div className=" px-4 sm:px-6 lg:px-8 relative z-10 md:py-16">
-				{/* <h4 className="text-center  mb-5 font-bold leading-tight">
+			<div className=" px-4 sm:px-6 lg:px-8 relative z-10 py-8 md:pb-8 pt-16">
+				<h4 className="text-center  mb-5 font-bold leading-tight">
 					Our Trusted Partners
-				</h4> */}
-				<div className="grid grid-cols place-items-center md:grid-cols-5 gap-6 md:gap-8">
+				</h4>
+				<div className="md:grid flex flex-wrap items-center justify-between md:place-items-center md:grid-cols-5 gap-6 md:gap-8">
 					{partners.map((partner, index) => (
 						<motion.div
 							key={index}
