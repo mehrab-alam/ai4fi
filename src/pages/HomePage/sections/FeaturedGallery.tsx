@@ -696,10 +696,10 @@ Infinite Possibilities"
 					<div className="flex flex-col lg:flex-row gap-12 lg:items-center">
 						{/* Sticky Text Info */}
 						<div className="lg:w-1/3 space-y-6">
-							<div className="inline-flex items-center gap-2 px-3 text-white py-1 rounded-full border border-brand/30 bg-muted-foreground text-xs font-bold uppercase tracking-wider">
-								<Heart size={12} fill="currentColor" /> Body Positivity
-							</div>
-
+							<span className='inline-block px-3 w-fit text-center  border-border border glass-card flex items-center gap-2 py-1 bg-primary/10 backdrop-blur-sm text-muted-secondary rounded-full mb-3'>
+								<Heart size={12} stroke="none" fill="var(--muted-foreground)" />
+								<span className="text-muted-foreground">Body Positivity</span>
+							</span>
 							<h2 className="text-4xl md:text-5xl font-serif text-foreground leading-tight">
 								The Inclusive <br />
 								<span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">

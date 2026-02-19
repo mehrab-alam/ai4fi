@@ -139,25 +139,30 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 	const imageCards = [
 		{
 			id: 1,
-			src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80",
+			src: "./AI_gen.jpeg",
+			// src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80",
 			rotate: -6,
 			className: "top-10 left-10",
 		},
 		{
 			id: 2,
-			src: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80",
+			src: "./3.jpeg",
+			// src: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80",
 			rotate: 3,
 			className: "top-0 left-48",
 		},
 		{
 			id: 3,
-			src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+			src: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=600&auto=format&fit=crop",
+
 			rotate: -3,
 			className: "top-12 right-20",
 		},
 		{
 			id: 4,
-			src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+			src:
+				"https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=600&auto=format&fit=crop",
+
 			rotate: -8,
 			className: "top-48 left-20",
 		},
@@ -182,6 +187,21 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 		{
 			id: 8,
 			src: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80",
+			rotate: -4,
+			className: "bottom-0 right-32",
+		},
+		{
+			id: 9,
+			src:
+				"https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=600&auto=format&fit=crop",
+
+			rotate: -4,
+			className: "bottom-0 right-32",
+		},
+		{
+			id: 10,
+			src: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=600&auto=format&fit=crop",
+
 			rotate: -4,
 			className: "bottom-0 right-32",
 		},
@@ -214,9 +234,9 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 
 				setTimeout(() => {
 					setDirection("idle");
-				}, 600);
-			}, 300); // matches first animation duration
-		}, 1200);
+				}, 500);
+			}, 250); // matches first animation duration
+		}, 1000);
 
 		return () => clearInterval(interval);
 	}, []);
