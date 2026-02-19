@@ -589,7 +589,7 @@ const marqueeStyle = `
 const ModelCard = ({ model, isDark = false }) => (
 	<div
 		className={`
-    relative flex-shrink-0 w-[280px] h-[420px] rounded-2xl overflow-hidden cursor-pointer group mx-3
+    relative flex-shrink-0 w-auto h-[250px] md:h-[280px] lg:h-[320px] rounded-2xl overflow-hidden cursor-pointer group mx-3
     ${isDark ? "shadow-[0_0_30px_rgba(168,85,247,0.15)]" : "shadow-xl"}
   `}
 	>

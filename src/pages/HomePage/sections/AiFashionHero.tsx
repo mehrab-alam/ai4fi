@@ -188,22 +188,19 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 			id: 8,
 			src: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80",
 			rotate: -4,
-			className: "bottom-0 right-32",
+			className: "bottom-12 right-24",
 		},
 		{
 			id: 9,
-			src:
-				"https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=600&auto=format&fit=crop",
-
-			rotate: -4,
-			className: "bottom-0 right-32",
+			src: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=600&auto=format&fit=crop",
+			rotate: -10,
+			className: "top-24 right-4",
 		},
 		{
 			id: 10,
-			src: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=600&auto=format&fit=crop",
-
-			rotate: -4,
-			className: "bottom-0 right-32",
+			src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop",
+			rotate: 6,
+			className: "bottom-4 left-4",
 		},
 	];
 
@@ -334,7 +331,7 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 						{cards.map((card, i) => {
 							const isTop = i === 0;
 							const isLeft = card.className.includes("left");
-							const exitX = isLeft ? -250 : 250;
+							const exitX = isLeft ? -350 : 350;
 
 							return (
 								<motion.div
@@ -343,13 +340,14 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 									animate={{
 										x: isTop && direction === "out" ? exitX : 0,
 										scale: i === 0 ? 1 : 0.95,
+										rotate: card.rotate,
 									}}
 									transition={{
 										duration: direction === "in" ? 0.8 : 0.5,
 										ease: [0.22, 1, 0.36, 1],
 									}}
 									style={{
-										width: "180px",
+										width: "clamp(130px, 15vw, 190px)",
 										zIndex: cards.length - i,
 									}}
 								>

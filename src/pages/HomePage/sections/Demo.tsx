@@ -549,7 +549,7 @@ const DemoSection = () => {
 					ref={demoScrollRef}
 					className="relative min-h-[100%] mb-24 md:mb-32"
 				>
-					<div className="mb-10">
+					<div className="mb-10 sticky top-[40px]">
 						<SectionHeader
 							title="See AI4FI in Action"
 							description="Watch how our AI transforms fashion visualization through these interactive demonstrations"

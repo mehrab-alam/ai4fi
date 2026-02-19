@@ -9,7 +9,8 @@ import {
 const IMAGES = [
     {
         id: 1,
-        src: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80",
+        // src: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80",
+        src: "./good_bye_1.jpeg",
         alt: "Portrait Shoot",
         fromX: -60,
         fromY: -45,
@@ -20,7 +21,8 @@ const IMAGES = [
     },
     {
         id: 2,
-        src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=80",
+        src: "./good_bye_2.jpeg",
+        // src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=80",
         alt: "Studio Portrait",
         fromX: 60,
         fromY: -45,
@@ -31,7 +33,8 @@ const IMAGES = [
     },
     {
         id: 3,
-        src: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&q=80",
+        src: "./good_bye_3.jpeg",
+        // src: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&q=80",
         alt: "Fashion Shoot",
         fromX: -60,
         fromY: 45,
@@ -42,7 +45,8 @@ const IMAGES = [
     },
     {
         id: 4,
-        src: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600&q=80",
+        src: "./good_bye_4.jpeg",
+        // src: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600&q=80",
         alt: "Model Shoot",
         fromX: 60,
         fromY: 45,
@@ -70,27 +74,27 @@ export default function SayGoodBySection() {
     // Transitions for Hero
     const heroOpacity = useTransform(
         smoothProgress,
-        [0, 0.4, 0.5, 1],
+        [0, 0.5, 0.6, 1],
         [1, 1, 0, 0],
     );
-    const heroScale = useTransform(smoothProgress, [0, 0.4, 0.5], [1, 1, 0.8]);
-    const heroY = useTransform(smoothProgress, [0.4, 0.5], ["0%", "-20%"]);
+    const heroScale = useTransform(smoothProgress, [0, 0.5, 0.6], [1, 1, 0.9]);
+    const heroY = useTransform(smoothProgress, [0.5, 0.6], ["0%", "-10%"]);
 
     // Transitions for Welcome Section
     const welcomeOpacity = useTransform(
         smoothProgress,
-        [0.6, 0.8, 0.9, 1],
+        [0.7, 0.85, 0.95, 1],
         [0, 1, 1, 0]
     );
     const welcomeScale = useTransform(
         smoothProgress,
-        [0.6, 0.8],
+        [0.7, 0.85],
         [0.9, 1]
     );
     const welcomeY = useTransform(
         smoothProgress,
-        [0.6, 0.8],
-        ["20px", "0px"]
+        [0.7, 0.85],
+        ["30px", "0px"]
     );
 
     // Transitions for Next Panels
@@ -123,44 +127,51 @@ export default function SayGoodBySection() {
                         }}
                     />
 
+                    {/* Hanging Thread */}
+                    <motion.div
+                        className="absolute top-0 w-[1px] bg-gradient-to-b from-transparent via-brand-color/50 to-brand-color/80"
+                        style={{
+                            height: "42vh", // Length of the thread to the title center
+                            opacity: heroOpacity,
+                            scaleY: useTransform(smoothProgress, [0, 0.2], [0, 1]),
+                            originY: 0
+                        }}
+                    />
+
                     {/* Headline */}
-                    <div className="text-center whitespace-nowrap z-2 pointer-events-none select-none">
+                    <div className="text-center whitespace-nowrap z-2 pointer-events-none select-none mt-20">
                         <p
-                            className="text-secondary-froeground uppercase mb-5 opacity-70 tracking-widest"
+                            className="text-secondary-froeground uppercase mb-6 opacity-60 tracking-[0.5em]"
                             style={{
-                                fontSize: 11,
+                                fontSize: 13,
                                 fontFamily: "'Courier New', monospace",
-                                letterSpacing: "0.42em",
                             }}
                         >
                             Introducing AI Photography
                         </p>
                         <h1
-                            className="text-foreground font-light m-0 leading-none"
+                            className=" md:text-[4rem] text-[3rem] font-bolder lg:text-[5rem] text-brand-gradient font-light m-0 leading-[1.05]"
                             style={{
-                                fontSize: "clamp(36px,7vw,96px)",
-                                letterSpacing: "-0.025em",
+                                fontSize: "clamp(48px, 10vw, 140px)",
+                                letterSpacing: "-0.03em",
                             }}
                         >
-                            Good Bye
+                            Say Good Bye to Costly
                             <br />
-                            <em
-                                className="text-brand-gradient font-normal"
-                                style={{ fontStyle: "italic" }}
-                            >
-                                Costly
-                            </em>
-                            <br />
+
+
                             Photo Shoots
+
                         </h1>
-                        <div className="w-12 h-px bg-brand-color opacity-40 mx-auto mt-8" />
+                        <div className="w-16 h-[2px] bg-brand-color/60 mx-auto mt-12 shadow-[0_0_15px_rgba(var(--brand-rgb),0.5)]" />
                     </div>
 
                     {/* Scattered Images */}
                     {IMAGES.map((img, i) => {
-                        const stagger = i * 0.05;
-                        // Use explicit useTransform for each image to control its "fly-in"
-                        const range = [0 + stagger, 0.3 + stagger];
+                        const stagger = i * 0.04;
+                        // Images start flying in as headline is focused (0.3 - 0.5range)
+                        const range = [0.32 + stagger, 0.52 + stagger];
+
                         const x = useTransform(smoothProgress, range, [
                             `${img.fromX}vw`,
                             "0vw",
@@ -169,59 +180,61 @@ export default function SayGoodBySection() {
                             `${img.fromY}vh`,
                             "0vh",
                         ]);
-                        const rotate = useTransform(smoothProgress, range, [0, img.rotate]);
+                        const rotate = useTransform(smoothProgress, range, [img.rotate * 2, img.rotate]);
+                        const scale = useTransform(smoothProgress, range, [0.5, 1]);
                         const opacity = useTransform(
                             smoothProgress,
-                            [stagger, stagger + 0.05],
+                            [0.25 + stagger, 0.3 + stagger],
                             [0, 1],
                         );
 
                         return (
                             <motion.div
                                 key={img.id}
-                                className="absolute rounded overflow-hidden"
+                                className="absolute rounded-xl overflow-hidden bg-background/50 backdrop-blur-sm"
                                 style={{
-                                    width: img.size,
-                                    height: img.size,
+                                    width: `clamp(180px, 22vw, ${img.size}px)`,
+                                    aspectRatio: "3/4", // Common portrait ratio
                                     x,
                                     y,
                                     rotate,
                                     opacity,
+                                    scale,
                                     zIndex: img.z,
                                     boxShadow:
-                                        "0 32px 90px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.1)",
+                                        "0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.08)",
                                 }}
                             >
                                 <div
-                                    className={`absolute inset-0 bg-gradient-to-br ${img.bg}`}
+                                    className={`absolute inset-0 bg-gradient-to-br ${img.bg} opacity-10`}
                                 />
                                 <img
                                     src={img.src}
                                     alt={img.alt}
-                                    className="w-full h-full object-cover block relative z-10"
+                                    className="w-full h-full object-contain block relative z-10"
+                                    style={{ padding: '4px' }} // Padding ensures edges are never cut
                                 />
                                 <div
                                     className={`absolute inset-0 bg-gradient-to-br ${img.bg} z-20 pointer-events-none`}
-                                    style={{ opacity: 0.22, mixBlendMode: "screen" }}
+                                    style={{ opacity: 0.15, mixBlendMode: "overlay" }}
                                 />
                                 <div
-                                    className="absolute bottom-0 left-0 right-0 z-30 px-3 pb-3 pt-8"
+                                    className="absolute bottom-0 left-0 right-0 z-30 px-4 pb-4 pt-10"
                                     style={{
                                         background:
-                                            "linear-gradient(to top,rgba(0,0,0,0.85),transparent)",
+                                            "linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%)",
                                     }}
                                 >
                                     <p
-                                        className="text-white/70 uppercase tracking-widest m-0"
+                                        className="text-white/80 uppercase tracking-[0.2em] m-0 font-medium"
                                         style={{
-                                            fontSize: 9,
+                                            fontSize: 10,
                                             fontFamily: "'Courier New', monospace",
                                         }}
                                     >
                                         {img.alt}
                                     </p>
                                 </div>
-                                <div className="absolute inset-0 z-40 border border-white/10 rounded pointer-events-none" />
                             </motion.div>
                         );
                     })}

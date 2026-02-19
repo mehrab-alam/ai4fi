@@ -1,136 +1,158 @@
-import { FC, useEffect } from "react";
-import { useTheme } from "../context/ThemeContext";
+import React from 'react';
+import {
+  Palette, Zap, Coins, Globe, Leaf, Rocket,
+  ArrowRight
+} from 'lucide-react';
 
-const AboutUs = () => {
-  const { isDark } = useTheme();
+/* --- MOCK DATA FOR "STORYTELLING" CARDS --- */
+const features = [
+  {
+    icon: Palette,
+    title: "Infinite Customization",
+    description: "Modify poses, lighting, and ethnicity instantly. Your vision, rendered perfectly.",
+    // Image: Artistic/Makeup - shows detail and control
+    image: "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?auto=format&fit=crop&w=800&q=80",
+    delay: "0ms"
+  },
+  {
+    icon: Zap,
+    title: "Speed to Market",
+    description: "Skip the casting and logistics. Go from concept to campaign in minutes.",
+    // Image: Motion/Walking - implies speed and movement
+    image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80",
+    delay: "100ms"
+  },
+  {
+    icon: Coins,
+    title: "Cost Efficiency",
+    description: "High-editorial results at a fraction of the traditional photoshoot budget.",
+    // Image: Luxury/Gold - implies high value/expensive look
+    image: "https://images.unsplash.com/photo-1544413660-177743612d52?auto=format&fit=crop&w=800&q=80",
+    delay: "200ms"
+  },
+  {
+    icon: Globe,
+    title: "Global Representation",
+    description: "Diverse models that resonate with audiences in Tokyo, Paris, or New York.",
+    // Image: Distinctive features/Portrait - shows diversity
+    image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=800&q=80",
+    delay: "300ms"
+  },
+  {
+    icon: Leaf,
+    title: "Sustainable Fashion",
+    description: "Zero fabric waste. Zero travel emissions. 100% digital creation.",
+    // Image: Natural/Outdoor/Organic tones
+    image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=800&q=80",
+    delay: "400ms"
+  },
+  {
+    icon: Rocket,
+    title: "Future-Proof Tech",
+    description: "Leverage state-of-the-art generative AI that evolves with fashion trends.",
+    // Image: Avant-garde/Modern/Neon lighting
+    image: "https://images.unsplash.com/photo-1485230946086-1d99dcc0b5ea?auto=format&fit=crop&w=800&q=80",
+    delay: "500ms"
+  }
+];
 
-  const features = [
-    {
-      icon: "🎨",
-      title: "Customization",
-      description: "Create models tailored to your brand’s vision with adjustable features like gender, skin tone, pose, and more.",
-    },
-    {
-      icon: "⚡",
-      title: "Efficiency",
-      description: "Generate professional outputs in minutes, saving you months of effort.",
-    },
-    {
-      icon: "💰",
-      title: "Cost-Effective",
-      description: "Eliminate the high costs of traditional shoots, models, and logistics.",
-    },
-    {
-      icon: "🌎",
-      title: "Global Appeal",
-      description: "Showcase garments on models from various regions, styles, and cultures.",
-    },
-    {
-      icon: "♻️",
-      title: "Sustainability",
-      description: "Reduce your environmental footprint by adopting a digital-first approach.",
-    },
-    {
-      icon: "🚀",
-      title: "Innovation",
-      description: "Embrace the latest advancements in AI for a competitive edge.",
-    },
-  ];
+const StoryCard = ({ icon: Icon, title, description, image, delay }) => (
+  <div
+    className="group relative h-[420px] rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-2xl transition-all duration-500 ease-out hover:-translate-y-1"
+    style={{ animationDelay: delay }}
+  >
+    {/* 1. Background Image with Ken Burns Effect */}
+    <div className="absolute inset-0 overflow-hidden">
+      <img
+        src={image}
+        alt={title}
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 will-change-transform"
+      />
+      {/* Light Flash Effect on Hover */}
+      <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay"></div>
+    </div>
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    {/* 2. Gradient Overlay (White Fade Up) - Ensures text readability on light SaaS theme */}
+    <div className="absolute inset-0 bg-gradient-to-t from-white via-white/90 to-transparent opacity-90 transition-opacity duration-300"></div>
 
-  return (
-    <section className='bg-background text-foreground transition-colors duration-300'>
-      {/* Hero Section */}
-      <div 
-        className={`relative min-h-[400px] transition-colors duration-500 ${
-          isDark 
-            ? "bg-gradient-to-br from-sky-950 to-gray-800" 
-            : "bg-background "
-        }`}
-      >
-        <div className='absolute inset-0 bg-opacity-40 flex items-center justify-center'>
-          <h1 className={`text-4xl md:text-6xl font-bold text-center px-4 transition-colors duration-300 ${isDark ? "text-white" : "text-foreground"}`}>
-            Revolutionizing Fashion with AI
-            <br /> Smarter, Faster, Sustainable
-          </h1>
+    {/* 3. Content Layer */}
+    <div className="absolute inset-0 p-8 flex flex-col justify-end">
+
+      {/* Icon floating */}
+      <div className="absolute top-6 left-6 w-12 h-12 bg-white/80 backdrop-blur-md rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300">
+        <Icon className="text-slate-900" size={24} strokeWidth={1.5} />
+      </div>
+
+      <div className="relative z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+        <h3 className="text-2xl font-bold text-slate-900 mb-3 tracking-tight">
+          {title}
+        </h3>
+
+        <p className="text-slate-600 leading-relaxed font-medium mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-75 h-0 group-hover:h-auto overflow-hidden">
+          {description}
+        </p>
+
+        {/* Learn More Link - Appears on Hover */}
+        <div className="flex items-center gap-2 text-blue-600 font-bold text-sm opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+          <span>Explore Feature</span>
+          <ArrowRight size={16} />
         </div>
       </div>
 
-      {/* About Content */}
-      <div className={`container mx-auto px-6 py-12 lg:py-20 transition-colors duration-500 ${isDark ? "bg-gradient-to-br from-sky-950 to-gray-950" : "bg-background"}`}>
-        <div className={`flex flex-col  lg:flex-row items-center gap-12 px-6 md:px-12 lg:px-20 py-12 rounded-xl transition-colors duration-500 ${
-            isDark 
-              ? "bg-gradient-to-r from-cyan-900/30 to-sky-900/30 border border-transparent" 
-              : "bg-card border border-border shadow-sm"
-          }`}>
-          {/* Content Section */}
-          <div className='lg:w-1/2 ' data-aos='fade-right' data-aos-duration='1000'>
-            <h2 className={`text-3xl md:text-4xl font-bold mb-6 relative inline-block ${isDark ? "text-gray-100" : "text-foreground"}`}>
-              <span
-                className='text-brand-gradient'
-                data-aos='zoom-in'
-                data-aos-delay='500'
-                data-aos-duration='800'>
-                Welcome to AI4FI
-              </span>
-              <div className='absolute left-0 bottom-[-6px] h-1 w-16 bg-purple-500 rounded-md animate-pulse'></div>
-            </h2>
-            <p className={`text-lg leading-relaxed mb-4 ${isDark ? "text-gray-300" : "text-muted-foreground"}`}>
-              we are shaping the future of fashion with innovative, AI-powered solutions. Our mission is to help garment brands
-              revolutionize the way they create, showcase, and market their collections.
-            </p>
-            <p className={`text-lg leading-relaxed mb-6 ${isDark ? "text-gray-300" : "text-muted-foreground"}`}>
-              At the heart of AI4FI is our advanced artificial intelligence platform that enables garment brands to generate lifelike
-              virtual models and deliver immersive virtual try-on experiences. Whether you need professional-grade marketing images in
-              minutes or aim to personalize your online storefront with diverse and customizable virtual models, AI4FI makes it all
-              possible.
-            </p>
+      {/* Default State Description (Visible when not hovering, fades out on hover) */}
+      <p className="text-slate-500 text-sm leading-relaxed font-medium absolute bottom-8 left-8 right-8 group-hover:opacity-0 transition-opacity duration-300">
+        {description}
+      </p>
+    </div>
+  </div>
+);
+
+const WhyChooseSection = () => {
+  return (
+    <section className="py-24 px-6 bg-white relative overflow-hidden font-sans">
+
+      {/* Background Subtle Grid - Professional SaaS look */}
+      <div className="absolute inset-0 z-0 opacity-[0.03]"
+        style={{ backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)', backgroundSize: '60px 60px' }}>
+      </div>
+
+      {/* Ambient Light Blobs (Very subtle) */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full blur-[100px] -z-10"></div>
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-50 rounded-full blur-[100px] -z-10"></div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-wider">
+            <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+            Why AI4FI?
           </div>
 
-          {/* Image Section */}
-          <div className='lg:w-1/2' data-aos='fade-left' data-aos-duration='1000'>
-            <img
-              src='https://uploads-ssl.webflow.com/6082f2094ccb2d6ff32eb5d8/6435384cbe80c37bc1786fc9_Blog%2022.jpg'
-              alt='About AI4FI'
-              className='rounded-lg shadow-lg object-cover w-full h-[40vh] transform transition-transform duration-500 hover:scale-105'
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            The New Standard in <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Fashion Visualization</span>
+          </h2>
+
+          <p className="text-lg text-slate-600 leading-relaxed">
+            Empowering brands with AI tools that blend editorial artistry with enterprise scalability.
+            See why top retailers are making the switch.
+          </p>
+        </div>
+
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, idx) => (
+            <StoryCard
+              key={idx}
+              {...feature}
             />
-          </div>
+          ))}
         </div>
 
-        <div className='mt-16'>
-          <h3 className={`text-3xl font-bold mb-6 text-center ${isDark ? "text-gray-100" : "text-foreground"}`}>Why Choose AI4FI?</h3>
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-            {features.map((feature, idx) => (
-              <FeatureCard key={idx} icon={feature.icon} title={feature.title} description={feature.description} isDark={isDark} />
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
 };
 
-// Feature Card Component
-interface FeatureCardProps {
-  icon: string;
-  title: string;
-  description: string;
-  isDark: boolean;
-}
-
-const FeatureCard: FC<FeatureCardProps> = ({ icon, title, description, isDark }) => (
-  <div className={`p-6 rounded-lg shadow-md text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl ${
-      isDark 
-        ? "bg-gradient-to-r from-cyan-900/30 to-sky-900/30 text-gray-200 border border-transparent" 
-        : "bg-card border border-border text-foreground shadow-sm"
-    }`}>
-    <div className='text-4xl'>{icon}</div>
-    <h4 className={`text-xl font-semibold mt-4 ${isDark ? "text-gray-200" : "text-foreground"}`}>{title}</h4>
-    <p className={`mt-2 ${isDark ? "text-gray-400" : "text-muted-foreground"}`}>{description}</p>
-  </div>
-);
-
-export default AboutUs;
+export default WhyChooseSection;
