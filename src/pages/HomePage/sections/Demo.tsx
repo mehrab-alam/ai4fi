@@ -142,74 +142,68 @@
 // 		<section id="demo" className="py-20 relative bg-background">
 // 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 // 				{/* Scroll-driven animation wrapper */}
-// 				<div ref={demoScrollRef} className="relative min-h-[100vh] mb-24 md:mb-32">
-// 					{/* Sticky container that stays in view while scrolling */}
-// 					<div className="sticky top-[80px] pt-8 overflow-hidden">
-// 						{/* Sticky Section Header */}
-// 						<div className="mb-10">
-// 							<SectionHeader
-// 								title="See AI4FI in Action"
-// 								description="Watch how our AI transforms fashion visualization through these interactive demonstrations"
-// 								subtitle="Visual Demonstrations"
-// 								icon={<Zap className="text-muted-foreground" size={18} />}
-// 							/>
-// 						</div>
+{
+	/* <div ref={demoScrollRef} className="relative min-h-[100vh] mb-24 md:mb-32">
+	<div className="sticky top-[80px] pt-8 overflow-hidden">
+		<div className="mb-10">
+			<SectionHeader
+				title="See AI4FI in Action"
+				description="Watch how our AI transforms fashion visualization through these interactive demonstrations"
+				subtitle="Visual Demonstrations"
+				icon={<Zap className="text-muted-foreground" size={18} />}
+			/>
+		</div>
 
-// 						{/* Grid with animated columns */}
-// 						<div className="grid  grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-// 							{/* Features Column — slides in from LEFT */}
-// 							<motion.div
-// 								className="order-2 md:order-1"
-// 								style={{ x: contentX, opacity: contentOpacity }}
-// 							>
-// 								<div className="mb-6">
-// 									<h3 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">
-// 										AI4FI – Single Pose Model Generator
-// 									</h3>
-// 									<p className="text-muted-foreground">
-// 										No costly photoshoots – just instant, professional AI models!
-// 										Watch the demo now.
-// 									</p>
-// 								</div>
+		<div className="grid  grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+			<motion.div
+				className="order-2 md:order-1"
+				style={{ x: contentX, opacity: contentOpacity }}
+			>
+				<div className="mb-6">
+					<h3 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">
+						AI4FI – Single Pose Model Generator
+					</h3>
+					<p className="text-muted-foreground">
+						No costly photoshoots – just instant, professional AI models! Watch
+						the demo now.
+					</p>
+				</div>
 
-// 								<div className="gap-6 grid md:grid-cols-2 grid-cols-1">
-// 									{features.intro.map((feature, index) => (
-// 										<div
-// 											key={index}
-// 											className="flex items-start"
-// 										>
-// 											<div className="mr-4 p-2 bg-muted backdrop-blur-sm rounded-lg">
-// 												{feature.icon}
-// 											</div>
-// 											<div>
-// 												<h4 className="font-medium text-lg text-foreground mb-1">
-// 													{feature.title}
-// 												</h4>
-// 												<p className="text-muted-foreground text-sm">
-// 													{feature.description}
-// 												</p>
-// 											</div>
-// 										</div>
-// 									))}
-// 								</div>
-// 							</motion.div>
+				<div className="gap-6 grid md:grid-cols-2 grid-cols-1">
+					{features.intro.map((feature, index) => (
+						<div key={index} className="flex items-start">
+							<div className="mr-4 p-2 bg-muted backdrop-blur-sm rounded-lg">
+								{feature.icon}
+							</div>
+							<div>
+								<h4 className="font-medium text-lg text-foreground mb-1">
+									{feature.title}
+								</h4>
+								<p className="text-muted-foreground text-sm">
+									{feature.description}
+								</p>
+							</div>
+						</div>
+					))}
+				</div>
+			</motion.div>
 
-// 							{/* Video Column — slides in from RIGHT */}
-// 							<motion.div
-// 								className="order-1 md:order-2 w-auto h-auto relative"
-// 								style={{ x: videoX, opacity: videoOpacity }}
-// 							>
-// 								<HeroVideoDialog
-// 									className=" w-auto"
-// 									animationStyle="from-center"
-// 									videoSrc="https://youtube.com/embed/sxFmNNgnoXE"
-// 									thumbnailSrc="/thumbnail-2.png"
-// 									thumbnailAlt="Hero Video"
-// 								/>
-// 							</motion.div>
-// 						</div>
-// 					</div>
-// 				</div>
+			<motion.div
+				className="order-1 md:order-2 w-auto h-auto relative"
+				style={{ x: videoX, opacity: videoOpacity }}
+			>
+				<HeroVideoDialog
+					className=" w-auto"
+					animationStyle="from-center"
+					videoSrc="https://youtube.com/embed/sxFmNNgnoXE"
+					thumbnailSrc="/thumbnail-2.png"
+					thumbnailAlt="Hero Video"
+				/>
+			</motion.div>
+		</div>
+	</div>
+</div>; */
+}
 
 // 				{/* Section 2: Features Video (Left) and Features (Right) */}
 // 				{/* <motion.div
@@ -401,11 +395,19 @@
 
 // export default DemoSection;
 
-
-import React, { useState } from 'react';
+import React, { useRef, useState } from "react";
 import {
-	Play, Zap, CheckCircle2, Sliders, Infinity as InfinityIcon, Sparkles, X
-} from 'lucide-react';
+	Play,
+	Zap,
+	CheckCircle2,
+	Sliders,
+	Infinity as InfinityIcon,
+	Sparkles,
+	X,
+} from "lucide-react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { useNavigate } from "react-router-dom";
+import SectionHeader from "./SectionHeader";
 
 /* 
   Video Modal Component (Optional UX Enhancement)
@@ -414,9 +416,18 @@ import {
 const VideoModal = ({ isOpen, onClose }) => {
 	if (!isOpen) return null;
 	return (
-		<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4" onClick={onClose}>
-			<div className="relative w-full max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10" onClick={e => e.stopPropagation()}>
-				<button onClick={onClose} className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors z-10">
+		<div
+			className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+			onClick={onClose}
+		>
+			<div
+				className="relative w-full max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+				onClick={(e) => e.stopPropagation()}
+			>
+				<button
+					onClick={onClose}
+					className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors z-10"
+				>
 					<X size={32} />
 				</button>
 				{/* Placeholder for actual video embed */}
@@ -430,6 +441,63 @@ const VideoModal = ({ isOpen, onClose }) => {
 
 const DemoSection = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const navigate = useNavigate();
+	// State for tracking which videos are playing
+	const [playingVideos, setPlayingVideos] = useState({
+		intro: false,
+		features: false,
+		walkthrough: false,
+	});
+
+	// Refs for the video elements
+	const videoRefs = {
+		intro: useRef<HTMLVideoElement>(null),
+		features: useRef<HTMLVideoElement>(null),
+		walkthrough: useRef<HTMLVideoElement>(null),
+	};
+
+	// Scroll-driven animation refs & values for the demo section
+	const demoScrollRef = useRef<HTMLDivElement>(null);
+	const { scrollYProgress: demoScrollProgress } = useScroll({
+		target: demoScrollRef,
+		offset: ["start end", "end start"],
+	});
+	const contentX = useTransform(
+		demoScrollProgress,
+		[0, 0.25, 0.45],
+		["-100%", "-100%", "0%"],
+	);
+	const contentOpacity = useTransform(
+		demoScrollProgress,
+		[0, 0.25, 0.45],
+		[0, 0, 1],
+	);
+	const videoX = useTransform(
+		demoScrollProgress,
+		[0, 0.25, 0.45],
+		["100%", "100%", "0%"],
+	);
+	const videoOpacity = useTransform(
+		demoScrollProgress,
+		[0, 0.25, 0.45],
+		[0, 0, 1],
+	);
+
+	// Handle video play/pause
+	const toggleVideoPlay = (videoKey: "intro" | "features" | "walkthrough") => {
+		setPlayingVideos((prev) => {
+			const newState = { ...prev, [videoKey]: !prev[videoKey] };
+
+			// Play or pause the video
+			if (newState[videoKey]) {
+				videoRefs[videoKey].current?.play();
+			} else {
+				videoRefs[videoKey].current?.pause();
+			}
+
+			return newState;
+		});
+	};
 
 	const features = [
 		{
@@ -437,130 +505,159 @@ const DemoSection = () => {
 			title: "Instant AI Models",
 			desc: "Generate professional models in under 10 seconds.",
 			color: "text-amber-500",
-			bg: "bg-amber-50"
+			bg: "bg-amber-50",
 		},
 		{
 			icon: CheckCircle2,
 			title: "4K Photorealism",
 			desc: "High-quality, lifelike results indistinguishable from reality.",
 			color: "text-blue-500",
-			bg: "bg-blue-50"
+			bg: "bg-blue-50",
 		},
 		{
 			icon: Sliders,
 			title: "Fully Customizable",
 			desc: "Control pose, body type, hairstyle, and ethnicity.",
 			color: "text-purple-500",
-			bg: "bg-purple-50"
+			bg: "bg-purple-50",
 		},
 		{
 			icon: InfinityIcon,
 			title: "Unlimited Variations",
 			desc: "Perfect for scaling e-commerce & A/B testing.",
 			color: "text-pink-500",
-			bg: "bg-pink-50"
-		}
+			bg: "bg-pink-50",
+		},
 	];
 
 	return (
-		<section className="relative py-24 px-4 sm:px-8 bg-white overflow-hidden">
+		<section className="relative py-24 px-4 sm:px-8 bg-background overflow-hidden">
 			<VideoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
 			{/* Subtle Grid Background */}
-			<div className="absolute inset-0 z-0 opacity-[0.03]"
-				style={{ backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
-			</div>
+			<div
+				className="absolute inset-0 z-0 opacity-[0.03]"
+				style={{
+					backgroundImage:
+						"linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)",
+					backgroundSize: "40px 40px",
+				}}
+			></div>
 
 			<div className="max-w-7xl mx-auto relative z-10">
-
-				{/* Header Centered */}
-				<div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-					<div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-600 text-xs font-bold uppercase tracking-wider shadow-sm">
-						<Sparkles size={12} className="text-purple-600" />
-						Visual Demonstrations
+				<div
+					ref={demoScrollRef}
+					className="relative min-h-[100%] mb-24 md:mb-32"
+				>
+					<div className="mb-10">
+						<SectionHeader
+							title="See AI4FI in Action"
+							description="Watch how our AI transforms fashion visualization through these interactive demonstrations"
+							subtitle="Visual Demonstrations"
+							icon={<Zap className="text-muted-foreground" size={18} />}
+						/>
 					</div>
-					<h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
-						See AI4FI in <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">Action</span>
-					</h2>
-					<p className="text-lg text-slate-600 leading-relaxed">
-						Watch how our AI transforms fashion visualization through these interactive demonstrations.
-					</p>
-				</div>
-
-				{/* Main Content Split */}
-				<div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-
-					{/* Left Side: Text & Features Grid */}
-					<div className="w-full lg:w-1/2 space-y-8">
-						<div className="space-y-2">
-							<h3 className="text-2xl font-bold text-slate-800">
-								AI4FI – Single Pose Model Generator
-							</h3>
-							<p className="text-slate-500 font-medium">
-								No costly photoshoots – just instant, professional AI models! Watch the demo now to see the magic happen.
-							</p>
-						</div>
-
-						{/* Feature Grid */}
-						<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-							{features.map((item, idx) => (
-								<div key={idx} className="p-4 rounded-xl border border-slate-100 bg-white shadow-sm hover:shadow-md hover:border-purple-100 transition-all duration-300 group">
-									<div className={`w-10 h-10 ${item.bg} rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
-										<item.icon size={20} className={item.color} strokeWidth={2.5} />
-									</div>
-									<h4 className="font-bold text-slate-800 text-sm mb-1">{item.title}</h4>
-									<p className="text-xs text-slate-500 leading-relaxed">{item.desc}</p>
-								</div>
-							))}
-						</div>
-					</div>
-
-					{/* Right Side: The "Hero" Video Player */}
-					<div className="w-full lg:w-1/2 relative group perspective-1000">
-
-						{/* Decorative Backdrop Glow */}
-						<div className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-3xl blur-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-						{/* Video Container */}
-						<div
-							className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900 aspect-video cursor-pointer transform transition-transform duration-500 hover:scale-[1.02]"
-							onClick={() => setIsModalOpen(true)}
+					{/* Main Content Split */}
+					<div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+						{/* Left Side: Text & Features Grid */}
+						<motion.div
+							className="order-2 md:order-1"
+							style={{ x: contentX, opacity: contentOpacity }}
 						>
-							{/* Thumbnail Image */}
-							<img
-								src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1000&q=80"
-								alt="Dashboard Demo"
-								className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity"
-							/>
-
-							{/* Fake UI Header for "Tech" feel */}
-							<div className="absolute top-0 left-0 right-0 p-4 flex justify-between items-center bg-gradient-to-b from-black/60 to-transparent">
-								<div className="flex gap-2">
-									<div className="w-3 h-3 rounded-full bg-red-500"></div>
-									<div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-									<div className="w-3 h-3 rounded-full bg-green-500"></div>
+							<div className="w-full lg:w-full space-y-8">
+								<div className="space-y-2">
+									<h3 className="text-2xl font-bold text-foreground">
+										AI4FI – Single Pose Model Generator
+									</h3>
+									<p className="text-secondary-foreground font-medium">
+										No costly photoshoots – just instant, professional AI
+										models! Watch the demo now to see the magic happen.
+									</p>
 								</div>
-								<div className="text-white/50 text-[10px] font-mono tracking-widest">AI MODEL GENERATOR V2.0</div>
-							</div>
 
-							{/* Big Play Button */}
-							<div className="absolute inset-0 flex items-center justify-center">
-								<div className="relative">
-									{/* Ping Animation */}
-									<div className="absolute inset-0 bg-white rounded-full animate-ping opacity-20"></div>
-									<div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 shadow-2xl group-hover:scale-110 transition-transform duration-300">
-										<Play fill="white" className="text-white ml-1" size={32} />
+								{/* Feature Grid */}
+								<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+									{features.map((item, idx) => (
+										<div
+											key={idx}
+											className="p-4 rounded-xl border border-border glass-card shadow-sm hover:shadow-md hover:border-brand transition-all duration-300 group"
+										>
+											<div
+												className={`w-10 h-10 ${item.bg} rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}
+											>
+												<item.icon
+													size={20}
+													className={item.color}
+													strokeWidth={2.5}
+												/>
+											</div>
+											<h4 className="font-bold text-foreground text-sm mb-1">
+												{item.title}
+											</h4>
+											<p className="text-xs text-secondary-foreground leading-relaxed">
+												{item.desc}
+											</p>
+										</div>
+									))}
+								</div>
+							</div>
+						</motion.div>
+						{/* Right Side: The "Hero" Video Player */}
+						<motion.div
+							className="order-1 md:order-2 w-auto h-auto relative"
+							style={{ x: videoX, opacity: videoOpacity }}
+						>
+							<div className="w-full lg:w-full relative group perspective-1000">
+								{/* Decorative Backdrop Glow */}
+								<div className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-3xl blur-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+								{/* Video Container */}
+								<div
+									className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900 aspect-video cursor-pointer transform transition-transform duration-500 hover:scale-[1.02]"
+									onClick={() => setIsModalOpen(true)}
+								>
+									{/* Thumbnail Image */}
+									<img
+										src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1000&q=80"
+										alt="Dashboard Demo"
+										className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity"
+									/>
+
+									{/* Fake UI Header for "Tech" feel */}
+									<div className="absolute top-0 left-0 right-0 p-4 flex justify-between items-center bg-gradient-to-b from-black/60 to-transparent">
+										<div className="flex gap-2">
+											<div className="w-3 h-3 rounded-full bg-red-500"></div>
+											<div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+											<div className="w-3 h-3 rounded-full bg-green-500"></div>
+										</div>
+										<div className="text-white/50 text-[10px] font-mono tracking-widest">
+											AI MODEL GENERATOR V2.0
+										</div>
+									</div>
+
+									{/* Big Play Button */}
+									<div className="absolute inset-0 flex items-center justify-center">
+										<div className="relative">
+											{/* Ping Animation */}
+											<div className="absolute inset-0 bg-white rounded-full animate-ping opacity-20"></div>
+											<div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 shadow-2xl group-hover:scale-110 transition-transform duration-300">
+												<Play
+													fill="white"
+													className="text-white ml-1"
+													size={32}
+												/>
+											</div>
+										</div>
+									</div>
+
+									{/* Duration Badge */}
+									<div className="absolute bottom-4 right-4 px-3 py-1 bg-black/60 backdrop-blur rounded text-white text-xs font-mono">
+										02:14
 									</div>
 								</div>
 							</div>
-
-							{/* Duration Badge */}
-							<div className="absolute bottom-4 right-4 px-3 py-1 bg-black/60 backdrop-blur rounded text-white text-xs font-mono">
-								02:14
-							</div>
-						</div>
+						</motion.div>
 					</div>
-
 				</div>
 			</div>
 		</section>

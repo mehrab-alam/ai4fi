@@ -11,23 +11,19 @@ import KeyFeatures from "./sections/KeyFeatures";
 import VideoShowcase from "./sections/VideoShowcase";
 import AiFashionHero from "./sections/AiFashionHero";
 import ProductPhotoshootSection from "./sections/AIFeatures";
-import ScrollImageReveal from "./sections/SayGoodBy";
+import SayGoodBySection from "./sections/SayGoodBy";
 
 const HomePage: FC = () => {
 	return (
 		<div>
-
 			<AiFashionHero />
 			{/* <HeroSection2 /> */}
-			<ScrollImageReveal />
-			<ProductPhotoshootSection />
-			{/* <KeyFeatures /> */}
+			<SayGoodBySection />
+			<KeyFeatures />
 			<DemoSection />
-			{/* <VideoShowcase /> */}
 			<Features />
 			<FeaturedGallery />
 			<AboutUs />
-			{/* <TestimonialsSection /> */}
 			<CTASection />
 		</div>
 	);
