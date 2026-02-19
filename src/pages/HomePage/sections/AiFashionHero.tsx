@@ -216,7 +216,7 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 					setDirection("idle");
 				}, 600);
 			}, 300); // matches first animation duration
-		}, 2000);
+		}, 1200);
 
 		return () => clearInterval(interval);
 	}, []);
