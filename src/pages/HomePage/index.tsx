@@ -10,13 +10,16 @@ import TrialRoom from "./sections/KeyFeatureItems";
 import KeyFeatures from "./sections/KeyFeatures";
 import VideoShowcase from "./sections/VideoShowcase";
 import AiFashionHero from "./sections/AiFashionHero";
+import ProductPhotoshootSection from "./sections/AIFeatures";
 
 const HomePage: FC = () => {
 	return (
 		<div>
+
 			<AiFashionHero />
 			{/* <HeroSection2 /> */}
-			<KeyFeatures />
+			<ProductPhotoshootSection />
+			{/* <KeyFeatures /> */}
 			<DemoSection />
 			{/* <VideoShowcase /> */}
 			<Features />

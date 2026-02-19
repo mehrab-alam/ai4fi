@@ -4,6 +4,8 @@ import { useTheme } from "../../../context/ThemeContext";
 import { motion } from "motion/react";
 import SectionHeader from "./SectionHeader";
 
+
+
 const KeyFeatures = () => {
 	const { theme } = useTheme();
 	const features = [
@@ -108,21 +110,19 @@ const KeyFeatures = () => {
 							<button
 								key={index}
 								onClick={() => handleTabClick(index)}
-								className={`flex items-center gap-3 px-6 py-3 rounded-xl whitespace-nowrap transition-all duration-300 ${
-									activeIndex === index
+								className={`flex items-center gap-3 px-6 py-3 rounded-xl whitespace-nowrap transition-all duration-300 ${activeIndex === index
 										? "bg-brand-color shadow-lg scale-105 text-white border border-brand-color"
 										: "bg-mute-secondary shodow-lg border border-border hover:bg-secondary/80"
-								}`}
+									}`}
 							>
 								<div
 									className={`w-2 h-2 rounded-full bg-gradient-to-r ${feature.accentColor}`}
 								/>
 								<span
-									className={`font-medium ${
-										activeIndex === index
+									className={`font-medium ${activeIndex === index
 											? "text-white"
 											: "text-muted-foreground"
-									}`}
+										}`}
 								>
 									{feature.title}
 								</span>
@@ -261,11 +261,10 @@ const KeyFeatures = () => {
 							className="relative group"
 						>
 							<div
-								className={`w-12 h-2 rounded-full transition-all duration-300 ${
-									activeIndex === index
+								className={`w-12 h-2 rounded-full transition-all duration-300 ${activeIndex === index
 										? `bg-gradient-to-r ${features[index].accentColor}`
 										: "bg-slate-300 hover:bg-slate-400"
-								}`}
+									}`}
 							>
 								{activeIndex === index && (
 									<div className="absolute inset-0 bg-white rounded-full animate-pulse opacity-50" />
