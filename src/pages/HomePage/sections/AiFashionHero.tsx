@@ -85,9 +85,9 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 		const timeout = setTimeout(() => {
 			const interval = setInterval(() => {
 				setCurrentTick((prev) => prev + 1);
-			}, 3000);
+			}, 2000);
 			return () => clearInterval(interval);
-		}, 3500);
+		}, 2500);
 
 		return () => clearTimeout(timeout);
 	}, []);
@@ -214,9 +214,9 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 
 				setTimeout(() => {
 					setDirection("idle");
-				}, 800);
-			}, 500); // matches first animation duration
-		}, 4000);
+				}, 600);
+			}, 300); // matches first animation duration
+		}, 2000);
 
 		return () => clearInterval(interval);
 	}, []);

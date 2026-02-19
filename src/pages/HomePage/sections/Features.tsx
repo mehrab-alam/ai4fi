@@ -214,9 +214,10 @@ import {
 	BrainCircuit, Sparkles, TrendingUp, PenTool,
 	Users, Zap, Globe2, ShieldCheck
 } from 'lucide-react';
+import SectionHeader from './SectionHeader';
 
 const FeatureCard = ({ icon: Icon, title, description, color }) => (
-	<div className="group relative p-8 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+	<div className="group relative p-8 glass-card rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
 
 		{/* Hover Gradient Overlay (Subtle) */}
 		<div className="absolute inset-0 bg-gradient-to-br from-transparent to-blue-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -229,14 +230,14 @@ const FeatureCard = ({ icon: Icon, title, description, color }) => (
 
 			{/* Title with Animated Underline */}
 			<div className="mb-3">
-				<h3 className="text-xl font-bold text-slate-900 leading-tight">
+				<h3 className="text-xl font-bold text-foreground leading-tight">
 					{title}
 				</h3>
 				<div className="h-1 w-12 bg-blue-500 rounded-full mt-3 group-hover:w-full transition-all duration-500 opacity-80"></div>
 			</div>
 
 			{/* Description */}
-			<p className="text-slate-600 leading-relaxed text-sm font-medium">
+			<p className=" leading-relaxed text-sm font-medium">
 				{description}
 			</p>
 		</div>
@@ -296,22 +297,24 @@ const CuttingEdgeFeatures = () => {
 	];
 
 	return (
-		<section className="py-24 px-6 bg-slate-50/50 relative overflow-hidden">
+		<section className="py-24 px-6 bg-background/20 relative overflow-hidden">
 
 			{/* Decorative Background Elements */}
 			<div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-100/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
 			<div className="max-w-7xl mx-auto">
-
+				<SectionHeader description='
+						Transform your fashion showcase with AI-powered innovation that delivers stunning results at a fraction of traditional costs.
+' title='Cutting-Edge Features' />
 				{/* Section Header */}
-				<div className="text-center max-w-3xl mx-auto mb-20">
+				{/* <div className="text-center max-w-3xl mx-auto mb-20">
 					<h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
 						Cutting-Edge <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">AI Features</span>
 					</h2>
 					<p className="text-lg text-slate-600 leading-relaxed">
 						Transform your fashion showcase with AI-powered innovation that delivers stunning results at a fraction of traditional costs.
 					</p>
-				</div>
+				</div> */}
 
 				{/* Feature Grid */}
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">

@@ -63,7 +63,7 @@ const FeatureIcon = ({ icon: Icon, title }) => (
 
 export const VirtualTrialRoom = () => {
 	return (
-		<div className="min-h-screen w-[80vw]  mx-auto p-4 bg-gradient-to-br from-blue-50 via-white to-blue-50 font-sans relative overflow-hidden py-10 px-4 sm:px-8">
+		<div className="w-full mx-auto p-4 bg-gradient-to-br from-blue-50 via-white to-blue-50 font-sans relative overflow-hidden py-10 px-4 sm:px-8 rounded-3xl border border-blue-100/50 shadow-xl">
 			<div className="max-w-7xl mx-auto relative z-10">
 				{/* Top Tabs */}
 
@@ -271,7 +271,7 @@ const StepPhotoCard = ({
 );
 
 export const PhotoStudio = () => (
-	<div className="flex w-[80vw] p-4 mx-auto bg-background h-screen flex-col lg:flex-row items-start gap-12 relative z-10">
+	<div className="flex w-full p-4 mx-auto bg-background flex-col lg:flex-row items-start gap-12 relative z-10 rounded-3xl border border-purple-100/50 shadow-xl">
 		{/* LEFT COLUMN: Text & Content */}
 		<div className="max-w-7xl mx-auto relative z-10">
 			<div className="flex flex-col lg:flex-row items-start gap-16">
@@ -473,7 +473,7 @@ export const PhotoStudio = () => (
 );
 
 export const Advertisement = () => (
-	<div className="flex w-[80vw] p-4 pt-16  mx-auto flex-col bg-background h-screen relative z-10 animate-fade-in">
+	<div className="flex w-full p-4 pt-16 mx-auto flex-col bg-background relative z-10 animate-fade-in rounded-3xl border border-orange-100/50 shadow-xl">
 		<div className="max-w-7xl mx-auto relative z-10">
 			<div className="flex flex-col lg:flex-row items-start gap-12">
 				{/* LEFT COLUMN */}

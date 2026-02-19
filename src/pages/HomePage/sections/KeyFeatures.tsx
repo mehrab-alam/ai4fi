@@ -115,7 +115,7 @@ const KeyFeatures = () => {
 			)}
 			<div className="max-w-[100vw] mx-auto ">
 				{/* Sticky Header + Tabs */}
-				<div className="sticky top-[-120px] z-20 bg-background pb-0 pt-2 ">
+				<div className="sticky top-[-260px] z-20 bg-background pb-0 pt-2 ">
 					<SectionHeader
 						title="Key Features"
 						description="Transform your operations with intelligent automation"
@@ -129,21 +129,19 @@ const KeyFeatures = () => {
 							<button
 								key={index}
 								onClick={() => handleTabClick(index)}
-								className={`flex items-center gap-3 px-6 py-3 rounded-xl whitespace-nowrap transition-all duration-300 ${
-									activeIndex === index
-										? "bg-brand-color shadow-lg scale-105 text-white border border-brand-color"
-										: "bg-mute-secondary shodow-lg border border-border hover:bg-secondary/80"
-								}`}
+								className={`flex items-center gap-3 px-6 py-3 rounded-xl whitespace-nowrap transition-all duration-300 ${activeIndex === index
+									? "bg-brand-color shadow-lg scale-105 text-white border border-brand-color"
+									: "bg-mute-secondary shodow-lg border border-border hover:bg-secondary/80"
+									}`}
 							>
 								<div
 									className={`w-2 h-2 rounded-full bg-gradient-to-r ${feature.accentColor}`}
 								/>
 								<span
-									className={`font-medium ${
-										activeIndex === index
-											? "text-white"
-											: "text-muted-foreground"
-									}`}
+									className={`font-medium ${activeIndex === index
+										? "text-white"
+										: "text-muted-foreground"
+										}`}
 								>
 									{feature.title}
 								</span>
@@ -160,7 +158,7 @@ const KeyFeatures = () => {
 							ref={(el) => {
 								sectionRefs.current[index] = el;
 							}}
-							className="sticky top-[200px] w-full mb-[10vh] scroll-mt-[300px]"
+							className="sticky top-[120px] w-full mb-[10vh] scroll-mt-[300px]"
 							style={{
 								zIndex: index + 10,
 							}}

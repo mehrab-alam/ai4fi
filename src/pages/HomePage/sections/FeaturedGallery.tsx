@@ -487,12 +487,13 @@ const InclusiveCard = ({ model }) => (
 
 // export default ModelShowcase;
 
-import React from "react";
+import React, { useRef } from "react";
 import {
 	ArrowUpRight,
 	Sparkles,
 	User,
 	Info,
+	ChevronLeft,
 	ChevronRight,
 	Heart,
 	ScanFace,
@@ -576,6 +577,13 @@ const marqueeStyle = `
   .pause-hover:hover {
     animation-play-state: paused;
   }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 `;
 
 const ModelCard = ({ model, isDark = false }) => (
@@ -621,6 +629,24 @@ const ModelCard = ({ model, isDark = false }) => (
 );
 
 const InfiniteShowcase = () => {
+	const scrollRef = useRef<HTMLDivElement>(null);
+
+	const scroll = (direction: "left" | "right") => {
+		if (scrollRef.current) {
+			const { scrollLeft, clientWidth } = scrollRef.current;
+			const scrollAmount = clientWidth * 0.8; // Scroll 80% of view width
+			const scrollTo =
+				direction === "left"
+					? scrollLeft - scrollAmount
+					: scrollLeft + scrollAmount;
+
+			scrollRef.current.scrollTo({
+				left: scrollTo,
+				behavior: "smooth",
+			});
+		}
+	};
+
 	return (
 		<div className="bg-background min-h-screen overflow-hidden font-sans selection:bg-purple-200">
 			<style>{marqueeStyle}</style>
@@ -697,8 +723,11 @@ Infinite Possibilities"
 						</div>
 
 						{/* Horizontal Scroll Gallery */}
-						<div className="lg:w-2/3">
-							<div className="flex gap-6 overflow-x-auto pb-8 snap-x scrollbar-hide">
+						<div className="lg:w-2/3 relative group/carousel">
+							<div
+								ref={scrollRef}
+								className="flex gap-6 overflow-x-auto pb-4 snap-x scrollbar-hide scroll-smooth"
+							>
 								{models.map((model) => (
 									<InclusiveCard key={model.id} model={model} />
 								))}
@@ -711,6 +740,22 @@ Infinite Possibilities"
 									</div>
 								</div>
 							</div>
+
+							{/* Navigation Arrows */}
+							<button
+								onClick={() => scroll('left')}
+								className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:bg-white/20 z-20"
+								aria-label="Scroll Left"
+							>
+								<ChevronLeft size={24} />
+							</button>
+							<button
+								onClick={() => scroll('right')}
+								className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:bg-white/20 z-20"
+								aria-label="Scroll Right"
+							>
+								<ChevronRight size={24} />
+							</button>
 						</div>
 					</div>
 				</div>
