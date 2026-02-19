@@ -11,6 +11,7 @@ import KeyFeatures from "./sections/KeyFeatures";
 import VideoShowcase from "./sections/VideoShowcase";
 import AiFashionHero from "./sections/AiFashionHero";
 import ProductPhotoshootSection from "./sections/AIFeatures";
+import ScrollImageReveal from "./sections/SayGoodBy";
 
 const HomePage: FC = () => {
 	return (
@@ -18,6 +19,7 @@ const HomePage: FC = () => {
 
 			<AiFashionHero />
 			{/* <HeroSection2 /> */}
+			<ScrollImageReveal />
 			<ProductPhotoshootSection />
 			{/* <KeyFeatures /> */}
 			<DemoSection />

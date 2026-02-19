@@ -136,20 +136,27 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 		SvgIcons.shopify,
 		SvgIcons.youtube,
 	];
-	const ImageCard = ({ src, rotate, zIndex = 10, className }) => (
-		<div
-			className={`absolute bg-white p-2 pb-6 rounded-lg shadow-xl  transition-transform hover:scale-105 duration-300 ${className}`}
-			style={{
-				transform: `rotate(${rotate}deg)`,
-				zIndex: zIndex,
-				width: '180px',
-			}}
-		>
-			<div className="overflow-hidden rounded bg-gray-100 aspect-[3/4]">
-				<img src={src} alt="Model" className="w-full h-full object-cover" />
-			</div>
-		</div>
-	);
+	const imageCards = [
+		{ src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80", rotate: -6, className: "top-10 left-10" },
+		{ src: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80", rotate: 3, className: "top-0 left-48" },
+		{ src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80", rotate: -3, className: "top-12 right-20" },
+		{ src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80", rotate: -8, className: "top-48 left-20" },
+		{ src: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=300&q=80", rotate: 4, className: "top-40 right-48" },
+		{ src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80", rotate: -2, className: "top-52 right-10" },
+		{ src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80", rotate: 5, className: "bottom-10 left-32" },
+		{ src: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80", rotate: -4, className: "bottom-0 right-32" },
+	];
+
+	// Which card is currently "on top" — cycles every 5s
+	const [topCardIndex, setTopCardIndex] = useState(0);
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setTopCardIndex((prev) => (prev + 1) % imageCards.length);
+		}, 5000);
+		return () => clearInterval(interval);
+	}, [imageCards.length]);
+
 	return (
 		<div >
 			{/* ────── Background Image ────── */}
@@ -237,57 +244,38 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 						</motion.div>
 					</div>
 
-					{/* RIGHT */}
-					{/* <div className="lg:w-1/2 relative flex items-center justify-center mt-12 lg:mt-0">
-						<div className="md:grid md:grid-cols-2 flex flex-wrap items-center gap-4 md:gap-8 md:rotate-[-3deg]">
-							{categories.map((cat, i) => (
+					{/* RIGHT — Card Shuffle */}
+					<div className="w-full lg:w-1/2 relative h-[500px] mt-16 lg:mt-0 hidden md:block max-w-[600px] mx-auto">
+						{imageCards.map((card, i) => {
+							const isTop = i === topCardIndex;
+							// Cards that were recently on top get progressively lower z-index
+							const distance = (i - topCardIndex + imageCards.length) % imageCards.length;
+							const zIndex = imageCards.length - distance;
+
+							return (
 								<motion.div
 									key={i}
-									style={{ transformOrigin: "bottom center" }}
-									initial={{ x: 200, opacity: 0 }}
-									whileInView={{
-										x: 0,
-										opacity: 1,
-										rotate: [0, -3, 2.5, -2, 1.5, -0.5, 0],
+									className={`absolute bg-white p-2 pb-6 rounded-lg shadow-xl ${card.className}`}
+									animate={{
+										zIndex: zIndex,
+										scale: isTop ? [1, 1.08, 1] : 1,
+										rotate: card.rotate,
+										y: isTop ? [0, -15, 0] : 0,
 									}}
-									viewport={{ once: true, amount: 0.3 }}
 									transition={{
-										delay: i * 0.9,
-										duration: 0.8,
-										x: { duration: 0.4 },
-										opacity: { duration: 0.4 },
-										rotate: {
-											delay: i * 0.9 + 0.4,
-											duration: 0.4,
-											ease: "easeOut",
-										},
+										duration: 0.6,
+										ease: [0.22, 1, 0.36, 1],
+										scale: { duration: 0.8, ease: "easeInOut" },
+										y: { duration: 0.8, ease: "easeInOut" },
 									}}
+									style={{ width: '180px' }}
 								>
-									<FadingImageCard
-										label={cat.label}
-										images={cat.images}
-										startDelay={3.5}
-									/>
+									<div className="overflow-hidden rounded bg-gray-100 aspect-[3/4]">
+										<img src={card.src} alt="Model" className="w-full h-full object-cover" />
+									</div>
 								</motion.div>
-							))}
-						</div>
-					</div> */}
-					<div className="w-full lg:w-1/2 relative h-[500px] mt-16 lg:mt-0 hidden md:block">
-						{/* We use absolute positioning to recreate the scattered polaroid look */}
-
-						{/* Top Row */}
-						<ImageCard src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80" rotate={-6} className="top-10 left-10" />
-						<ImageCard src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80" rotate={3} className="top-0 left-48" />
-						<ImageCard src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" rotate={-3} className="top-12 right-20" />
-
-						{/* Middle Row */}
-						<ImageCard src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" rotate={-8} className="top-48 left-20 z-20" />
-						<ImageCard src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=300&q=80" rotate={4} className="top-40 right-48 z-20" />
-						<ImageCard src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" rotate={-2} className="top-52 right-10 z-20" />
-
-						{/* Bottom Row */}
-						<ImageCard src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80" rotate={5} className="bottom-10 left-32 z-30" />
-						<ImageCard src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80" rotate={-4} className="bottom-0 right-32 z-30" />
+							);
+						})}
 					</div>
 				</section>
 				<div className=" px-4 sm:px-6 lg:px-8 relative z-10 py-8 md:pb-8 pt-16">
