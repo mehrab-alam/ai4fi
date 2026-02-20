@@ -32,13 +32,13 @@ import {
 } from "lucide-react";
 
 const StepCard = ({ icon: Icon, title, description }) => (
-	<div className="flex items-center p-4 bg-white border border-blue-50 rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer group">
+	<div className="flex items-center p-4 bg-background border w-full md:w-fit min-w-full md:min-w-[400px] border-border rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer group">
 		<div className="flex-shrink-0 w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center text-white shadow-lg shadow-blue-200 group-hover:scale-105 transition-transform">
 			<Icon size={24} strokeWidth={2.5} />
 		</div>
 		<div className="ml-4 flex-grow">
-			<h4 className="text-gray-900 font-bold text-base">{title}</h4>
-			<p className="text-gray-500 text-sm mt-0.5">{description}</p>
+			<h4 className="text-foreground font-bold text-base">{title}</h4>
+			<p className=" text-sm mt-0.5">{description}</p>
 		</div>
 		<ChevronRight
 			className="text-gray-300 group-hover:text-blue-500 transition-colors"
@@ -52,10 +52,10 @@ const StepCard = ({ icon: Icon, title, description }) => (
 // */
 const FeatureIcon = ({ icon: Icon, title }) => (
 	<div className="flex flex-col items-center justify-center text-center space-y-2 w-20 sm:w-24">
-		<div className="text-gray-600 hover:text-blue-600 transition-colors">
+		<div className="text-foreground hover:text-blue-600 transition-colors">
 			<Icon size={32} strokeWidth={1.5} />
 		</div>
-		<span className="text-xs font-medium text-gray-600 leading-tight">
+		<span className="text-xs font-medium text-secondary-foreground leading-tight">
 			{title}
 		</span>
 	</div>
@@ -63,11 +63,11 @@ const FeatureIcon = ({ icon: Icon, title }) => (
 
 export const VirtualTrialRoom = () => {
 	return (
-		<div className="w-full mx-auto p-4 bg-gradient-to-br from-blue-50 via-white to-blue-50 font-sans relative overflow-hidden py-10 px-4 sm:px-8 rounded-3xl border border-blue-100/50 shadow-xl">
-			<div className="max-w-7xl mx-auto relative z-10">
+		<div className="w-full mx-auto mb-48 p-4 bg-background font-sans relative overflow-hidden py-10 px-4 sm:px-8 rounded-3xl border border-border shadow-xl">
+			<div className="md:max-w-[80vw] max-w-[90vw] mx-auto relative z-10">
 				{/* Top Tabs */}
 
-				<div className="flex flex-col lg:flex-row items-start gap-16">
+				<div className="flex w-full flex-col md:justify-between md:flex-row items-start gap-16">
 					{/* LEFT COLUMN: Content & Steps */}
 					<div className="w-full lg:w-[45%] space-y-8 pt-4">
 						{/* Header Section */}
@@ -77,16 +77,16 @@ export const VirtualTrialRoom = () => {
 									<Activity size={32} />
 								</div>
 								<div>
-									<h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">
+									<h2 className="text-3xl  text-foreground tracking-tight">
 										Virtual Trial Room
 									</h2>
-									<p className="text-blue-500 font-bold text-xs tracking-[0.2em] mt-1 uppercase">
+									<p className="text-blue-500  mt-1 uppercase">
 										AI-Powered Fashion Previews
 									</p>
 								</div>
 							</div>
 
-							<p className="text-gray-600 text-lg leading-relaxed">
+							<p className="text-foreground max-w-[90%] leading-relaxed">
 								Generate instant, photo-realistic previews of your garments on
 								diverse AI-generated models. Eliminate traditional photoshoot
 								limitations and accelerate your fashion workflow.
@@ -95,9 +95,9 @@ export const VirtualTrialRoom = () => {
 
 						{/* Implementation Steps */}
 						<div className="space-y-4 pt-2">
-							<div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
+							<h5 className=" text-muted-foreground  tracking-wider mb-2">
 								Implementation Steps
-							</div>
+							</h5>
 							<StepCard
 								icon={User}
 								title="Choose AI model representation"
@@ -122,11 +122,11 @@ export const VirtualTrialRoom = () => {
 					</div>
 
 					{/* RIGHT COLUMN: Monitor & Visuals */}
-					<div className="w-full lg:w-[55%] relative mt-10 lg:mt-0">
+					<div className="w-full lg:w-[55%] relative mt-10 lg:mt-10">
 						{/* Monitor Frame */}
-						<div className="relative bg-white rounded-2xl shadow-2xl border-4 border-gray-100 overflow-hidden z-10">
+						<div className="relative bg-secondary rounded-2xl shadow-2xl border-4 border-border overflow-hidden z-10">
 							{/* Browser/App Toolbar */}
-							<div className="bg-gray-50 border-b border-gray-200 px-4 py-2 flex items-center gap-2">
+							<div className="bg-background/50 border-b border-border px-4 py-2 flex items-center gap-2">
 								<div className="flex gap-1.5">
 									<div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
 									<div className="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
@@ -138,8 +138,8 @@ export const VirtualTrialRoom = () => {
 							{/* App UI Simulation */}
 							<div className="flex h-[400px] bg-slate-50">
 								{/* Sidebar */}
-								<div className="w-1/3 bg-white border-r border-gray-100 p-4 space-y-4">
-									<div className="h-2 w-20 bg-blue-100 rounded mb-4"></div>
+								<div className="w-1/3 bg-background border-r border-border p-4 space-y-4">
+									<div className="h-2 w-20 bg-secondary rounded mb-4"></div>
 
 									{/* Fake UI Elements */}
 									<div className="space-y-2">
@@ -150,16 +150,16 @@ export const VirtualTrialRoom = () => {
 											<div className="h-6 w-full bg-blue-500 rounded text-[10px] text-white flex items-center justify-center">
 												Male
 											</div>
-											<div className="h-6 w-full bg-gray-100 rounded"></div>
+											<div className="h-6 w-full bg-muted rounded"></div>
 										</div>
 									</div>
 
 									<div className="space-y-2">
-										<div className="text-[10px] font-bold text-gray-400 uppercase">
+										<div className="text-[10px] font-bold text-muted-foreground uppercase">
 											Skin Tone
 										</div>
 										<div className="flex gap-1">
-											<div className="w-4 h-4 rounded-full bg-[#fdece2] border border-gray-200"></div>
+											<div className="w-4 h-4 rounded-full bg-[#fdece2] border border-border"></div>
 											<div className="w-4 h-4 rounded-full bg-[#eabcac]"></div>
 											<div className="w-4 h-4 rounded-full bg-[#d29b83]"></div>
 											<div className="w-4 h-4 rounded-full bg-[#8d5524]"></div>
@@ -181,7 +181,7 @@ export const VirtualTrialRoom = () => {
 								</div>
 
 								{/* Main Content Area */}
-								<div className="w-2/3 p-4 bg-slate-50 relative overflow-hidden flex items-center justify-center">
+								<div className="w-2/3 p-4 bg-secondary relative overflow-hidden flex items-center justify-center">
 									{/* We use an image here to simulate the generated models on screen */}
 									<img
 										src="https://images.unsplash.com/photo-1571513722275-4b41940f54b8?auto=format&fit=crop&w=600&q=80"
@@ -193,11 +193,11 @@ export const VirtualTrialRoom = () => {
 						</div>
 
 						{/* Monitor Stand Base */}
-						<div className="h-4 w-1/3 mx-auto bg-gray-200 rounded-b-xl shadow-inner mt-[-2px] relative z-0"></div>
-						<div className="h-1 w-1/2 mx-auto bg-gray-100 rounded-full blur-sm mt-1"></div>
+						<div className="h-4 w-1/3 mx-auto bg-background/50 rounded-b-xl shadow-inner mt-[-2px] relative z-0"></div>
+						<div className="h-1 w-1/2 mx-auto bg-background/50 rounded-full blur-sm mt-1"></div>
 
 						{/* Floating Polaroid 1 (Top Left) */}
-						<div className="absolute top-[10%] -left-[10%] lg:-left-12 z-20 w-32 bg-white p-2 pb-6 shadow-xl transform -rotate-6 rounded-md">
+						<div className="absolute top-[10%] -left-[10%] lg:-left-12 z-20 w-32 bg-background p-2 pb-6 shadow-xl transform -rotate-6 rounded-md">
 							<img
 								src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200"
 								className="rounded bg-gray-200 aspect-[3/4] object-cover"
@@ -213,27 +213,27 @@ export const VirtualTrialRoom = () => {
 						</div>
 
 						{/* Bottom Feature Bar */}
-						<div className="absolute -bottom-16 sm:-bottom-20 left-1/2 transform -translate-x-1/2 w-[110%] sm:w-[100%] bg-white rounded-2xl shadow-xl border border-gray-100 p-6 flex justify-between items-start z-30">
+						<div className="absolute -bottom-16 sm:-bottom-20 left-1/2 transform -translate-x-1/2 w-[110%] sm:w-[100%] bg-background rounded-2xl shadow-xl border border-border p-6 flex justify-between items-start z-30">
 							<FeatureIcon icon={Shirt} title="200+ Styling Options" />
 
 							{/* Vertical Divider */}
-							<div className="h-10 w-px bg-gray-100 self-center"></div>
+							<div className="h-10 w-px bg-background/80 self-center"></div>
 
 							<FeatureIcon icon={BrainCircuit} title="Smart Dressing AI" />
 
-							<div className="h-10 w-px bg-gray-100 self-center"></div>
+							<div className="h-10 w-px bg-background/80 self-center"></div>
 
 							<FeatureIcon icon={Move} title="Pose Selection" />
 
-							<div className="hidden sm:block h-10 w-px bg-gray-100 self-center"></div>
+							<div className="hidden sm:block h-10 w-px bg-background/80 self-center"></div>
 
 							<FeatureIcon icon={ShoppingBag} title="Accessories Try-On" />
 
-							<div className="hidden sm:block h-10 w-px bg-gray-100 self-center"></div>
+							<div className="hidden sm:block h-10 w-px bg-background/80 self-center"></div>
 
 							<FeatureIcon icon={ImageIcon} title="Background Change" />
 
-							<div className="hidden sm:block h-10 w-px bg-gray-100 self-center"></div>
+							<div className="hidden sm:block h-10 w-px bg-background/80 self-center"></div>
 
 							<FeatureIcon icon={ScanLine} title="Perfect Fit Preview" />
 						</div>
@@ -241,7 +241,7 @@ export const VirtualTrialRoom = () => {
 				</div>
 
 				{/* Spacing for the bottom overlapping element */}
-				<div className="h-24"></div>
+				{/* <div className="h-24"></div> */}
 			</div>
 		</div>
 	);
@@ -253,28 +253,28 @@ const StepPhotoCard = ({
 	description,
 	colorClass = "bg-blue-500",
 }) => (
-	<div className="flex items-center p-4 bg-white/80 backdrop-blur-sm border border-white/50 rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer group">
+	<div className="flex items-center w-full min-w-full md:w-fit md:min-w-[500px] p-4 bg-background/80 backdrop-blur-sm border border-border rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer group">
 		<div
 			className={`flex-shrink-0 w-12 h-12 ${colorClass} rounded-lg flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform`}
 		>
 			<Icon size={24} strokeWidth={2.5} />
 		</div>
 		<div className="ml-4 flex-grow">
-			<h4 className="text-gray-900 font-bold text-base">{title}</h4>
-			<p className="text-gray-500 text-sm mt-0.5">{description}</p>
+			<h4 className="  text-base">{title}</h4>
+			<p className="text-muted-foreground text-sm mt-0.5">{description}</p>
 		</div>
 		<ChevronRight
-			className="text-gray-300 group-hover:text-gray-600 transition-colors"
+			className="text-gray-300 group-hover:text-foreground transition-colors"
 			size={20}
 		/>
 	</div>
 );
 
 export const PhotoStudio = () => (
-	<div className="flex w-full p-4 mx-auto bg-background flex-col lg:flex-row items-start gap-12 relative z-10 rounded-3xl border border-purple-100/50 shadow-xl">
+	<div className="flex w-full mb-24 py-20 p-4 mx-auto dark:bg-gradient-to-br dark:bg-transparent dark:from-pink-500 dark:via-pink/80 dark:to-fuchsia-600 bg-gradient-to-br from-blue-50 via-white to-blue-50 flex-col lg:flex-row items-start gap-12 relative z-10 rounded-3xl border border-purple-100/50 shadow-xl">
 		{/* LEFT COLUMN: Text & Content */}
-		<div className="max-w-7xl mx-auto relative z-10">
-			<div className="flex flex-col lg:flex-row items-start gap-16">
+		<div className="md:max-w-[80vw] max-w-[90vw] mx-auto relative z-10">
+			<div className="flex w-full flex-col md:justify-between md:flex-row items-center gap-16">
 				<div className="w-full lg:w-[45%] space-y-8 pt-4">
 					{/* Header */}
 					<div className="space-y-4">
@@ -331,20 +331,13 @@ export const PhotoStudio = () => (
 				</div>
 
 				{/* RIGHT COLUMN: Visuals */}
-				<div className="w-full lg:w-[55%] relative mt-10 lg:mt-0">
+				<div className="w-full md:w-full lg:w-[55%] relative mt-10 lg:mt-0">
 					{/* Marketplace Logos */}
-					<div className="absolute -top-12 right-0 flex gap-6 opacity-80 grayscale hover:grayscale-0 transition-all">
-						<span className="font-bold text-lg text-slate-700">amazon</span>
-						<span className="font-bold text-lg text-blue-600">Flipkart</span>
-						<div className="flex items-center gap-1 font-bold text-lg text-slate-700">
-							<span className="text-green-500">🛍️</span>Shopify
-						</div>
-					</div>
 
 					{/* Main Monitor Mockup */}
 					<div className="relative z-10 mx-auto">
 						{/* Monitor Frame */}
-						<div className="bg-white rounded-t-2xl shadow-2xl border-[6px] border-gray-800 border-b-0 h-[320px] relative overflow-hidden">
+						<div className="bg-background rounded-t-2xl shadow-2xl border-[6px] border-gray-800 border-b-0 h-full w-full relative overflow-hidden">
 							{/* Screen Content */}
 							<img
 								src="https://images.unsplash.com/photo-1595246140625-573b715d11dc?auto=format&fit=crop&w=800&q=80"
@@ -382,7 +375,7 @@ export const PhotoStudio = () => (
 						</div>
 
 						{/* Floating Card 2: Enhance */}
-						<div className="absolute bottom-32 -left-2 lg:-left-8 bg-white p-2 rounded-xl shadow-xl w-40 animate-float-slower">
+						<div className="absolute bottom-[55%] rotate-12	 -left-2 lg:-left-8 bg-white p-2 rounded-xl shadow-xl w-40 animate-float-slower">
 							<div className="absolute -top-3 -left-3 w-8 h-8 bg-fuchsia-500 text-white font-bold rounded-lg flex items-center justify-center shadow-lg transform rotate-3">
 								2
 							</div>
@@ -398,7 +391,7 @@ export const PhotoStudio = () => (
 					</div>
 
 					{/* Bottom Flow Process */}
-					<div className="mt-8 bg-white/60 backdrop-blur-md rounded-2xl p-4 border border-white/60 shadow-lg flex justify-between items-center text-center relative overflow-hidden">
+					{/* <div className="mt-8 bg-white/60 backdrop-blur-md rounded-2xl p-4 border border-white/60 shadow-lg flex justify-between items-center text-center relative overflow-hidden">
 						<div className="absolute inset-0 bg-gradient-to-r from-pink-50/50 to-purple-50/50 -z-10"></div>
 
 						<div className="flex flex-col items-center">
@@ -428,10 +421,10 @@ export const PhotoStudio = () => (
 								Publish & Sell!
 							</span>
 						</div>
-					</div>
+					</div> */}
 
 					{/* Bottom Features Grid */}
-					<div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
+					{/* <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
 						{[
 							{
 								icon: Sun,
@@ -464,17 +457,16 @@ export const PhotoStudio = () => (
 								</span>
 							</div>
 						))}
-					</div>
+					</div> */}
 				</div>
 			</div>
-			<div className="h-24"></div>
 		</div>
 	</div>
 );
 
 export const Advertisement = () => (
-	<div className="flex w-full p-4 pt-16 mx-auto flex-col bg-background relative z-10 animate-fade-in rounded-3xl border border-orange-100/50 shadow-xl">
-		<div className="max-w-7xl mx-auto relative z-10">
+	<div className="flex w-full p-4 pt-16 mx-auto flex-col bg-background  pb-24 relative z-10 animate-fade-in rounded-3xl border border-orange-100/50 shadow-xl">
+		<div className="md:max-w-[80vw] max-w-[90vw] mx-auto relative z-10">
 			<div className="flex flex-col lg:flex-row items-start gap-12">
 				{/* LEFT COLUMN */}
 				<div className="w-[80vw] lg:w-[40%] space-y-8 pt-4">
@@ -539,7 +531,7 @@ export const Advertisement = () => (
 				{/* RIGHT COLUMN: Complex Visuals */}
 				<div className="w-full lg:w-[60%] relative mt-16 lg:mt-0">
 					{/* Text Above Monitor */}
-					<h3 className="text-center text-xl sm:text-2xl font-bold text-white mb-6 drop-shadow-md bg-black/20 backdrop-blur-sm rounded-full py-2 px-6 inline-block mx-auto w-full border border-white/10">
+					<h3 className="text-center text-xl sm:text-2xl font-bold text-foreground mb-6 drop-shadow-md bg-black/20 backdrop-blur-sm rounded-full py-2 px-6 inline-block mx-auto w-full border border-white/10">
 						Turn Products into High-Converting Ads with AI.
 					</h3>
 
@@ -677,7 +669,7 @@ export const Advertisement = () => (
 			</div>
 
 			{/* Bottom Feature Cards (Glassmorphism) */}
-			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 sm:mt-24">
+			{/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 sm:mt-24">
 				{[
 					{
 						icon: User,
@@ -719,7 +711,7 @@ export const Advertisement = () => (
 						</div>
 					</div>
 				))}
-			</div>
+			</div> */}
 		</div>
 	</div>
 );

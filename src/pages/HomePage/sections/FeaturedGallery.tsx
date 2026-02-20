@@ -542,6 +542,199 @@ const models = [
 		type: "Editorial",
 	},
 ];
+const ObeseModels = [
+	// Female Models 021 - 036
+	{
+		id: 1,
+		name: "Aria V.",
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/female/female_model_021.png",
+		alt: "AI Model 1",
+		type: "Commercial",
+	},
+	{
+		id: 2,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/female/female_model_022.png",
+		alt: "AI Model 2",
+		type: "Editorial",
+	},
+	{
+		id: 3,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/female/female_model_023.png",
+		alt: "AI Model 3",
+		type: "Commercial",
+	},
+	{
+		id: 4,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/female/female_model_024.png",
+		alt: "AI Model 4",
+		type: "Editorial",
+	},
+	{
+		id: 5,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/female/female_model_025.png",
+		alt: "AI Model 5",
+		type: "Commercial",
+	},
+	{
+		id: 6,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/female/female_model_026.png",
+		alt: "AI Model 6",
+		type: "Editorial",
+	},
+
+	{
+		id: 8,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/female/female_model_028.png",
+		alt: "AI Model 8",
+		type: "Editorial",
+	},
+	{
+		id: 9,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/female/female_model_029.png",
+		alt: "AI Model 9",
+		type: "Commercial",
+	},
+	{
+		id: 10,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/female/female_model_030.png",
+		alt: "AI Model 10",
+		type: "Editorial",
+	},
+	{
+		id: 11,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/female/female_model_031.png",
+		alt: "AI Model 11",
+		type: "Commercial",
+	},
+	{
+		id: 12,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/female/female_model_032.png",
+		alt: "AI Model 12",
+		type: "Editorial",
+	},
+	{
+		id: 13,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/female/female_model_033.png",
+		alt: "AI Model 13",
+		type: "Commercial",
+	},
+	{
+		id: 14,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/female/female_model_034.png",
+		alt: "AI Model 14",
+		type: "Editorial",
+	},
+	{
+		id: 15,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/female/female_model_035.png",
+		alt: "AI Model 15",
+		type: "Commercial",
+	},
+	{
+		id: 16,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/female/female_model_036.png",
+		alt: "AI Model 16",
+		type: "Editorial",
+	},
+
+	// Male Models 001 - 015
+	{
+		id: 17,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/male/male_model_001.png",
+		alt: "AI Model 17",
+		type: "Commercial",
+	},
+	{
+		id: 18,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/male/male_model_002.png",
+		alt: "AI Model 18",
+		type: "Editorial",
+	},
+	{
+		id: 19,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/male/male_model_003.png",
+		alt: "AI Model 19",
+		type: "Commercial",
+	},
+	{
+		id: 20,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/male/male_model_004.png",
+		alt: "AI Model 20",
+		type: "Editorial",
+	},
+	{
+		id: 21,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/male/male_model_005.png",
+		alt: "AI Model 21",
+		type: "Commercial",
+	},
+	{
+		id: 22,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/male/male_model_006.png",
+		alt: "AI Model 22",
+		type: "Editorial",
+	},
+	{
+		id: 23,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/male/male_model_007.png",
+		alt: "AI Model 23",
+		type: "Commercial",
+	},
+	{
+		id: 24,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/male/male_model_008.png",
+		alt: "AI Model 24",
+		type: "Editorial",
+	},
+	{
+		id: 25,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/male/male_model_009.png",
+		alt: "AI Model 25",
+		type: "Commercial",
+	},
+	{
+		id: 26,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/male/male_model_010.png",
+		alt: "AI Model 26",
+		type: "Editorial",
+	},
+	{
+		id: 27,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/male/male_model_011.png",
+		alt: "AI Model 27",
+		type: "Commercial",
+	},
+	{
+		id: 28,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/male/male_model_012.png",
+		alt: "AI Model 28",
+		type: "Editorial",
+	},
+	{
+		id: 29,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/male/male_model_013.png",
+		alt: "AI Model 29",
+		type: "Commercial",
+	},
+	{
+		id: 30,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/male/male_model_014.png",
+		alt: "AI Model 30",
+		type: "Editorial",
+	},
+	{
+		id: 31,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/male/male_model_015.png",
+		alt: "AI Model 31",
+		type: "Commercial",
+	},
+	{
+		id: 32,
+		img: "https://ai4fi-bucket.s3.amazonaws.com/PlusSize/male/male_model_016.png",
+		alt: "AI Model 32",
+		type: "Commercial",
+	},
+];
 const standardModels = Array.from({ length: 15 }).map((_, i) => ({
 	id: i,
 	name: `Model ${String.fromCharCode(65 + i)}`,
@@ -696,7 +889,7 @@ Infinite Possibilities"
 					<div className="flex flex-col lg:flex-row gap-12 lg:items-center">
 						{/* Sticky Text Info */}
 						<div className="lg:w-1/3 space-y-6">
-							<span className='inline-block px-3 w-fit text-center  border-border border glass-card flex items-center gap-2 py-1 bg-primary/10 backdrop-blur-sm text-muted-secondary rounded-full mb-3'>
+							<span className="inline-block px-3 w-fit text-center  border-border border glass-card flex items-center gap-2 py-1 bg-primary/10 backdrop-blur-sm text-muted-secondary rounded-full mb-3">
 								<Heart size={12} stroke="none" fill="var(--muted-foreground)" />
 								<span className="text-muted-foreground">Body Positivity</span>
 							</span>
@@ -728,14 +921,14 @@ Infinite Possibilities"
 								ref={scrollRef}
 								className="flex gap-6 overflow-x-auto pb-4 snap-x scrollbar-hide scroll-smooth"
 							>
-								{models.map((model) => (
+								{ObeseModels.map((model) => (
 									<InclusiveCard key={model.id} model={model} />
 								))}
 
 								{/* "See More" Card placeholder */}
 								<div className="flex-shrink-0 w-[200px] h-[450px] flex items-center justify-center border border-dashed border-slate-700 rounded-xl text-slate-500 hover:bg-slate-800 hover:text-white transition-colors cursor-pointer snap-center">
 									<div className="text-center">
-										<span className="text-3xl font-serif block mb-2">+ 24</span>
+										<span className="text-3xl font-serif block mb-2">+ 50</span>
 										<span className="text-sm">More Models</span>
 									</div>
 								</div>
@@ -743,14 +936,14 @@ Infinite Possibilities"
 
 							{/* Navigation Arrows */}
 							<button
-								onClick={() => scroll('left')}
+								onClick={() => scroll("left")}
 								className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:bg-white/20 z-20"
 								aria-label="Scroll Left"
 							>
 								<ChevronLeft size={24} />
 							</button>
 							<button
-								onClick={() => scroll('right')}
+								onClick={() => scroll("right")}
 								className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:bg-white/20 z-20"
 								aria-label="Scroll Right"
 							>
