@@ -464,7 +464,7 @@ const DemoSection = () => {
 	});
 	const contentX = useTransform(
 		demoScrollProgress,
-		[0, 0.25, 0.45],
+		[0, 0.45, 0.65],
 		["-100%", "-100%", "0%"],
 	);
 	const contentOpacity = useTransform(
@@ -474,7 +474,7 @@ const DemoSection = () => {
 	);
 	const videoX = useTransform(
 		demoScrollProgress,
-		[0, 0.25, 0.45],
+		[0, 0.45, 0.65],
 		["100%", "100%", "0%"],
 	);
 	const videoOpacity = useTransform(

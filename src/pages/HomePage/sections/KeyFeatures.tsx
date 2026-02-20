@@ -39,6 +39,7 @@ const KeyFeatures = () => {
 		sectionRefs.current[index]?.scrollIntoView({
 			behavior: "smooth",
 			block: "start",
+
 		});
 	};
 
@@ -63,21 +64,19 @@ const KeyFeatures = () => {
 							<button
 								key={index}
 								onClick={() => handleTabClick(index)}
-								className={`flex items-center gap-3 px-6 py-3 rounded-xl whitespace-nowrap transition-all duration-300 ${
-									activeIndex === index
-										? "bg-brand-color shadow-lg scale-105 text-white border border-brand-color"
-										: "bg-mute-secondary shodow-lg border border-border hover:bg-secondary/80"
-								}`}
+								className={`flex items-center gap-3 px-6 py-3 rounded-xl whitespace-nowrap transition-all duration-300 ${activeIndex === index
+									? "bg-brand-color shadow-lg scale-105 text-white border border-brand-color"
+									: "bg-mute-secondary shodow-lg border border-border hover:bg-secondary/80"
+									}`}
 							>
 								<div
 									className={`w-2 h-2 rounded-full bg-gradient-to-r ${feature.accentColor}`}
 								/>
 								<span
-									className={`font-medium ${
-										activeIndex === index
-											? "text-white"
-											: "text-muted-foreground"
-									}`}
+									className={`font-medium ${activeIndex === index
+										? "text-white"
+										: "text-muted-foreground"
+										}`}
 								>
 									{feature.title}
 								</span>
@@ -87,14 +86,14 @@ const KeyFeatures = () => {
 				</div>
 
 				{/* Scrollable Content Sections */}
-				<div className="mt-8 relative z-[1] flex flex-col items-center max-w-[90vw] mx-auto pb-[40vh]">
+				<div className="mt-8 relative z-[1] flex flex-col items-center max-w-[90vw] mx-auto pb-[10vh]">
 					{features.map((feature, index) => (
 						<div
 							key={index}
 							ref={(el) => {
 								sectionRefs.current[index] = el;
 							}}
-							className="sticky top-[120px] w-full mb-[0vh] scroll-mt-[120px]"
+							className="sticky top-[100px] w-full  scroll-mt-[200px]"
 							style={{
 								zIndex: index + 10,
 							}}

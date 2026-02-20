@@ -51,7 +51,7 @@ const StepCard = ({ icon: Icon, title, description }) => (
 //   Component for the Feature Icons at the bottom right
 // */
 const FeatureIcon = ({ icon: Icon, title }) => (
-	<div className="flex flex-col items-center justify-center text-center space-y-2 w-20 sm:w-24">
+	<div className="flex flex-col items-center  justify-center text-center space-y-2 w-20 sm:w-24">
 		<div className="text-foreground hover:text-blue-600 transition-colors">
 			<Icon size={32} strokeWidth={1.5} />
 		</div>
@@ -63,13 +63,13 @@ const FeatureIcon = ({ icon: Icon, title }) => (
 
 export const VirtualTrialRoom = () => {
 	return (
-		<div className="w-full mx-auto mb-48 p-4 bg-background font-sans relative overflow-hidden py-10 px-4 sm:px-8 rounded-3xl border border-border shadow-xl">
-			<div className="md:max-w-[80vw] max-w-[90vw] mx-auto relative z-10">
+		<div className="w-full mx-auto mb-28  h-[calc(100vh-120px)]  bg-background font-sans relative overflow-hidden  py-8 px-4 sm:px-4 rounded-3xl border border-border shadow-xl">
+			<div className="md:max-w-[80vw]  h-[calc(100vh-120px)] flex flex-col justify-center max-w-[90vw] mx-auto relative z-10">
 				{/* Top Tabs */}
 
 				<div className="flex w-full flex-col md:justify-between md:flex-row items-start gap-16">
 					{/* LEFT COLUMN: Content & Steps */}
-					<div className="w-full lg:w-[45%] space-y-8 pt-4">
+					<div className="w-full lg:w-[45%]  pt-0">
 						{/* Header Section */}
 						<div className="space-y-4">
 							<div className="flex items-center gap-4">
@@ -86,10 +86,9 @@ export const VirtualTrialRoom = () => {
 								</div>
 							</div>
 
-							<p className="text-foreground max-w-[90%] leading-relaxed">
+							<p className="text-foreground max-w-[90%] ">
 								Generate instant, photo-realistic previews of your garments on
-								diverse AI-generated models. Eliminate traditional photoshoot
-								limitations and accelerate your fashion workflow.
+								diverse AI-generated models.
 							</p>
 						</div>
 
@@ -122,7 +121,7 @@ export const VirtualTrialRoom = () => {
 					</div>
 
 					{/* RIGHT COLUMN: Monitor & Visuals */}
-					<div className="w-full lg:w-[55%] relative mt-10 lg:mt-10">
+					<div className="w-full lg:w-[55%] relative">
 						{/* Monitor Frame */}
 						<div className="relative bg-secondary rounded-2xl shadow-2xl border-4 border-border overflow-hidden z-10">
 							{/* Browser/App Toolbar */}
@@ -136,7 +135,7 @@ export const VirtualTrialRoom = () => {
 							</div>
 
 							{/* App UI Simulation */}
-							<div className="flex h-[400px] bg-slate-50">
+							<div className="flex h-[250px] md:h-[400px] bg-slate-50">
 								{/* Sidebar */}
 								<div className="w-1/3 bg-background border-r border-border p-4 space-y-4">
 									<div className="h-2 w-20 bg-secondary rounded mb-4"></div>
@@ -271,11 +270,11 @@ const StepPhotoCard = ({
 );
 
 export const PhotoStudio = () => (
-	<div className="flex w-full mb-24 py-20 p-4 mx-auto dark:bg-gradient-to-br dark:bg-transparent dark:from-pink-500 dark:via-pink/80 dark:to-fuchsia-600 bg-gradient-to-br from-blue-50 via-white to-blue-50 flex-col lg:flex-row items-start gap-12 relative z-10 rounded-3xl border border-purple-100/50 shadow-xl">
+	<div className="flex flex-col items-center  w-full mb-32 py-8 p-4 mx-auto h-[calc(100vh-120px)] dark:bg-gradient-to-br dark:bg-transparent dark:from-pink-500 dark:via-pink/80 dark:to-fuchsia-600 bg-gradient-to-br from-blue-50 via-white to-blue-50 flex-col lg:flex-row items-start gap-12 relative z-10 rounded-3xl border border-purple-100/50 shadow-xl">
 		{/* LEFT COLUMN: Text & Content */}
-		<div className="md:max-w-[80vw] max-w-[90vw] mx-auto relative z-10">
+		<div className="md:max-w-[80vw] max-w-[90vw] h-[calc(100vh-120px)] flex flex-col items-center justify-center mx-auto relative z-10">
 			<div className="flex w-full flex-col md:justify-between md:flex-row items-center gap-16">
-				<div className="w-full lg:w-[45%] space-y-8 pt-4">
+				<div className="w-full lg:w-[45%]  ">
 					{/* Header */}
 					<div className="space-y-4">
 						<div className="flex items-center gap-4">
@@ -292,7 +291,7 @@ export const PhotoStudio = () => (
 							</div>
 						</div>
 
-						<p className="text-gray-600 text-lg leading-relaxed">
+						<p className="text-gray-600 ">
 							Transform raw product photos into professional, listing-ready
 							visuals with automated lighting correction, background styling,
 							and marketplace optimization.
@@ -335,7 +334,7 @@ export const PhotoStudio = () => (
 					{/* Marketplace Logos */}
 
 					{/* Main Monitor Mockup */}
-					<div className="relative z-10 mx-auto">
+					<div className="relative h-auto w-[80%] z-10 mx-auto">
 						{/* Monitor Frame */}
 						<div className="bg-background rounded-t-2xl shadow-2xl border-[6px] border-gray-800 border-b-0 h-full w-full relative overflow-hidden">
 							{/* Screen Content */}
@@ -375,7 +374,7 @@ export const PhotoStudio = () => (
 						</div>
 
 						{/* Floating Card 2: Enhance */}
-						<div className="absolute bottom-[55%] rotate-12	 -left-2 lg:-left-8 bg-white p-2 rounded-xl shadow-xl w-40 animate-float-slower">
+						<div className="absolute bottom-[40%] rotate-12	 -left-2 lg:-left-8 bg-white p-2 rounded-xl shadow-xl w-40 animate-float-slower">
 							<div className="absolute -top-3 -left-3 w-8 h-8 bg-fuchsia-500 text-white font-bold rounded-lg flex items-center justify-center shadow-lg transform rotate-3">
 								2
 							</div>
@@ -465,211 +464,212 @@ export const PhotoStudio = () => (
 );
 
 export const Advertisement = () => (
-	<div className="flex w-full p-4 pt-16 mx-auto flex-col bg-background  pb-24 relative z-10 animate-fade-in rounded-3xl border border-orange-100/50 shadow-xl">
-		<div className="md:max-w-[80vw] max-w-[90vw] mx-auto relative z-10">
-			<div className="flex flex-col lg:flex-row items-start gap-12">
-				{/* LEFT COLUMN */}
-				<div className="w-[80vw] lg:w-[40%] space-y-8 pt-4">
-					{/* Header */}
-					<div className="space-y-4">
-						<div className="flex items-center gap-4">
-							<div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-300 text-white transform -rotate-6">
-								<Megaphone
-									size={30}
-									fill="currentColor"
-									className="text-white"
-								/>
-							</div>
-							<div>
-								<h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">
-									Advertisement
-								</h2>
-								<p className="text-orange-500 font-bold text-xs tracking-[0.2em] mt-1 uppercase">
-									AI Ad Creative Generation
-								</p>
-							</div>
-						</div>
-
-						<p className="text-gray-700 text-lg leading-relaxed font-medium">
-							Create high-converting marketing visuals and promotional videos
-							using AI-generated models, environments, and automated creative
-							production workflows.
-						</p>
-					</div>
-
-					{/* Steps */}
-					<div className="space-y-4 pt-2">
-						<div className="text-xs font-bold text-orange-900/50 uppercase tracking-wider mb-2">
-							Implementation Steps
-						</div>
-						<StepPhotoCard
-							icon={UploadCloud}
-							title="Upload product image"
-							description="Simply upload your product photo"
-							colorClass="bg-gradient-to-br from-orange-400 to-red-500"
-						/>
-						<StepPhotoCard
-							icon={Eraser}
-							title="Clean & prepare visuals"
-							description="Enhance, isolate & refresh your product"
-							colorClass="bg-gradient-to-br from-orange-400 to-red-500"
-						/>
-						<StepPhotoCard
-							icon={Video}
-							title="Generate AI ad creatives"
-							description="Create stunning ads photos & videos"
-							colorClass="bg-gradient-to-br from-orange-400 to-red-500"
-						/>
-					</div>
-
-					{/* CTA */}
-					<button className="mt-4 px-8 py-4 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold text-lg rounded-xl shadow-xl shadow-orange-500/30 transition-transform hover:-translate-y-1 w-full sm:w-auto ring-4 ring-orange-200">
-						Get Started
-					</button>
-				</div>
-
-				{/* RIGHT COLUMN: Complex Visuals */}
-				<div className="w-full lg:w-[60%] relative mt-16 lg:mt-0">
-					{/* Text Above Monitor */}
-					<h3 className="text-center text-xl sm:text-2xl font-bold text-foreground mb-6 drop-shadow-md bg-black/20 backdrop-blur-sm rounded-full py-2 px-6 inline-block mx-auto w-full border border-white/10">
-						Turn Products into High-Converting Ads with AI.
-					</h3>
-
-					<div className="relative flex items-end justify-center">
-						{/* Floating Flow Cards (Left of Monitor) */}
-						<div className="absolute top-10 left-[-20px] sm:left-0 z-30 flex flex-col gap-12 pointer-events-none hidden sm:flex">
-							{/* Card 1: Input */}
-							<div className="bg-white/95 p-2 rounded-lg shadow-xl w-32 transform -rotate-12 border-2 border-orange-100 animate-float-slow">
-								<div className="relative">
-									<span className="absolute -top-2 -left-2 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded">
-										1. Upload
-									</span>
-									<img
-										src="https://images.unsplash.com/photo-1621460245217-37fb2778da5c?auto=format&fit=crop&w=150"
-										className="rounded mb-1 h-20 w-full object-cover"
-										alt="Can with fruit"
+	<div className="min-h-[100vh] flex flex-col items-center ">
+		<div className=" w-full p-4 pt-8 mx-auto items-center justify-center flex-col bg-background h-[calc(100vh-120px)]   relative z-10 animate-fade-in rounded-3xl border border-orange-100/50 shadow-xl">
+			<div className="md:max-w-[80vw] max-w-[90vw] flex h-[calc(100vh-120px)] flex-col  justify-center  items-center flex-col mx-auto relative z-10">
+				<div className="flex flex-col h-full lg:flex-row justify-between items-start gap-4">
+					{/* LEFT COLUMN */}
+					<div className="w-[80vw] lg:w-[40%] space-y-2 pt-4">
+						{/* Header */}
+						<div className="space-y-4">
+							<div className="flex items-center gap-4">
+								<div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-300 text-white transform -rotate-6">
+									<Megaphone
+										size={30}
+										fill="currentColor"
+										className="text-white"
 									/>
 								</div>
-								<div className="text-[9px] font-bold text-center text-gray-600">
-									Product Image
+								<div>
+									<h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">
+										Advertisement
+									</h2>
+									<p className="text-orange-500 font-bold text-xs tracking-[0.2em] mt-1 uppercase">
+										AI Ad Creative Generation
+									</p>
 								</div>
 							</div>
 
-							{/* Arrow SVG connecting cards */}
-							<svg
-								className="absolute top-[90px] left-[40px] w-12 h-16 text-white drop-shadow-lg opacity-80"
-								viewBox="0 0 50 50"
-							>
-								<path
-									d="M 10 10 Q 25 25 10 40"
-									fill="none"
-									stroke="currentColor"
-									strokeWidth="3"
-									markerEnd="url(#arrowhead)"
-								/>
-							</svg>
-
-							{/* Card 2: Processed */}
-							<div className="bg-white/95 p-2 rounded-lg shadow-xl w-32 transform rotate-6 border-2 border-orange-100 animate-float-slower ml-8">
-								<div className="relative">
-									<span className="absolute -top-2 -right-2 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded">
-										2. Clean Up
-									</span>
-									{/* Using a similar image but pretending it's isolated/clean */}
-									<img
-										src="https://images.unsplash.com/photo-1621460245217-37fb2778da5c?auto=format&fit=crop&w=150"
-										className="rounded mb-1 h-20 w-full object-cover scale-110"
-										alt="Isolated Can"
-									/>
-								</div>
-								<div className="text-[9px] font-bold text-center text-gray-600">
-									Isolate Product
-								</div>
-							</div>
-
-							{/* Arrow into Monitor */}
-							<svg
-								className="absolute top-[210px] left-[90px] w-24 h-12 text-white drop-shadow-lg opacity-80"
-								viewBox="0 0 100 50"
-							>
-								<path
-									d="M 0 25 Q 50 25 90 25"
-									fill="none"
-									stroke="currentColor"
-									strokeWidth="3"
-								/>
-								<path d="M 85 20 L 95 25 L 85 30" fill="currentColor" />
-							</svg>
+							<p className="text-gray-700 text-lg leading-relaxed font-medium">
+								Create high-converting marketing visuals and promotional videos
+								using AI-generated models, environments, and automated creative
+								production workflows.
+							</p>
 						</div>
 
-						{/* Main Monitor */}
-						<div className="relative z-20">
-							<div className="bg-gradient-to-b from-gray-800 to-gray-900 rounded-t-2xl shadow-2xl border-[4px] border-gray-700 border-b-0 w-full max-w-lg h-[280px] sm:h-[320px] relative overflow-hidden group">
-								{/* Video Content */}
-								<img
-									src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80"
-									className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
-									alt="Party Ad"
-								/>
-
-								{/* Video UI Overlay */}
-								<div className="absolute inset-0 bg-black/20 flex flex-col justify-between p-4">
-									<div className="flex justify-between text-white/80 text-xs">
-										<span>REC ●</span>
-										<span>00:15 / 00:30</span>
-									</div>
-									<div className="self-center">
-										<button className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/40 shadow-xl hover:bg-white/30 transition-all hover:scale-110">
-											<Play
-												fill="white"
-												className="ml-1 text-white"
-												size={32}
-											/>
-											{/* Pulse effect */}
-											<div className="absolute inset-0 rounded-full border border-white/50 animate-ping opacity-50"></div>
-										</button>
-									</div>
-									<div className="h-1 bg-white/30 rounded-full overflow-hidden">
-										<div className="w-1/2 h-full bg-orange-500"></div>
-									</div>
-								</div>
+						{/* Steps */}
+						<div className="space-y-4 pt-2">
+							<div className="text-xs font-bold text-orange-900/50 uppercase tracking-wider mb-2">
+								Implementation Steps
 							</div>
+							<StepPhotoCard
+								icon={UploadCloud}
+								title="Upload product image"
+								description="Simply upload your product photo"
+								colorClass="bg-gradient-to-br from-orange-400 to-red-500"
+							/>
+							<StepPhotoCard
+								icon={Eraser}
+								title="Clean & prepare visuals"
+								description="Enhance, isolate & refresh your product"
+								colorClass="bg-gradient-to-br from-orange-400 to-red-500"
+							/>
+							<StepPhotoCard
+								icon={Video}
+								title="Generate AI ad creatives"
+								description="Create stunning ads photos & videos"
+								colorClass="bg-gradient-to-br from-orange-400 to-red-500"
+							/>
+						</div>
 
-							{/* Monitor Chin */}
-							<div className="bg-gray-300 h-10 w-full max-w-lg border-x-[4px] border-b-[4px] border-gray-700 rounded-b-xl flex items-center justify-center relative shadow-xl">
-								<div className="text-xl text-gray-500"></div>
+						{/* CTA */}
+						<button className="mt-4 px-8 py-4 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold text-lg rounded-xl shadow-xl shadow-orange-500/30 transition-transform hover:-translate-y-1 w-full sm:w-auto ring-4 ring-orange-200">
+							Get Started
+						</button>
+					</div>
 
-								{/* Social Icons Dock */}
-								<div className="absolute -bottom-6 flex gap-3 bg-white px-4 py-2 rounded-2xl shadow-lg border border-gray-100 transform scale-90 sm:scale-100">
-									<div className="p-1.5 bg-gray-100 rounded-lg">
-										<span className="font-bold text-gray-800 text-xs">a</span>
-									</div>
-									<div className="p-1.5 bg-blue-100 rounded-lg">
-										<Facebook
-											size={16}
-											className="text-blue-600"
-											fill="currentColor"
+					{/* RIGHT COLUMN: Complex Visuals */}
+					<div className="w-full lg:w-[100%] flex flex-col items-center  relative mt-16 lg:mt-0">
+						{/* Text Above Monitor */}
+						<h3 className="text-center w-fit text-md sm:text-lg font-bold text-foreground mb-6  backdrop-blur-sm rounded-full py-2 px-6 inline-block mx-auto  border border-border">
+							Turn Products into High-Converting Ads with AI.
+						</h3>
+
+						<div className="relative flex items-end justify-center">
+							{/* Floating Flow Cards (Left of Monitor) */}
+							<div className="absolute top-10 left-[-20px] sm:left-0 z-30 flex flex-col gap-12 pointer-events-none hidden sm:flex">
+								{/* Card 1: Input */}
+								<div className="bg-white/95 p-2 rounded-lg shadow-xl w-32 transform -rotate-12 border-2 border-orange-100 animate-float-slow">
+									<div className="relative">
+										<span className="absolute -top-2 -left-2 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded">
+											1. Upload
+										</span>
+										<img
+											src="https://images.unsplash.com/photo-1621460245217-37fb2778da5c?auto=format&fit=crop&w=150"
+											className="rounded mb-1 h-20 w-full object-cover"
+											alt="Can with fruit"
 										/>
 									</div>
-									<div className="p-1.5 bg-white border border-gray-200 rounded-lg">
-										<Chrome size={16} className="text-red-500" />
-									</div>
-									<div className="p-1.5 bg-red-100 rounded-lg">
-										<Youtube size={16} className="text-red-600" />
+									<div className="text-[9px] font-bold text-center text-gray-600">
+										Product Image
 									</div>
 								</div>
+
+								{/* Arrow SVG connecting cards */}
+								<svg
+									className="absolute top-[90px] left-[40px] w-12 h-16 text-white drop-shadow-lg opacity-80"
+									viewBox="0 0 50 50"
+								>
+									<path
+										d="M 10 10 Q 25 25 10 40"
+										fill="none"
+										stroke="currentColor"
+										strokeWidth="3"
+										markerEnd="url(#arrowhead)"
+									/>
+								</svg>
+
+								{/* Card 2: Processed */}
+								<div className="bg-white/95 p-2 rounded-lg shadow-xl w-32 transform rotate-6 border-2 border-orange-100 animate-float-slower ml-8">
+									<div className="relative">
+										<span className="absolute -top-2 -right-2 bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded">
+											2. Clean Up
+										</span>
+										{/* Using a similar image but pretending it's isolated/clean */}
+										<img
+											src="https://images.unsplash.com/photo-1621460245217-37fb2778da5c?auto=format&fit=crop&w=150"
+											className="rounded mb-1 h-20 w-full object-cover scale-110"
+											alt="Isolated Can"
+										/>
+									</div>
+									<div className="text-[9px] font-bold text-center text-gray-600">
+										Isolate Product
+									</div>
+								</div>
+
+								{/* Arrow into Monitor */}
+								<svg
+									className="absolute top-[210px] left-[90px] w-24 h-12 text-white drop-shadow-lg opacity-80"
+									viewBox="0 0 100 50"
+								>
+									<path
+										d="M 0 25 Q 50 25 90 25"
+										fill="none"
+										stroke="currentColor"
+										strokeWidth="3"
+									/>
+									<path d="M 85 20 L 95 25 L 85 30" fill="currentColor" />
+								</svg>
 							</div>
 
-							{/* Stand */}
-							<div className="bg-gradient-to-b from-gray-400 to-gray-300 h-16 w-32 mx-auto mt-[-2px] shadow-inner perspective-[500px] transform rotate-x-12 relative z-0"></div>
-							<div className="bg-gray-800/20 h-4 w-48 mx-auto rounded-[100%] blur-md mt-[-8px]"></div>
+							{/* Main Monitor */}
+							<div className="relative z-20">
+								<div className="bg-gradient-to-b from-gray-800 to-gray-900 rounded-t-2xl shadow-2xl border-[4px] border-gray-700 border-b-0 w-full max-w-lg h-[280px] sm:h-[320px] relative overflow-hidden group">
+									{/* Video Content */}
+									<img
+										src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80"
+										className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
+										alt="Party Ad"
+									/>
+
+									{/* Video UI Overlay */}
+									<div className="absolute inset-0 bg-black/20 flex flex-col justify-between p-4">
+										<div className="flex justify-between text-white/80 text-xs">
+											<span>REC ●</span>
+											<span>00:15 / 00:30</span>
+										</div>
+										<div className="self-center">
+											<button className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/40 shadow-xl hover:bg-white/30 transition-all hover:scale-110">
+												<Play
+													fill="white"
+													className="ml-1 text-white"
+													size={32}
+												/>
+												{/* Pulse effect */}
+												<div className="absolute inset-0 rounded-full border border-white/50 animate-ping opacity-50"></div>
+											</button>
+										</div>
+										<div className="h-1 bg-white/30 rounded-full overflow-hidden">
+											<div className="w-1/2 h-full bg-orange-500"></div>
+										</div>
+									</div>
+								</div>
+
+								{/* Monitor Chin */}
+								<div className="bg-gray-300 h-10 w-full max-w-lg border-x-[4px] border-b-[4px] border-gray-700 rounded-b-xl flex items-center justify-center relative shadow-xl">
+									<div className="text-xl text-gray-500"></div>
+
+									{/* Social Icons Dock */}
+									<div className="absolute -bottom-6 flex gap-3 bg-white px-4 py-2 rounded-2xl shadow-lg border border-gray-100 transform scale-90 sm:scale-100">
+										<div className="p-1.5 bg-gray-100 rounded-lg">
+											<span className="font-bold text-gray-800 text-xs">a</span>
+										</div>
+										<div className="p-1.5 bg-blue-100 rounded-lg">
+											<Facebook
+												size={16}
+												className="text-blue-600"
+												fill="currentColor"
+											/>
+										</div>
+										<div className="p-1.5 bg-white border border-gray-200 rounded-lg">
+											<Chrome size={16} className="text-red-500" />
+										</div>
+										<div className="p-1.5 bg-red-100 rounded-lg">
+											<Youtube size={16} className="text-red-600" />
+										</div>
+									</div>
+								</div>
+
+								{/* Stand */}
+								<div className="bg-gradient-to-b from-gray-400 to-gray-300 h-16 w-32 mx-auto mt-[-2px] shadow-inner perspective-[500px] transform rotate-x-12 relative z-0"></div>
+								<div className="bg-gray-800/20 h-4 w-48 mx-auto rounded-[100%] blur-md mt-[-8px]"></div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 
-			{/* Bottom Feature Cards (Glassmorphism) */}
-			{/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 sm:mt-24">
+				{/* Bottom Feature Cards (Glassmorphism) */}
+				{/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 sm:mt-24">
 				{[
 					{
 						icon: User,
@@ -712,6 +712,7 @@ export const Advertisement = () => (
 					</div>
 				))}
 			</div> */}
+			</div>
 		</div>
 	</div>
-);
+);	
