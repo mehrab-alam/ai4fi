@@ -464,7 +464,7 @@ const DemoSection = () => {
 	});
 	const contentX = useTransform(
 		demoScrollProgress,
-		[0, 0.45, 0.65],
+		[0, 0.35, 0.55],
 		["-100%", "-100%", "0%"],
 	);
 	const contentOpacity = useTransform(
@@ -474,7 +474,7 @@ const DemoSection = () => {
 	);
 	const videoX = useTransform(
 		demoScrollProgress,
-		[0, 0.45, 0.65],
+		[0, 0.35, 0.55],
 		["100%", "100%", "0%"],
 	);
 	const videoOpacity = useTransform(
@@ -547,7 +547,7 @@ const DemoSection = () => {
 			<div className="max-w-7xl mx-auto relative z-10">
 				<div
 					ref={demoScrollRef}
-					className="relative min-h-[100%] mb-24 md:mb-32"
+					className="relative min-h-[100%] mb-24 md:mb-48"
 				>
 					<div className="mb-10 sticky top-[40px]">
 						<SectionHeader

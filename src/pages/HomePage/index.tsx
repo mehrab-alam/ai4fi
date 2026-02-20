@@ -12,6 +12,10 @@ import VideoShowcase from "./sections/VideoShowcase";
 import AiFashionHero from "./sections/AiFashionHero";
 import ProductPhotoshootSection from "./sections/AIFeatures";
 import SayGoodBySection from "./sections/SayGoodBy";
+import VirtualTrialHighlight from "./sections/TestFeature";
+import LifestyleStudioSection from "./sections/TestFeature";
+import ProductPhotographySection from "./sections/TestFeature";
+import AdGeneratorSection from "./sections/TestFeature";
 
 const HomePage: FC = () => {
 	return (
@@ -19,7 +23,11 @@ const HomePage: FC = () => {
 			<AiFashionHero />
 			{/* <HeroSection2 /> */}
 			<SayGoodBySection />
-			<KeyFeatures />
+			{/* <KeyFeatures /> */}
+			{/* <VirtualTrialHighlight />/ */}
+			{/* <LifestyleStudioSection /> */}
+			{/* <ProductPhotographySection /> */}
+			<AdGeneratorSection />
 			<DemoSection />
 			<Features />
 			<FeaturedGallery />
