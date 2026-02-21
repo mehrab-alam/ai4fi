@@ -62,7 +62,7 @@ const Navbar = () => {
 			initial={{ y: -20, opacity: 0 }}
 			animate={{ y: 0, opacity: 1 }}
 			transition={{ duration: 0.5 }}
-			className={`fixed overflow-hidden w-full z-50 transition-all duration-300 ${isScrolled
+			className={`fixed  w-full z-50 transition-all duration-300 ${isScrolled
 				? "py-2 bg-background/80 backdrop-blur-xl border-b border-border shadow-sm"
 				: "py-4 bg-transparent"
 				}`}
@@ -136,7 +136,7 @@ const Navbar = () => {
 						})}
 
 						{/* Our Offerings Dropdown */}
-						<div className="relative">
+						<div className="relative  z-50">
 							<motion.button
 								onClick={() => setIsDropdownOpen(!isDropdownOpen)}
 								className="relative px-3 py-2 mx-1 rounded-lg transition-colors duration-200 text-secondary-foreground font-semibold hover:text-foreground hover:bg-foreground/5 flex items-center"
@@ -153,7 +153,7 @@ const Navbar = () => {
 										animate={{ opacity: 1, y: 0 }}
 										exit={{ opacity: 0, y: -10 }}
 										transition={{ duration: 0.2 }}
-										className="absolute top-full left-0 mt-2 w-48 bg-secondary  rounded-lg shadow-lg "
+										className="absolute z-[100000] top-full left-0 mt-2 w-48 bg-secondary  rounded-lg shadow-lg "
 									>
 										{dropdownItems.map((item) => (
 											<Link to={item.href}>
@@ -250,7 +250,7 @@ const Navbar = () => {
 						animate={{ opacity: 1, height: "auto" }}
 						exit={{ opacity: 0, height: 0 }}
 						transition={{ duration: 0.3 }}
-						className="md:hidden overflow-hidden"
+						className="md:hidden "
 					>
 						<motion.div
 							initial={{ opacity: 0, y: -20 }}

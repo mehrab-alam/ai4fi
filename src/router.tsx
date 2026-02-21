@@ -22,6 +22,7 @@ import CreateAds from "./components/CreateAds";
 import FeaturesPage from "./pages/FeaturesCardPage/FeaturesCardPage";
 import TermsOfService from "./pages/TermsOfService";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import ClientShowcase from "./pages/client-showcase";
 
 export const router = createBrowserRouter([
   {
@@ -36,7 +37,11 @@ export const router = createBrowserRouter([
         path: "pricing",
         element: <PricingPage />,
       },
-     
+      {
+        path: "client-showcase",
+        element: <ClientShowcase />,
+      },
+
       {
         path: "about",
         element: <AboutUs />,
@@ -82,12 +87,12 @@ export const router = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage />,
-  
+
   },
   {
     path: "/signup",
     element: <SignUpForm />,
-  
+
   },
   {
     path: "/model",
