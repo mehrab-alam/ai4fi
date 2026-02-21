@@ -44,11 +44,11 @@ const ProcessStep: FC<{ icon: any, title: string, desc: string, stepNum: number 
 /* --- MAIN COMPONENT --- */
 export const VirtualTrialHighlight = () => {
     return (
-        <section className="py-10 h-[85vh] px-6 bg-background">
+        <section className="py-10 h-[85vh] flex flex-col justify-center items-center px-6 bg-background">
 
             <div className="max-w-full mx-auto">
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center place-items-center">
 
                     {/* --- LEFT: CONTEXT & STEPS --- */}
                     <div className="space-y-4">
@@ -199,27 +199,27 @@ const generatedAssets = [
 
 export const ProductPhotographySection = () => {
     return (
-        <section className="py-10 h-[85vh]  px-6 bg-background border-b border-border font-sans">
+        <section className="py-10 h-[85vh] flex flex-col justify-center items-center  px-6 bg-background border-b border-border font-sans">
             <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-10 items-center ">
 
                     {/* --- LEFT: VALUE PROPOSITION --- */}
-                    <div>
-                        <div className="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full bg-white border border-slate-200 shadow-sm">
+                    <div className="flex flex-col gap-6  justify-between">
+                        <div className="inline-flex w-fit items-center gap-2  px-3 py-1 rounded-full bg-white border border-slate-200 shadow-sm">
                             <Layers size={14} className="text-blue-600" />
                             <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">
                                 Automated Photoshoot
                             </span>
                         </div>
 
-                        <h2 className="text-3xl md:text-5xl font-extrabold  mb-6 leading-tight tracking-tight">
+                        <h2 className="text-3xl md:text-5xl font-extrabold   leading-tight tracking-tight">
                             One Raw Shot. <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                                 A Full Campaign.
                             </span>
                         </h2>
 
-                        <p className=" mb-4 leading-relaxed max-w-lg">
+                        <p className=" leading-relaxed max-w-lg">
                             Stop booking models for every SKU. Upload a single ghost-mannequin photo and our AI generates a complete gallery: studio shots, lifestyle scenes, and detail views—instantly marketplace ready.
                         </p>
 
@@ -247,7 +247,7 @@ export const ProductPhotographySection = () => {
                             </div>
                         </div>
 
-                        <button className="mt-4 px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl shadow-lg shadow-slate-200/50 transition-all hover:-translate-y-1 flex items-center gap-2">
+                        <button className=" px-8 w-fit py-4 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl shadow-lg shadow-slate-200/50 transition-all hover:-translate-y-1 flex items-center gap-2">
                             Start Generating <ArrowRight size={18} />
                         </button>
                     </div>
@@ -426,33 +426,33 @@ const AdStep: FC<{ icon: any, title: string, desc: string, stepNum: string, isLa
 
 export const AdGeneratorSection = () => {
     return (
-        <section className="py-10 h-[150vh]  px-6 bg-background border-b border-border font-sans relative overflow-hidden">
+        <section className="py-10 h-[85vh] flex flex-col items-center justify-center  px-6 bg-background border-b border-border font-sans relative overflow-hidden">
             <style>{style}</style>
 
             {/* Background Ambience */}
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-purple-50 to-pink-50 rounded-full blur-3xl -z-10 opacity-60"></div>
 
-            <div className="max-w-full mx-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+            <div className="max-w-full flex justify-center flex-col items-center h-full mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-2 place-items-center  gap-16 lg:gap-20 items-center">
 
                     {/* --- LEFT: NARRATIVE FLOW --- */}
-                    <div>
+                    <div className="flex flex-col gap-6  justify-between">
                         {/* Badge */}
-                        <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-100 shadow-sm">
+                        <div className="inline-flex w-fit items-center gap-2  px-3 py-1.5 rounded-full bg-slate-50 border border-slate-100 shadow-sm">
                             <Clapperboard size={14} className="text-pink-600" />
                             <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">
                                 AI Video Generator
                             </span>
                         </div>
 
-                        <h2 className="text-3xl md:text-4xl font-extrabold  mb-6 leading-tight">
+                        <h2 className="text-3xl md:text-4xl font-extrabold  leading-tight">
                             Static Photos to <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
                                 Viral Video Ads.
                             </span>
                         </h2>
 
-                        <p className="text-base text-slate-600 mb-10 leading-relaxed max-w-md">
+                        <p className="text-base  leading-relaxed max-w-md">
                             Don't just show products; tell stories. Upload a single image, write a script, and let our AI direct a full commercial with models, voiceover, and motion.
                         </p>
 
@@ -479,7 +479,7 @@ export const AdGeneratorSection = () => {
                             />
                         </div>
 
-                        <button className="mt-6 px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white text-sm font-bold rounded-lg shadow-lg shadow-slate-200 transition-all hover:-translate-y-0.5 flex items-center gap-2 group">
+                        <button className="w-fit px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white text-sm font-bold rounded-lg shadow-lg shadow-slate-200 transition-all hover:-translate-y-0.5 flex items-center gap-2 group">
                             <Sparkles size={16} className="group-hover:text-yellow-300 transition-colors" />
                             Create Video Ad
                         </button>
@@ -504,7 +504,7 @@ export const AdGeneratorSection = () => {
                             </div>
 
                             {/* 2. Main Viewport (The Ad) */}
-                            <div className="relative aspect-[6/5] bg-card overflow-hidden">
+                            <div className="relative aspect-[4/5] w-[20vw] bg-card overflow-hidden">
                                 {/* Simulated Video Content */}
                                 <img
                                     src="https://images.unsplash.com/photo-1616150638538-2b6a6950be36?auto=format&fit=crop&w=800&q=80"

@@ -177,8 +177,8 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 			rotate: -4,
 			className: `
 			bottom-40 left-24
-			md:bottom-56 md:left-48
-			lg:bottom-72 lg:left-72
+			md:bottom-56 md:left-64
+			lg:bottom-72 lg:left-[300px]
 		`,
 		},
 		{
@@ -188,7 +188,7 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 			className: `
 			top-12 -right-8
 			md:top-20 md:right-3
-			lg:top-24 lg:right-4
+			lg:top-24 lg:right-16
 		`,
 		},
 		{
@@ -332,7 +332,7 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 									animate={{
 										x: isTop && direction === "out" ? exitX : 0,
 										scale: i === 0 ? 1 : 0.95,
-										rotate: card.rotate,
+										// rotate: card.rotate,
 									}}
 									transition={{
 										duration: direction === "in" ? 0.8 : 0.5,

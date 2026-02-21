@@ -28,42 +28,53 @@ const KeyFeatures = () => {
 	const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 	const isScrolling = useRef(false);
 
-	// Scroll-synced tab switching via IntersectionObserver
+	// Scroll-synced tab switching logic
 	useEffect(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				if (isScrolling.current) return;
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						const index = sectionRefs.current.findIndex((ref) => ref === entry.target);
-						if (index !== -1) {
-							// For sticky stacking, the last one intersecting at the top is the active one
-							// But with 0.5 threshold, it works reasonably
-							setActiveIndex(index);
-						}
+		const handleScroll = () => {
+			if (isScrolling.current) return;
+
+			// The threshold where a feature becomes "active" (sticky point + buffer)
+			const STICKY_THRESHOLD = 200;
+			let currentActive = 0;
+
+			sectionRefs.current.forEach((ref, index) => {
+				if (ref) {
+					const rect = ref.getBoundingClientRect();
+					// In sticky stacking, the one with the highest index that's at the top is active
+					if (rect.top <= STICKY_THRESHOLD) {
+						currentActive = index;
 					}
-				});
-			},
-			{
-				threshold: 0.2,
-				rootMargin: "-10% 0px -40% 0px",
+				}
+			});
+
+			if (currentActive !== activeIndex) {
+				setActiveIndex(currentActive);
 			}
-		);
+		};
 
-		sectionRefs.current.forEach((ref) => {
-			if (ref) observer.observe(ref);
-		});
+		window.addEventListener("scroll", handleScroll, { passive: true });
+		// Initial check in case we're already scrolled
+		handleScroll();
 
-		return () => observer.disconnect();
-	}, []);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, [activeIndex]);
 
 	const handleTabClick = (index: number) => {
 		setActiveIndex(index);
 		isScrolling.current = true;
-		sectionRefs.current[index]?.scrollIntoView({
-			behavior: "smooth",
-			block: "start",
-		});
+
+		// Adjust scroll position to account for sticky offset
+		const targetElement = sectionRefs.current[index];
+		if (targetElement) {
+			const offset = 120; // Matches our sticky top + buffer
+			const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+			const offsetPosition = elementPosition - offset;
+
+			window.scrollTo({
+				top: offsetPosition,
+				behavior: "smooth"
+			});
+		}
 
 		setTimeout(() => {
 			isScrolling.current = false;
@@ -85,11 +96,11 @@ const KeyFeatures = () => {
 				/>
 
 				{/* Layout Container */}
-				<div className="flex flex-col md:flex-row gap-4 items-start">
+				<div className="flex  relative flex-col md:flex-row gap-4 items-start">
 
 					{/* Left Content (Tabs) - Fixed/Sticky */}
-					<aside className="w-full md:w-[35%] lg:w-[25%] sticky top-[100px] md:top-1/2 md:-translate-y-1/2 z-30 bg-background/5 md:bg-transparent backdrop-blur-md md:backdrop-blur-none py-6 md:py-0 transition-all duration-300">
-						<div className="flex flex-row md:flex-col gap-6 md:gap-10 overflow-x-auto md:overflow-visible px-4 md:px-0 scrollbar-hide">
+					<aside className="w-full mt-[30vh] md:w-[35%] lg:w-[25%] sticky top-[100px] md:top-[40vh] z-30 bg-background/5 md:bg-transparent backdrop-blur-md md:backdrop-blur-none py-6 md:py-0 transition-all duration-300">
+						<div className="flex items-center justify-center  flex-row md:flex-col gap-6 md:gap-10 overflow-x-auto md:overflow-visible px-4 md:px-0 scrollbar-hide">
 							{features.map((feature, index) => {
 								const isActive = activeIndex === index;
 								return (
@@ -117,7 +128,7 @@ const KeyFeatures = () => {
 													color: isActive ? "var(--foreground)" : "var(--muted-foreground)"
 												}}
 												transition={{ type: "spring", stiffness: 200, damping: 20 }}
-												className={`text-lg md:text-3xl font-extrabold whitespace-nowrap transition-colors duration-300 ${isActive ? "text-foreground" : "text-muted-foreground/30 hover:text-muted-foreground/60"}`}
+												className={`text-lg md:text-2xl font-extrabold whitespace-nowrap transition-colors duration-300 ${isActive ? "text-foreground" : "text-muted-foreground/30 hover:text-muted-foreground/60"}`}
 											>
 												{feature.title}
 											</motion.span>
@@ -135,19 +146,19 @@ const KeyFeatures = () => {
 									</button>
 								);
 							})}
-							
+
 						</div>
 					</aside>
 
 					{/* Right Content (Features) - Scrolling with Sticky Stacking */}
-					<div className="w-full md:w-[65%] lg:w-[75%] relative">
+					<div className="w-full md:w-[65%] lg:w-[75%] relative pb-[20vh]">
 						{features.map((feature, index) => (
 							<div
 								key={index}
 								ref={(el) => {
 									sectionRefs.current[index] = el;
 								}}
-								className="sticky top-[100px] w-full mb-[20vh] md:mb-[50vh] last:mb-0"
+								className="sticky top-[120px] w-full mb-[30vh] md:mb-[50vh] last:mb-0"
 								style={{
 									zIndex: index + 10,
 								}}
@@ -157,6 +168,7 @@ const KeyFeatures = () => {
 								</div>
 							</div>
 						))}
+						<div className="h-[20vh]"></div>
 					</div>
 				</div>
 			</div>
