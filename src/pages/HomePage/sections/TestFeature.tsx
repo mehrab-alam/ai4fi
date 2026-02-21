@@ -55,17 +55,20 @@ export const VirtualTrialHighlight = () => {
 
                         {/* Header */}
                         <div className="space-y-3">
-                            <div className="inline-flex text-[12px]  items-center gap-2 px-3 py-1 rounded-full bg-secondary border border-border text-foreground  font-bold uppercase tracking-widest">
-                                <Sparkles size={12} />
-                                Virtual Fashion Studio
+                            <div className="inline-flex w-fit items-center gap-2  px-3 py-1.5 rounded-full bg-slate-50 border border-slate-100 shadow-sm">
+                                <Sparkles size={14} className="text-pink-600" />
+                                <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">
+                                    AI Video Generator
+                                </span>
                             </div>
+
                             <h2 className="text-3xl md:text-4xl font-extrabold  tracking-tight">
                                 From Raw Sketch to <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                                     Marketplace Ready
                                 </span>
                             </h2>
-                            <p className="text-slate-600 text-base leading-relaxed max-w-md">
+                            <p className=" text-base leading-relaxed max-w-md">
                                 Experience the fastest workflow in fashion e-commerce. Upload a garment and get photorealistic model shoots instantly.
                             </p>
                         </div>
@@ -201,10 +204,10 @@ export const ProductPhotographySection = () => {
     return (
         <section className="py-10 h-[85vh] flex flex-col justify-center items-center  px-6 bg-background border-b border-border font-sans">
             <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-10 items-center ">
+                <div className="grid grid-cols-1 lg:grid-cols-2 place-items-center gap-16 lg:gap-10 items-center ">
 
                     {/* --- LEFT: VALUE PROPOSITION --- */}
-                    <div className="flex flex-col gap-6  justify-between">
+                    <div className="flex flex-col gap-6 w-fit  justify-between">
                         <div className="inline-flex w-fit items-center gap-2  px-3 py-1 rounded-full bg-white border border-slate-200 shadow-sm">
                             <Layers size={14} className="text-blue-600" />
                             <span className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">
@@ -212,14 +215,14 @@ export const ProductPhotographySection = () => {
                             </span>
                         </div>
 
-                        <h2 className="text-3xl md:text-5xl font-extrabold   leading-tight tracking-tight">
+                        <h2 className="text-3xl md:text-4xl font-extrabold   leading-tight tracking-tight">
                             One Raw Shot. <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                                 A Full Campaign.
                             </span>
                         </h2>
 
-                        <p className=" leading-relaxed max-w-lg">
+                        <p className=" leading-relaxed max-w-lg text-base">
                             Stop booking models for every SKU. Upload a single ghost-mannequin photo and our AI generates a complete gallery: studio shots, lifestyle scenes, and detail views—instantly marketplace ready.
                         </p>
 
@@ -409,7 +412,7 @@ const AdStep: FC<{ icon: any, title: string, desc: string, stepNum: string, isLa
                 <div className="absolute inset-0 bg-brand-400 blur-md opacity-0 group-hover:opacity-20 transition-opacity"></div>
             </div>
             {!isLast && (
-                <div className="w-px h-full bg-brand my-2  transition-colors"></div>
+                <div className="w-px h-full bg-brand   transition-colors"></div>
             )}
         </div>
         <div className=" ">
