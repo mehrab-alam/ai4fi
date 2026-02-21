@@ -128,7 +128,7 @@ const KeyFeatures = () => {
 													color: isActive ? "var(--foreground)" : "var(--muted-foreground)"
 												}}
 												transition={{ type: "spring", stiffness: 200, damping: 20 }}
-												className={`text-lg md:text-2xl font-extrabold whitespace-nowrap transition-colors duration-300 ${isActive ? "text-foreground" : "text-muted-foreground/30 hover:text-muted-foreground/60"}`}
+												className={`text-lg md:text-xl lg:text-2xl font-extrabold whitespace-nowrap transition-colors duration-300 ${isActive ? "text-foreground" : "text-muted-foreground/30 hover:text-muted-foreground/60"}`}
 											>
 												{feature.title}
 											</motion.span>
