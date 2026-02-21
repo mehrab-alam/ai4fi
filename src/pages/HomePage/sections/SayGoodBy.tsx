@@ -21,7 +21,7 @@ const IMAGES = [
 	},
 	{
 		id: 2,
-		src: "./good_bye_2.jpeg",
+		src: "./good_bye_02.png",
 		// src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=80",
 		alt: "Studio Portrait",
 		fromX: 60,
@@ -184,7 +184,7 @@ export default function SayGoodBySection() {
 						return (
 							<motion.div
 								key={img.id}
-								className="absolute w-[160px] md:w-[200px] lg:w-[250px] rounded-xl overflow-hidden bg-background/50 backdrop-blur-sm"
+								className="absolute w-[160px] md:w-[200px] lg:w-[15%] rounded-xl overflow-hidden bg-background/50 backdrop-blur-sm"
 								style={{
 									// width: `clamp(120px, 18vw, ${img.size}px)`,
 
@@ -205,7 +205,7 @@ export default function SayGoodBySection() {
 								<img
 									src={img.src}
 									alt={img.alt}
-									className="w-full h-full object-contain block relative z-10"
+									className="w-full h-full object-cover block relative z-10"
 									style={{ padding: "4px" }} // Padding ensures edges are never cut
 								/>
 								<div

@@ -8,23 +8,24 @@ import {
 	PhotoStudio,
 	VirtualTrialRoom,
 } from "./KeyFeatureItems";
+import { AdGeneratorSection, ProductPhotographySection, VirtualTrialHighlight } from "./TestFeature";
 
 const KeyFeatures = () => {
 	const { theme } = useTheme();
 	const features = [
 		{
 			title: "Virtual Trial Room",
-			children: <VirtualTrialRoom />,
+			children: <VirtualTrialHighlight />,
 			accentColor: "from-blue-500 to-cyan-500",
 		},
 		{
 			title: "Photo Studio",
-			children: <PhotoStudio />,
+			children: <ProductPhotographySection />,
 			accentColor: "from-purple-500 to-pink-500",
 		},
 		{
 			title: "Advertisement",
-			children: <Advertisement />,
+			children: <AdGeneratorSection />,
 			accentColor: "from-orange-500 to-red-500",
 		},
 	];

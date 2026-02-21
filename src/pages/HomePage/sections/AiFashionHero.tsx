@@ -139,82 +139,175 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 	const imageCards = [
 		{
 			id: 1,
-			src: "./AI_gen.jpeg",
-			// src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80",
+			src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80",
 			rotate: -6,
-			className: "top-10 left-10",
+			className: `
+			top-4 left-4
+			md:top-8 md:left-8
+			lg:top-10 lg:left-10
+		`,
 		},
 		{
 			id: 2,
-			src: "./3.jpeg",
-			// src: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80",
+			src: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80",
 			rotate: 3,
-			className: "top-0 left-48",
-		},
-		{
-			id: 3,
-			src: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=600&auto=format&fit=crop",
-
-			rotate: -3,
-			className: "top-12 right-20",
+			className: `
+			top-2 left-24
+			md:top-0 md:left-32
+			lg:top-0 lg:left-48
+		`,
 		},
 		{
 			id: 4,
-			src:
-				"https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=600&auto=format&fit=crop",
-
+			src: "./models/IMG_2553.JPG.jpeg",
 			rotate: -8,
-			className: "top-48 left-20",
+			className: `
+			top-32 left-6
+			md:top-40 md:left-12
+			lg:top-48 lg:left-20
+		`,
 		},
 		{
 			id: 5,
 			src: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=300&q=80",
 			rotate: 4,
-			className: "top-40 right-48",
+			className: `
+			top-28 right-16
+			md:top-36 md:right-32
+			lg:top-40 lg:right-48
+		`,
 		},
 		{
 			id: 6,
 			src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80",
 			rotate: -2,
-			className: "top-52 right-10",
+			className: `
+			top-40 right-4
+			md:top-48 md:right-8
+			lg:top-52 lg:right-10
+		`,
 		},
 		{
 			id: 7,
 			src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80",
 			rotate: 5,
-			className: "bottom-10 left-32",
+			className: `
+			bottom-4 left-12
+			md:bottom-8 md:left-24
+			lg:bottom-10 lg:left-32
+		`,
 		},
 		{
 			id: 8,
 			src: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80",
 			rotate: -4,
-			className: "bottom-12 right-24",
+			className: `
+			bottom-6 right-12
+			md:bottom-8 md:right-16
+			lg:bottom-12 lg:right-24
+		`,
 		},
 		{
 			id: 9,
-			src: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=600&auto=format&fit=crop",
-			rotate: -10,
-			className: "top-24 right-4",
+			src: "./result.png",
+			rotate: -4,
+			className: `
+			bottom-40 left-24
+			md:bottom-56 md:left-48
+			lg:bottom-72 lg:left-72
+		`,
 		},
 		{
 			id: 10,
+			src: "./models/IMG_2472.JPG.jpeg",
+			rotate: -10,
+			className: `
+			top-12 right-2
+			md:top-20 md:right-3
+			lg:top-24 lg:right-4
+		`,
+		},
+		{
+			id: 11,
 			src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop",
 			rotate: 6,
-			className: "bottom-4 left-4",
+			className: `
+			bottom-2 left-2
+			md:bottom-3 md:left-3
+			lg:bottom-4 lg:left-4
+		`,
 		},
 	];
+	// const imageCards = [
+	// 	{
+	// 		id: 1,
+	// 		src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80",
+	// 		rotate: -6,
+	// 		className: "top-10 left-10",
+	// 	},
+	// 	{
+	// 		id: 2,
+	// 		src: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80",
+	// 		rotate: 3,
+	// 		className: "top-0 left-48",
+	// 	},
 
-	// Which card is currently "on top" — cycles every 5s
-	// const [topCardIndex, setTopCardIndex] = useState(0);
+	// 	{
+	// 		id: 4,
+	// 		src:
+	// 			"./models/IMG_2553.JPG.jpeg",
+
+	// 		rotate: -8,
+	// 		className: "top-48 left-20",
+	// 	},
+	// 	{
+	// 		id: 5,
+	// 		src: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=300&q=80",
+	// 		rotate: 4,
+	// 		className: "top-40 right-48",
+	// 	},
+	// 	{
+	// 		id: 6,
+	// 		src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80",
+	// 		rotate: -2,
+	// 		className: "top-52 right-10",
+	// 	},
+	// 	{
+	// 		id: 7,
+	// 		src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80",
+	// 		rotate: 5,
+	// 		className: "bottom-10 left-32",
+	// 	},
+	// 	{
+	// 		id: 8,
+	// 		src: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80",
+	// 		rotate: -4,
+	// 		className: "bottom-12 right-24",
+	// 	},
+	// 	{
+	// 		id: 9,
+	// 		src: "./result.png",
+	// 		rotate: -4,
+	// 		className: "bottom-72 left-72",
+	// 	},
+	// 	{
+	// 		id: 10,
+	// 		src: "./models/IMG_2472.JPG.jpeg",
+	// 		rotate: -10,
+	// 		className: "top-24 right-4",
+	// 	},
+	// 	{
+	// 		id: 11,
+	// 		src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop",
+	// 		rotate: 6,
+	// 		className: "bottom-4 left-4",
+	// 	},
+	// ];
+
 	const [cards, setCards] = useState(imageCards);
 	const [direction, setDirection] = useState("idle");
 
-	// useEffect(() => {
-	// 	const interval = setInterval(() => {
-	// 		setTopCardIndex((prev) => (prev + 1) % imageCards.length);
-	// 	}, 5000);
-	// 	return () => clearInterval(interval);
-	// }, [imageCards.length]);
+
 	useEffect(() => {
 		const interval = setInterval(() => {
 			setDirection("out");
@@ -258,8 +351,8 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 				/>
 			</div>
 			{/* ================= HERO ================= */}
-			<div className="max-w-[80vw] pt-32 pb-16 md:pt-32  relative   min-h-screen mx-auto  text-[var(--foreground)] transition-colors duration-300">
-				<section className="px-6 md:px-16 relative z-[20] flex items-center justify-between lg:flex-row flex-col  lg:py-0">
+			<div className="max-w-[90vw] sm:max-w-[80vw]  pt-32 pb-16 md:pt-32  relative min-h-screen mx-auto  text-[var(--foreground)] transition-colors duration-300">
+				<section className="px-6 md:px-0 relative z-[20] flex items-center justify-between lg:flex-row flex-col  lg:py-0">
 					{/* LEFT */}
 					<div className="space-y-8 lg:w-1/2">
 						<motion.div
@@ -327,7 +420,7 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 					</div>
 
 					{/* RIGHT — Card Shuffle */}
-					<div className="w-full lg:w-1/2 relative h-[500px] mt-16 lg:mt-0 hidden md:block max-w-[600px] mx-auto">
+					<div className="w-full lg:w-1/2  relative h-[500px] mt-16 lg:mt-0 md:block max-w-full md:max-w-[600px] mx-auto">
 						{cards.map((card, i) => {
 							const isTop = i === 0;
 							const isLeft = card.className.includes("left");
@@ -336,7 +429,7 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 							return (
 								<motion.div
 									key={card.id}
-									className={`absolute bg-background p-2 pb-6 rounded-lg shadow-xl ${card.className}`}
+									className={`absolute bg-background p-2 pb-6 w-[30%] md:w-[30%] lg:w-[25%] h-auto rounded-lg shadow-xl ${card.className}`}
 									animate={{
 										x: isTop && direction === "out" ? exitX : 0,
 										scale: i === 0 ? 1 : 0.95,
@@ -347,7 +440,7 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 										ease: [0.22, 1, 0.36, 1],
 									}}
 									style={{
-										width: "clamp(130px, 15vw, 190px)",
+										// width: "clamp(130px, 15vw, 190px)",
 										zIndex: cards.length - i,
 									}}
 								>
@@ -355,7 +448,7 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 										<img
 											src={card.src}
 											alt="Model"
-											className="w-full h-full object-cover"
+											className="w-full position-top h-full object-cover"
 										/>
 									</div>
 								</motion.div>
