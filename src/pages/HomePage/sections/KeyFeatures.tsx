@@ -1,13 +1,8 @@
-import { useState, useRef } from "react";
-import { TrendingUp, ImageIcon, Paintbrush, Upload, Video } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { TrendingUp } from "lucide-react";
 import { useTheme } from "../../../context/ThemeContext";
 import { motion } from "motion/react";
 import SectionHeader from "./SectionHeader";
-import {
-	Advertisement,
-	PhotoStudio,
-	VirtualTrialRoom,
-} from "./KeyFeatureItems";
 import { AdGeneratorSection, ProductPhotographySection, VirtualTrialHighlight } from "./TestFeature";
 
 const KeyFeatures = () => {
@@ -31,77 +26,138 @@ const KeyFeatures = () => {
 	];
 	const [activeIndex, setActiveIndex] = useState(0);
 	const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
+	const isScrolling = useRef(false);
 
-	// Removed Scroll-synced tab switching via IntersectionObserver
-	// as per user request to "stop auto moving"
+	// Scroll-synced tab switching via IntersectionObserver
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				if (isScrolling.current) return;
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						const index = sectionRefs.current.findIndex((ref) => ref === entry.target);
+						if (index !== -1) {
+							// For sticky stacking, the last one intersecting at the top is the active one
+							// But with 0.5 threshold, it works reasonably
+							setActiveIndex(index);
+						}
+					}
+				});
+			},
+			{
+				threshold: 0.2,
+				rootMargin: "-10% 0px -40% 0px",
+			}
+		);
+
+		sectionRefs.current.forEach((ref) => {
+			if (ref) observer.observe(ref);
+		});
+
+		return () => observer.disconnect();
+	}, []);
 
 	const handleTabClick = (index: number) => {
 		setActiveIndex(index);
+		isScrolling.current = true;
 		sectionRefs.current[index]?.scrollIntoView({
 			behavior: "smooth",
 			block: "start",
-
 		});
+
+		setTimeout(() => {
+			isScrolling.current = false;
+		}, 1000);
 	};
 
 	return (
-		<div className="min-h-screen bg-background dark:bg-gradient-to-br from-slate-50 to-slate-100 p-8">
-			{theme == "dark" && (
-				<div className="absolute inset-0  dark:bg-gradient-to-br from-cyan-950 via-black to-sky-950"></div>
+		<div className="relative min-h-screen bg-background dark:bg-gradient-to-br from-slate-50 to-slate-100 overflow-clip">
+			{theme === "dark" && (
+				<div className="absolute inset-0 dark:bg-gradient-to-br from-cyan-950 via-black to-sky-950"></div>
 			)}
-			<div className="max-w-[100vw] mx-auto ">
-				{/* Sticky Header + Tabs */}
-				<div className="sticky top-[-260px] z-20 bg-background pb-0 pt-2 ">
-					<SectionHeader
-						title="Key Features"
-						description="Transform your operations with intelligent automation"
-						subtitle="Why Choose Us"
-						icon={<TrendingUp className="text-muted-foreground" size={18} />}
-					/>
 
-					{/* Navigation Tabs */}
-					<div className="flex justify-center gap-4 overflow-x-auto pb-2">
+			<div className="relative z-10 max-w-full mx-auto px-8 py-20 flex flex-col">
+				<SectionHeader
+					title="Key Features"
+					description="Transform your operations with intelligent automation"
+					subtitle="Why Choose Us"
+					icon={<TrendingUp className="text-muted-foreground" size={18} />}
+				/>
+
+				{/* Layout Container */}
+				<div className="flex flex-col md:flex-row gap-4 items-start">
+
+					{/* Left Content (Tabs) - Fixed/Sticky */}
+					<aside className="w-full md:w-[35%] lg:w-[25%] sticky top-[100px] md:top-1/2 md:-translate-y-1/2 z-30 bg-background/5 md:bg-transparent backdrop-blur-md md:backdrop-blur-none py-6 md:py-0 transition-all duration-300">
+						<div className="flex flex-row md:flex-col gap-6 md:gap-10 overflow-x-auto md:overflow-visible px-4 md:px-0 scrollbar-hide">
+							{features.map((feature, index) => {
+								const isActive = activeIndex === index;
+								return (
+									<button
+										key={index}
+										onClick={() => handleTabClick(index)}
+										className="group relative flex items-center gap-4 py-2 flex-shrink-0 md:flex-shrink transition-all duration-500"
+									>
+										{/* Desktop Active Line */}
+										<motion.div
+											className="hidden md:block absolute left-[-20px] w-1.5 rounded-full bg-gradient-to-b from-brand-color to-blue-600"
+											initial={false}
+											animate={{
+												height: isActive ? "100%" : "0%",
+												opacity: isActive ? 1 : 0
+											}}
+											transition={{ type: "spring", stiffness: 300, damping: 30 }}
+										/>
+
+										<div className="flex flex-col items-start gap-1">
+											<motion.span
+												animate={{
+													scale: isActive ? 1.25 : 1,
+													translateX: isActive && !window.matchMedia('(max-width: 768px)').matches ? 15 : 0,
+													color: isActive ? "var(--foreground)" : "var(--muted-foreground)"
+												}}
+												transition={{ type: "spring", stiffness: 200, damping: 20 }}
+												className={`text-lg md:text-3xl font-extrabold whitespace-nowrap transition-colors duration-300 ${isActive ? "text-foreground" : "text-muted-foreground/30 hover:text-muted-foreground/60"}`}
+											>
+												{feature.title}
+											</motion.span>
+
+											{/* Mobile Active Underline */}
+											<motion.div
+												initial={false}
+												animate={{
+													width: isActive ? "100%" : "0%",
+													opacity: isActive ? 1 : 0
+												}}
+												className={`h-1 mt-1 rounded-full bg-gradient-to-r ${feature.accentColor} md:hidden`}
+											/>
+										</div>
+									</button>
+								);
+							})}
+							
+						</div>
+					</aside>
+
+					{/* Right Content (Features) - Scrolling with Sticky Stacking */}
+					<div className="w-full md:w-[65%] lg:w-[75%] relative">
 						{features.map((feature, index) => (
-							<button
+							<div
 								key={index}
-								onClick={() => handleTabClick(index)}
-								className={`flex items-center gap-3 px-6 py-3 rounded-xl whitespace-nowrap transition-all duration-300 ${activeIndex === index
-									? "bg-brand-color shadow-lg scale-105 text-white border border-brand-color"
-									: "bg-mute-secondary shodow-lg border border-border hover:bg-secondary/80"
-									}`}
+								ref={(el) => {
+									sectionRefs.current[index] = el;
+								}}
+								className="sticky top-[100px] w-full mb-[20vh] md:mb-[50vh] last:mb-0"
+								style={{
+									zIndex: index + 10,
+								}}
 							>
-								<div
-									className={`w-2 h-2 rounded-full bg-gradient-to-r ${feature.accentColor}`}
-								/>
-								<span
-									className={`font-medium ${activeIndex === index
-										? "text-white"
-										: "text-muted-foreground"
-										}`}
-								>
-									{feature.title}
-								</span>
-							</button>
+								<div className="rounded-3xl overflow-hidden glass-card-heavy border border-white/10 shadow-2xl backdrop-blur-xl bg-background/40">
+									{feature.children}
+								</div>
+							</div>
 						))}
 					</div>
-				</div>
-
-				{/* Scrollable Content Sections */}
-				<div className="mt-8 relative z-[1] flex flex-col items-center max-w-[90vw] mx-auto pb-[10vh]">
-					{features.map((feature, index) => (
-						<div
-							key={index}
-							ref={(el) => {
-								sectionRefs.current[index] = el;
-							}}
-							className="sticky top-[100px] w-full  scroll-mt-[200px]"
-							style={{
-								zIndex: index + 10,
-							}}
-						>
-							{feature.children}
-						</div>
-					))}
 				</div>
 			</div>
 		</div>
@@ -109,3 +165,4 @@ const KeyFeatures = () => {
 };
 
 export default KeyFeatures;
+

@@ -92,43 +92,7 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 		return () => clearTimeout(timeout);
 	}, []);
 
-	const categories = [
-		{
-			label: "Model",
-			images: [
-				// "https://images.unsplash.com/photo-1539008835154-33321da040c1?q=80&w=600&auto=format&fit=crop",
-				// "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600&auto=format&fit=crop",
-				// "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop",
-				"./AI_gen.jpeg",
-				"./3.jpeg",
-				"./2.jpeg",
-			],
-		},
-		{
-			label: "Product",
-			images: [
-				"https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=600&auto=format&fit=crop",
-				"https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=600&auto=format&fit=crop",
-				"https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop",
-			],
-		},
-		{
-			label: "Ad",
-			images: [
-				"https://images.unsplash.com/photo-1601924994987-69e26d50dc26?q=80&w=600&auto=format&fit=crop",
-				"https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=600&auto=format&fit=crop",
-				"https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=600&auto=format&fit=crop",
-			],
-		},
-		{
-			label: "Banner",
-			images: [
-				"https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=600&auto=format&fit=crop",
-				"https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=600&auto=format&fit=crop",
-				"https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=600&auto=format&fit=crop",
-			],
-		},
-	];
+
 	const partners = [
 		SvgIcons.amazone,
 		SvgIcons.google,
@@ -222,7 +186,7 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 			src: "./models/IMG_2472.JPG.jpeg",
 			rotate: -10,
 			className: `
-			top-12 right-2
+			top-12 -right-8
 			md:top-20 md:right-3
 			lg:top-24 lg:right-4
 		`,
@@ -238,71 +202,6 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 		`,
 		},
 	];
-	// const imageCards = [
-	// 	{
-	// 		id: 1,
-	// 		src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80",
-	// 		rotate: -6,
-	// 		className: "top-10 left-10",
-	// 	},
-	// 	{
-	// 		id: 2,
-	// 		src: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80",
-	// 		rotate: 3,
-	// 		className: "top-0 left-48",
-	// 	},
-
-	// 	{
-	// 		id: 4,
-	// 		src:
-	// 			"./models/IMG_2553.JPG.jpeg",
-
-	// 		rotate: -8,
-	// 		className: "top-48 left-20",
-	// 	},
-	// 	{
-	// 		id: 5,
-	// 		src: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=300&q=80",
-	// 		rotate: 4,
-	// 		className: "top-40 right-48",
-	// 	},
-	// 	{
-	// 		id: 6,
-	// 		src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80",
-	// 		rotate: -2,
-	// 		className: "top-52 right-10",
-	// 	},
-	// 	{
-	// 		id: 7,
-	// 		src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80",
-	// 		rotate: 5,
-	// 		className: "bottom-10 left-32",
-	// 	},
-	// 	{
-	// 		id: 8,
-	// 		src: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80",
-	// 		rotate: -4,
-	// 		className: "bottom-12 right-24",
-	// 	},
-	// 	{
-	// 		id: 9,
-	// 		src: "./result.png",
-	// 		rotate: -4,
-	// 		className: "bottom-72 left-72",
-	// 	},
-	// 	{
-	// 		id: 10,
-	// 		src: "./models/IMG_2472.JPG.jpeg",
-	// 		rotate: -10,
-	// 		className: "top-24 right-4",
-	// 	},
-	// 	{
-	// 		id: 11,
-	// 		src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop",
-	// 		rotate: 6,
-	// 		className: "bottom-4 left-4",
-	// 	},
-	// ];
 
 	const [cards, setCards] = useState(imageCards);
 	const [direction, setDirection] = useState("idle");
@@ -420,11 +319,11 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 					</div>
 
 					{/* RIGHT — Card Shuffle */}
-					<div className="w-full lg:w-1/2  relative h-[500px] mt-16 lg:mt-0 md:block max-w-full md:max-w-[600px] mx-auto">
+					<div className="w-full lg:w-1/2  relative h-[500px] mt-16 lg:mt-0 md:block max-w-full md:max-w-full mx-auto">
 						{cards.map((card, i) => {
 							const isTop = i === 0;
 							const isLeft = card.className.includes("left");
-							const exitX = isLeft ? -350 : 350;
+							const exitX = isLeft ? -300 : 230;
 
 							return (
 								<motion.div
@@ -440,7 +339,6 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 										ease: [0.22, 1, 0.36, 1],
 									}}
 									style={{
-										// width: "clamp(130px, 15vw, 190px)",
 										zIndex: cards.length - i,
 									}}
 								>

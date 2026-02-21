@@ -503,4 +503,20 @@ select option:checked {
 	.animate-border-glow {
 		animation: border-glow-pulse 3s infinite ease-in-out;
 	}
+
+	.scrollbar-hide::-webkit-scrollbar {
+		display: none;
+	}
+
+	.scrollbar-hide {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+
+	.glass-card-heavy {
+		background: color-mix(in srgb, var(--background), transparent 20%);
+		backdrop-filter: blur(20px) saturate(180%);
+		-webkit-backdrop-filter: blur(20px) saturate(180%);
+		border: 1px solid color-mix(in srgb, var(--border), transparent 80%);
+	}
 }
