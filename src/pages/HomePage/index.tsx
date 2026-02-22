@@ -9,6 +9,7 @@ import AboutUs from "./sections/AboutUs";
 import KeyFeatures from "./sections/KeyFeatures";
 import AiFashionHero from "./sections/AiFashionHero";
 import SayGoodBySection from "./sections/SayGoodBy";
+import TestimonialsStacked from "./sections/Testimonial";
 
 
 
@@ -22,6 +23,7 @@ const HomePage: FC = () => {
 			<DemoSection />
 			<Features />
 			<FeaturedGallery />
+			<TestimonialsStacked />
 			<AboutUs />
 			<CTASection />
 		</div>
