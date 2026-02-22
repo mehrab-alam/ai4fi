@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { motion, useScroll, useTransform } from "motion/react";
 import SectionHeader from "./SectionHeader";
+import { useMediaQuery } from "../../../components/useMediaQuery";
 
 const VideoModal: FC<{ isOpen: boolean; onClose: () => void }> = ({
 	isOpen,
@@ -42,6 +43,7 @@ const VideoModal: FC<{ isOpen: boolean; onClose: () => void }> = ({
 
 const DemoSection = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const isMobile = useMediaQuery("(max-width: 1024px)");
 
 	const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -109,7 +111,7 @@ const DemoSection = () => {
 	return (
 		<section
 			ref={sectionRef}
-			className="relative h-[180vh] bg-background overflow-hidden lg:overflow-clip"
+			className="relative lg:h-[180vh] h-auto bg-background overflow-hidden lg:overflow-clip py-20 lg:py-0"
 		>
 			<VideoModal
 				isOpen={isModalOpen}
@@ -117,7 +119,7 @@ const DemoSection = () => {
 			/>
 
 			{/* Sticky Wrapper */}
-			<div className="lg:sticky top-[40px] h-screen flex items-center">
+			<div className="lg:sticky top-[40px] lg:h-screen flex items-center">
 				<div className="max-w-7xl mx-auto px-4 sm:px-8 w-full">
 
 					{/* Header */}
@@ -136,7 +138,10 @@ const DemoSection = () => {
 						{/* LEFT SIDE */}
 						<motion.div
 							className="w-full lg:w-1/2"
-							style={{ x: contentX, opacity: contentOpacity }}
+							style={{
+								x: isMobile ? 0 : contentX,
+								opacity: isMobile ? 1 : contentOpacity
+							}}
 						>
 							<div className="space-y-8">
 								<h3 className="text-2xl font-bold">
@@ -172,7 +177,10 @@ const DemoSection = () => {
 						{/* RIGHT SIDE */}
 						<motion.div
 							className="w-full lg:w-1/2"
-							style={{ x: videoX, opacity: videoOpacity }}
+							style={{
+								x: isMobile ? 0 : videoX,
+								opacity: isMobile ? 1 : videoOpacity
+							}}
 						>
 							<div
 								className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900 aspect-video cursor-pointer"

@@ -44,7 +44,7 @@ const ProcessStep: FC<{ icon: any, title: string, desc: string, stepNum: number 
 /* --- MAIN COMPONENT --- */
 export const VirtualTrialHighlight = () => {
     return (
-        <section className="py-10 h-[85vh] flex flex-col justify-center items-center px-6 bg-background">
+        <section className="py-10 h-full md:h-[85vh] flex flex-col justify-center items-center px-6 bg-background">
 
             <div className="max-w-full mx-auto">
 
@@ -202,7 +202,7 @@ const generatedAssets = [
 
 export const ProductPhotographySection = () => {
     return (
-        <section className="py-10 h-[85vh] flex flex-col justify-center items-center  px-6 bg-background border-b border-border font-sans">
+        <section className="py-10 h-full md:h-[85vh] flex flex-col justify-center items-center  px-6 bg-background border-b border-border font-sans">
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 place-items-center gap-16 lg:gap-10 items-center ">
 
@@ -429,7 +429,7 @@ const AdStep: FC<{ icon: any, title: string, desc: string, stepNum: string, isLa
 
 export const AdGeneratorSection = () => {
     return (
-        <section className="py-10 h-[85vh] flex flex-col items-center justify-center  px-6 bg-background border-b border-border font-sans relative overflow-hidden">
+        <section className="py-10 h-full md:h-[85vh] flex flex-col items-center justify-center  px-6 bg-background border-b border-border font-sans relative overflow-hidden">
             <style>{style}</style>
 
             {/* Background Ambience */}
@@ -507,7 +507,7 @@ export const AdGeneratorSection = () => {
                             </div>
 
                             {/* 2. Main Viewport (The Ad) */}
-                            <div className="relative aspect-[4/5] w-[20vw] bg-card overflow-hidden">
+                            <div className="relative aspect-[4/5] w-[75vw] md:w-[20vw] bg-card overflow-hidden">
                                 {/* Simulated Video Content */}
                                 <img
                                     src="https://images.unsplash.com/photo-1616150638538-2b6a6950be36?auto=format&fit=crop&w=800&q=80"

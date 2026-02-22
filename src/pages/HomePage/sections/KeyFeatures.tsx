@@ -4,9 +4,11 @@ import { useTheme } from "../../../context/ThemeContext";
 import { motion } from "motion/react";
 import SectionHeader from "./SectionHeader";
 import { AdGeneratorSection, ProductPhotographySection, VirtualTrialHighlight } from "./TestFeature";
+import { useMediaQuery } from "../../../components/useMediaQuery";
 
 const KeyFeatures = () => {
 	const { theme } = useTheme();
+	const isMobile = useMediaQuery("(max-width: 768px)");
 	const features = [
 		{
 			title: "Virtual Trial Room",
@@ -31,7 +33,7 @@ const KeyFeatures = () => {
 	// Scroll-synced tab switching logic
 	useEffect(() => {
 		const handleScroll = () => {
-			if (isScrolling.current) return;
+			if (isScrolling.current || isMobile) return;
 
 			// The threshold where a feature becomes "active" (sticky point + buffer)
 			const STICKY_THRESHOLD = 200;
@@ -57,7 +59,7 @@ const KeyFeatures = () => {
 		handleScroll();
 
 		return () => window.removeEventListener("scroll", handleScroll);
-	}, [activeIndex]);
+	}, [activeIndex, isMobile]);
 
 	const handleTabClick = (index: number) => {
 		setActiveIndex(index);
@@ -66,7 +68,7 @@ const KeyFeatures = () => {
 		// Adjust scroll position to account for sticky offset
 		const targetElement = sectionRefs.current[index];
 		if (targetElement) {
-			const offset = 120; // Matches our sticky top + buffer
+			const offset = isMobile ? 80 : 120; // Matches our sticky top + buffer
 			const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
 			const offsetPosition = elementPosition - offset;
 
@@ -99,7 +101,7 @@ const KeyFeatures = () => {
 				<div className="flex  relative flex-col md:flex-row gap-4 items-start">
 
 					{/* Left Content (Tabs) - Fixed/Sticky */}
-					<aside className="w-full mt-[30vh] md:w-[35%] lg:w-[25%] sticky top-[100px] md:top-[40vh] z-30 bg-background/5 md:bg-transparent backdrop-blur-md md:backdrop-blur-none py-6 md:py-0 transition-all duration-300">
+					{!isMobile && <aside className={`w-full md:w-[35%] lg:w-[25%] z-30 transition-all duration-300 ${isMobile ? "mt-10 static" : "mt-[30vh] sticky top-[40vh] bg-background/5 md:bg-transparent backdrop-blur-md md:backdrop-blur-none py-6 md:py-0"}`}>
 						<div className="flex items-center justify-center  flex-row md:flex-col gap-6 md:gap-10 overflow-x-auto md:overflow-visible px-4 md:px-0 scrollbar-hide">
 							{features.map((feature, index) => {
 								const isActive = activeIndex === index;
@@ -124,7 +126,7 @@ const KeyFeatures = () => {
 											<motion.span
 												animate={{
 													scale: isActive ? 1.25 : 1,
-													translateX: isActive && !window.matchMedia('(max-width: 768px)').matches ? 15 : 0,
+													translateX: isActive && !isMobile ? 15 : 0,
 													color: isActive ? "var(--foreground)" : "var(--muted-foreground)"
 												}}
 												transition={{ type: "spring", stiffness: 200, damping: 20 }}
@@ -148,7 +150,7 @@ const KeyFeatures = () => {
 							})}
 
 						</div>
-					</aside>
+					</aside>}
 
 					{/* Right Content (Features) - Scrolling with Sticky Stacking */}
 					<div className="w-full md:w-[65%] lg:w-[75%] relative pb-[20vh]">
@@ -158,9 +160,9 @@ const KeyFeatures = () => {
 								ref={(el) => {
 									sectionRefs.current[index] = el;
 								}}
-								className="sticky top-[120px] w-full mb-[30vh] md:mb-[50vh] last:mb-0"
+								className={`w-full mb-12 md:mb-[50vh] last:mb-0 ${isMobile ? "" : "sticky top-[120px]"}`}
 								style={{
-									zIndex: index + 10,
+									zIndex: isMobile ? 1 : index + 10,
 								}}
 							>
 								<div className="rounded-3xl overflow-hidden glass-card-heavy border border-white/10 shadow-2xl backdrop-blur-xl bg-background/40">
@@ -168,7 +170,7 @@ const KeyFeatures = () => {
 								</div>
 							</div>
 						))}
-						<div className="h-[20vh]"></div>
+						<div className="h-0 md:h-[20vh]"></div>
 					</div>
 				</div>
 			</div>
