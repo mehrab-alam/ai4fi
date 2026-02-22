@@ -32,150 +32,159 @@ interface TestimonialCard {
 // --- Data ---
 const SECTIONS: Section[] = [
     {
-        id: "fitness-first",
-        label: "Fitness First",
-        title: "Fitness Transformation Pics",
+        id: "ai-stylist",
+        label: "AI Virtual Styler",
+        title: "Virtual Try-On Transformations",
         items: [
             {
-                id: "f1",
-                images: ["#c8b89a", "#b5a08a", "#d4c4ae"],
+                id: "s1",
+                images: [
+                    "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80"
+                ],
                 span: "tall",
             },
             {
-                id: "f2",
-                images: ["#3d5a3e", "#2e4430", "#4a6e4b"],
+                id: "s2",
+                images: ["https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80"],
                 testimonial: {
-                    time: "2 min",
-                    title: "Edie",
-                    text: "I noticed such a transformation in my body confidence. The clothes just work with your shape, not against it.",
-                    author: "Edie",
+                    time: "Instant",
+                    title: "Sarah J.",
+                    text: "The AI virtual try-on is incredibly accurate. I can see how clothes fit my body without ever leaving home. It has redefined how I shop.",
+                    author: "Sarah J.",
                 },
             },
             {
-                id: "f3",
-                images: ["#8b5a3c", "#7a4e32", "#9d6648"],
+                id: "s3",
+                images: [
+                    "https://images.unsplash.com/photo-1445205170230-053b83e26dd7?auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=600&q=80"
+                ],
                 span: "wide",
             },
             {
-                id: "f4",
-                images: ["#1a1a1a", "#2d2d2d", "#111"],
+                id: "s4",
+                images: ["https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80"],
             },
             {
-                id: "f5",
-                images: ["#6b7c5a", "#5a6b49", "#7d8e6b"],
+                id: "s5",
+                images: ["https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80"],
                 span: "tall",
             },
             {
+                id: "s6",
+                images: ["https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=600&q=80"],
+            },
+            {
+                id: "s7",
+                images: ["https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80"],
+                testimonial: {
+                    time: "Real-time",
+                    title: "Style Assist",
+                    text: "AI4FI's stylist suggests outfits based on my body type and skin tone. It's like having a personal fashion consultant 24/7.",
+                    author: "Marcus K.",
+                },
+            },
+            {
+                id: "s8",
+                images: ["https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80"],
+                span: "wide",
+            },
+        ],
+    },
+    {
+        id: "smart-fitness",
+        label: "Smart Fitness",
+        title: "AI-Driven Body Progress",
+        items: [
+            {
+                id: "f1",
+                images: [
+                    "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=600&q=80",
+                    "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=600&q=80"
+                ],
+                testimonial: {
+                    time: "12 Weeks",
+                    title: "Transformation",
+                    text: "The AI tracking caught subtle changes in my form that I would have missed. In 12 weeks, I've seen more progress than 2 years of manual logging.",
+                    author: "Elena R.",
+                },
+                span: "wide",
+            },
+            {
+                id: "f2",
+                images: ["https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80"],
+            },
+            {
+                id: "f3",
+                images: ["https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80"],
+                span: "tall",
+            },
+            {
+                id: "f4",
+                images: ["https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=600&q=80"],
+            },
+            {
+                id: "f5",
+                images: ["https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=600&q=80"],
+            },
+            {
                 id: "f6",
-                images: ["#c4a882", "#d4b892", "#b49872"],
+                images: ["https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=600&q=80"],
+                testimonial: {
+                    time: "Daily",
+                    title: "Coach AI",
+                    text: "Having an AI coach that truly understands my body's limits and potential has changed the game. It’s personalized fitness at its peak.",
+                },
+                span: "wide",
             },
             {
                 id: "f7",
-                images: ["#2c3e50", "#34495e", "#1a2b3c"],
+                images: ["https://images.unsplash.com/photo-1599058917232-d750c1859d7c?auto=format&fit=crop&w=600&q=80"],
                 testimonial: {
-                    time: "5 min",
-                    title: "Sarah",
-                    text: "Finally found pieces that make me feel powerful in my own skin. The quality is absolutely unmatched.",
-                    author: "Sarah",
+                    time: "Efficiency",
+                    title: "Max Results",
+                    text: "No more wasted sets. The AI optimizes my rest times and intensity for maximum efficiency. My body has never looked better.",
                 },
             },
             {
                 id: "f8",
-                images: ["#7bafd4", "#6a9ec3", "#8cc0e5"],
-                span: "wide",
-            },
-        ],
-    },
-    {
-        id: "body-positive",
-        label: "Body Positive",
-        title: "Body Positive Pics",
-        items: [
-            {
-                id: "b1",
-                images: ["#1a1a1a", "#2a2a2a", "#0d0d0d"],
-                testimonial: {
-                    time: "1 Day",
-                    title: "Maya",
-                    text: "Wearing AYNA for just one day changed how I carry myself. There's something about the cut that makes every body type look incredible. I've never received so many compliments.",
-                    author: "Maya",
-                },
-                span: "wide",
-            },
-            {
-                id: "b2",
-                images: ["#d4a574", "#c4956a", "#e4b584"],
-            },
-            {
-                id: "b3",
-                images: ["#4a7c59", "#3a6c49", "#5a8c69"],
-                span: "tall",
-            },
-            {
-                id: "b4",
-                images: ["#c9b8a8", "#b9a898", "#d9c8b8"],
-            },
-            {
-                id: "b5",
-                images: ["#8c4a2f", "#7c3a1f", "#9c5a3f"],
-            },
-            {
-                id: "b6",
-                images: ["#2d4a6b", "#1d3a5b", "#3d5a7b"],
-                testimonial: {
-                    time: "3 Weeks",
-                    title: "Priya",
-                    text: "Three weeks of wearing AYNA and I genuinely don't want to go back to anything else. The fabric breathes beautifully.",
-                },
-                span: "wide",
-            },
-            {
-                id: "b7",
-                images: ["#6b5b8c", "#5b4b7c", "#7b6b9c"],
-                testimonial: {
-                    time: "10%",
-                    title: "Discount",
-                    text: "Friends kept asking where I got my outfits — I told them all. Three of them ordered already! Quality that speaks for itself.",
-                },
-            },
-            {
-                id: "b8",
-                images: ["#c4d4b4", "#b4c4a4", "#d4e4c4"],
+                images: ["https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=600&q=80"],
                 span: "tall",
             },
         ],
     },
     {
-        id: "before-after",
-        label: "Before & After",
-        title: "Before & After Pics",
+        id: "tech-integration",
+        label: "Tech Showcase",
+        title: "Seamless Tech Integration",
         items: [
             {
-                id: "ba1",
-                images: ["#e8d5c0", "#d8c5b0", "#f8e5d0"],
+                id: "t1",
+                images: ["https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&q=80"],
                 span: "tall",
             },
             {
-                id: "ba2",
-                images: ["#2a3a4a", "#1a2a3a", "#3a4a5a"],
+                id: "t2",
+                images: ["https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80"],
             },
             {
-                id: "ba3",
-                images: ["#a04040", "#904040", "#b05050"],
+                id: "t3",
+                images: ["https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=600&q=80"],
                 span: "wide",
             },
             {
-                id: "ba4",
-                images: ["#5a7a5a", "#4a6a4a", "#6a8a6a"],
+                id: "t4",
+                images: ["https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&w=600&q=80"],
                 testimonial: {
-                    time: "6 Months",
-                    title: "Zara",
-                    text: "Six months ago I avoided mirrors. Now I seek them out. AYNA helped me fall back in love with dressing.",
+                    time: "Future",
+                    title: "Integrated AI",
+                    text: "The bridge between fashion and biometric data. AI4FI is building the future of personalized lifestyle technology.",
                 },
             },
             {
-                id: "ba5",
-                images: ["#c8a060", "#b89050", "#d8b070"],
+                id: "t5",
+                images: ["https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80"],
             },
         ],
     },
@@ -240,12 +249,16 @@ function ImageCard({ card }: { card: TestimonialCard }) {
         >
             {/* Image background with fade */}
             <div
-                className="absolute inset-0 transition-all duration-500"
-                style={{
-                    backgroundColor: card.images[currentIndex],
-                    opacity: hovered ? opacity : 1,
-                }}
-            />
+                className="absolute inset-0 transition-all duration-500 bg-muted"
+            >
+                <img
+                    src={card.images[currentIndex]}
+                    alt=""
+                    className="w-full h-full object-cover transition-opacity duration-300"
+                    style={{ opacity: hovered ? opacity : 1 }}
+                />
+            </div>
+
 
             {/* Subtle noise texture overlay */}
             <div
@@ -263,9 +276,10 @@ function ImageCard({ card }: { card: TestimonialCard }) {
                             key={i}
                             className="w-1 h-1 rounded-full transition-all duration-300"
                             style={{
-                                backgroundColor: i === currentIndex ? "#fff" : "rgba(255,255,255,0.4)",
+                                backgroundColor: i === currentIndex ? "var(--brand)" : "rgba(255,255,255,0.4)",
                                 transform: i === currentIndex ? "scale(1.4)" : "scale(1)",
                             }}
+
                         />
                     ))}
                 </div>
@@ -297,15 +311,20 @@ function TestimonialOverlay({ card }: { card: TestimonialCard }) {
         >
             {/* BG image */}
             <div
-                className="absolute inset-0 transition-all duration-500"
-                style={{
-                    backgroundColor: card.images[currentIndex],
-                    opacity: hovered ? opacity : 1,
-                }}
-            />
+                className="absolute inset-0 transition-all duration-500 bg-muted"
+            >
+                <img
+                    src={card.images[currentIndex]}
+                    alt=""
+                    className="w-full h-full object-cover transition-opacity duration-300"
+                    style={{ opacity: hovered ? opacity : 1 }}
+                />
+            </div>
+
 
             {/* Dark overlay for text */}
-            <div className="absolute inset-0 bg-black/70" />
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+
 
             {/* Content */}
             {card.testimonial && (
@@ -313,16 +332,18 @@ function TestimonialOverlay({ card }: { card: TestimonialCard }) {
                     <div>
                         <span
                             className="text-xs font-bold tracking-widest uppercase mb-1 block"
-                            style={{ color: "#e8854a" }}
+                            style={{ color: "var(--brand)" }}
                         >
+
                             {card.testimonial.time}
                         </span>
                         <h4 className="text-white font-semibold text-sm mb-2">
                             {card.testimonial.title}
                         </h4>
-                        <p className="text-gray-300 text-xs leading-relaxed">
+                        <p className="text-gray-200 text-xs leading-relaxed">
                             {card.testimonial.text}
                         </p>
+
                     </div>
                     {card.testimonial.author && (
                         <span className="text-gray-400 text-xs mt-3">
@@ -340,9 +361,10 @@ function TestimonialOverlay({ card }: { card: TestimonialCard }) {
                             key={i}
                             className="w-1 h-1 rounded-full transition-all duration-300"
                             style={{
-                                backgroundColor: i === currentIndex ? "#e8854a" : "rgba(255,255,255,0.3)",
+                                backgroundColor: i === currentIndex ? "var(--brand)" : "rgba(255,255,255,0.3)",
                                 transform: i === currentIndex ? "scale(1.4)" : "scale(1)",
                             }}
+
                         />
                     ))}
                 </div>
@@ -358,19 +380,19 @@ function TestimonialSection({ section }: { section: Section }) {
     const testimonialCards = section.items.filter((c) => c.testimonial);
 
     return (
-        <div id={section.id} className="mb-24 scroll-mt-8">
+        <div id={section.id} className="mb-24 scroll-mt-20">
             {/* Section title */}
-            <div className="mb-8 border-b border-gray-200 pb-4">
-                <p className="text-xs tracking-[0.2em] uppercase text-gray-400 mb-1 font-medium">
-                    AYNA
+            <div className="mb-10 border-b border-border pb-6">
+                <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-2 font-bold text-brand">
+                    AI4FI SHOWCASE
                 </p>
                 <h2
-                    className="text-xl font-bold tracking-tight"
-                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                    className="text-3xl font-bold tracking-tight text-foreground"
                 >
                     {section.title}
                 </h2>
             </div>
+
 
             {/* Masonry-style grid */}
             <div className="grid grid-cols-4 gap-3 mb-6">
@@ -410,24 +432,17 @@ function Sidebar({
 }) {
     return (
         <nav
-            className="fixed w-[300px] z-[40] border border-l-0 border-t-0 border-r-border top-[80px] p-6 bottom-0 h-screen "
-            style={{
-
-
-                transform: "translateY(0%)",
-
-                zIndex: 40,
-            }}
+            className="fixed w-[300px] z-[40] border-r border-border top-[80px] p-8 bottom-0 h-[calc(100vh-80px)] bg-background/50 backdrop-blur-md hidden lg:block"
         >
-            <div className="mb-6">
-                <p className=" uppercase">
-                    Browse
+            <div className="mb-10">
+                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-bold mb-1">
+                    Discovery
                 </p>
-                <h4
-                >
-                    Real Results
+                <h4 className="text-2xl font-bold text-foreground">
+                    Our <span className="text-brand-gradient">Showcase</span>
                 </h4>
             </div>
+
 
             <ul className="space-y-1">
                 {sections.map((section) => {
@@ -442,21 +457,22 @@ function Sidebar({
                                 <span
                                     className="block h-px transition-all duration-400 shrink-0"
                                     style={{
-                                        width: isActive ? 24 : 8,
-                                        backgroundColor: isActive ? "#e8854a" : "#d1d5db",
+                                        width: isActive ? 32 : 12,
+                                        backgroundColor: isActive ? "var(--brand)" : "var(--border)",
                                         transitionDuration: "400ms",
                                     }}
                                 />
                                 <span
-                                    className="text-2xl transition-all duration-300"
+                                    className="text-xl transition-all duration-300"
                                     style={{
-                                        color: isActive ? "#1a1a1a" : "#9ca3af",
-                                        fontWeight: isActive ? 600 : 400,
+                                        color: isActive ? "var(--foreground)" : "var(--muted-foreground)",
+                                        fontWeight: isActive ? 700 : 500,
                                         letterSpacing: isActive ? "0.02em" : "0.05em",
                                     }}
                                 >
                                     {section.label}
                                 </span>
+
                             </button>
                         </li>
                     );
@@ -506,26 +522,26 @@ export default function ClientShowcase() {
 
     return (
         <div
-            className="min-h-screen"
-
+            className="min-h-screen bg-background text-foreground transition-colors duration-300 font-sans"
         >
-            {/* Font imports */}
+            {/* Custom Styles */}
             <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
-
-        * { box-sizing: border-box; }
-
-        .scroll-mt-8 { scroll-margin-top: 2rem; }
+        .scroll-mt-20 { scroll-margin-top: 5rem; }
 
         @keyframes fadeSlide {
-          from { opacity: 0; transform: translateY(6px); }
+          from { opacity: 0; transform: translateY(10px); }
           to { opacity: 1; transform: translateY(0); }
         }
 
-        .ayna-card-enter {
-          animation: fadeSlide 0.4s ease forwards;
+        .showcase-card {
+          transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .showcase-card:hover {
+          transform: translateY(-4px);
         }
       `}</style>
+
 
             {/* Header */}
 
@@ -538,9 +554,9 @@ export default function ClientShowcase() {
 
             {/* Main content — left padding reserves space for fixed sidebar */}
             <div
-                className="pt-24"
-                style={{ paddingLeft: "15rem", paddingRight: "2.5rem", maxWidth: "80rem", margin: "0 auto" }}
+                className="pt-32 pb-20 px-6 lg:pl-[340px] lg:pr-12 max-w-[1440px] mx-auto"
             >
+
                 <div ref={containerRef}>
                     {SECTIONS.map((section) => (
                         <TestimonialSection key={section.id} section={section} />

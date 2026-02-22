@@ -8,52 +8,50 @@ import {
 const features = [
   {
     icon: Palette,
-    title: "Infinite Customization",
-    description: "Modify poses, lighting, and ethnicity instantly. Your vision, rendered perfectly.",
+    title: "AI Trial Room",
+    description: "Brands can upload garments and instantly visualize them on photorealistic AI fashion models, Multiple poses, angles, and styling variations can be generated—ready for direct deployment on e-commerce platforms",
     // Image: Artistic/Makeup - shows detail and control
     image: "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?auto=format&fit=crop&w=800&q=80",
     delay: "0ms"
   },
   {
     icon: Zap,
-    title: "Speed to Market",
-    description: "Skip the casting and logistics. Go from concept to campaign in minutes.",
+    title: "AI Product Shoot Studio",
+    description: "AI4FI replaces traditional photoshoots with a virtual product studio, enabling highquality catalog and lifestyle imagery without physical setups, locations, or reshoots",
     // Image: Motion/Walking - implies speed and movement
     image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80",
     delay: "100ms"
   },
   {
     icon: Coins,
-    title: "Cost Efficiency",
-    description: "High-editorial results at a fraction of the traditional photoshoot budget.",
+    title: "AI Model Generator",
+    description: `Create fashion models tailored to brand requirements, including body type, gender,
+skin tone, posture, and styling—eliminating dependency on agencies and reducing
+production cycles.`,
     // Image: Luxury/Gold - implies high value/expensive look
     image: "https://images.unsplash.com/photo-1544413660-177743612d52?auto=format&fit=crop&w=800&q=80",
     delay: "200ms"
   },
   {
     icon: Globe,
-    title: "Global Representation",
-    description: "Diverse models that resonate with audiences in Tokyo, Paris, or New York.",
+    title: "Virtual Try-On Experience",
+    description: `Enable customers to try products on their own body, improving purchase confidence,
+engagement, and conversion while reducing return rates.`,
     // Image: Distinctive features/Portrait - shows diversity
     image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=800&q=80",
     delay: "300ms"
   },
   {
     icon: Leaf,
-    title: "Sustainable Fashion",
-    description: "Zero fabric waste. Zero travel emissions. 100% digital creation.",
+    title: "AI Ad & Video Generator",
+    description: `Generate ready-to-use marketing creatives, ad assets, and short promotional
+videos for social media, marketplaces, and performance campaigns—powered entirely
+by AI`,
     // Image: Natural/Outdoor/Organic tones
     image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=800&q=80",
     delay: "400ms"
   },
-  {
-    icon: Rocket,
-    title: "Future-Proof Tech",
-    description: "Leverage state-of-the-art generative AI that evolves with fashion trends.",
-    // Image: Avant-garde/Modern/Neon lighting
-    image: "https://images.unsplash.com/photo-1485230946086-1d99dcc0b5ea?auto=format&fit=crop&w=800&q=80",
-    delay: "500ms"
-  }
+
 ];
 
 const StoryCard = ({ icon: Icon, title, description, image, delay }) => (
@@ -84,11 +82,11 @@ const StoryCard = ({ icon: Icon, title, description, image, delay }) => (
       </div>
 
       <div className="relative z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-        <h3 className="text-2xl font-bold text-slate-900 mb-3 tracking-tight">
+        <h3 className="text-2xl mb-8 group-hover:mb-3 font-bold text-slate-900 tracking-tight">
           {title}
         </h3>
 
-        <p className="text-slate-600 leading-relaxed font-medium mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-75 h-0 group-hover:h-auto overflow-hidden">
+        <p className="text-slate-600  leading-relaxed font-medium mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-75 h-0 group-hover:h-auto overflow-hidden">
           {description}
         </p>
 
@@ -100,7 +98,7 @@ const StoryCard = ({ icon: Icon, title, description, image, delay }) => (
       </div>
 
       {/* Default State Description (Visible when not hovering, fades out on hover) */}
-      <p className="text-slate-500 text-sm leading-relaxed font-medium absolute bottom-8 left-8 right-8 group-hover:opacity-0 transition-opacity duration-300">
+      <p className="text-slate-500 mt-4 text-ellipsis line-clamp-2  text-sm leading-relaxed font-medium absolute bottom-8 left-8 right-8 group-hover:opacity-0 transition-opacity duration-300">
         {description}
       </p>
     </div>
@@ -134,10 +132,17 @@ const WhyChooseSection = () => {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Fashion Visualization</span>
           </h2>
 
-          <p className="text-lg text-slate-600 leading-relaxed">
-            Empowering brands with AI tools that blend editorial artistry with enterprise scalability.
-            See why top retailers are making the switch.
+          <p className="text-lg text-secondary-foreground leading-relaxed">
+            AI4FI is a product of Seqtal AI Pvt Ltd, a Government of India–recognized startup
+            authorized under the DPIIT – Startup India Program.
+
           </p>
+          {/* <p className="text-base leading-relaxed">
+            AI4FI is an enterprise-grade AI-powered fashion technology platform designed to
+            transform how fashion brands create, visualize, and market their products in the digital
+            world.
+
+          </p> */}
         </div>
 
         {/* Grid */}

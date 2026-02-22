@@ -45,7 +45,7 @@ const IMAGES = [
 	},
 	{
 		id: 4,
-		src: "./good_bye_4.jpeg",
+		src: "./good_bye_4.png",
 		// src: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600&q=80",
 		alt: "Model Shoot",
 		fromX: 60,

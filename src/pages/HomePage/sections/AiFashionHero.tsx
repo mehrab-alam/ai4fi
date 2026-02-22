@@ -105,106 +105,68 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 			id: 1,
 			src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80",
 			rotate: -6,
-			className: `
-			top-4 left-4
-			md:top-8 md:left-8
-			lg:top-10 lg:left-10
-		`,
+			className: "top-[5%] left-[5%] md:top-[8%] md:left-[8%]",
 		},
 		{
 			id: 2,
 			src: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80",
 			rotate: 3,
-			className: `
-			top-2 left-24
-			md:top-0 md:left-32
-			lg:top-0 lg:left-48
-		`,
+			className: "top-[2%] left-[30%] md:top-[0%] md:left-[40%]",
 		},
 		{
 			id: 4,
 			src: "./models/IMG_2553.JPG.jpeg",
 			rotate: -8,
-			className: `
-			top-32 left-6
-			md:top-40 md:left-12
-			lg:top-48 lg:left-20
-		`,
+			className: "top-[30%] left-[8%] md:top-[40%] md:left-[10%]",
 		},
 		{
 			id: 5,
 			src: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=300&q=80",
 			rotate: 4,
-			className: `
-			top-28 right-16
-			md:top-36 md:right-32
-			lg:top-40 lg:right-48
-		`,
+			className: "top-[25%] right-[10%] md:top-[35%] md:right-[25%]",
 		},
 		{
 			id: 6,
 			src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80",
 			rotate: -2,
-			className: `
-			top-40 right-4
-			md:top-48 md:right-8
-			lg:top-52 lg:right-10
-		`,
+			className: "top-[45%] right-[5%] md:top-[50%] md:right-[8%]",
 		},
 		{
 			id: 7,
 			src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80",
 			rotate: 5,
-			className: `
-			bottom-4 left-12
-			md:bottom-8 md:left-24
-			lg:bottom-10 lg:left-32
-		`,
+			className: "bottom-[5%] left-[10%] md:bottom-[10%] md:left-[20%]",
 		},
 		{
 			id: 8,
 			src: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80",
 			rotate: -4,
-			className: `
-			bottom-6 right-12
-			md:bottom-8 md:right-16
-			lg:bottom-12 lg:right-24
-		`,
+			className: "bottom-[8%] right-[8%] md:bottom-[10%] md:right-[15%]",
 		},
+
 		{
 			id: 9,
-			src: "./result.png",
-			rotate: -4,
-			className: `
-			bottom-40 left-24
-			md:bottom-56 md:left-64
-			lg:bottom-72 lg:left-[300px]
-		`,
+			src: "./models/IMG_2472.JPG.jpeg",
+			rotate: -10,
+			className: "top-[10%] right-[0%] md:top-[20%] md:right-[12%]",
 		},
 		{
 			id: 10,
-			src: "./models/IMG_2472.JPG.jpeg",
-			rotate: -10,
-			className: `
-			top-12 -right-8
-			md:top-20 md:right-3
-			lg:top-24 lg:right-16
-		`,
-		},
-		{
-			id: 11,
 			src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop",
 			rotate: 6,
-			className: `
-			bottom-2 left-2
-			md:bottom-3 md:left-3
-			lg:bottom-4 lg:left-4
-		`,
+			className: "bottom-[2%] left-[2%] md:bottom-[4%] md:left-[4%]",
 		},
 	];
 
 	const [cards, setCards] = useState(imageCards);
 	const [direction, setDirection] = useState("idle");
+	const [windowWidth, setWindowWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 1200);
+
+	useEffect(() => {
+		const handleResize = () => setWindowWidth(window.innerWidth);
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
 
 
 	useEffect(() => {
@@ -231,7 +193,7 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 	}, []);
 
 	return (
-		<div>
+		<div className="relative overflow-hidden w-full">
 			{/* ────── Background Image ────── */}
 			<div className="absolute inset-0 z-0 overflow-hidden rounded-xl">
 				<img
@@ -319,23 +281,25 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 					</div>
 
 					{/* RIGHT — Card Shuffle */}
-					<div className="w-full lg:w-1/2  relative h-[500px] mt-16 lg:mt-0 md:block max-w-full md:max-w-full mx-auto">
+					<div className="w-full lg:w-1/2 relative h-[400px] md:h-[500px] mt-16 lg:mt-0 md:block max-w-full mx-auto">
 						{cards.map((card, i) => {
 							const isTop = i === 0;
 							const isLeft = card.className.includes("left");
-							const exitX = isLeft ? -300 : 230;
+							// Responsive exit distance: about 35% of screen width, but at least 150px
+							const exitDistance = Math.max(windowWidth * 0.35, 150);
+							const exitX = isLeft ? -exitDistance : exitDistance;
 
 							return (
 								<motion.div
 									key={card.id}
-									className={`absolute bg-background p-2 pb-6 w-[30%] md:w-[30%] lg:w-[25%] h-auto rounded-lg shadow-xl ${card.className}`}
+									className={`absolute bg-background p-2 pb-6 w-[35%] md:w-[30%] lg:w-[25%] h-auto rounded-lg shadow-xl ${card.className}`}
 									animate={{
 										x: isTop && direction === "out" ? exitX : 0,
-										scale: i === 0 ? 1 : 0.95,
-										// rotate: card.rotate,
+										scale: isTop ? 1 : 0.95,
+										opacity: isTop && direction === "out" ? 0 : 1,
 									}}
 									transition={{
-										duration: direction === "in" ? 0.8 : 0.5,
+										duration: direction === "in" ? 0.8 : 0.4,
 										ease: [0.22, 1, 0.36, 1],
 									}}
 									style={{
@@ -346,7 +310,7 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 										<img
 											src={card.src}
 											alt="Model"
-											className="w-full position-top h-full object-cover"
+											className="w-full position-top h-full object-top object-cover"
 										/>
 									</div>
 								</motion.div>

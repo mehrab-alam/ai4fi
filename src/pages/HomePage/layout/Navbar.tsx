@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Menu, X, ChevronRight, Zap, User, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronRight, Zap, User, ChevronDown, Sparkles, Layers, Clapperboard } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -51,10 +51,10 @@ const Navbar = () => {
 	];
 
 	const dropdownItems = [
-		{ name: "Model Generator", href: "/model" },
-		{ name: "Virtual Try Room", href: "/virtualtryon" },
-		{ name: "Try On V2 (beta)", href: "/try-on-v2-beta" },
-		{ name: "Ads Generator", href: "/ads-generator" },
+		{ name: "Model Generator", href: "/model", icon: <Sparkles size={14} /> },
+		{ name: "Virtual Try Room", href: "/virtualtryon", icon: <Layers size={14} /> },
+		{ name: "Try On V2 (beta)", href: "/try-on-v2-beta", icon: <Zap size={14} /> },
+		{ name: "Ads Generator", href: "/ads-generator", icon: <Clapperboard size={14} /> },
 	];
 
 	return (
@@ -138,6 +138,7 @@ const Navbar = () => {
 						{/* Our Offerings Dropdown */}
 						<div className="relative  z-50">
 							<motion.button
+
 								onClick={() => setIsDropdownOpen(!isDropdownOpen)}
 								className="relative px-3 py-2 mx-1 rounded-lg transition-colors duration-200 text-secondary-foreground font-semibold hover:text-foreground hover:bg-foreground/5 flex items-center"
 								whileHover={{ scale: 1.05 }}
@@ -153,17 +154,22 @@ const Navbar = () => {
 										animate={{ opacity: 1, y: 0 }}
 										exit={{ opacity: 0, y: -10 }}
 										transition={{ duration: 0.2 }}
-										className="absolute z-[100000] top-full left-0 mt-2 w-48 bg-secondary  rounded-lg shadow-lg "
+										className="absolute z-[100000] top-full left-0 right-64 mt-2 w-[450px] h-[150px] bg-muted backdrop-blur-xl border border-border grid grid-cols-2 gap-2 place-items-center  rounded-lg shadow-lg "
 									>
 										{dropdownItems.map((item) => (
 											<Link to={item.href}>
-												<motion.span
-													key={item.name}
-													className="block px-4 py-3  text-secondary-foreground hover:text-foreground hover:bg-background transition-colors duration-200"
-													onClick={() => setIsDropdownOpen(false)}
-												>
-													{item.name}
-												</motion.span>
+												<div className="flex items-center gap-2 px-2 hover:bg-background rounded-lg">
+													<div className="p-2 border border-border rounded-lg bg-background text-foreground">
+														{item.icon}
+													</div>
+													<motion.span
+														key={item.name}
+														className="block py-3  text-secondary-foreground hover:text-foreground  transition-colors duration-200"
+														onClick={() => setIsDropdownOpen(false)}
+													>
+														{item.name}
+													</motion.span>
+												</div>
 											</Link>
 										))}
 									</motion.div>
