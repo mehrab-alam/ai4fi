@@ -51,7 +51,7 @@ export const VirtualTrialHighlight = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center place-items-center">
 
                     {/* --- LEFT: CONTEXT & STEPS --- */}
-                    <div className="space-y-4">
+                    <div className="flex flex-col justify-between gap-2">
 
                         {/* Header */}
                         <div className="space-y-3">

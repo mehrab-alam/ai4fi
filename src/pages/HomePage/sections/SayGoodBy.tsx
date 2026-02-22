@@ -73,20 +73,20 @@ export default function SayGoodBySection() {
 	// Transitions for Hero
 	const heroOpacity = useTransform(
 		smoothProgress,
-		[0, 0.6, 0.75, 1],
+		[0, 0.45, 0.55, 0.6],
 		[1, 1, 0, 0],
 	);
-	const heroScale = useTransform(smoothProgress, [0, 0.6, 0.75], [1, 1, 0.85]);
-	const heroY = useTransform(smoothProgress, [0.6, 0.75], ["0%", "-15%"]);
+	const heroScale = useTransform(smoothProgress, [0, 0.45, 0.55], [1, 1, 0.9]);
+	const heroY = useTransform(smoothProgress, [0.45, 0.55], ["0%", "-10%"]);
 
 	// Transitions for Welcome Section
 	const welcomeOpacity = useTransform(
 		smoothProgress,
-		[0.8, 0.9, 0.98, 1],
+		[0.55, 0.65, 0.9, 1],
 		[0, 1, 1, 0],
 	);
-	const welcomeScale = useTransform(smoothProgress, [0.8, 0.9], [0.92, 1]);
-	const welcomeY = useTransform(smoothProgress, [0.8, 0.9], ["40px", "0px"]);
+	const welcomeScale = useTransform(smoothProgress, [0.55, 0.65], [0.95, 1]);
+	const welcomeY = useTransform(smoothProgress, [0.55, 0.65], ["40px", "0px"]);
 
 	// Transitions for Next Panels
 
@@ -98,7 +98,7 @@ export default function SayGoodBySection() {
 			className="relative bg-background"
 			style={{
 				fontFamily: "'Georgia', serif",
-				height: `${5 * 100}vh`,
+				height: `${6 * 100}vh`,
 			}}
 		>
 			<div className="sticky top-0 h-screen w-full overflow-hidden">
@@ -132,7 +132,7 @@ export default function SayGoodBySection() {
 					{/* Headline */}
 					<div className="text-center whitespace-nowrap z-2 pointer-events-none select-none mt-20">
 						<p
-							className="text-foreground uppercase mb-6 opacity-100 tracking-[0.5em]"
+							className="text-foreground uppercase mb-6 opacity-100 tracking-[0.2em] md:tracking-[0.5em]"
 							style={{
 								fontSize: 13,
 								fontFamily: "'Courier New', monospace",
@@ -160,7 +160,7 @@ export default function SayGoodBySection() {
 					{IMAGES.map((img, i) => {
 						const stagger = i * 0.05;
 						// Images start flying in as headline is focused
-						const range = [0.15 + stagger, 0.65 + stagger];
+						const range = [0.1 + stagger, 0.35 + stagger];
 
 						const x = useTransform(smoothProgress, range, [
 							`${img.fromX}vw`,

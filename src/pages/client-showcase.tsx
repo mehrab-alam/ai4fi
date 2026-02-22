@@ -29,12 +29,13 @@ interface TestimonialCard {
     span?: "wide" | "tall" | "normal";
 }
 
+
 // --- Data ---
 const SECTIONS: Section[] = [
     {
-        id: "ai-stylist",
-        label: "AI Virtual Styler",
-        title: "Virtual Try-On Transformations",
+        id: "ethenic-male",
+        label: "Ethenic Male",
+        title: "Ethnic Male ",
         items: [
             {
                 id: "s1",
@@ -93,9 +94,9 @@ const SECTIONS: Section[] = [
         ],
     },
     {
-        id: "smart-fitness",
-        label: "Smart Fitness",
-        title: "AI-Driven Body Progress",
+        id: "ethenic-female",
+        label: "Ethenic Female ",
+        title: "Ethnic Female",
         items: [
             {
                 id: "f1",
@@ -155,9 +156,179 @@ const SECTIONS: Section[] = [
         ],
     },
     {
-        id: "tech-integration",
-        label: "Tech Showcase",
-        title: "Seamless Tech Integration",
+        id: "casual-male",
+        label: "Casual Male",
+        title: "Casual Male ",
+        items: [
+            {
+                id: "t1",
+                images: ["https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&q=80"],
+                span: "tall",
+            },
+            {
+                id: "t2",
+                images: ["https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80"],
+            },
+            {
+                id: "t3",
+                images: ["https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=600&q=80"],
+                span: "wide",
+            },
+            {
+                id: "t4",
+                images: ["https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&w=600&q=80"],
+                testimonial: {
+                    time: "Future",
+                    title: "Integrated AI",
+                    text: "The bridge between fashion and biometric data. AI4FI is building the future of personalized lifestyle technology.",
+                },
+            },
+            {
+                id: "t5",
+                images: ["https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80"],
+            },
+        ],
+    },
+    {
+        id: "casual-female",
+        label: "Casual Female",
+        title: "Casual Female ",
+        items: [
+            {
+                id: "t1",
+                images: ["https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&q=80"],
+                span: "tall",
+            },
+            {
+                id: "t2",
+                images: ["https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80"],
+            },
+            {
+                id: "t3",
+                images: ["https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=600&q=80"],
+                span: "wide",
+            },
+            {
+                id: "t4",
+                images: ["https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&w=600&q=80"],
+                testimonial: {
+                    time: "Future",
+                    title: "Integrated AI",
+                    text: "The bridge between fashion and biometric data. AI4FI is building the future of personalized lifestyle technology.",
+                },
+            },
+            {
+                id: "t5",
+                images: ["https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80"],
+            },
+        ],
+    },
+    {
+        id: "plus-size",
+        label: "Plus Size",
+        title: "Plus Size ",
+        items: [
+            {
+                id: "t1",
+                images: ["https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&q=80"],
+                span: "tall",
+            },
+            {
+                id: "t2",
+                images: ["https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80"],
+            },
+            {
+                id: "t3",
+                images: ["https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=600&q=80"],
+                span: "wide",
+            },
+            {
+                id: "t4",
+                images: ["https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&w=600&q=80"],
+                testimonial: {
+                    time: "Future",
+                    title: "Integrated AI",
+                    text: "The bridge between fashion and biometric data. AI4FI is building the future of personalized lifestyle technology.",
+                },
+            },
+            {
+                id: "t5",
+                images: ["https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80"],
+            },
+        ],
+    },
+    {
+        id: "kids-wear",
+        label: "Kids Wear",
+        title: "Kids Wear ",
+        items: [
+            {
+                id: "t1",
+                images: ["https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&q=80"],
+                span: "tall",
+            },
+            {
+                id: "t2",
+                images: ["https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80"],
+            },
+            {
+                id: "t3",
+                images: ["https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=600&q=80"],
+                span: "wide",
+            },
+            {
+                id: "t4",
+                images: ["https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&w=600&q=80"],
+                testimonial: {
+                    time: "Future",
+                    title: "Integrated AI",
+                    text: "The bridge between fashion and biometric data. AI4FI is building the future of personalized lifestyle technology.",
+                },
+            },
+            {
+                id: "t5",
+                images: ["https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80"],
+            },
+        ],
+    },
+    {
+        id: "lingerie",
+        label: "Lingerie",
+        title: "Lingerie ",
+        items: [
+            {
+                id: "t1",
+                images: ["https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&q=80"],
+                span: "tall",
+            },
+            {
+                id: "t2",
+                images: ["https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80"],
+            },
+            {
+                id: "t3",
+                images: ["https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=600&q=80"],
+                span: "wide",
+            },
+            {
+                id: "t4",
+                images: ["https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&w=600&q=80"],
+                testimonial: {
+                    time: "Future",
+                    title: "Integrated AI",
+                    text: "The bridge between fashion and biometric data. AI4FI is building the future of personalized lifestyle technology.",
+                },
+            },
+            {
+                id: "t5",
+                images: ["https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80"],
+            },
+        ],
+    },
+    {
+        id: "4k",
+        label: "4k images",
+        title: "4k Images ",
         items: [
             {
                 id: "t1",
@@ -191,180 +362,167 @@ const SECTIONS: Section[] = [
 ];
 
 // --- Hover Image Slideshow Hook ---
-function useImageSlideshow(images: string[], active: boolean) {
+function useImageSlideshow(images: string[]) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [opacity, setOpacity] = useState(1);
     const intervalRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     useEffect(() => {
-        if (!active || images.length <= 1) {
-            setCurrentIndex(0);
-            setOpacity(1);
-            return;
-        }
+        if (images.length <= 1) return;
 
         const cycle = () => {
             setOpacity(0);
             setTimeout(() => {
                 setCurrentIndex((prev) => (prev + 1) % images.length);
                 setOpacity(1);
-            }, 300);
+            }, 400); // Cross-fade duration
         };
 
-        intervalRef.current = setInterval(cycle, 900);
+        // Random staggered start between 0-2 seconds to avoid synched "blinking"
+        const staggerTimeout = setTimeout(() => {
+            intervalRef.current = setInterval(cycle, 2500 + Math.random() * 1500);
+        }, Math.random() * 2000);
+
         return () => {
+            clearTimeout(staggerTimeout);
             if (intervalRef.current) clearInterval(intervalRef.current);
         };
-    }, [active, images.length]);
-
-    useEffect(() => {
-        if (!active) {
-            setCurrentIndex(0);
-            setOpacity(1);
-        }
-    }, [active]);
+    }, [images.length]);
 
     return { currentIndex, opacity };
 }
 
+
 // --- Image Card Component ---
 function ImageCard({ card }: { card: TestimonialCard }) {
-    const [hovered, setHovered] = useState(false);
-    const { currentIndex, opacity } = useImageSlideshow(card.images, hovered);
+    const { currentIndex, opacity } = useImageSlideshow(card.images);
 
-    const isWide = card.span === "wide";
-    const isTall = card.span === "tall";
+    // Purely vertical 'longer' layout system
+    // Standard Long vs Mid Long vs Extra Long
+    const spanClasses = card.span === "tall"
+        ? "col-span-1 md:col-span-4 lg:col-span-3 row-span-6" // Extra Long
+        : card.span === "wide"
+            ? "col-span-1 md:col-span-4 lg:col-span-3 row-span-5" // Mid Long
+            : "col-span-1 md:col-span-4 lg:col-span-3 row-span-4"; // Standard Long
 
     return (
         <div
-            className={`relative overflow-hidden rounded-sm cursor-pointer group ${isWide ? "col-span-2" : ""
-                } ${isTall ? "row-span-2" : ""}`}
-            style={{
-                gridColumn: isWide ? "span 2" : undefined,
-                gridRow: isTall ? "span 2" : undefined,
-                minHeight: isTall ? 280 : 140,
-            }}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
+            className={`showcase-card relative overflow-hidden rounded-xl cursor-pointer group min-h-[140px] md:min-h-[180px] lg:min-h-[200px] ${spanClasses} w-full`}
         >
-            {/* Image background with fade */}
-            <div
-                className="absolute inset-0 transition-all duration-500 bg-muted"
-            >
+            {/* Image background with auto fade */}
+            <div className="absolute inset-0 rounded-xl transition-all duration-1000 bg-muted overflow-hidden">
                 <img
                     src={card.images[currentIndex]}
                     alt=""
-                    className="w-full h-full object-cover transition-opacity duration-300"
-                    style={{ opacity: hovered ? opacity : 1 }}
+                    className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
+                    style={{ opacity }}
                 />
             </div>
 
-
             {/* Subtle noise texture overlay */}
             <div
-                className="absolute inset-0 opacity-10"
+                className="absolute rounded-xl inset-0 opacity-[0.03] pointer-events-none"
                 style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`,
                 }}
             />
 
-            {/* Hover image count indicator */}
-            {hovered && card.images.length > 1 && (
-                <div className="absolute bottom-2 right-2 flex gap-1 z-10">
+            {/* Progress indicator for auto-slide (always visible if many images) */}
+            {card.images.length > 1 && (
+                <div className="absolute bottom-3 right-3 flex gap-1 z-10">
                     {card.images.map((_, i) => (
                         <div
                             key={i}
-                            className="w-1 h-1 rounded-full transition-all duration-300"
+                            className="w-1 h-1 rounded-full transition-all duration-500"
                             style={{
-                                backgroundColor: i === currentIndex ? "var(--brand)" : "rgba(255,255,255,0.4)",
-                                transform: i === currentIndex ? "scale(1.4)" : "scale(1)",
+                                backgroundColor: i === currentIndex ? "var(--brand)" : "rgba(255,255,255,0.2)",
+                                transform: i === currentIndex ? "scale(1.2)" : "scale(1)",
                             }}
-
                         />
                     ))}
                 </div>
             )}
 
-            {/* Overlay gradient on hover */}
+            {/* Subtle bottom gradient */}
             <div
-                className="absolute inset-0 transition-opacity duration-400"
+                className="absolute rounded-xl inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500"
                 style={{
-                    background: "linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.45) 100%)",
-                    opacity: hovered ? 1 : 0,
+                    background: "linear-gradient(180deg, transparent 70%, rgba(0,0,0,0.5) 100%)",
                 }}
             />
         </div>
     );
 }
 
+
+
 // --- Testimonial Overlay Card ---
 function TestimonialOverlay({ card }: { card: TestimonialCard }) {
-    const [hovered, setHovered] = useState(false);
-    const { currentIndex, opacity } = useImageSlideshow(card.images, hovered);
+    const { currentIndex, opacity } = useImageSlideshow(card.images);
+
+    // Testimony cards - wider for text but still strictly vertical/longer
+    const spanClasses = card.span === "wide"
+        ? "col-span-2 md:col-span-8 lg:col-span-6 row-span-6" // Double width, Extra Long
+        : "col-span-2 md:col-span-8 lg:col-span-6 row-span-5"; // Double width, Mid Long
 
     return (
         <div
-            className="relative col-span-2 overflow-hidden rounded-sm cursor-pointer"
-            style={{ minHeight: 160 }}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
+            className={`showcase-card relative overflow-hidden rounded-xl cursor-pointer group min-h-[280px] md:min-h-[360px] lg:min-h-[400px] ${spanClasses}`}
         >
-            {/* BG image */}
-            <div
-                className="absolute inset-0 transition-all duration-500 bg-muted"
-            >
+            {/* BG image with auto fade */}
+            <div className="absolute inset-0 transition-all duration-1000 bg-muted overflow-hidden">
                 <img
                     src={card.images[currentIndex]}
                     alt=""
-                    className="w-full h-full object-cover transition-opacity duration-300"
-                    style={{ opacity: hovered ? opacity : 1 }}
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                    style={{ opacity }}
                 />
             </div>
 
-
-            {/* Dark overlay for text */}
-            <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
-
+            {/* Dark gradient overlay for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent backdrop-blur-[0.5px] group-hover:backdrop-blur-none transition-all duration-500" />
 
             {/* Content */}
             {card.testimonial && (
-                <div className="relative z-10 p-5 h-full flex flex-col justify-between">
-                    <div>
+                <div className="relative z-10 p-4 sm:p-5 h-full flex flex-col justify-end">
+                    <div className="transform transition-transform duration-500 group-hover:translate-y-[-5px]">
                         <span
-                            className="text-xs font-bold tracking-widest uppercase mb-1 block"
+                            className="text-[8px] sm:text-[9px] font-bold tracking-widest uppercase mb-1 block"
                             style={{ color: "var(--brand)" }}
                         >
-
                             {card.testimonial.time}
                         </span>
-                        <h4 className="text-white font-semibold text-sm mb-2">
+                        <h4 className="text-white font-bold text-sm sm:text-base mb-1.5 leading-tight">
                             {card.testimonial.title}
                         </h4>
-                        <p className="text-gray-200 text-xs leading-relaxed">
-                            {card.testimonial.text}
+                        <p className="text-gray-200 text-[10px] sm:text-xs italic leading-snug opacity-90 line-clamp-4">
+                            "{card.testimonial.text}"
                         </p>
-
                     </div>
                     {card.testimonial.author && (
-                        <span className="text-gray-400 text-xs mt-3">
-                            — {card.testimonial.author}
-                        </span>
+                        <div className="mt-3 pt-3 border-t border-white/10 flex items-center gap-2">
+                            <div className="w-6 h-6 rounded-full bg-brand/20 flex items-center justify-center text-[8px] text-brand font-bold">
+                                {card.testimonial.author.charAt(0)}
+                            </div>
+                            <span className="text-white/70 text-[10px] sm:text-xs font-medium">
+                                {card.testimonial.author}
+                            </span>
+                        </div>
                     )}
                 </div>
             )}
 
-            {/* Hover dots */}
-            {hovered && card.images.length > 1 && (
-                <div className="absolute bottom-2 right-2 flex gap-1 z-20">
+            {/* Progress indicator */}
+            {card.images.length > 1 && (
+                <div className="absolute top-3 right-3 flex gap-1 z-20">
                     {card.images.map((_, i) => (
                         <div
                             key={i}
-                            className="w-1 h-1 rounded-full transition-all duration-300"
+                            className="w-1 h-1 rounded-full transition-all duration-500"
                             style={{
-                                backgroundColor: i === currentIndex ? "var(--brand)" : "rgba(255,255,255,0.3)",
-                                transform: i === currentIndex ? "scale(1.4)" : "scale(1)",
+                                backgroundColor: i === currentIndex ? "var(--brand)" : "rgba(255,255,255,0.2)",
+                                transform: i === currentIndex ? "scale(1.2)" : "scale(1)",
                             }}
-
                         />
                     ))}
                 </div>
@@ -373,52 +531,38 @@ function TestimonialOverlay({ card }: { card: TestimonialCard }) {
     );
 }
 
+
 // --- Section Component ---
 function TestimonialSection({ section }: { section: Section }) {
-    // Split items: pure image cards and testimonial cards
-    const imageCards = section.items.filter((c) => !c.testimonial);
-    const testimonialCards = section.items.filter((c) => c.testimonial);
-
     return (
-        <div id={section.id} className="mb-24 scroll-mt-20">
-            {/* Section title */}
-            <div className="mb-10 border-b border-border pb-6">
-                <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-2 font-bold text-brand">
-                    AI4FI SHOWCASE
-                </p>
+        <div id={section.id} className="mb-10 sm:mb-14 scroll-mt-24">
+            {/* Minimalist Section Title */}
+            <div className="mb-6 sm:mb-8 border-b border-border/60 pb-4">
+                <div className="flex items-center gap-2 mb-1.5">
+                    <div className="h-px w-4 bg-brand" />
+                    <p className="text-[8px] sm:text-[9px] tracking-[0.4em] uppercase text-muted-foreground font-bold text-brand">
+                        COLLECTION
+                    </p>
+                </div>
                 <h2
-                    className="text-3xl font-bold tracking-tight text-foreground"
+                    className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tighter text-foreground"
                 >
                     {section.title}
                 </h2>
             </div>
 
-
-            {/* Masonry-style grid */}
-            <div className="grid grid-cols-4 gap-3 mb-6">
-                {/* First row: image cards */}
-                {imageCards.slice(0, 4).map((card) => (
-                    <ImageCard key={card.id} card={card} />
-                ))}
-
-                {/* Testimonial cards */}
-                {testimonialCards.slice(0, 2).map((card) => (
-                    <TestimonialOverlay key={card.id} card={card} />
-                ))}
-
-                {/* Remaining image cards */}
-                {imageCards.slice(4).map((card) => (
-                    <ImageCard key={card.id} card={card} />
-                ))}
-
-                {/* Remaining testimonial cards */}
-                {testimonialCards.slice(2).map((card) => (
-                    <TestimonialOverlay key={card.id} card={card} />
+            {/* High-Density 12-Column Grid with Auto-Packing Rows */}
+            <div className="grid grid-cols-2 md:grid-cols-8 lg:grid-cols-12 gap-1.5 sm:gap-2 lg:gap-3 grid-flow-dense max-w-full">
+                {section.items.map((card) => (
+                    card.testimonial
+                        ? <TestimonialOverlay key={card.id} card={card} />
+                        : <ImageCard key={card.id} card={card} />
                 ))}
             </div>
         </div>
     );
 }
+
 
 // --- Sidebar Component ---
 function Sidebar({
@@ -431,56 +575,88 @@ function Sidebar({
     onNav: (id: string) => void;
 }) {
     return (
-        <nav
-            className="fixed w-[300px] z-[40] border-r border-border top-[80px] p-8 bottom-0 h-[calc(100vh-80px)] bg-background/50 backdrop-blur-md hidden lg:block"
-        >
-            <div className="mb-10">
-                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-bold mb-1">
-                    Discovery
-                </p>
-                <h4 className="text-2xl font-bold text-foreground">
-                    Our <span className="text-brand-gradient">Showcase</span>
-                </h4>
-            </div>
+        <>
+            {/* Desktop Sidebar */}
+            <aside
+                className="sticky w-[300px] z-[40] border-r border-border top-[80px] p-8 bottom-0 h-[calc(100vh-80px)] bg-background/50 backdrop-blur-md hidden lg:block"
+            >
+                <div className="mb-10">
+                    <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-bold mb-1">
+                        Discovery
+                    </p>
+                    <h4 className="text-2xl font-bold text-foreground">
+                        Our <span className="text-brand-gradient">Showcase</span>
+                    </h4>
+                </div>
 
-
-            <ul className="space-y-1">
-                {sections.map((section) => {
-                    const isActive = activeId === section.id;
-                    return (
-                        <li key={section.id}>
-                            <button
-                                onClick={() => onNav(section.id)}
-                                className="group flex items-center gap-2 w-full text-left py-2 px-0 transition-all duration-300"
-                            >
-                                {/* Indicator bar */}
-                                <span
-                                    className="block h-px transition-all duration-400 shrink-0"
-                                    style={{
-                                        width: isActive ? 32 : 12,
-                                        backgroundColor: isActive ? "var(--brand)" : "var(--border)",
-                                        transitionDuration: "400ms",
-                                    }}
-                                />
-                                <span
-                                    className="text-xl transition-all duration-300"
-                                    style={{
-                                        color: isActive ? "var(--foreground)" : "var(--muted-foreground)",
-                                        fontWeight: isActive ? 700 : 500,
-                                        letterSpacing: isActive ? "0.02em" : "0.05em",
-                                    }}
+                <ul className="space-y-1">
+                    {sections.map((section) => {
+                        const isActive = activeId === section.id;
+                        return (
+                            <li key={section.id}>
+                                <button
+                                    onClick={() => onNav(section.id)}
+                                    className="group flex items-center gap-2 w-full text-left py-2 px-0 transition-all duration-300"
                                 >
-                                    {section.label}
-                                </span>
+                                    {/* Indicator bar */}
+                                    <span
+                                        className="block h-px transition-all duration-400 shrink-0"
+                                        style={{
+                                            width: isActive ? 32 : 12,
+                                            backgroundColor: isActive ? "var(--brand)" : "var(--border)",
+                                            transitionDuration: "400ms",
+                                        }}
+                                    />
+                                    <span
+                                        className="text-lg transition-all duration-300"
+                                        style={{
+                                            color: isActive ? "var(--foreground)" : "var(--muted-foreground)",
+                                            fontWeight: isActive ? 700 : 500,
+                                            letterSpacing: isActive ? "0.02em" : "0.05em",
+                                        }}
+                                    >
+                                        {section.label}
+                                    </span>
 
+                                </button>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </aside>
+
+            {/* Mobile/Tablet Tag Grid Nav */}
+            <nav className="lg:hidden sticky top-[76px] w-screen z-[40] bg-background  border-b border-border py-4 px-4 sm:px-8">
+                <div className="flex items-center text-center w-full justify-between mb-4">
+                    <div className="w-full">
+                        <p className="text-[9px]  uppercase tracking-[0.2em] text-muted-foreground font-bold mb-0.5">
+                            Discovery
+                        </p>
+                        <h2 className=" font-bold text-foreground">
+                            Our <span className="text-brand-gradient">Showcase</span>
+                        </h2>
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-1.5">
+                    {sections.map((section) => {
+                        const isActive = activeId === section.id;
+                        return (
+                            <button
+                                key={section.id}
+                                onClick={() => onNav(section.id)}
+                                className={`text-[8px] sm:text-[9px] font-bold uppercase tracking-wider py-2 px-1 rounded-full border transition-all duration-400 text-center truncate ${isActive
+                                    ? "bg-brand/10 border-brand text-brand shadow-sm"
+                                    : "bg-muted/10 border-border text-muted-foreground hover:border-muted-foreground/30"
+                                    }`}
+                            >
+                                {section.label}
                             </button>
-                        </li>
-                    );
-                })}
-            </ul>
-
-
-        </nav>
+                        );
+                    })}
+                </div>
+            </nav>
+        </>
     );
 }
 
@@ -522,11 +698,13 @@ export default function ClientShowcase() {
 
     return (
         <div
-            className="min-h-screen bg-background text-foreground transition-colors duration-300 font-sans"
+            className="min-h-screen flex flex-col lg:flex-row items-start bg-background text-foreground transition-colors duration-300 font-sans"
         >
             {/* Custom Styles */}
             <style>{`
         .scroll-mt-20 { scroll-margin-top: 5rem; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
         @keyframes fadeSlide {
           from { opacity: 0; transform: translateY(10px); }
@@ -543,20 +721,13 @@ export default function ClientShowcase() {
       `}</style>
 
 
-            {/* Header */}
-
-
-            {/* Hero intro */}
-
-
-            {/* Fixed Sidebar — outside normal flow */}
+            {/* Sidebar (Desktop) and Top Nav (Mobile) */}
             <Sidebar sections={SECTIONS} activeId={activeId} onNav={handleNav} />
 
-            {/* Main content — left padding reserves space for fixed sidebar */}
+            {/* Main content */}
             <div
-                className="pt-32 pb-20 px-6 lg:pl-[340px] lg:pr-12 max-w-[1440px] mx-auto"
+                className="flex-1 w-full pt-10 lg:pt-20 pb-20 px-4 sm:px-8 lg:px-12 max-w-[1600px] mx-auto overflow-hidden"
             >
-
                 <div ref={containerRef}>
                     {SECTIONS.map((section) => (
                         <TestimonialSection key={section.id} section={section} />

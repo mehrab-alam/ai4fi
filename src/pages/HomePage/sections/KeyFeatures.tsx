@@ -89,7 +89,7 @@ const KeyFeatures = () => {
 				<div className="absolute inset-0 dark:bg-gradient-to-br from-cyan-950 via-black to-sky-950"></div>
 			)}
 
-			<div className="relative z-10 max-w-full mx-auto px-8 py-20 flex flex-col">
+			<div className="relative z-10 max-w-full mx-auto px-2 md:px-8 py-20 flex flex-col">
 				<SectionHeader
 					title="Key Features"
 					description="Transform your operations with intelligent automation"

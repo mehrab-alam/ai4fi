@@ -64,7 +64,7 @@ const FeatureIcon = ({ icon: Icon, title }) => (
 export const VirtualTrialRoom = () => {
 	return (
 		<div className="w-full mx-auto mb-28  h-[calc(100vh-120px)]  bg-background font-sans relative overflow-hidden  py-8 px-4 sm:px-4 rounded-3xl border border-border shadow-xl">
-			<div className="md:max-w-[80vw]  h-[calc(100vh-120px)] flex flex-col justify-center max-w-[90vw] mx-auto relative z-10">
+			<div className="md:max-w-[80vw]  h-[calc(100vh-120px)] flex flex-col justify-center max-w-[100vw] mx-auto relative z-10">
 				{/* Top Tabs */}
 
 				<div className="flex w-full flex-col md:justify-between md:flex-row items-start gap-16">

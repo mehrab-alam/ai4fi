@@ -38,7 +38,7 @@ const InclusiveCard: FC<{ model: any }> = ({ model }) => (
 
 
 
-import React, { FC, useRef } from "react";
+import React, { FC, useRef, useEffect, useState } from "react";
 import {
 	ArrowUpRight,
 	Sparkles,
@@ -333,7 +333,7 @@ const ModelCard: FC<{ model: any; isDark?: boolean }> = ({ model, isDark = false
 		<img
 			src={model.img}
 			alt={model.name}
-			className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+			className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110"
 			loading="lazy"
 		/>
 
@@ -367,15 +367,20 @@ const ModelCard: FC<{ model: any; isDark?: boolean }> = ({ model, isDark = false
 
 const InfiniteShowcase = () => {
 	const scrollRef = useRef<HTMLDivElement>(null);
+	const [isPaused, setIsPaused] = useState(false);
 
 	const scroll = (direction: "left" | "right") => {
 		if (scrollRef.current) {
-			const { scrollLeft, clientWidth } = scrollRef.current;
-			const scrollAmount = clientWidth * 0.8; // Scroll 80% of view width
-			const scrollTo =
+			const { scrollLeft, clientWidth, scrollWidth } = scrollRef.current;
+			const scrollAmount = clientWidth * 0.8;
+			let scrollTo =
 				direction === "left"
 					? scrollLeft - scrollAmount
 					: scrollLeft + scrollAmount;
+
+			// Handle boundaries for a better user experience
+			if (scrollTo < 0) scrollTo = 0;
+			if (scrollTo > scrollWidth - clientWidth) scrollTo = scrollWidth - clientWidth;
 
 			scrollRef.current.scrollTo({
 				left: scrollTo,
@@ -383,6 +388,29 @@ const InfiniteShowcase = () => {
 			});
 		}
 	};
+
+	// Auto-scroll logic
+	useEffect(() => {
+		if (isPaused) return;
+
+		const interval = setInterval(() => {
+			if (scrollRef.current) {
+				const { scrollLeft, clientWidth, scrollWidth } = scrollRef.current;
+
+				// If we're at the end, scroll back to the beginning
+				if (scrollLeft + clientWidth >= scrollWidth - 50) {
+					scrollRef.current.scrollTo({
+						left: 0,
+						behavior: "smooth",
+					});
+				} else {
+					scroll("right");
+				}
+			}
+		}, 4000); // Auto-slide every 4 seconds
+
+		return () => clearInterval(interval);
+	}, [isPaused]);
 
 	return (
 		<div className="bg-background min-h-screen overflow-hidden font-sans selection:bg-purple-200">
@@ -459,7 +487,11 @@ const InfiniteShowcase = () => {
 						</div>
 
 						{/* Horizontal Scroll Gallery */}
-						<div className="lg:w-2/3 relative group/carousel">
+						<div
+							className="lg:w-2/3 relative group/carousel"
+							onMouseEnter={() => setIsPaused(true)}
+							onMouseLeave={() => setIsPaused(false)}
+						>
 							<div
 								ref={scrollRef}
 								className="flex gap-6 overflow-x-auto pb-4 snap-x scrollbar-hide scroll-smooth"
