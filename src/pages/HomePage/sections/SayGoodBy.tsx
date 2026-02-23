@@ -21,7 +21,8 @@ const IMAGES = [
 	},
 	{
 		id: 2,
-		src: "./good_bye_02.png",
+		src: "./good_bye_4.png",
+
 		// src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=80",
 		alt: "Studio Portrait",
 		fromX: 60,
@@ -45,7 +46,8 @@ const IMAGES = [
 	},
 	{
 		id: 4,
-		src: "./good_bye_4.png",
+		src: "./good_bye_02.png",
+
 		// src: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600&q=80",
 		alt: "Model Shoot",
 		fromX: 60,
