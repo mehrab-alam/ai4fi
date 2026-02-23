@@ -286,7 +286,7 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 							const isTop = i === 0;
 							const isLeft = card.className.includes("left");
 							// Responsive exit distance: about 35% of screen width, but at least 150px
-							const exitDistance = Math.max(windowWidth * 0.3, 100);
+							const exitDistance = Math.max(windowWidth * 0.15, 20);
 							const exitX = isLeft ? -exitDistance : exitDistance;
 
 							return (

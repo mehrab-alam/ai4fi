@@ -125,9 +125,9 @@ export default function TestimonialsStacked() {
 										stiffness: 100,
 										damping: 15,
 									}}
-									className="absolute inset-0"
+									className="absolute inset-0 h-full"
 								>
-									<div className="bg-background border border-border shadow-2xl rounded-3xl p-8 md:p-10 h-full flex flex-col">
+									<div className="bg-background border border-border shadow-2xl rounded-3xl p-8 md:p-10 min-h-[400px] flex flex-col">
 										{/* Header: Company & Action */}
 										<div className="flex justify-between items-center mb-6">
 											<span className="text-2xl md:text-3xl font-black tracking-tighter text-foreground">
