@@ -3,7 +3,11 @@ import { TrendingUp } from "lucide-react";
 import { useTheme } from "../../../context/ThemeContext";
 import { motion } from "motion/react";
 import SectionHeader from "./SectionHeader";
-import { AdGeneratorSection, ProductPhotographySection, VirtualTrialHighlight } from "./TestFeature";
+import {
+	AdGeneratorSection,
+	ProductPhotographySection,
+	VirtualTrialHighlight,
+} from "./TestFeature";
 import { useMediaQuery } from "../../../components/useMediaQuery";
 
 const KeyFeatures = () => {
@@ -69,12 +73,13 @@ const KeyFeatures = () => {
 		const targetElement = sectionRefs.current[index];
 		if (targetElement) {
 			const offset = isMobile ? 80 : 120; // Matches our sticky top + buffer
-			const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+			const elementPosition =
+				targetElement.getBoundingClientRect().top + window.pageYOffset;
 			const offsetPosition = elementPosition - offset;
 
 			window.scrollTo({
 				top: offsetPosition,
-				behavior: "smooth"
+				behavior: "smooth",
 			});
 		}
 
@@ -99,78 +104,92 @@ const KeyFeatures = () => {
 
 				{/* Layout Container */}
 				<div className="flex  relative flex-col md:flex-row gap-4 items-start">
-
 					{/* Left Content (Tabs) - Fixed/Sticky */}
-					{!isMobile && <aside className={`w-full md:w-[35%] lg:w-[25%] z-30 transition-all duration-300 ${isMobile ? "mt-10 static" : "mt-[30vh] sticky top-[40vh] bg-background/5 md:bg-transparent backdrop-blur-md md:backdrop-blur-none py-6 md:py-0"}`}>
-						<div className="flex items-center justify-center  flex-row md:flex-col gap-6 md:gap-10 overflow-x-auto md:overflow-visible px-4 md:px-0 scrollbar-hide">
-							{features.map((feature, index) => {
-								const isActive = activeIndex === index;
-								return (
-									<button
-										key={index}
-										onClick={() => handleTabClick(index)}
-										className="group relative flex items-center gap-4 py-2 flex-shrink-0 md:flex-shrink transition-all duration-500"
-									>
-										{/* Desktop Active Line */}
-										<motion.div
-											className="hidden md:block absolute left-[-20px] w-1.5 rounded-full bg-gradient-to-b from-brand-color to-blue-600"
-											initial={false}
-											animate={{
-												height: isActive ? "100%" : "0%",
-												opacity: isActive ? 1 : 0
-											}}
-											transition={{ type: "spring", stiffness: 300, damping: 30 }}
-										/>
-
-										<div className="flex flex-col items-start gap-1">
-											<motion.span
-												animate={{
-													scale: isActive ? 1.25 : 1,
-													translateX: isActive && !isMobile ? 15 : 0,
-													color: isActive ? "var(--foreground)" : "var(--muted-foreground)"
-												}}
-												transition={{ type: "spring", stiffness: 200, damping: 20 }}
-												className={`text-lg md:text-xl lg:text-2xl font-extrabold whitespace-nowrap transition-colors duration-300 ${isActive ? "text-foreground" : "text-muted-foreground/30 hover:text-muted-foreground/60"}`}
-											>
-												{feature.title}
-											</motion.span>
-
-											{/* Mobile Active Underline */}
+					{!isMobile && (
+						<aside
+							className={`w-full md:w-[35%] lg:w-[25%] z-30 transition-all duration-300 ${isMobile ? "mt-10 static" : "mt-[30vh] sticky top-[40vh] bg-background/5 md:bg-transparent backdrop-blur-md md:backdrop-blur-none py-6 md:py-0"}`}
+						>
+							<div className="flex items-center justify-center  flex-row md:flex-col gap-6 md:gap-10 overflow-x-auto md:overflow-visible px-4 md:px-0 scrollbar-hide">
+								{features.map((feature, index) => {
+									const isActive = activeIndex === index;
+									return (
+										<button
+											key={index}
+											onClick={() => handleTabClick(index)}
+											className="group relative flex items-center gap-4 py-2 flex-shrink-0 md:flex-shrink transition-all duration-500"
+										>
+											{/* Desktop Active Line */}
 											<motion.div
+												className="hidden md:block absolute left-[-20px] w-1.5 rounded-full bg-gradient-to-b from-brand-color to-blue-600"
 												initial={false}
 												animate={{
-													width: isActive ? "100%" : "0%",
-													opacity: isActive ? 1 : 0
+													height: isActive ? "100%" : "0%",
+													opacity: isActive ? 1 : 0,
 												}}
-												className={`h-1 mt-1 rounded-full bg-gradient-to-r ${feature.accentColor} md:hidden`}
+												transition={{
+													type: "spring",
+													stiffness: 300,
+													damping: 30,
+												}}
 											/>
-										</div>
-									</button>
-								);
-							})}
 
-						</div>
-					</aside>}
+											<div className="flex flex-col items-start gap-1">
+												<motion.span
+													animate={{
+														scale: isActive ? 1.25 : 1,
+														translateX: isActive && !isMobile ? 15 : 0,
+														color: isActive
+															? "var(--foreground)"
+															: "var(--muted-foreground)",
+													}}
+													transition={{
+														type: "spring",
+														stiffness: 200,
+														damping: 20,
+													}}
+													className={`text-lg md:text-xl lg:text-2xl font-extrabold whitespace-nowrap transition-colors duration-300 ${isActive ? "text-foreground" : "text-muted-foreground/30 hover:text-muted-foreground/60"}`}
+												>
+													{feature.title}
+												</motion.span>
+
+												{/* Mobile Active Underline */}
+												<motion.div
+													initial={false}
+													animate={{
+														width: isActive ? "100%" : "0%",
+														opacity: isActive ? 1 : 0,
+													}}
+													className={`h-1 mt-1 rounded-full bg-gradient-to-r ${feature.accentColor} md:hidden`}
+												/>
+											</div>
+										</button>
+									);
+								})}
+							</div>
+						</aside>
+					)}
 
 					{/* Right Content (Features) - Scrolling with Sticky Stacking */}
 					<div className="w-full md:w-[65%] lg:w-[75%] relative pb-[20vh]">
 						{features.map((feature, index) => (
-							<div
-								key={index}
-								ref={(el) => {
-									sectionRefs.current[index] = el;
-								}}
-								className={`w-full mb-12 md:mb-[50vh] last:mb-0 ${isMobile ? "" : "sticky top-[120px]"}`}
-								style={{
-									zIndex: isMobile ? 1 : index + 10,
-								}}
-							>
-								<div className="rounded-3xl overflow-hidden glass-card-heavy border border-white/10 shadow-2xl backdrop-blur-xl bg-background/40">
-									{feature.children}
+							<>
+								<div
+									key={index}
+									ref={(el) => {
+										sectionRefs.current[index] = el;
+									}}
+									className={`w-full mb-12 md:mb-[50vh] last:mb-0 ${isMobile ? "" : "sticky top-[120px]"}`}
+									style={{
+										zIndex: isMobile ? 1 : index + 10,
+									}}
+								>
+									<div className="rounded-3xl overflow-hidden glass-card-heavy border border-white/10 shadow-2xl backdrop-blur-xl bg-background/40">
+										{feature.children}
+									</div>
 								</div>
-							</div>
+								{/* {index === features.length - 1 && <div className="h-24"></div>} */}
+							</>
 						))}
-						<div className="h-0 md:h-[20vh]"></div>
 					</div>
 				</div>
 			</div>
@@ -179,4 +198,3 @@ const KeyFeatures = () => {
 };
 
 export default KeyFeatures;
-

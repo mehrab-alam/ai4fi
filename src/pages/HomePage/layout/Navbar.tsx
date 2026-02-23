@@ -1,6 +1,17 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Menu, X, ChevronRight, Zap, User, ChevronDown, Sparkles, Layers, Clapperboard } from "lucide-react";
+import {
+	Menu,
+	X,
+	ChevronRight,
+	Zap,
+	User,
+	ChevronDown,
+	Sparkles,
+	Layers,
+	Clapperboard,
+	GalleryHorizontal,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,6 +27,7 @@ const Navbar = () => {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [activeLink, setActiveLink] = useState("home");
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+	const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {
@@ -41,20 +53,40 @@ const Navbar = () => {
 		// { name: "Features", icon: "features", link: "/#features", isLink: false },
 		{ name: "About", icon: "about", link: "/about", isLink: true },
 		{ name: "Pricing", icon: "pricing", link: "/pricing", isLink: true },
-		{
-			name: "Portfolio",
-			icon: "gallery",
-			link: "/model-gallery",
-			isLink: true,
-		},
+		// {
+		// 	name: "Portfolio",
+		// 	icon: "gallery",
+		// 	link: "/model-gallery",
+		// 	isLink: true,
+		// },
 		{ name: "Contact", icon: "contact", link: "/contact", isLink: true },
 	];
 
 	const dropdownItems = [
 		{ name: "Model Generator", href: "/model", icon: <Sparkles size={14} /> },
-		{ name: "Virtual Try Room", href: "/virtualtryon", icon: <Layers size={14} /> },
-		{ name: "Try On V2 (beta)", href: "/try-on-v2-beta", icon: <Zap size={14} /> },
-		{ name: "Ads Generator", href: "/ads-generator", icon: <Clapperboard size={14} /> },
+		{
+			name: "Virtual Try Room",
+			href: "/virtualtryon",
+			icon: <Layers size={14} />,
+		},
+		{
+			name: "Try On V2 (beta)",
+			href: "/try-on-v2-beta",
+			icon: <Zap size={14} />,
+		},
+		{
+			name: "Ads Generator",
+			href: "/ads-generator",
+			icon: <Clapperboard size={14} />,
+		},
+	];
+	const showcaseItems = [
+		{ name: "Portfolio", href: "/model-gallery", icon: <Sparkles size={14} /> },
+		{
+			name: "Client Showcase",
+			href: "/client-showcase",
+			icon: <GalleryHorizontal size={14} />,
+		},
 	];
 
 	return (
@@ -62,19 +94,17 @@ const Navbar = () => {
 			initial={{ y: -20, opacity: 0 }}
 			animate={{ y: 0, opacity: 1 }}
 			transition={{ duration: 0.5 }}
-			className={`fixed  w-full z-50 transition-all duration-300 ${isScrolled
-				? "py-2 bg-background/80 backdrop-blur-xl border-b border-border shadow-sm"
-				: "py-4 bg-transparent"
-				}`}
+			className={`fixed  w-full z-50 transition-all duration-300 ${
+				isScrolled
+					? "py-2 bg-background/80 backdrop-blur-xl border-b border-border shadow-sm"
+					: "py-4 bg-transparent"
+			}`}
 		>
 			<div className="lg:max-w-[var(--content-width)] max-w-[calc(100vw-20px)] mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex items-center justify-between">
 					{/* Logo */}
 					<Link to="/">
 						<div className="flex-shrink-0 flex items-center">
-							{/* <div className='w-8 h-8 mr-2 bg-gradient-to-br from-cyan-400 to-sky-600 rounded-lg flex items-center justify-center'>
-                <Zap size={18} className='text-white' />
-              </div> */}
 							<span className="bg-gradient-to-r from-cyan-400 to-sky-500 bg-clip-text text-transparent">
 								<img src="./light-logo.png" className="w-auto h-[60px]" />
 							</span>
@@ -134,12 +164,58 @@ const Navbar = () => {
 								);
 							}
 						})}
-
+						<div className="relative  z-50">
+							<motion.button
+								onClick={() => {
+									setIsDropdownOpen(false);
+									setIsGalleryOpen(!isGalleryOpen);
+								}}
+								className="relative px-3 py-2 mx-1 rounded-lg transition-colors duration-200 text-secondary-foreground font-semibold hover:text-foreground hover:bg-foreground/5 flex items-center"
+								whileHover={{ scale: 1.05 }}
+								whileTap={{ scale: 0.95 }}
+							>
+								<span>Gallery</span>
+								<ChevronDown size={16} className="ml-1" />
+							</motion.button>
+							<AnimatePresence>
+								{isGalleryOpen && (
+									<motion.div
+										initial={{ opacity: 0, y: -10 }}
+										animate={{ opacity: 1, y: 0 }}
+										exit={{ opacity: 0, y: -10 }}
+										transition={{ duration: 0.2 }}
+										className="absolute z-[100000] top-full left-0 right-64 mt-2 w-48 h-auto bg-muted backdrop-blur-xl border border-border grid grid-cols-1 gap-2 px-2 py-4 rounded-lg shadow-lg "
+									>
+										{showcaseItems.map((item) => (
+											<Link to={item.href}>
+												<div className="flex items-center gap-2 px-2 hover:bg-background rounded-lg">
+													<div className="p-2 border border-border rounded-lg bg-background text-foreground">
+														{item.icon}
+													</div>
+													<motion.span
+														key={item.name}
+														className="block py-3  text-secondary-foreground hover:text-foreground  transition-colors duration-200"
+														onClick={() => {
+															setIsDropdownOpen(false);
+															setIsGalleryOpen(false);
+														}}
+													>
+														{item.name}
+													</motion.span>
+												</div>
+											</Link>
+										))}
+									</motion.div>
+								)}
+							</AnimatePresence>
+						</div>
 						{/* Our Offerings Dropdown */}
 						<div className="relative  z-50">
 							<motion.button
-
-								onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+								onClick={() => {
+									setIsGalleryOpen(false);
+									setIsDropdownOpen(!isDropdownOpen);
+								}}
 								className="relative px-3 py-2 mx-1 rounded-lg transition-colors duration-200 text-secondary-foreground font-semibold hover:text-foreground hover:bg-foreground/5 flex items-center"
 								whileHover={{ scale: 1.05 }}
 								whileTap={{ scale: 0.95 }}
@@ -224,7 +300,7 @@ const Navbar = () => {
 											boxShadow: "0 0 15px rgba(6, 182, 212, 0.5)",
 										}}
 										whileTap={{ scale: 0.95 }}
-										onClick={() => { }}
+										onClick={() => {}}
 										className="bg-brand-color text-white px-6 py-2.5 rounded-xl font-medium  transition-all duration-300 flex items-center gap-2 "
 									>
 										<span>SignUp</span>
@@ -268,10 +344,11 @@ const Navbar = () => {
 								<motion.a
 									key={item.name}
 									href={`${item.link}`}
-									className={`block px-4 py-3 rounded-lg  font-medium transition-colors duration-200 ${activeLink === item.name.toLowerCase()
-										? "bg-muted text-foreground"
-										: "text-secondary-foreground hover:text-secondary-foreground hover:bg-foreground/5"
-										}`}
+									className={`block px-4 py-3 rounded-lg  font-medium transition-colors duration-200 ${
+										activeLink === item.name.toLowerCase()
+											? "bg-muted text-foreground"
+											: "text-secondary-foreground hover:text-secondary-foreground hover:bg-foreground/5"
+									}`}
 									onClick={() => {
 										setActiveLink(item.name.toLowerCase());
 										setIsMobileMenuOpen(false);
@@ -286,7 +363,10 @@ const Navbar = () => {
 							{/* Our Offerings Dropdown in Mobile Menu */}
 							<div className="pt-2 mb-8">
 								<motion.button
-									onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+									onClick={() => {
+										setIsGalleryOpen(false);
+										setIsDropdownOpen(!isDropdownOpen);
+									}}
 									className="w-full px-4 py-3 rounded-lg  font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors duration-200 flex items-center justify-between"
 									initial={{ opacity: 0, y: -10 }}
 									animate={{ opacity: 1, y: 0 }}
@@ -357,7 +437,7 @@ const Navbar = () => {
 								) : (
 									<Link to="/login">
 										<button
-											onClick={() => { }}
+											onClick={() => {}}
 											className="w-full bg-gradient-to-r from-cyan-500 to-sky-600 text-white px-4 py-3 rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2 "
 										>
 											<span>Virtual Try Room</span>
