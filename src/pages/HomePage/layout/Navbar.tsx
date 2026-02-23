@@ -187,7 +187,12 @@ const Navbar = () => {
 										className="absolute z-[100000] top-full left-0 right-64 mt-2 w-48 h-auto bg-muted backdrop-blur-xl border border-border grid grid-cols-1 gap-2 px-2 py-4 rounded-lg shadow-lg "
 									>
 										{showcaseItems.map((item) => (
-											<Link to={item.href}>
+											<Link
+												to={item.href}
+												onClick={() => {
+													setIsGalleryOpen(false);
+												}}
+											>
 												<div className="flex items-center gap-2 px-2 hover:bg-background rounded-lg">
 													<div className="p-2 border border-border rounded-lg bg-background text-foreground">
 														{item.icon}

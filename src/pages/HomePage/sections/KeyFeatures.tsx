@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, Fragment } from "react";
 import { TrendingUp } from "lucide-react";
 import { useTheme } from "../../../context/ThemeContext";
 import { motion } from "motion/react";
@@ -13,6 +13,7 @@ import { useMediaQuery } from "../../../components/useMediaQuery";
 const KeyFeatures = () => {
 	const { theme } = useTheme();
 	const isMobile = useMediaQuery("(max-width: 768px)");
+
 	const features = [
 		{
 			title: "Virtual Trial Room",
@@ -30,62 +31,79 @@ const KeyFeatures = () => {
 			accentColor: "from-orange-500 to-red-500",
 		},
 	];
+
 	const [activeIndex, setActiveIndex] = useState(0);
 	const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 	const isScrolling = useRef(false);
 
-	// Scroll-synced tab switching logic
+	// ✅ Fixed Scroll Sync Logic (Sticky Stack Behavior)
 	useEffect(() => {
+		if (isMobile) return;
+
 		const handleScroll = () => {
-			if (isScrolling.current || isMobile) return;
+			if (isScrolling.current) return;
 
-			// The threshold where a feature becomes "active" (sticky point + buffer)
-			const STICKY_THRESHOLD = 200;
-			let currentActive = 0;
+			const STICKY_POINT = 120; // matches sticky top-[120px]
+			let newActiveIndex = 0;
 
-			sectionRefs.current.forEach((ref, index) => {
-				if (ref) {
-					const rect = ref.getBoundingClientRect();
-					// In sticky stacking, the one with the highest index that's at the top is active
-					if (rect.top <= STICKY_THRESHOLD) {
-						currentActive = index;
-					}
+			sectionRefs.current.forEach((section, index) => {
+				if (!section) return;
+
+				const rect = section.getBoundingClientRect();
+
+				// When section reaches sticky zone
+				if (rect.top <= STICKY_POINT + 5) {
+					newActiveIndex = index;
 				}
 			});
 
-			if (currentActive !== activeIndex) {
-				setActiveIndex(currentActive);
+			// Lock to last section once fully visible
+			const lastSection = sectionRefs.current[sectionRefs.current.length - 1];
+
+			if (lastSection) {
+				const lastRect = lastSection.getBoundingClientRect();
+
+				if (lastRect.bottom <= window.innerHeight) {
+					newActiveIndex = sectionRefs.current.length - 1;
+				}
+			}
+
+			if (newActiveIndex !== activeIndex) {
+				setActiveIndex(newActiveIndex);
 			}
 		};
 
 		window.addEventListener("scroll", handleScroll, { passive: true });
-		// Initial check in case we're already scrolled
 		handleScroll();
 
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, [activeIndex, isMobile]);
 
 	const handleTabClick = (index: number) => {
-		setActiveIndex(index);
+		const targetElement = sectionRefs.current[index];
+		if (!targetElement) return;
+
 		isScrolling.current = true;
 
-		// Adjust scroll position to account for sticky offset
-		const targetElement = sectionRefs.current[index];
-		if (targetElement) {
-			const offset = isMobile ? 80 : 120; // Matches our sticky top + buffer
-			const elementPosition =
-				targetElement.getBoundingClientRect().top + window.pageYOffset;
-			const offsetPosition = elementPosition - offset;
+		const STICKY_OFFSET = isMobile ? 80 : 120;
 
-			window.scrollTo({
-				top: offsetPosition,
-				behavior: "smooth",
-			});
-		}
+		const elementTop =
+			targetElement.getBoundingClientRect().top + window.scrollY;
+
+		const scrollToPosition = elementTop - STICKY_OFFSET;
+
+		window.scrollTo({
+			top: scrollToPosition,
+			behavior: "smooth",
+		});
+
+		// Wait until scroll completes before re-enabling detection
+		const scrollDuration = 800;
 
 		setTimeout(() => {
+			setActiveIndex(index);
 			isScrolling.current = false;
-		}, 1000);
+		}, scrollDuration);
 	};
 
 	return (
@@ -102,23 +120,26 @@ const KeyFeatures = () => {
 					icon={<TrendingUp className="text-muted-foreground" size={18} />}
 				/>
 
-				{/* Layout Container */}
-				<div className="flex  relative flex-col md:flex-row gap-4 items-start">
-					{/* Left Content (Tabs) - Fixed/Sticky */}
+				<div className="flex relative flex-col md:flex-row gap-4 items-start">
+					{/* Sidebar Tabs */}
 					{!isMobile && (
 						<aside
-							className={`w-full md:w-[35%] lg:w-[25%] z-30 transition-all duration-300 ${isMobile ? "mt-10 static" : "mt-[30vh] sticky top-[40vh] bg-background/5 md:bg-transparent backdrop-blur-md md:backdrop-blur-none py-6 md:py-0"}`}
+							className={`w-full md:w-[35%] lg:w-[25%] z-30 transition-all duration-300 ${
+								isMobile
+									? "mt-10 static"
+									: "mt-[30vh] sticky top-[20vh] bg-background/5 md:bg-transparent backdrop-blur-md md:backdrop-blur-none py-6 md:py-0"
+							}`}
 						>
-							<div className="flex items-center justify-center  flex-row md:flex-col gap-6 md:gap-10 overflow-x-auto md:overflow-visible px-4 md:px-0 scrollbar-hide">
+							<div className="flex items-center justify-center flex-row md:flex-col gap-6 md:gap-10 overflow-x-auto md:overflow-visible px-4 md:px-0 scrollbar-hide">
 								{features.map((feature, index) => {
 									const isActive = activeIndex === index;
+
 									return (
 										<button
 											key={index}
 											onClick={() => handleTabClick(index)}
 											className="group relative flex items-center gap-4 py-2 flex-shrink-0 md:flex-shrink transition-all duration-500"
 										>
-											{/* Desktop Active Line */}
 											<motion.div
 												className="hidden md:block absolute left-[-20px] w-1.5 rounded-full bg-gradient-to-b from-brand-color to-blue-600"
 												initial={false}
@@ -147,12 +168,15 @@ const KeyFeatures = () => {
 														stiffness: 200,
 														damping: 20,
 													}}
-													className={`text-lg md:text-xl lg:text-2xl font-extrabold whitespace-nowrap transition-colors duration-300 ${isActive ? "text-foreground" : "text-muted-foreground/30 hover:text-muted-foreground/60"}`}
+													className={`text-lg md:text-xl lg:text-2xl font-extrabold whitespace-nowrap transition-colors duration-300 ${
+														isActive
+															? "text-foreground"
+															: "text-muted-foreground/30 hover:text-muted-foreground/60"
+													}`}
 												>
 													{feature.title}
 												</motion.span>
 
-												{/* Mobile Active Underline */}
 												<motion.div
 													initial={false}
 													animate={{
@@ -169,16 +193,17 @@ const KeyFeatures = () => {
 						</aside>
 					)}
 
-					{/* Right Content (Features) - Scrolling with Sticky Stacking */}
+					{/* Feature Sections */}
 					<div className="w-full md:w-[65%] lg:w-[75%] relative pb-[20vh]">
 						{features.map((feature, index) => (
-							<>
+							<Fragment key={index}>
 								<div
-									key={index}
 									ref={(el) => {
 										sectionRefs.current[index] = el;
 									}}
-									className={`w-full mb-12 md:mb-[50vh] last:mb-0 ${isMobile ? "" : "sticky top-[120px]"}`}
+									className={`w-full mb-12 md:mb-[0vh] last:mb-0 ${
+										isMobile ? "" : "sticky top-[120px]"
+									}`}
 									style={{
 										zIndex: isMobile ? 1 : index + 10,
 									}}
@@ -187,8 +212,11 @@ const KeyFeatures = () => {
 										{feature.children}
 									</div>
 								</div>
-								{/* {index === features.length - 1 && <div className="h-24"></div>} */}
-							</>
+
+								{index === features.length - 1 && (
+									<div className="max-h-[20vh] "></div>
+								)}
+							</Fragment>
 						))}
 					</div>
 				</div>

@@ -25,114 +25,127 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ClientShowcase from "./pages/client-showcase";
 
 export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <HomeLayout />,
-    children: [
-      {
-        index: true,
-        element: <HomePage />,
-      },
-      {
-        path: "pricing",
-        element: <PricingPage />,
-      },
-      {
-        path: "client-showcase",
-        element: <ClientShowcase />,
-      },
+	{
+		path: "/",
+		element: <HomeLayout />,
+		children: [
+			{
+				index: true,
+				element: <HomePage />,
+			},
+			{
+				path: "pricing",
+				element: <PricingPage />,
+			},
 
-      {
-        path: "about",
-        element: <AboutUs />,
-      },
+			{
+				path: "about",
+				element: <AboutUs />,
+			},
 
-      {
-        path: "contact",
-        element: <ContactForm />,
-      },
-      {
-        path: "model-gallery",
-        element: <HomePageGallery />,
-      },
-      {
-        path: "terms-of-service",
-        element: <TermsOfService />,
-      },
-      {
-        path: "privacy-policy",
-        element: <PrivacyPolicy />,
-      },
-    ],
-  },
+			{
+				path: "contact",
+				element: <ContactForm />,
+			},
 
-  {
-    path: "/dashboard",
-    element: <RootLayout />,
-    children: [
-      {
-        index: true,
-        element: <ProtectedRoute component={Dashboard} />,
-      },
-      {
-        path: "analytics",
-        element: <ProtectedRoute component={Analytics} />,
-      },
-      {
-        path: "*",
-        element: <div className="text-white text-center mt-20">Page not found</div>,
-      },
-    ],
-  },
-  {
-    path: "/login",
-    element: <LoginPage />,
+			{
+				path: "terms-of-service",
+				element: <TermsOfService />,
+			},
+			{
+				path: "privacy-policy",
+				element: <PrivacyPolicy />,
+			},
+		],
+	},
+	{
+		path: "/client-showcase",
+		element: <HomeLayout />,
+		children: [
+			{
+				index: true,
+				element: <ClientShowcase />,
+			},
+		],
+	},
+	{
+		path: "/model-gallery",
+		element: <HomeLayout />,
+		children: [
+			{
+				index: true,
+				element: <HomePageGallery />,
+			},
+		],
+	},
 
-  },
-  {
-    path: "/signup",
-    element: <SignUpForm />,
+	{
+		path: "/dashboard",
+		element: <RootLayout />,
+		children: [
+			{
+				index: true,
+				element: <ProtectedRoute component={Dashboard} />,
+			},
+			{
+				path: "analytics",
+				element: <ProtectedRoute component={Analytics} />,
+			},
+			{
+				path: "*",
+				element: (
+					<div className="text-white text-center mt-20">Page not found</div>
+				),
+			},
+		],
+	},
+	{
+		path: "/login",
+		element: <LoginPage />,
+	},
+	{
+		path: "/signup",
+		element: <SignUpForm />,
+	},
+	{
+		path: "/model",
+		element: <ProtectedRoute component={GenerateModel} />,
+	},
+	{
+		path: "/choose-option",
+		element: <ProtectedRoute component={ChooseModelOption} />,
+	},
+	{
+		path: "/generated-model",
+		element: <ProtectedRoute component={ModelListPage} />,
+	},
+	{
+		path: "/virtualtryon",
+		element: <ProtectedRoute component={VirtualTryon} />,
+	},
+	{
+		path: "*",
+		element: <div className="text-white text-center mt-20">Page not found</div>,
+	},
 
-  },
-  {
-    path: "/model",
-    element: <ProtectedRoute component={GenerateModel} />,
-  },
-  {
-    path: "/choose-option",
-    element: <ProtectedRoute component={ChooseModelOption} />,
-  },
-  {
-    path: "/generated-model",
-    element: <ProtectedRoute component={ModelListPage} />,
-  },
-  {
-    path: "/virtualtryon",
-    element: <ProtectedRoute component={VirtualTryon} />,
-  },
-  {
-    path: "*",
-    element: <div className="text-white text-center mt-20">Page not found</div>,
-  },
-
-  {
-    path: "try-on-v2-beta",
-    element: <ProtectedRoute component={TryOnV2BetaPage} />,
-  },
-  {
-    path: "/product-model-generator",
-    element: <ProtectedRoute component={ProductGeneratorPage} />,
-  },
-  {
-    path: "/ads-generator",
-    element: <ProtectedRoute component={AdsGenerator} />,
-  },
-  {
-    path: "/create-ads",
-    element: <ProtectedRoute component={CreateAds} />,
-  },
-  {
-    path: "/features",
-    element: <ProtectedRoute component={FeaturesPage} />,
-  },
+	{
+		path: "try-on-v2-beta",
+		element: <ProtectedRoute component={TryOnV2BetaPage} />,
+	},
+	{
+		path: "/product-model-generator",
+		element: <ProtectedRoute component={ProductGeneratorPage} />,
+	},
+	{
+		path: "/ads-generator",
+		element: <ProtectedRoute component={AdsGenerator} />,
+	},
+	{
+		path: "/create-ads",
+		element: <ProtectedRoute component={CreateAds} />,
+	},
+	{
+		path: "/features",
+		element: <ProtectedRoute component={FeaturesPage} />,
+	},
 ]);
