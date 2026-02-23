@@ -1093,7 +1093,7 @@ const Navbar = () => {
 					</div>
 
 					{/* Mobile hamburger */}
-					<div className="flex items-center gap-4">
+					<div className="flex lg:hidden items-center gap-4">
 						<ThemeToggle />
 						<button
 							onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
