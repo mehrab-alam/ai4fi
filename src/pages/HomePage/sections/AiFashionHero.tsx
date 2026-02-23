@@ -292,7 +292,7 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 							return (
 								<motion.div
 									key={card.id}
-									className={`absolute bg-background p-2 pb-6 w-[35%] md:w-[30%] lg:w-[25%] h-auto rounded-lg shadow-xl ${card.className}`}
+									className={`absolute bg-white p-2 pb-6 w-[35%] md:w-[30%] lg:w-[25%] h-auto rounded-lg shadow-xl ${card.className}`}
 									animate={{
 										x: isTop && direction === "out" ? exitX : 0,
 										scale: isTop ? 1 : 0.95,

@@ -200,7 +200,7 @@ export default function AI4FIAboutUs() {
       `}</style>
 
       <div
-        className="ai4fi-root relative min-h-screen overflow-x-hidden"
+        className="ai4fi-root relative  min-h-screen overflow-x-hidden"
         style={{ background: "var(--background)", color: "var(--foreground)" }}
       >
         {/* ── Ambient cursor glow (desktop only) ── */}
@@ -360,7 +360,7 @@ export default function AI4FIAboutUs() {
             <SectionLabel>About the Platform</SectionLabel>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-start">
+          <div className="grid  grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-start">
             <AnimatedSection delay={80}>
               <h2
                 className="ai4fi-serif font-light leading-[1.15] tracking-tight text-[clamp(30px,3.8vw,52px)]"

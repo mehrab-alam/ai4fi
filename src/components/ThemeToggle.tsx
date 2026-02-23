@@ -8,7 +8,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="w-10 h-10 flex items-center justify-center rounded-xl bg-background hover:bg-background/80 dark:bg-gray-800/80 dark:hover:bg-gray-700/80 transition-colors border border-border dark:border-gray-700 relative overflow-hidden backdrop-blur-sm"
+      className="md:w-10 md:h-10 w-8 h-8 flex items-center justify-center rounded-xl bg-background hover:bg-background/80 dark:bg-gray-800/80 dark:hover:bg-gray-700/80 transition-colors border border-border dark:border-gray-700 relative overflow-hidden backdrop-blur-sm"
       aria-label="Toggle theme"
     >
       <AnimatePresence mode="wait" initial={false}>
@@ -21,9 +21,9 @@ export function ThemeToggle() {
           className="flex items-center justify-center"
         >
           {isDark ? (
-            <Moon className="h-5 w-5 text-blue-400" />
+            <Moon className="md:h-5 md:w-5 h-4 w-4 text-blue-400" />
           ) : (
-            <Sun className="h-5 w-5 text-orange-500" />
+            <Sun className="md:h-5 md:w-5 h-4 w-4 text-orange-500" />
           )}
         </motion.div>
       </AnimatePresence>

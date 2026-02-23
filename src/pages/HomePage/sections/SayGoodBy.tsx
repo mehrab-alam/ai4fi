@@ -179,7 +179,7 @@ export default function SayGoodBySection() {
 						const scale = useTransform(smoothProgress, range, [0.5, 1]);
 						const opacity = useTransform(
 							smoothProgress,
-							[0.15 + stagger, 0.4 + stagger],
+							[0.05 + stagger, 0.2 + stagger],
 							[0, 1],
 						);
 

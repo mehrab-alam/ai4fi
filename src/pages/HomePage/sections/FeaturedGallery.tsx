@@ -60,23 +60,27 @@ const GallerySetOne = [
 	{ id: 2, img: "./gallery/gallery_2.png", alt: "AI Model 2", type: "Commercial" },
 	{ id: 3, img: "./gallery/gallery_3.png", alt: "AI Model 3", type: "Commercial" },
 	{ id: 4, img: "./gallery/gallery_4.png", alt: "AI Model 4", type: "Commercial" },
-	{ id: 5, img: "./gallery/gallery_5.PNG", alt: "AI Model 5", type: "Commercial" },
-	{ id: 6, img: "./gallery/gallery_6.PNG", alt: "AI Model 6", type: "Commercial" },
-	{ id: 7, img: "./gallery/gallery_7.PNG", alt: "AI Model 7", type: "Commercial" },
-	{ id: 8, img: "./gallery/gallery_8.PNG", alt: "AI Model 8", type: "Commercial" },
+	{ id: 5, img: "./gallery/gallery_5.jpeg", alt: "AI Model 5", type: "Commercial" },
+	{ id: 6, img: "./gallery/gallery_6.jpeg", alt: "AI Model 6", type: "Commercial" },
+	{ id: 7, img: "./gallery/gallery_7.jpeg", alt: "AI Model 7", type: "Commercial" },
+	{ id: 8, img: "./gallery/gallery_8.jpeg", alt: "AI Model 8", type: "Commercial" },
 	{ id: 9, img: "./gallery/gallery_9.jpeg", alt: "AI Model 9", type: "Commercial" },
-	{ id: 10, img: "./gallery/gallery_10.PNG", alt: "AI Model 10", type: "Commercial" },
+	{ id: 10, img: "./gallery/gallery_10.jpeg", alt: "AI Model 10", type: "Commercial" },
 	{ id: 11, img: "./gallery/gallery_11.jpeg", alt: "AI Model 11", type: "Commercial" },
 	{ id: 12, img: "./gallery/gallery_12.jpeg", alt: "AI Model 12", type: "Commercial" },
 	{ id: 13, img: "./gallery/gallery_13.jpeg", alt: "AI Model 13", type: "Commercial" },
 	{ id: 14, img: "./gallery/gallery_14.jpeg", alt: "AI Model 14", type: "Commercial" },
 	{ id: 15, img: "./gallery/gallery_15.jpeg", alt: "AI Model 15", type: "Commercial" },
 	{ id: 16, img: "./gallery/gallery_16.jpeg", alt: "AI Model 16", type: "Commercial" },
+	{ id: 17, img: "./gallery/gallery_39.jpeg", alt: "AI Model 16", type: "Commercial" },
+	{ id: 18, img: "./gallery/gallery_40.jpeg", alt: "AI Model 16", type: "Commercial" },
+	{ id: 19, img: "./gallery/gallery_41.jpeg", alt: "AI Model 16", type: "Commercial" },
+	{ id: 20, img: "./gallery/gallery_42.jpeg", alt: "AI Model 16", type: "Commercial" },
 ];
 
 const GallerySetTwo = [
 	{ id: 17, img: "./gallery/gallery_17.jpeg", alt: "AI Model 17", type: "Commercial" },
-	{ id: 32, img: "./gallery/gallery_32.jpeg", alt: "AI Model 32", type: "Commercial" },
+	{ id: 32, img: "./gallery/gallery_32.png", alt: "AI Model 32", type: "Commercial" },
 
 	{ id: 18, img: "./gallery/gallery_18.jpeg", alt: "AI Model 18", type: "Commercial" },
 	{ id: 19, img: "./gallery/gallery_19.png", alt: "AI Model 19", type: "Commercial" },
@@ -84,7 +88,7 @@ const GallerySetTwo = [
 	{ id: 26, img: "./gallery/gallery_26.png", alt: "AI Model 26", type: "Commercial" },
 
 	{ id: 21, img: "./gallery/gallery_21.png", alt: "AI Model 21", type: "Commercial" },
-	{ id: 30, img: "./gallery/gallery_30.png", alt: "AI Model 30", type: "Commercial" },
+	{ id: 30, img: "./gallery/gallery_30.jpeg", alt: "AI Model 30", type: "Commercial" },
 	{ id: 29, img: "./gallery/gallery_29.png", alt: "AI Model 29", type: "Commercial" },
 
 	{ id: 22, img: "./gallery/gallery_22.png", alt: "AI Model 22", type: "Commercial" },
@@ -95,6 +99,11 @@ const GallerySetTwo = [
 	{ id: 28, img: "./gallery/gallery_28.png", alt: "AI Model 28", type: "Commercial" },
 	{ id: 31, img: "./gallery/gallery_31.jpeg", alt: "AI Model 31", type: "Commercial" },
 	{ id: 33, img: "./gallery/gallery_33.jpeg", alt: "AI Model 33", type: "Commercial" },
+	{ id: 34, img: "./gallery/gallery_34.jpeg", alt: "AI Model 33", type: "Commercial" },
+	{ id: 35, img: "./gallery/gallery_35.jpeg", alt: "AI Model 33", type: "Commercial" },
+	{ id: 36, img: "./gallery/gallery_36.jpeg", alt: "AI Model 33", type: "Commercial" },
+	{ id: 37, img: "./gallery/gallery_37.jpeg", alt: "AI Model 33", type: "Commercial" },
+	{ id: 38, img: "./gallery/gallery_38.jpeg", alt: "AI Model 33", type: "Commercial" },
 ];
 const ObeseModels = [
 	{
