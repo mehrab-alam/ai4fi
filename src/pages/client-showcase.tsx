@@ -812,33 +812,29 @@ function LightboxModal({ src, onClose }: { src: string; onClose: () => void }) {
 function useSlideshow(images: string[]) {
     const [idx, setIdx] = useState(0);
     const [hovered, setHovered] = useState(false);
-    const [slideDir, setSlideDir] = useState<"left" | "right">("left");
-    const [animKey, setAnimKey] = useState(0);
     const startX = useRef<number | null>(null);
     const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-    const go = useCallback((newIdx: number, dir: "left" | "right") => {
-        setSlideDir(dir);
-        setIdx(newIdx);
-        setAnimKey(k => k + 1);
-    }, []);
-
     const next = useCallback(() => {
         if (images.length <= 1) return;
-        go((idx + 1) % images.length, "left");
-    }, [idx, images.length, go]);
+        setIdx(current => (current + 1) % images.length);
+    }, [images.length]);
 
     const prev = useCallback(() => {
         if (images.length <= 1) return;
-        go((idx - 1 + images.length) % images.length, "right");
-    }, [idx, images.length, go]);
+        setIdx(current => (current - 1 + images.length) % images.length);
+    }, [images.length]);
 
     useEffect(() => {
         if (hovered || images.length <= 1) return;
-        const stagger = setTimeout(() => {
-            timerRef.current = setInterval(next, 3000 + Math.random() * 2000);
-        }, Math.random() * 2000);
-        return () => { clearTimeout(stagger); if (timerRef.current) clearInterval(timerRef.current); };
+        const stagger = Math.random() * 2000;
+        const timeout = setTimeout(() => {
+            timerRef.current = setInterval(next, 3500 + Math.random() * 1500);
+        }, stagger);
+        return () => {
+            clearTimeout(timeout);
+            if (timerRef.current) clearInterval(timerRef.current);
+        };
     }, [hovered, images.length, next]);
 
     const touchBind = {
@@ -850,7 +846,7 @@ function useSlideshow(images: string[]) {
             startX.current = null;
         },
     };
-    return { idx, animKey, hovered, setHovered, slideDir, next, prev, touchBind };
+    return { idx, hovered, setHovered, next, prev, touchBind };
 }
 
 // --- Dots ---
@@ -869,18 +865,18 @@ function Dots({ count, active }: { count: number; active: number }) {
 // Height pattern: long → short → extra long (cycles every 3)
 const HEIGHT_CLASSES = [
     "h-[240px] md:h-[300px] lg:h-[360px]",  // long
-    "h-[160px] md:h-[190px] lg:h-[220px]",  // short
+    "h-[160px] md:h-[190px] lg:h-[280px]",  // short
     "h-[300px] md:h-[380px] lg:h-[440px]",  // extra long
 ];
 const TESTIMONIAL_HEIGHT_CLASSES = [
     "h-[260px] md:h-[320px] lg:h-[400px]",  // long
-    "h-[190px] md:h-[220px] lg:h-[260px]",  // short
+    "h-[190px] md:h-[220px] lg:h-[300px]",  // short
     "h-[320px] md:h-[400px] lg:h-[480px]",  // extra long
 ];
 
 // --- Image Card ---
 function ImageCard({ card, is4k, onImageClick, index = 0 }: { card: TestimonialCard; is4k?: boolean; onImageClick?: (s: string) => void; index?: number }) {
-    const { idx, animKey, hovered, setHovered, slideDir, next, prev, touchBind } = useSlideshow(card.images);
+    const { idx, hovered, setHovered, next, prev, touchBind } = useSlideshow(card.images);
     if (!card.images.length) return null;
     const heightClass = HEIGHT_CLASSES[index % 3];
     return (
@@ -888,8 +884,11 @@ function ImageCard({ card, is4k, onImageClick, index = 0 }: { card: TestimonialC
             <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} {...touchBind}
                 onClick={() => is4k && onImageClick?.(card.images[idx])}
                 className={`showcase-card relative ${heightClass} w-full overflow-hidden rounded-xl ${is4k ? "cursor-zoom-in" : "cursor-pointer"} group select-none`}>
-                <img key={animKey} src={card.images[idx]} alt="" draggable={false}
-                    className={`absolute inset-0 w-full h-full object-cover object-top ${card.images.length > 1 ? (slideDir === "left" ? "animate-slideInRight" : "animate-slideInLeft") : ""}`} />
+                <div className="absolute inset-0 flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${idx * 100}%)` }}>
+                    {card.images.map((img, i) => (
+                        <img key={i} src={img} alt="" draggable={false} className="w-full h-full object-cover object-top flex-shrink-0" loading="lazy" />
+                    ))}
+                </div>
                 {card.images.length > 1 && (<>
                     <button onClick={(e) => { e.stopPropagation(); prev(); }}
                         className="hidden md:flex items-center justify-center absolute z-30 top-1/2 left-2 -translate-y-1/2 w-9 h-9 rounded-full bg-background/70 hover:bg-background/90 border border-border text-foreground opacity-0 group-hover:opacity-100 transition-all duration-300">
@@ -909,15 +908,18 @@ function ImageCard({ card, is4k, onImageClick, index = 0 }: { card: TestimonialC
 
 // --- Testimonial Card ---
 function TestimonialCardComponent({ card, index = 0 }: { card: TestimonialCard; index?: number }) {
-    const { idx, animKey, hovered, setHovered, slideDir, next, prev, touchBind } = useSlideshow(card.images);
+    const { idx, hovered, setHovered, next, prev, touchBind } = useSlideshow(card.images);
     if (!card.images.length) return null;
     const heightClass = TESTIMONIAL_HEIGHT_CLASSES[index % 3];
     return (
         <div className="masonry-item mb-3 sm:mb-4 break-inside-avoid">
             <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} {...touchBind}
                 className={`showcase-card relative ${heightClass} w-full overflow-hidden rounded-xl cursor-pointer group select-none`}>
-                <img key={animKey} src={card.images[idx]} alt="" draggable={false}
-                    className={`absolute inset-0 w-full h-full object-cover object-top ${card.images.length > 1 ? (slideDir === "left" ? "animate-slideInRight" : "animate-slideInLeft") : ""}`} />
+                <div className="absolute inset-0 flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${idx * 100}%)` }}>
+                    {card.images.map((img, i) => (
+                        <img key={i} src={img} alt="" draggable={false} className="w-full h-full object-cover object-top flex-shrink-0" loading="lazy" />
+                    ))}
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
                 {card.images.length > 1 && (<>
                     <button onClick={(e) => { e.stopPropagation(); prev(); }}
@@ -1048,7 +1050,7 @@ export default function ClientShowcase() {
     }, []);
 
     return (
-        <div className="min-h-screen flex flex-col lg:flex-row items-start bg-background text-foreground transition-colors duration-300 font-sans">
+        <div className="min-h-screen flex  flex-col lg:flex-row items-start bg-background text-foreground transition-colors duration-300 font-sans">
             <style>{`
 				@keyframes slideInRight { from { transform: translateX(100%); } to { transform: translateX(0); } }
 				@keyframes slideInLeft { from { transform: translateX(-100%); } to { transform: translateX(0); } }
@@ -1058,9 +1060,10 @@ export default function ClientShowcase() {
 				.showcase-card:hover { transform: translateY(-4px); }
 			`}</style>
 
+
             <Sidebar sections={SECTIONS} activeId={activeId} onNav={handleNav} />
 
-            <div className="flex-1 w-full pt-6 lg:pt-28 pb-20 px-4 sm:px-6 lg:px-12 max-w-[1600px] mx-auto overflow-hidden">
+            <div className="flex-1 w-full border-t border-border pt-6 lg:mt-20 pb-20 px-4 sm:px-6 lg:px-12 max-w-[1600px] mx-auto overflow-hidden">
                 <div ref={containerRef}>
                     {SECTIONS.map((section) => (
                         <TestimonialSection key={section.id} section={section} onImageClick={(src) => setLightboxImg(src)} />
