@@ -864,14 +864,14 @@ function Dots({ count, active }: { count: number; active: number }) {
 
 // Height pattern: long → short → extra long (cycles every 3)
 const HEIGHT_CLASSES = [
-    "h-[240px] md:h-[300px] lg:h-[360px]",  // long
-    "h-[160px] md:h-[190px] lg:h-[280px]",  // short
-    "h-[300px] md:h-[380px] lg:h-[440px]",  // extra long
+    "h-[240px] md:h-[300px] lg:h-[450px]",  // long
+    "h-[160px] md:h-[190px] lg:h-[420px]",  // short
+    "h-[300px] md:h-[380px] lg:h-[520px]",  // extra long
 ];
 const TESTIMONIAL_HEIGHT_CLASSES = [
-    "h-[260px] md:h-[320px] lg:h-[400px]",  // long
-    "h-[190px] md:h-[220px] lg:h-[300px]",  // short
-    "h-[320px] md:h-[400px] lg:h-[480px]",  // extra long
+    "h-[260px] md:h-[320px] lg:h-[480px]",  // long
+    "h-[190px] md:h-[220px] lg:h-[440px]",  // short
+    "h-[320px] md:h-[400px] lg:h-[560px]",  // extra long
 ];
 
 // --- Image Card ---
