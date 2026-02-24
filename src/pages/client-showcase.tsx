@@ -808,7 +808,7 @@ function useImageSlideshow(
 			setTimeout(() => {
 				setCurrentIndex((prev) => (prev + 1) % images.length);
 				setOpacity(1);
-			}, 1500); // Cross-fade duration
+			}, 200); // Cross-fade duration
 		};
 
 		// Random staggered start between 0-2 seconds to avoid synched "blinking"
