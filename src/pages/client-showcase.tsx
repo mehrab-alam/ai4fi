@@ -141,22 +141,22 @@ const SECTIONS: Section[] = [
 			{
 				id: "s1",
 				images: [
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/1/Generated Image February 22, 2026 - 3_32PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/1/Generated Image February 22, 2026 - 3_33PM (1).jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/1/Generated Image February 22, 2026 - 3_33PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/1/Generated Image February 22, 2026 - 3_34PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/1/Generated Image February 22, 2026 - 3_36PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/1/Generated Image February 21, 2026 - 4_32PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/1/Generated Image February 21, 2026 - 4_34PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/1/Generated Image February 21, 2026 - 4_35PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/1/Generated Image February 21, 2026 - 4_40PM 2.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/1/Generated Image February 21, 2026 - 4_40PM.jpeg",
 				],
 				span: "tall",
 			},
 			{
 				id: "s2",
 				images: [
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/2/Generated Image February 22, 2026 - 3_37PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/2/Generated Image February 22, 2026 - 3_38PM (1).jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/2/Generated Image February 22, 2026 - 3_38PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/2/Generated Image February 22, 2026 - 3_39PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/2/Generated Image February 22, 2026 - 3_40PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/2/Generated Image February 21, 2026 - 4_46PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/2/Generated Image February 21, 2026 - 4_47PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/2/Generated Image February 21, 2026 - 4_51PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/2/Generated Image February 21, 2026 - 4_53PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/2/Generated Image February 21, 2026 - 4_57PM copy.jpeg",
 				],
 				testimonial: {
 					time: "Instant",
@@ -168,10 +168,11 @@ const SECTIONS: Section[] = [
 			{
 				id: "s3",
 				images: [
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/3/Generated Image February 22, 2026 - 3_44PM (1).jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/3/Generated Image February 22, 2026 - 3_44PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/3/Generated Image February 22, 2026 - 3_46PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/3/Generated Image February 22, 2026 - 3_47PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/3/Generated Image February 21, 2026 - 4_59PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/3/Generated Image February 21, 2026 - 5_01PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/3/Generated Image February 21, 2026 - 5_03PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/3/Generated Image February 21, 2026 - 5_04PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/3/Generated Image February 21, 2026 - 5_08PM.jpeg",
 				],
 				span: "tall",
 			},
@@ -179,43 +180,45 @@ const SECTIONS: Section[] = [
 				id: "s4",
 				span: "tall",
 				images: [
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/4/Generated Image February 22, 2026 - 3_48PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/4/Generated Image February 22, 2026 - 3_50PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/4/Generated Image February 22, 2026 - 3_52PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/4/Generated Image February 22, 2026 - 3_56PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/4/Generated Image February 22, 2026 - 4_58PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/4/Generated Image February 21, 2026 - 5_12PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/4/Generated Image February 21, 2026 - 5_14PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/4/Generated Image February 21, 2026 - 5_15PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/4/Generated Image February 21, 2026 - 5_17PM.jpeg",
 				],
 			},
 			{
 				id: "s5",
 				images: [
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/5/Generated Image February 22, 2026 - 8_00PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/5/Generated Image February 22, 2026 - 8_01PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/5/Generated Image February 22, 2026 - 8_02PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/5/Generated Image February 22, 2026 - 8_03PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/5/Generated Image February 22, 2026 - 8_05PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/5/Generated Image February 21, 2026 - 5_22PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/5/Generated Image February 21, 2026 - 5_23PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/5/Generated Image February 21, 2026 - 5_26PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/5/Generated Image February 21, 2026 - 5_28PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/5/Generated Image February 21, 2026 - 5_29PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/5/Generated Image February 21, 2026 - 5_32PM.jpeg",
 				],
 				span: "tall",
 			},
 			{
 				id: "s6",
 				images: [
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/6/Generated Image February 22, 2026 - 8_05PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/6/Generated Image February 22, 2026 - 8_07PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/6/Generated Image February 22, 2026 - 8_08PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/6/Generated Image February 22, 2026 - 8_10PM (1).jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/6/Generated Image February 22, 2026 - 8_10PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/6/7b47627cab5d464f8389b7b0459923b5.png",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/6/Generated Image February 21, 2026 - 4_24PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/6/a9a805adb43248ec95449697fd394f7a.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/6/b204ac709ad3404e998f9f98dc9a8922.png",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/6/b8e6155885504138ae0dafd27e623db6.png",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/6/c01155007c4b43a2b159714fcd044c89.jpeg",
 				],
 				span: "tall",
 			},
 			{
 				id: "s7",
 				images: [
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/7/Generated Image February 22, 2026 - 8_12PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/7/Generated Image February 22, 2026 - 8_13PM (1).jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/7/Generated Image February 22, 2026 - 8_13PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/7/Generated Image February 22, 2026 - 8_14PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/7/Generated Image February 22, 2026 - 8_15PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/7/WhatsApp Image 2025-09-15 at 17.59.36 (1).jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/7/WhatsApp Image 2025-09-15 at 17.59.36 (2).jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/7/WhatsApp Image 2025-09-15 at 17.59.37 (1).jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/7/WhatsApp Image 2025-09-15 at 17.59.37 (2).jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/7/WhatsApp Image 2025-09-15 at 17.59.37.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/7/WhatsApp Image 2026-01-17 at 18.15.33.jpeg",
 				],
 				testimonial: {
 					time: "Real-time",
@@ -227,12 +230,11 @@ const SECTIONS: Section[] = [
 			{
 				id: "s8",
 				images: [
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/8/Generated Image February 22, 2026 - 10_02PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/8/Generated Image February 22, 2026 - 10_03PM (1).jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/8/Generated Image February 22, 2026 - 10_03PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/8/Generated Image February 22, 2026 - 10_04PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/8/Generated Image February 22, 2026 - 10_05PM.jpeg",
-					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Male_Casual/8/Generated Image February 22, 2026 - 10_06PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/8/Generated Image February 21, 2026 - 4_30PM.jpeg",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/8/processed-image (3).png",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/8/processed-image (4).png",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/8/processed-image (5).png",
+					"https://ai4fi.s3.amazonaws.com/Visual Portfolio/Female_Ethenic/8/processed-image (7).png",
 				],
 				span: "tall",
 			},
@@ -1192,7 +1194,7 @@ export default function ClientShowcase() {
 			<Sidebar sections={SECTIONS} activeId={activeId} onNav={handleNav} />
 
 			{/* Main content */}
-			<div className="flex-1 w-full pt-10 lg:pt-20 pb-20 px-4 sm:px-8 lg:px-12 max-w-[1600px] mx-auto overflow-hidden">
+			<div className="flex-1 w-full pt-10 lg:pt-32 pb-20 px-4 sm:px-8 lg:px-12 max-w-[1600px] mx-auto overflow-hidden">
 				<div ref={containerRef}>
 					{SECTIONS.map((section) => (
 						<TestimonialSection key={section.id} section={section} />
