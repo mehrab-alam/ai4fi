@@ -1,6 +1,6 @@
 // import { useCallback, useEffect, useState } from "react";
 // import modelService from "../services/modelService";
-// import modelGalleryList from "../services/ModelGallery";
+import modelGalleryList from "../services/ModelGallery";
 // import { useDispatch, useSelector } from "react-redux";
 // import { RootState } from "../store/store";
 // import { ArrowRight, Check, ZoomIn } from "lucide-react";
@@ -229,7 +229,6 @@
 
 // export default HomePageGallery;
 
-
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -240,217 +239,379 @@ import "./HomePageGallery.css";
 
 /* ─── DATA ─────────────────────────────────────────────────── */
 const CATEGORIES = [
-  { id: "women", label: "Women", icon: "♀", color: "#d4af7a", rgb: "212, 175, 122" },
-  { id: "men", label: "Men", icon: "♂", color: "#7ab8d4", rgb: "122, 184, 212" },
-  { id: "boys", label: "Boys", icon: "◇", color: "#7ad4a8", rgb: "122, 212, 168" },
-  { id: "girls", label: "Girls", icon: "✦", color: "#d47ab8", rgb: "212, 122, 184" },
-  { id: "baby", label: "Baby", icon: "◎", color: "#d4c87a", rgb: "212, 200, 122" },
+	{
+		id: "women",
+		label: "Women",
+		icon: "♀",
+		color: "#d4af7a",
+		rgb: "212, 175, 122",
+	},
+	{
+		id: "men",
+		label: "Men",
+		icon: "♂",
+		color: "#7ab8d4",
+		rgb: "122, 184, 212",
+	},
+	{
+		id: "boys",
+		label: "Boys",
+		icon: "◇",
+		color: "#7ad4a8",
+		rgb: "122, 212, 168",
+	},
+	{
+		id: "girls",
+		label: "Girls",
+		icon: "✦",
+		color: "#d47ab8",
+		rgb: "212, 122, 184",
+	},
+	{
+		id: "baby",
+		label: "Baby",
+		icon: "◎",
+		color: "#d4c87a",
+		rgb: "212, 200, 122",
+	},
 ];
 
 const seeds = {
-  women: ["cara1", "cara2", "cara3", "cara4", "cara5", "cara6", "cara7", "cara8", "cara9", "cara10", "cara11", "cara12", "cara13", "cara14", "cara15", "cara16", "cara17", "cara18"],
-  men: ["men1", "men2", "men3", "men4", "men5", "men6", "men7", "men8", "men9", "men10", "men11", "men12"],
-  boys: ["boy1", "boy2", "boy3", "boy4", "boy5", "boy6", "boy7", "boy8"],
-  girls: ["girl1", "girl2", "girl3", "girl4", "girl5", "girl6", "girl7", "girl8"],
-  baby: ["bab1", "bab2", "bab3", "bab4", "bab5", "bab6"],
+	women: [
+		"cara1",
+		"cara2",
+		"cara3",
+		"cara4",
+		"cara5",
+		"cara6",
+		"cara7",
+		"cara8",
+		"cara9",
+		"cara10",
+		"cara11",
+		"cara12",
+		"cara13",
+		"cara14",
+		"cara15",
+		"cara16",
+		"cara17",
+		"cara18",
+	],
+	men: [
+		"men1",
+		"men2",
+		"men3",
+		"men4",
+		"men5",
+		"men6",
+		"men7",
+		"men8",
+		"men9",
+		"men10",
+		"men11",
+		"men12",
+	],
+	boys: ["boy1", "boy2", "boy3", "boy4", "boy5", "boy6", "boy7", "boy8"],
+	girls: [
+		"girl1",
+		"girl2",
+		"girl3",
+		"girl4",
+		"girl5",
+		"girl6",
+		"girl7",
+		"girl8",
+	],
+	baby: ["bab1", "bab2", "bab3", "bab4", "bab5", "bab6"],
 };
 
 const names = {
-  women: ["Aria", "Luna", "Sofia", "Maya", "Zara", "Elena", "Nora", "Priya", "Leila", "Ines", "Camila", "Mia", "Yuki", "Sara", "Aisha", "Ruby", "Grace", "Lily"],
-  men: ["Ethan", "Noah", "Liam", "James", "Omar", "Kai", "Leo", "Ravi", "Marcus", "Drew", "Alex", "Sam"],
-  boys: ["Finn", "Eli", "Max", "Jake", "Remy", "Cole", "Theo", "Ben"],
-  girls: ["Emma", "Ava", "Chloe", "Bella", "Zoey", "Nina", "Isla", "Hana"],
-  baby: ["Cub·A", "Cub·B", "Cub·C", "Cub·D", "Cub·E", "Cub·F"],
+	women: [
+		"Aria",
+		"Luna",
+		"Sofia",
+		"Maya",
+		"Zara",
+		"Elena",
+		"Nora",
+		"Priya",
+		"Leila",
+		"Ines",
+		"Camila",
+		"Mia",
+		"Yuki",
+		"Sara",
+		"Aisha",
+		"Ruby",
+		"Grace",
+		"Lily",
+	],
+	men: [
+		"Ethan",
+		"Noah",
+		"Liam",
+		"James",
+		"Omar",
+		"Kai",
+		"Leo",
+		"Ravi",
+		"Marcus",
+		"Drew",
+		"Alex",
+		"Sam",
+	],
+	boys: ["Finn", "Eli", "Max", "Jake", "Remy", "Cole", "Theo", "Ben"],
+	girls: ["Emma", "Ava", "Chloe", "Bella", "Zoey", "Nina", "Isla", "Hana"],
+	baby: ["Cub·A", "Cub·B", "Cub·C", "Cub·D", "Cub·E", "Cub·F"],
 };
 
 // Varying aspect ratios for editorial masonry feel
 const aspects = [
-  "3/4", "3/4", "2/3", "3/4", "3/4", "4/5", "3/4", "2/3",
-  "3/4", "3/4", "3/4", "2/3", "3/4", "4/5", "3/4", "3/4", "3/4", "3/4"
+	"3/4",
+	"3/4",
+	"2/3",
+	"3/4",
+	"3/4",
+	"4/5",
+	"3/4",
+	"2/3",
+	"3/4",
+	"3/4",
+	"3/4",
+	"2/3",
+	"3/4",
+	"4/5",
+	"3/4",
+	"3/4",
+	"3/4",
+	"3/4",
 ];
 
 const buildModels = (cat: string) =>
-  (seeds[cat as keyof typeof seeds] || []).map((seed, i) => ({
-    id: `${cat}-${i}`,
-    cat,
-    name: (names[cat as keyof typeof names] || [])[i] || `Model ${i + 1}`,
-    img: `https://picsum.photos/seed/${seed}/400/520`,
-    hero: i === 0,
-    aspect: aspects[i] || "3/4",
-  }));
+	(seeds[cat as keyof typeof seeds] || []).map((seed, i) => ({
+		id: `${cat}-${i}`,
+		cat,
+		name: (names[cat as keyof typeof names] || [])[i] || `Model ${i + 1}`,
+		img: `https://picsum.photos/seed/${seed}/400/520`,
+		hero: i === 0,
+		aspect: aspects[i] || "3/4",
+	}));
 
 /* ─── COMPONENT ─────────────────────────────────────────────── */
 export default function HomePageGallery() {
-  const [activeCat, setActiveCat] = useState("women");
-  const [search, setSearch] = useState("");
-  const [cursor, setCursor] = useState({ x: 0, y: 0 });
+	const [activeCat, setActiveCat] = useState("women");
+	const [search, setSearch] = useState("");
+	const [cursor, setCursor] = useState({ x: 0, y: 0 });
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { selectedModel } = useSelector((state: RootState) => state.modelList);
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const { selectedModel } = useSelector((state: RootState) => state.modelList);
 
-  const cat = CATEGORIES.find(c => c.id === activeCat) || CATEGORIES[0];
-  const models = buildModels(activeCat);
-  const filtered = models.filter(m =>
-    m.name.toLowerCase().includes(search.toLowerCase())
-  );
+	const cat = CATEGORIES.find((c) => c.id === activeCat) || CATEGORIES[0];
+	const models = buildModels(activeCat);
+	const filtered = models.filter((m) =>
+		m.name.toLowerCase().includes(search.toLowerCase()),
+	);
 
-  const toggle = (imgUrl: string) => {
-    dispatch(setSelectedModel(imgUrl));
-  };
+	const toggle = (imgUrl: string) => {
+		dispatch(setSelectedModel(imgUrl));
+	};
 
-  // Track mouse for spotlight
-  useEffect(() => {
-    const onMove = (e: MouseEvent) => setCursor({ x: e.clientX, y: e.clientY });
-    window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
-  }, []);
+	// Track mouse for spotlight
+	useEffect(() => {
+		const onMove = (e: MouseEvent) => setCursor({ x: e.clientX, y: e.clientY });
+		window.addEventListener("mousemove", onMove);
+		return () => window.removeEventListener("mousemove", onMove);
+	}, []);
 
-  // Reset search on tab switch
-  useEffect(() => setSearch(""), [activeCat]);
+	// Reset search on tab switch
+	useEffect(() => setSearch(""), [activeCat]);
 
-  return (
-    <div className="gallery-root relative" style={{ "--cat-color": cat.color, "--cat-color-rgb": cat.rgb } as React.CSSProperties}>
+	return (
+		<div
+			className="gallery-root relative"
+			style={
+				{
+					"--cat-color": cat.color,
+					"--cat-color-rgb": cat.rgb,
+				} as React.CSSProperties
+			}
+		>
+			{/* Ambient cursor glow */}
+			<div
+				className="glow-blob"
+				style={{
+					left: cursor.x,
+					top: cursor.y,
+					background: `radial-gradient(circle, ${cat.color} 0%, transparent 65%)`,
+				}}
+			/>
 
-      {/* Ambient cursor glow */}
-      <div className="glow-blob" style={{
-        left: cursor.x, top: cursor.y,
-        background: `radial-gradient(circle, ${cat.color} 0%, transparent 65%)`,
-      }} />
+			<div className="gallery-body ">
+				{/* ── RAIL (Inner Sidebar) ── */}
+				<aside className="rail sticky top-[80px] h-[calc(100vh-100px)]">
+					{CATEGORIES.map((c) => (
+						<button
+							key={c.id}
+							className={`rail-btn${activeCat === c.id ? " active" : ""}`}
+							style={
+								activeCat === c.id
+									? ({
+											"--cat-color": c.color,
+											"--cat-color-rgb": c.rgb,
+										} as React.CSSProperties)
+									: {}
+							}
+							onClick={() => setActiveCat(c.id)}
+						>
+							<span className="rail-pip" />
+							<span className="rail-icon">{c.icon}</span>
+							<span className="rail-label">{c.label}</span>
+						</button>
+					))}
+				</aside>
 
-      <div className="gallery-body relative">
+				{/* ── MAIN CONTENT ── */}
+				<div className="gallery-main">
+					{/* Sticky Header inside Gallery */}
+					<div className="gallery-header">
+						<div className="header-left">
+							<div className="header-eyebrow">
+								<span className="eyebrow-line" />
+								AI Model Studio · {cat.label}
+								<span className="eyebrow-line" />
+							</div>
+							<h1 className="header-title">
+								Select Your <em>{cat.label}</em> Cast
+							</h1>
+							<p className="text-sm">
+								{filtered.length} models available — click to choose
+							</p>
+						</div>
 
-        {/* ── RAIL (Inner Sidebar) ── */}
-        <aside className="rail sticky top-[100px] h-[calc(100vh-100px)]">
-          {CATEGORIES.map(c => (
-            <button
-              key={c.id}
-              className={`rail-btn${activeCat === c.id ? " active" : ""}`}
-              style={activeCat === c.id ? { "--cat-color": c.color, "--cat-color-rgb": c.rgb } as React.CSSProperties : {}}
-              onClick={() => setActiveCat(c.id)}
-            >
-              <span className="rail-pip" />
-              <span className="rail-icon">{c.icon}</span>
-              <span className="rail-label">{c.label}</span>
-            </button>
-          ))}
-        </aside>
+						<div className="flex items-center gap-3">
+							<div className="search-wrap">
+								<span className="search-icon">
+									<Search size={14} />
+								</span>
+								<input
+									className="search-input"
+									placeholder="Search models..."
+									value={search}
+									onChange={(e) => setSearch(e.target.value)}
+								/>
+							</div>
+							{selectedModel.length > 0 && (
+								<div className="count-badge">
+									{selectedModel.length} Selected
+								</div>
+							)}
+						</div>
+					</div>
 
-        {/* ── MAIN CONTENT ── */}
-        <div className="gallery-main">
+					{/* Grid Area */}
+					<div className="grid-area">
+						{filtered.length === 0 ? (
+							<div className="flex flex-col items-center justify-center py-20 opacity-30">
+								<MousePointer2 size={48} className="mb-4" />
+								<p className="font-serif text-xl italic">
+									No models found for "{search}"
+								</p>
+							</div>
+						) : (
+							<div className="masonry">
+								{filtered.map((m, i) => (
+									<div
+										key={m.id}
+										className="card-wrap"
+										style={{ animationDelay: `${Math.min(i * 0.03, 0.5)}s` }}
+									>
+										<div
+											className={`model-card${selectedModel.includes(m.img) ? " sel" : ""}`}
+											onClick={() => toggle(m.img)}
+										>
+											<div
+												style={{
+													paddingTop:
+														m.aspect === "2/3"
+															? "150%"
+															: m.aspect === "4/5"
+																? "125%"
+																: "133%",
+													position: "relative",
+												}}
+											>
+												<img
+													className="card-img"
+													src={m.img}
+													alt={m.name}
+													loading="lazy"
+													style={{
+														position: "absolute",
+														inset: 0,
+														width: "100%",
+														height: "100%",
+													}}
+												/>
+												<div className="card-cinematic" />
+												{m.hero && <div className="hero-badge">Featured</div>}
+												<div className="tick">
+													<Check size={14} />
+												</div>
+												<div className="card-info">
+													<div className="info-name">{m.name}</div>
+													<div className="info-sub">
+														{cat.label} · AI Generated
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								))}
+							</div>
+						)}
+					</div>
 
-          {/* Sticky Header inside Gallery */}
-          <div className="gallery-header">
-            <div className="header-left">
-              <div className="header-eyebrow">
-                <span className="eyebrow-line" />
-                AI Model Studio · {cat.label}
-                <span className="eyebrow-line" />
-              </div>
-              <h1 className="header-title">
-                Select Your <em>{cat.label}</em> Cast
-              </h1>
-              <p className="header-sub">{filtered.length} models available — click to choose</p>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <div className="search-wrap">
-                <span className="search-icon">
-                  <Search size={14} />
-                </span>
-                <input
-                  className="search-input"
-                  placeholder="Search models..."
-                  value={search}
-                  onChange={e => setSearch(e.target.value)}
-                />
-              </div>
-              {selectedModel.length > 0 && (
-                <div className="count-badge">
-                  {selectedModel.length} Selected
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Grid Area */}
-          <div className="grid-area">
-            {filtered.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-20 opacity-30">
-                <MousePointer2 size={48} className="mb-4" />
-                <p className="font-serif text-xl italic">No models found for "{search}"</p>
-              </div>
-            ) : (
-              <div className="masonry">
-                {filtered.map((m, i) => (
-                  <div
-                    key={m.id}
-                    className="card-wrap"
-                    style={{ animationDelay: `${Math.min(i * 0.03, 0.5)}s` }}
-                  >
-                    <div
-                      className={`model-card${selectedModel.includes(m.img) ? " sel" : ""}`}
-                      onClick={() => toggle(m.img)}
-                    >
-                      <div style={{
-                        paddingTop: m.aspect === "2/3" ? "150%" : m.aspect === "4/5" ? "125%" : "133%",
-                        position: "relative"
-                      }}>
-                        <img
-                          className="card-img"
-                          src={m.img}
-                          alt={m.name}
-                          loading="lazy"
-                          style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
-                        />
-                        <div className="card-cinematic" />
-                        {m.hero && <div className="hero-badge">Featured</div>}
-                        <div className="tick">
-                          <Check size={14} />
-                        </div>
-                        <div className="card-info">
-                          <div className="info-name">{m.name}</div>
-                          <div className="info-sub">{cat.label} · AI Generated</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Selection Tray / Bottom Action Bar */}
-          <div className="tray">
-            <div className="tray-label">Selection</div>
-            <div className="tray-slots">
-              {selectedModel.length === 0 ? (
-                <div className="tray-empty">Select models from the gallery to begin your virtual try-on</div>
-              ) : (
-                selectedModel.map((imgUrl, idx) => (
-                  <div key={idx} className="tray-card" onClick={() => toggle(imgUrl)}>
-                    <img src={imgUrl} alt="Selected Model" />
-                    <div className="tray-remove">
-                      <X size={14} />
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-            <button
-              className="proceed-btn"
-              disabled={selectedModel.length === 0}
-              onClick={() => navigate("/virtualtryon", { state: { from: "gallery" } })}
-            >
-              Start Try-On
-              {selectedModel.length > 0 && (
-                <span className="proceed-count">{selectedModel.length}</span>
-              )}
-            </button>
-          </div>
-
-        </div>{/* /gallery-main */}
-      </div>{/* /gallery-body */}
-    </div>
-  );
+					{/* Selection Tray / Bottom Action Bar */}
+					<div className="tray">
+						<div className="tray-label">Selection</div>
+						<div className="tray-slots">
+							{selectedModel.length === 0 ? (
+								<div className="tray-empty">
+									Select models from the gallery to begin your virtual try-on
+								</div>
+							) : (
+								selectedModel.map((imgUrl, idx) => (
+									<div
+										key={idx}
+										className="tray-card"
+										onClick={() => toggle(imgUrl)}
+									>
+										<img src={imgUrl} alt="Selected Model" />
+										<div className="tray-remove">
+											<X size={14} />
+										</div>
+									</div>
+								))
+							)}
+						</div>
+						<button
+							className="proceed-btn"
+							disabled={selectedModel.length === 0}
+							onClick={() =>
+								navigate("/virtualtryon", { state: { from: "gallery" } })
+							}
+						>
+							Start Try-On
+							{selectedModel.length > 0 && (
+								<span className="proceed-count">{selectedModel.length}</span>
+							)}
+						</button>
+					</div>
+				</div>
+				{/* /gallery-main */}
+			</div>
+			{/* /gallery-body */}
+		</div>
+	);
 }
