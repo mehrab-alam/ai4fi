@@ -168,20 +168,21 @@ const aspects = [
 // 		aspect: "1/1",
 // 	}));
 const buildModels = (catId: string) => {
-  let images: string[] = [];
+  const mapping: Record<string, string> = {
+    women: "female",
+    men: "male",
+    boys: "boy",
+    girls: "girl",
+    baby: "baby",
+  };
 
-  if (catId === "women") {
-    // Collect all female images from all styles
-    modelGalleryList.forEach((style: any) => {
-      images = [...images, ...(style.female || [])];
-    });
-  } else if (catId === "men") {
-    // Collect all male images from all styles
-    modelGalleryList.forEach((style: any) => {
-      images = [...images, ...(style.male || [])];
-    });
-  } else {
-    // Fallback to seeds for boys, girls, baby
+  const targetCategory = mapping[catId] || catId;
+  const categoryData = modelGalleryList.find((item: any) => item.category === targetCategory);
+
+  let images: string[] = categoryData ? categoryData.images : [];
+
+  if (images.length === 0) {
+    // Fallback if no images found in service
     const seedList = seeds[catId as keyof typeof seeds] || [];
     images = seedList.map((seed) => `https://picsum.photos/seed/${seed}/400/520`);
   }
@@ -189,7 +190,9 @@ const buildModels = (catId: string) => {
   return images.map((imgUrl, i) => ({
     id: `${catId}-${i}`,
     cat: catId,
-    name: (names[catId as keyof typeof names] || [])[i] || `${catId.charAt(0).toUpperCase() + catId.slice(1)} Model ${i + 1}`,
+    name:
+      (names[catId as keyof typeof names] || [])[i] ||
+      `${catId.charAt(0).toUpperCase() + catId.slice(1)} Model ${i + 1}`,
     img: imgUrl,
     hero: i === 0,
     aspect: "1/1", // Square aspect ratio is better for face focuses

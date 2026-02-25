@@ -263,8 +263,8 @@
 }
 
 .model-card {
-    height: 200px;
-    width: 200px;
+    height: 100%;
+    width: 100%;
     border-radius: 3px;
     overflow: hidden;
     cursor: pointer;
@@ -286,12 +286,12 @@
 }
 
 .card-img {
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: top;
     /* Focus on face/chest */
-    transform: scale(1.1);
+
 
     display: block;
     transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), filter 0.3s;
