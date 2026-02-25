@@ -864,14 +864,14 @@ function Dots({ count, active }: { count: number; active: number }) {
 
 // Height pattern: long → short → extra long (cycles every 3)
 const HEIGHT_CLASSES = [
-    "h-[240px] md:h-[300px] lg:h-[450px]",  // long
-    "h-[160px] md:h-[190px] lg:h-[420px]",  // short
-    "h-[300px] md:h-[380px] lg:h-[520px]",  // extra long
+    "h-[240px] md:h-[300px] lg:h-[75vh]",  // long
+    "h-[160px] md:h-[190px] lg:h-[65vh]",  // short
+    "h-[300px] md:h-[380px] lg:h-[85vh]",  // extra long
 ];
 const TESTIMONIAL_HEIGHT_CLASSES = [
-    "h-[260px] md:h-[320px] lg:h-[480px]",  // long
-    "h-[190px] md:h-[220px] lg:h-[440px]",  // short
-    "h-[320px] md:h-[400px] lg:h-[560px]",  // extra long
+    "h-[260px] md:h-[320px] lg:h-[75vh]",  // long
+    "h-[190px] md:h-[220px] lg:h-[65vh]",  // short
+    "h-[320px] md:h-[400px] lg:h-[85vh]",  // extra long
 ];
 
 // --- Image Card ---
@@ -883,7 +883,7 @@ function ImageCard({ card, is4k, onImageClick, index = 0 }: { card: TestimonialC
         <div className="masonry-item mb-3 sm:mb-4 break-inside-avoid">
             <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} {...touchBind}
                 onClick={() => is4k && onImageClick?.(card.images[idx])}
-                className={`showcase-card relative ${heightClass} w-full overflow-hidden rounded-xl ${is4k ? "cursor-zoom-in" : "cursor-pointer"} group select-none`}>
+                className={`showcase-card relative ${heightClass} w-[auto] overflow-hidden rounded-xl ${is4k ? "cursor-zoom-in" : "cursor-pointer"} group select-none`}>
                 <div className="absolute inset-0 flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${idx * 100}%)` }}>
                     {card.images.map((img, i) => (
                         <img key={i} src={img} alt="" draggable={false} className="w-full h-full object-cover object-top flex-shrink-0" loading="lazy" />
