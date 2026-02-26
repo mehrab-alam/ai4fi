@@ -790,6 +790,104 @@ const SECTIONS: Section[] = [
             },
         ],
     },
+    {
+        id: "others",
+        label: "Others Features",
+        title: "Other Features ",
+        items: [
+            {
+                id: "s1",
+                images: [
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/1/Generated Image February 22, 2026 - 11_34PM (1).jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/1/Generated Image February 22, 2026 - 11_34PM.jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/1/Generated Image February 22, 2026 - 11_36PM.jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/1/Generated Image February 22, 2026 - 11_37PM.jpeg",
+                ],
+                span: "tall",
+            },
+            {
+                id: "s2",
+                images: [
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/2/Generated Image February 22, 2026 - 11_45PM.jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/2/Generated Image February 22, 2026 - 11_46PM.jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/2/Generated Image February 22, 2026 - 11_47PM (1).jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/2/Generated Image February 22, 2026 - 11_47PM.jpeg",
+                ],
+                testimonial: {
+                    time: "Instant",
+                    title: "Sarah J.",
+                    text: "The AI virtual try-on is incredibly accurate. I can see how clothes fit my body without ever leaving home. It has redefined how I shop.",
+                    author: "Sarah J.",
+                },
+            },
+            {
+                id: "s3",
+                images: [
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/3/Generated Image February 22, 2026 - 11_38PM.jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/3/Generated Image February 22, 2026 - 11_39PM.jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/3/Generated Image February 22, 2026 - 11_43PM.jpeg",
+                ],
+                span: "tall",
+            },
+            {
+                id: "s4",
+                span: "tall",
+                images: [
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/4/Generated Image February 22, 2026 - 11_30PM (1).jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/4/Generated Image February 22, 2026 - 11_30PM.jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/4/Generated Image February 22, 2026 - 11_31PM.jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/4/Generated Image February 22, 2026 - 11_32PM (1).jpeg",
+                ],
+            },
+            {
+                id: "s5",
+                images: [
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/5/Generated Image February 22, 2026 - 11_49PM (1).jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/5/Generated Image February 22, 2026 - 11_49PM.jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/5/Generated Image February 23, 2026 - 12_15AM (1).jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/5/Generated Image February 23, 2026 - 12_15AM.jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/5/Generated Image February 23, 2026 - 12_17AM.jpeg",
+                ],
+                span: "tall",
+            },
+            {
+                id: "s6",
+                images: [
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/6/Generated Image February 23, 2026 - 12_23AM.jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/6/Generated Image February 23, 2026 - 12_24AM.jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/6/Generated Image February 23, 2026 - 12_28AM (1).jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/6/Generated Image February 23, 2026 - 12_28AM.jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/6/Generated Image February 23, 2026 - 12_32AM.jpeg",
+                ],
+                span: "tall",
+            },
+            {
+                id: "s7",
+                images: [
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/7/Generated Image February 23, 2026 - 12_30AM (1).jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/7/Generated Image February 23, 2026 - 12_30AM.jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/7/Generated Image February 23, 2026 - 12_33AM.jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/7/Generated Image February 23, 2026 - 12_35AM.jpeg",
+                ],
+                testimonial: {
+                    time: "Real-time",
+                    title: "Style Assist",
+                    text: "AI4FI's stylist suggests outfits based on my body type and skin tone. It's like having a personal fashion consultant 24/7.",
+                    author: "Marcus K.",
+                },
+            },
+            {
+                id: "s8",
+                images: [
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/8/Generated Image February 23, 2026 - 12_36AM.jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/8/Generated Image February 23, 2026 - 12_37AM.jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/8/Generated Image February 23, 2026 - 12_39AM.jpeg",
+                    "https://ai4fi.s3.amazonaws.com/Visual Portfolio/kids/8/Generated Image February 23, 2026 - 12_41AM.jpeg",
+                ],
+                span: "tall",
+            },
+        ],
+    },
 ];
 
 // --- Lightbox ---

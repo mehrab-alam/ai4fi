@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import modelGalleryList from "../services/ModelGallery";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { setSelectedModel } from "../store/modelSlice";
-import { Search, Check, X, MousePointer2, ChevronLeft, ChevronRight } from "lucide-react";
+import { Search, Check, X, MousePointer2, ChevronLeft, ChevronRight, ChevronDown, Camera, Sparkles, Layout, Shirt } from "lucide-react";
 import "./HomePageGallery.css";
 
 /* ─── DATA ─────────────────────────────────────────────────── */
@@ -44,6 +44,12 @@ const CATEGORIES = [
     color: "#d4c87a",
     rgb: "212, 200, 122",
   },
+];
+
+const AI_FEATURES = [
+  { id: "vto", label: "Virtual Try On", path: "/model-gallery", icon: <Shirt size={14} />, desc: "Transform your look instantly" },
+  { id: "pss", label: "Photo Shoot Studio", path: "/product-model-generator", icon: <Camera size={14} />, desc: "Professional AI photoshoots" },
+  { id: "ag", label: "Ad Generator", path: "/ads-generator", icon: <Layout size={14} />, desc: "High-converting social ads" },
 ];
 
 const seeds = {
@@ -196,16 +202,32 @@ export default function HomePageGallery() {
   const [search, setSearch] = useState("");
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const [modalIdx, setModalIdx] = useState<number | null>(null);
+  const [showFeatureDropdown, setShowFeatureDropdown] = useState(false);
+  const [showTrayToolDropdown, setShowTrayToolDropdown] = useState(false);
+  const [activeTrayTool, setActiveTrayTool] = useState("vto");
+  const featureRef = useRef<HTMLDivElement>(null);
+  const trayToolRef = useRef<HTMLDivElement>(null);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { selectedModel } = useSelector((state: RootState) => state.modelList);
 
+  const trayRef = useRef<HTMLDivElement>(null);
   const cat = CATEGORIES.find((c) => c.id === activeCat) || CATEGORIES[0];
   const models = buildModels(activeCat);
   const filtered = models.filter((m) =>
     m.name.toLowerCase().includes(search.toLowerCase()),
   );
+
+  const scrollTray = (dir: "left" | "right") => {
+    if (trayRef.current) {
+      const scrollAmount = 200;
+      trayRef.current.scrollBy({
+        left: dir === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
 
   const toggle = (imgUrl: string) => {
     dispatch(setSelectedModel(imgUrl));
@@ -215,11 +237,37 @@ export default function HomePageGallery() {
   useEffect(() => {
     const onMove = (e: MouseEvent) => setCursor({ x: e.clientX, y: e.clientY });
     window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (featureRef.current && !featureRef.current.contains(e.target as Node)) {
+        setShowFeatureDropdown(false);
+      }
+      if (trayToolRef.current && !trayToolRef.current.contains(e.target as Node)) {
+        setShowTrayToolDropdown(false);
+      }
+    };
+    window.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   // Reset search on tab switch
   useEffect(() => setSearch(""), [activeCat]);
+
+  // Handle body scroll and global navbar when modal is open
+  useEffect(() => {
+    if (modalIdx !== null) {
+      document.body.classList.add("modal-open");
+    } else {
+      document.body.classList.remove("modal-open");
+    }
+    return () => {
+      document.body.classList.remove("modal-open");
+    };
+  }, [modalIdx]);
 
   return (
     <div
@@ -267,13 +315,43 @@ export default function HomePageGallery() {
 
         {/* ── MAIN CONTENT ── */}
         <div className="gallery-main">
-          {/* Sticky Header inside Gallery */}
+          {/* Header Area */}
           <div className="gallery-header">
             <div className="header-left">
-              <div className="header-eyebrow">
-                <span className="eyebrow-line" />
-                AI Model Studio · {cat.label}
-                <span className="eyebrow-line" />
+              <div className="header-feature-selector" ref={featureRef}>
+                <div
+                  className={`feature-trigger ${showFeatureDropdown ? "active" : ""}`}
+                  onClick={() => setShowFeatureDropdown(!showFeatureDropdown)}
+                >
+                  <span className="eyebrow-line" />
+                  <span className="trigger-label">
+                    Virtual Try On
+                    <ChevronDown size={12} className={`chevron ${showFeatureDropdown ? "up" : ""}`} />
+                  </span>
+                  <span className="eyebrow-line" />
+                </div>
+
+                {showFeatureDropdown && (
+                  <div className="feature-dropdown z-[1000]">
+                    {AI_FEATURES.map((f) => (
+                      <div
+                        key={f.id}
+                        className={`feature-item ${f.id === "vto" ? "selected" : ""}`}
+                        onClick={() => {
+                          if (f.id !== "vto") navigate(f.path);
+                          setShowFeatureDropdown(false);
+                        }}
+                      >
+                        {f.icon}
+                        <div className="item-content">
+                          <div className="item-label">{f.label}</div>
+                          <div className="item-desc">{f.desc}</div>
+                        </div>
+                        {f.id === "vto" && <Check size={12} className="check-icon" />}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
               <h1 className="header-title md:leading-[1.4]">
                 Select Your <em>{cat.label}</em> Cast
@@ -300,40 +378,82 @@ export default function HomePageGallery() {
               )}
             </div>
           </div>
-          <div className="tray">
-            <div className="tray-label">Selection</div>
-            <div className="tray-slots">
-              {selectedModel.length === 0 ? (
-                <div className="tray-empty">
-                  Select models from the gallery to begin your virtual try-on
-                </div>
-              ) : (
-                selectedModel.map((imgUrl, idx) => (
-                  <div
-                    key={idx}
-                    className="tray-card"
-                    onClick={() => toggle(imgUrl)}
-                  >
-                    <img src={imgUrl} alt="Selected Model" />
-                    <div className="tray-remove">
-                      <X size={14} />
-                    </div>
+
+          {/* Sticky Tray Area */}
+          <div className="tray md:flex-row flex-col sticky top-[80px] z-20 border-b border-[var(--gallery-border)] shadow-sm bg-[var(--gallery-bg)]">
+            <div className="tray-label md:block hidden">Selection</div>
+            <div className="tray-slots-container group relative flex-1 min-w-0">
+              <div className="tray-slots" ref={trayRef}>
+                {selectedModel.length === 0 ? (
+                  <div className="tray-empty">
+                    Select models from the gallery to begin your virtual try-on
                   </div>
-                ))
-              )}
+                ) : (
+                  selectedModel.map((imgUrl, idx) => (
+                    <div
+                      key={idx}
+                      className="tray-card"
+                      onClick={() => toggle(imgUrl)}
+                    >
+                      <img src={imgUrl} alt="Selected Model" />
+                      <div className="tray-remove">
+                        <X size={14} />
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
             </div>
-            <button
-              className="proceed-btn"
-              disabled={selectedModel.length === 0}
-              onClick={() =>
-                navigate("/virtualtryon", { state: { from: "gallery" } })
-              }
-            >
-              Start Try-On
-              {selectedModel.length > 0 && (
-                <span className="proceed-count">{selectedModel.length}</span>
-              )}
-            </button>
+            <div className="tray-action-group" ref={trayToolRef}>
+              <div className="tool-selector-wrap">
+                <div
+                  className={`tool-trigger ${showTrayToolDropdown ? 'active' : ''}`}
+                  onClick={() => setShowTrayToolDropdown(!showTrayToolDropdown)}
+                >
+                  {AI_FEATURES.find(f => f.id === activeTrayTool)?.icon}
+                  <span className="tool-name">
+                    {AI_FEATURES.find(f => f.id === activeTrayTool)?.label}
+                  </span>
+                  <ChevronDown size={14} className={`chevron ${showTrayToolDropdown ? 'up' : ''}`} />
+                </div>
+
+                {showTrayToolDropdown && (
+                  <div className="tool-dropdown top-full mt-2 z-[1001]">
+                    {AI_FEATURES.map((f) => (
+                      <div
+                        key={f.id}
+                        className={`tool-item ${f.id === activeTrayTool ? "selected" : ""}`}
+                        onClick={() => {
+                          setActiveTrayTool(f.id);
+                          setShowTrayToolDropdown(false);
+                        }}
+                      >
+                        {f.icon}
+                        <div className="item-content">
+                          <div className="item-label">{f.label}</div>
+                        </div>
+                        {f.id === activeTrayTool && <Check size={12} className="check-icon" />}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <button
+                className="proceed-btn"
+                disabled={selectedModel.length === 0}
+                onClick={() => {
+                  const tool = AI_FEATURES.find(f => f.id === activeTrayTool);
+                  const path = activeTrayTool === 'vto' ? '/virtualtryon' : tool?.path;
+                  if (path) navigate(path, { state: { from: "gallery", selectedModels: selectedModel } });
+                }}
+              >
+                {activeTrayTool === 'vto' ? 'Start Try-On' : `Open ${AI_FEATURES.find(f => f.id === activeTrayTool)?.label}`}
+                {selectedModel.length > 0 && (
+                  <span className="proceed-count">{selectedModel.length}</span>
+                )}
+              </button>
+            </div>
           </div>
 
           {/* Grid Area */}
@@ -412,64 +532,63 @@ export default function HomePageGallery() {
           {/* Selection Tray / Bottom Action Bar */}
 
         </div>
-        {/* /gallery-main */}
-      </div>
-      {/* /gallery-body */}
+        {/* /gallery-body */}
 
-      {/* ─── MODAL GALLERY ─── */}
-      {modalIdx !== null && (
-        <div className="modal-gallery" onClick={() => setModalIdx(null)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={() => setModalIdx(null)}>
-              <X size={24} />
-            </button>
+        {/* ─── MODAL GALLERY ─── */}
+        {modalIdx !== null && (
+          <div className="modal-gallery" onClick={() => setModalIdx(null)}>
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+              <button className="modal-close" onClick={() => setModalIdx(null)}>
+                <X size={24} />
+              </button>
 
-            <button
-              className="modal-nav prev"
-              disabled={modalIdx === 0}
-              onClick={() => setModalIdx(modalIdx - 1)}
-            >
-              <ChevronLeft size={32} />
-            </button>
+              <button
+                className="modal-nav prev"
+                disabled={modalIdx === 0}
+                onClick={() => setModalIdx(modalIdx - 1)}
+              >
+                <ChevronLeft size={32} />
+              </button>
 
-            <div className="modal-viewer">
-              <div className="modal-img-wrap">
-                <img
-                  src={filtered[modalIdx].img}
-                  alt={filtered[modalIdx].name}
-                  className="modal-img"
-                />
-                <div className="modal-meta">
-                  <h2 className="modal-name">{filtered[modalIdx].name}</h2>
-                  <p className="modal-sub">
-                    {cat.label} · AI Generated Collection
-                  </p>
-                  <button
-                    className={`modal-select-btn${selectedModel.includes(filtered[modalIdx].img) ? " selected" : ""}`}
-                    onClick={() => toggle(filtered[modalIdx].img)}
-                  >
-                    {selectedModel.includes(filtered[modalIdx].img)
-                      ? "Remove from Cast"
-                      : "Add to Cast"}
-                  </button>
+              <div className="modal-viewer">
+                <div className="modal-img-wrap">
+                  <img
+                    src={filtered[modalIdx].img}
+                    alt={filtered[modalIdx].name}
+                    className="modal-img"
+                  />
+                  <div className="modal-meta">
+                    <h2 className="modal-name">{filtered[modalIdx].name}</h2>
+                    <p className="modal-sub">
+                      {cat.label} · AI Generated Collection
+                    </p>
+                    <button
+                      className={`modal-select-btn${selectedModel.includes(filtered[modalIdx].img) ? " selected" : ""}`}
+                      onClick={() => toggle(filtered[modalIdx].img)}
+                    >
+                      {selectedModel.includes(filtered[modalIdx].img)
+                        ? "Remove from Cast"
+                        : "Add to Cast"}
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <button
-              className="modal-nav next"
-              disabled={modalIdx === filtered.length - 1}
-              onClick={() => setModalIdx(modalIdx + 1)}
-            >
-              <ChevronRight size={32} />
-            </button>
+              <button
+                className="modal-nav next"
+                disabled={modalIdx === filtered.length - 1}
+                onClick={() => setModalIdx(modalIdx + 1)}
+              >
+                <ChevronRight size={32} />
+              </button>
 
-            <div className="modal-counter">
-              {modalIdx + 1} / {filtered.length}
+              <div className="modal-counter">
+                {modalIdx + 1} / {filtered.length}
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

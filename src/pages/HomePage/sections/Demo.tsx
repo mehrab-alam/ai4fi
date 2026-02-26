@@ -152,10 +152,10 @@ const DemoSection = () => {
 									{features.map((item, idx) => (
 										<div
 											key={idx}
-											className="p-4 rounded-xl flex flex-row items-center md:flex-col border glass-card shadow-sm"
+											className="p-4 rounded-xl flex flex-col gap-4 md:gap-0  md:items-start md:flex-col border glass-card shadow-sm"
 										>
 											<div
-												className={`w-10 h-10 ${item.bg} rounded-lg flex items-center justify-center mb-3`}
+												className={`min-w-10 min-h-10 ${item.bg} rounded-lg flex items-center justify-center mb-3`}
 											>
 												<item.icon
 													size={20}

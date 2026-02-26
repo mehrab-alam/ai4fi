@@ -320,7 +320,7 @@ const marqueeStyle = `
   .animate-marquee-reverse {
     animation: marquee-reverse 40s linear infinite;
   }
-  .pause-hover:hover {
+  .group:hover .pause-hover {
     animation-play-state: paused;
   }
   .scrollbar-hide::-webkit-scrollbar {
@@ -376,11 +376,14 @@ const ModelCard: FC<{ model: any; isDark?: boolean }> = ({ model, isDark = false
 
 const InfiniteShowcase = () => {
 	const scrollRef = useRef<HTMLDivElement>(null);
+	const marquee1Ref = useRef<HTMLDivElement>(null);
+	const marquee2Ref = useRef<HTMLDivElement>(null);
 	const [isPaused, setIsPaused] = useState(false);
 
-	const scroll = (direction: "left" | "right") => {
-		if (scrollRef.current) {
-			const { scrollLeft, clientWidth, scrollWidth } = scrollRef.current;
+	const scroll = (direction: "left" | "right", ref?: React.RefObject<HTMLDivElement>) => {
+		const targetRef = ref || scrollRef;
+		if (targetRef.current) {
+			const { scrollLeft, clientWidth, scrollWidth } = targetRef.current;
 			const scrollAmount = clientWidth * 0.8;
 			let scrollTo =
 				direction === "left"
@@ -391,7 +394,7 @@ const InfiniteShowcase = () => {
 			if (scrollTo < 0) scrollTo = 0;
 			if (scrollTo > scrollWidth - clientWidth) scrollTo = scrollWidth - clientWidth;
 
-			scrollRef.current.scrollTo({
+			targetRef.current.scrollTo({
 				left: scrollTo,
 				behavior: "smooth",
 			});
@@ -435,28 +438,73 @@ const InfiniteShowcase = () => {
 			</div>
 
 			{/* --- MARQUEE 1: Standard Models (Row 1 - Left) --- */}
-			<div className="relative w-full overflow-hidden mb-8 group">
-				<div className="flex w-max animate-marquee pause-hover">
-					{/* Double the array to create seamless loop */}
-					{[...GallerySetOne, ...GallerySetTwo].map((model, idx) => (
-						<ModelCard key={`row1-${idx}`} model={model} />
-					))}
+			<div className="relative w-full mb-8 group overflow-hidden">
+				<div
+					ref={marquee1Ref}
+					className="flex overflow-x-auto scrollbar-hide snap-none"
+				>
+					<div className="flex w-max animate-marquee pause-hover">
+						{/* Double the array to create seamless loop */}
+						{[...GallerySetOne, ...GallerySetTwo].map((model, idx) => (
+							<ModelCard key={`row1-${idx}`} model={model} />
+						))}
+					</div>
 				</div>
+
+				{/* Navigation Buttons for Marquee Row 1 */}
+				<button
+					onClick={() => scroll("left", marquee1Ref)}
+					className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all hover:bg-white/20 z-20 shadow-xl"
+					aria-label="Scroll Left"
+				>
+					<ChevronLeft size={24} />
+				</button>
+				<button
+					onClick={() => scroll("right", marquee1Ref)}
+					className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all hover:bg-white/20 z-20 shadow-xl"
+					aria-label="Scroll Right"
+				>
+					<ChevronRight size={24} />
+				</button>
 
 				{/* Fog Fade Effect on Edges */}
-				<div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none"></div>
-				<div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none"></div>
+				<div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"></div>
+				<div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
 			</div>
 
-			{/* --- MARQUEE 2: Standard Models (Row 2 - Right) --- */}
-			<div className="relative w-full overflow-hidden mb-24 group">
-				<div className="flex w-max animate-marquee-reverse pause-hover">
-					{[...GallerySetTwo.reverse(), ...GallerySetTwo].map((model, idx) => (
-						<ModelCard key={`row2-${idx}`} model={model} />
-					))}
+			{/* --- MARQUEE 1: Standard Models (Row 2 - Right) --- */}
+			<div className="relative w-full mb-24 group overflow-hidden">
+				<div
+					ref={marquee2Ref}
+					className="flex overflow-x-auto scrollbar-hide snap-none"
+				>
+					<div className="flex w-max animate-marquee-reverse pause-hover">
+						{[...[...GallerySetTwo].reverse(), ...GallerySetTwo].map(
+							(model, idx) => (
+								<ModelCard key={`row2-${idx}`} model={model} />
+							),
+						)}
+					</div>
 				</div>
-				<div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none"></div>
-				<div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none"></div>
+
+				{/* Navigation Buttons for Marquee Row 2 */}
+				<button
+					onClick={() => scroll("left", marquee2Ref)}
+					className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all hover:bg-white/20 z-20 shadow-xl"
+					aria-label="Scroll Left"
+				>
+					<ChevronLeft size={24} />
+				</button>
+				<button
+					onClick={() => scroll("right", marquee2Ref)}
+					className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all hover:bg-white/20 z-20 shadow-xl"
+					aria-label="Scroll Right"
+				>
+					<ChevronRight size={24} />
+				</button>
+
+				<div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"></div>
+				<div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
 			</div>
 
 			{/* --- SECTION: SPECIAL CATEGORY (Dark Mode) --- */}
