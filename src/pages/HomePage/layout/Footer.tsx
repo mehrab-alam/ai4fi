@@ -86,8 +86,13 @@ const Footer = () => {
 
       <div className='mt-12 border-t border-border text-foreground pt-6 flex flex-col md:flex-row justify-between items-center'>
         <p className='text-sm'>© {new Date().getFullYear()} AI4FI. All rights reserved.</p>
-        <div>
-          Powered bY SECTAL
+        <div className="flex items-center gap-2 text-sm font-medium">
+          <span className="text-muted-foreground/60">Powered by</span>
+          <div className="flex items-center gap-1 group cursor-default">
+            <Link to="https://www.seqtal.com/" target="_blank" className="hover:text-primary text-foreground transition-colors duration-200">
+              <img src="./seqtal.png" className="h-[auto] max-w-[70px]" alt="" />
+            </Link>
+          </div>
         </div>
         <div className='flex space-x-6 mt-4 md:mt-0'>
           <Link to='/terms-of-service' className='text-sm hover:text-primary text-foreground transition-colors duration-200'>

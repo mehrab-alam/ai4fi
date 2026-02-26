@@ -93,11 +93,12 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 	}, []);
 
 	const partners = [
-		"./partners/Chand.jpg.jpeg",
-		"./partners/charkha_tales.jpeg",
+		"./partners/chand.jpg.jpeg",
+		"./partners/charkha_tales.webp",
 		"./partners/dhagaeawadh.jpg.jpeg",
 		"./partners/Mrignandani.jpg.jpeg",
 		"./partners/Zuni.jpg.jpeg",
+		"./partners/NoveltyGroomcollection.jpg.jpeg",
 
 	];
 	// const partners = [
@@ -331,7 +332,7 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 					<h4 className="text-center  mb-5 font-bold leading-tight">
 						Our Trusted Partners
 					</h4>
-					<div className="md:grid flex flex-wrap items-center justify-between md:place-items-center md:grid-cols-5 gap-6 md:gap-8">
+					<div className="md:grid flex flex-wrap items-center justify-between md:place-items-center md:grid-cols-6 gap-6 md:gap-8">
 						{partners.map((partner, index) => (
 							<motion.div
 								key={index}
