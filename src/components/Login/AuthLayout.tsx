@@ -1,7 +1,7 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import React, { FC } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 const AuthLayout: FC<{
@@ -9,6 +9,8 @@ const AuthLayout: FC<{
 	customForm?: React.ReactNode;
 	onSubmit?: () => void;
 }> = ({ mode = "login", customForm, onSubmit }) => {
+	const videoRef = useRef<HTMLVideoElement>(null)
+
 	const isLogin = mode === "login";
 	const settings = {
 		dots: true,
@@ -44,38 +46,37 @@ const AuthLayout: FC<{
 			description: "Visualize, Iterate, Convert",
 		},
 	];
-	return (
-		<div className="h-screen w-full flex items-stretch justify-center bg-background font-sans overflow-hidden">
-			<div className="w-full grid grid-cols-1 md:grid-cols-2 bg-background overflow-hidden">
-				<div className="hidden md:block relative bg-slate-950 overflow-hidden">
-					<Slider {...settings} className="h-full auth-slider">
-						{images.map((item) => (
-							<div
-								key={item.image}
-								className="h-screen w-full relative outline-none"
-							>
-								<img
-									src={item.image}
-									alt="Background"
-									className="w-full h-full object-fit opacity-60"
-								/>
-								<div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/20" />
 
-								<div className="absolute bottom-20 left-12 right-12 z-10">
-									<h3 className="text-sm font-medium text-white tracking-widest uppercase mb-2">
-										{item.label}
-									</h3>
-									<h2 className="text-5xl font-bold leading-tight text-white mb-2">
-										{item.title}
-									</h2>
-									<p className="text-lg font-light opacity-80 italic text-white">
-										{item.description}
-									</p>
-								</div>
-							</div>
-						))}
-					</Slider>
-				</div>
+
+	useEffect(() => {
+		const video = videoRef.current
+		if (video) {
+			// Set webkit-playsinline for older iOS versions
+			video.setAttribute('webkit-playsinline', 'true')
+			video.setAttribute('playsinline', 'true')
+
+			// Force play on iOS devices
+			const playPromise = video.play()
+			if (playPromise !== undefined) {
+				playPromise.catch(() => {
+					// Auto-play was prevented, try again on user interaction
+					const handleUserInteraction = () => {
+						video.play().catch(() => {
+							// Silently handle if still prevented
+						})
+						document.removeEventListener('touchstart', handleUserInteraction)
+						document.removeEventListener('click', handleUserInteraction)
+					}
+					document.addEventListener('touchstart', handleUserInteraction, { once: true })
+					document.addEventListener('click', handleUserInteraction, { once: true })
+				})
+			}
+		}
+	}, [])
+	return (
+		<div className="h-screen w-full flex items-stretch bg-[#000] justify-center  font-sans overflow-hidden">
+			<div className="w-full grid grid-cols-1 md:grid-cols-2 bg-background overflow-hidden">
+
 
 				{/* RIGHT SECTION: BRANDING & VISUALS */}
 
@@ -148,6 +149,54 @@ const AuthLayout: FC<{
 							</Link>
 						</p>
 					</div>
+				</div>
+				<div className="hidden md:block relative bg-[#000000] overflow-hidden">
+					<div className="relative flex items-start justify-center ">
+						<video
+							ref={videoRef}
+							src="/hero-right-video.mp4"
+
+							autoPlay
+							muted
+							loop
+							playsInline
+							preload="auto"
+							onLoadedMetadata={(e) => {
+								const video = e.currentTarget
+								video.play().catch(() => {
+									// Silently handle autoplay prevention
+								})
+							}}
+							className="w-[50vw]   h-[100vh]  object-contain "
+						/>
+					</div>
+					{/* <Slider {...settings} className="h-full auth-slider">
+						{images.map((item) => (
+							<div
+								key={item.image}
+								className="h-screen w-full relative outline-none"
+							>
+								<img
+									src={item.image}
+									alt="Background"
+									className="w-full h-full object-fit opacity-60"
+								/>
+								<div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/20" />
+
+								<div className="absolute bottom-20 left-12 right-12 z-10">
+									<h3 className="text-sm font-medium text-white tracking-widest uppercase mb-2">
+										{item.label}
+									</h3>
+									<h2 className="text-5xl font-bold leading-tight text-white mb-2">
+										{item.title}
+									</h2>
+									<p className="text-lg font-light opacity-80 italic text-white">
+										{item.description}
+									</p>
+								</div>
+							</div>
+						))}
+					</Slider> */}
 				</div>
 			</div>
 		</div>
