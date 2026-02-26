@@ -249,49 +249,49 @@ const CuttingEdgeFeatures = () => {
 		{
 			icon: BrainCircuit,
 			title: "AI Model Generation",
-			description: "Generate diverse, realistic virtual models using cutting-edge AI technology that adapts to your specific requirements.",
+			description: "Create hyper-realistic, brand-ready fashion models powered by advanced generative AI — tailored to your exact requirements.",
 			color: "bg-blue-600"
 		},
 		{
 			icon: Sparkles,
 			title: "Virtual Try-On",
-			description: "See how garments look on different body types and poses instantly with photorealistic rendering quality.",
+			description: "Instantly visualizes garment on multiple body types and poses with true-to-life rendering quality.",
 			color: "bg-cyan-500"
 		},
 		{
 			icon: TrendingUp, // Using TrendingUp instead of Gauge for "Scalable/Cost"
-			title: "Cost-Effective",
-			description: "Reduce photoshoot costs by up to 90% while increasing your product showcase capabilities without limits.",
+			title: "Cost Optimization",
+			description: "Cut photoshoot costs by up to 90% while expanding creative output without production limits.",
 			color: "bg-indigo-500"
 		},
 		{
 			icon: PenTool,
-			title: "Custom Branding",
-			description: "Tailor the virtual models to match your brand's unique identity with custom styling, poses, and environments.",
+			title: "Custom Brand Identity",
+			description: "Design AI models aligned with your brand DNA — including styling, poses, environments, and aesthetics.",
 			color: "bg-blue-500"
 		},
 		{
 			icon: Users,
-			title: "Diverse Representation",
-			description: "Showcase your products on inclusive models representing various ethnicities, ages, and body types.",
+			title: "Inclusive Representation",
+			description: "Showcase collections on diverse models across ethnicities, age groups, and body types — authentically and at scale.",
 			color: "bg-sky-500"
 		},
 		{
 			icon: Zap,
-			title: "Rapid Production",
-			description: "Generate hundreds of product images in minutes instead of weeks. Accelerate your time-to-market.",
+			title: "High-Speed Production",
+			description: "Generate hundreds of product visuals in hours, not weeks — accelerating time-to-market dramatically.",
 			color: "bg-blue-600"
 		},
 		{
 			icon: Globe2,
-			title: "Global Integration",
-			description: "Seamlessly export AI-generated visuals to major e-commerce platforms like Shopify, Amazon, and Instagram.",
+			title: "Seamless Platform Integration",
+			description: "Export and deploy AI-generated assets directly to Shopify, Amazon, Instagram, and other global marketplaces.",
 			color: "bg-indigo-600"
 		},
 		{
 			icon: ShieldCheck,
-			title: "Ethical AI Guarantee",
-			description: "Our AI systems are built with ethical standards, ensuring all generated identities are safe and compliant.",
+			title: "Ethical & Secure AI",
+			description: "Built with responsible AI standards — ensuring compliant, safe, and brand-protected digital identities",
 			color: "bg-cyan-600"
 		}
 	];
@@ -306,15 +306,7 @@ const CuttingEdgeFeatures = () => {
 				<SectionHeader description='
 						Transform your fashion showcase with AI-powered innovation that delivers stunning results at a fraction of traditional costs.
 ' title='Cutting-Edge Features' />
-				{/* Section Header */}
-				{/* <div className="text-center max-w-3xl mx-auto mb-20">
-					<h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
-						Cutting-Edge <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">AI Features</span>
-					</h2>
-					<p className="text-lg text-slate-600 leading-relaxed">
-						Transform your fashion showcase with AI-powered innovation that delivers stunning results at a fraction of traditional costs.
-					</p>
-				</div> */}
+
 
 				{/* Feature Grid */}
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">

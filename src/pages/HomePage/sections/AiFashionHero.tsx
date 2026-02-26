@@ -93,12 +93,20 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 	}, []);
 
 	const partners = [
-		SvgIcons.amazone,
-		SvgIcons.google,
-		SvgIcons.netflix,
-		SvgIcons.shopify,
-		SvgIcons.youtube,
+		"./partners/Chand.jpg.jpeg",
+		"./partners/charkha_tales.jpeg",
+		"./partners/dhagaeawadh.jpg.jpeg",
+		"./partners/Mrignandani.jpg.jpeg",
+		"./partners/Zuni.jpg.jpeg",
+
 	];
+	// const partners = [
+	// 	SvgIcons.amazone,
+	// 	SvgIcons.google,
+	// 	SvgIcons.netflix,
+	// 	SvgIcons.shopify,
+	// 	SvgIcons.youtube,
+	// ];
 	const imageCards = [
 		{
 			id: 1,
@@ -332,10 +340,11 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 								transition={{ duration: 0.8, delay: index * 0.2 }}
 								className="group"
 							>
-								<i className="leading-0 text-[7rem] text-muted-foreground">
+								{/* <i className="leading-0 text-[7rem] text-muted-foreground">
 									{" "}
 									{partner}
-								</i>
+								</i> */}
+								<img alt={`partners_${index}`} src={partner} />
 							</motion.div>
 						))}
 					</div>

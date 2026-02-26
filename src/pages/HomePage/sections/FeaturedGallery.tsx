@@ -474,16 +474,14 @@ const InfiniteShowcase = () => {
 								<span className="text-muted-foreground">Body Positivity</span>
 							</span>
 							<h2 className="text-4xl md:text-5xl font-serif text-foreground leading-tight">
-								The Inclusive <br />
+								Celebrating  <br />
 								<span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-									Collection
+									Real Curves
 								</span>
 							</h2>
 
 							<p className="text-slate-400 text-lg leading-relaxed">
-								Breaking barriers in fashion technology. Our "Real Bodies" AI
-								engine generates stunning, authentic representations of diverse
-								body types, ensuring your brand resonates with everyone.
+								Our platform generates confident, beautifully styled plus-size and curvy models that reflect real-world body diversity. Designed with proportion accuracy and natural posture, these visuals help your brand connect authentically with every customer.
 							</p>
 
 							<button className="group flex items-center gap-2 text-brand border-b border-brand pb-1 hover:text-brand hover:border-brand transition-all">

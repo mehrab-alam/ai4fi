@@ -157,16 +157,7 @@ const aspects = [
   "3/4",
 ];
 
-// const buildModels = (cat: string) =>
-// 	(seeds[cat as keyof typeof seeds] || []).map((seed, i) => ({
-// 		id: `${cat}-${i}`,
-// 		cat,
-// 		name: (names[cat as keyof typeof names] || [])[i] || `Model ${i + 1}`,
-// 		// img: `https://picsum.photos/seed/${seed}/400/520`,
-// 		img: modelGalleryList[i].,
-// 		hero: i === 0,
-// 		aspect: "1/1",
-// 	}));
+
 const buildModels = (catId: string) => {
   const mapping: Record<string, string> = {
     women: "female",
@@ -284,7 +275,7 @@ export default function HomePageGallery() {
                 AI Model Studio · {cat.label}
                 <span className="eyebrow-line" />
               </div>
-              <h1 className="header-title">
+              <h1 className="header-title md:leading-[1.4]">
                 Select Your <em>{cat.label}</em> Cast
               </h1>
               <p className="text-sm">
@@ -308,6 +299,41 @@ export default function HomePageGallery() {
                 <div className="count-badge">{selectedModel.length} Selected</div>
               )}
             </div>
+          </div>
+          <div className="tray">
+            <div className="tray-label">Selection</div>
+            <div className="tray-slots">
+              {selectedModel.length === 0 ? (
+                <div className="tray-empty">
+                  Select models from the gallery to begin your virtual try-on
+                </div>
+              ) : (
+                selectedModel.map((imgUrl, idx) => (
+                  <div
+                    key={idx}
+                    className="tray-card"
+                    onClick={() => toggle(imgUrl)}
+                  >
+                    <img src={imgUrl} alt="Selected Model" />
+                    <div className="tray-remove">
+                      <X size={14} />
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+            <button
+              className="proceed-btn"
+              disabled={selectedModel.length === 0}
+              onClick={() =>
+                navigate("/virtualtryon", { state: { from: "gallery" } })
+              }
+            >
+              Start Try-On
+              {selectedModel.length > 0 && (
+                <span className="proceed-count">{selectedModel.length}</span>
+              )}
+            </button>
           </div>
 
           {/* Grid Area */}
@@ -355,7 +381,7 @@ export default function HomePageGallery() {
                           }}
                         />
                         <div className="card-cinematic" />
-                        <div
+                        {(selectedModel.length == 0 || selectedModel.includes(m.img)) && <div
                           className="tick-pill"
                           onClick={(e) => {
                             e.stopPropagation();
@@ -367,7 +393,7 @@ export default function HomePageGallery() {
                           ) : (
                             <span>+</span>
                           )}
-                        </div>
+                        </div>}
                         {m.hero && <div className="hero-badge">Featured</div>}
                         <div className="card-info">
                           <div className="info-name">{m.name}</div>
@@ -384,41 +410,7 @@ export default function HomePageGallery() {
           </div>
 
           {/* Selection Tray / Bottom Action Bar */}
-          <div className="tray">
-            <div className="tray-label">Selection</div>
-            <div className="tray-slots">
-              {selectedModel.length === 0 ? (
-                <div className="tray-empty">
-                  Select models from the gallery to begin your virtual try-on
-                </div>
-              ) : (
-                selectedModel.map((imgUrl, idx) => (
-                  <div
-                    key={idx}
-                    className="tray-card"
-                    onClick={() => toggle(imgUrl)}
-                  >
-                    <img src={imgUrl} alt="Selected Model" />
-                    <div className="tray-remove">
-                      <X size={14} />
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-            <button
-              className="proceed-btn"
-              disabled={selectedModel.length === 0}
-              onClick={() =>
-                navigate("/virtualtryon", { state: { from: "gallery" } })
-              }
-            >
-              Start Try-On
-              {selectedModel.length > 0 && (
-                <span className="proceed-count">{selectedModel.length}</span>
-              )}
-            </button>
-          </div>
+
         </div>
         {/* /gallery-main */}
       </div>

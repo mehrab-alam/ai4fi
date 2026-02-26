@@ -37,7 +37,7 @@ export const modelSlice = createSlice({
       if (state.selectedModel.includes(action.payload)) {
         state.selectedModel = state.selectedModel.filter((id: string) => id !== action.payload);
       } else {
-        if (state.selectedModel.length === 4) {
+        if (state.selectedModel.length === 1) {
           state.selectedModel = state.selectedModel;
         } else {
           state.selectedModel = [...state.selectedModel, action.payload];
