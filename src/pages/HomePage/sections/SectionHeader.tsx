@@ -19,7 +19,8 @@ const SectionHeader: FC<SectionHeaderProps> = ({
     const renderTitle = () => {
         if (!highlightedWord) return title;
 
-        const parts = title.split(new RegExp(`(${highlightedWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, "gi"));
+        const escaped = highlightedWord.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const parts = title.split(new RegExp(`(${escaped})`, "gi"));
 
         return parts.map((part, index) => {
             if (part && part.toLowerCase() === highlightedWord.toLowerCase()) {

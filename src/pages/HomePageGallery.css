@@ -768,12 +768,13 @@ body.modal-open nav {
 
 .modal-close {
     position: absolute;
-    top: 30px;
-    right: 30px;
+    top: max(20px, 4vh);
+    right: max(20px, 4vw);
     background: rgba(255, 255, 255, 0.1);
-    border: none;
-    width: 44px;
-    height: 44px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     color: white;
     cursor: pointer;
@@ -841,28 +842,53 @@ body.modal-open nav {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 60px 40px;
+    min-height: 0;
 }
 
 .modal-img-wrap {
     display: flex;
-    gap: 40px;
+    gap: clamp(20px, 4vw, 60px);
     align-items: center;
-    max-width: 1000px;
-    width: 100%;
+    justify-content: center;
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
     pointer-events: none;
-    /* Clicks on "gap" pass through */
 }
 
 .modal-img {
-    height: 80vh;
+    max-height: 60vh;
+    max-width: min(100%, 700px);
     width: auto;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
     object-position: top center;
-    border-radius: 4px;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-    animation: modalSlide 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    border-radius: 8px;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+    animation: modalSlide 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     pointer-events: auto;
-    /* The image itself can be interactive if needed, but clicks here won't close it if we stop propagation */
+}
+
+@media (max-width: 1024px) {
+    .modal-img-wrap {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+        overflow-y: auto;
+        max-height: 90vh;
+        pointer-events: auto;
+        padding-top: 60px;
+    }
+
+    .modal-img {
+        max-height: 60vh;
+        max-width: 100%;
+    }
+
+    .modal-meta {
+        padding-bottom: 40px;
+    }
 }
 
 .modal-meta {
@@ -873,7 +899,7 @@ body.modal-open nav {
 
 .modal-name {
     font-family: var(--font-serif);
-    font-size: 48px;
+    font-size: clamp(24px, 5vw, 48px);
     font-weight: 300;
     margin-bottom: 10px;
 }
