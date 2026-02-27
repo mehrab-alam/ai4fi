@@ -92,7 +92,7 @@ const ContactForm: React.FC = () => {
           <div className='flex items-center space-x-4'>
             <Mail className='text-3xl text-foreground' />
             <div>
-              <a href='mainto:sales@apricityts.com' className='cursor-pointer text-foreground'>
+              <a href='mailto:sales@apricityts.com' className='cursor-pointer text-foreground'>
                 sales@apricityts.com
               </a>
             </div>
@@ -218,7 +218,7 @@ const ContactForm: React.FC = () => {
                 value={formData.howYouFoundUs}
                 className='w-full p-3 border border-border rounded-md text-foreground'
                 required>
-                <option value='' disabled selected>
+                <option value='' disabled>
                   Select an option
                 </option>
                 <option value='Google'>Google</option>

@@ -119,7 +119,6 @@ export default function TestimonialsStacked() {
                     rotate: i % 2 === 0 ? i * 3 : -i * 3,
                     zIndex: cards.length - i,
                     opacity: i > 2 ? 0 : 1 - i * 0.2,
-                    filter: i > 0 ? "blur(0.5px)" : "blur(0px)",
                   }}
                   transition={{
                     type: "spring",

@@ -28,7 +28,6 @@ const HomePage: FC = () => {
 	return (
 		<div>
 			<AiFashionHero />
-			{/* <HeroSection2 /> */}
 			<SayGoodBySection />
 			<KeyFeatures />
 			<DemoSection />
