@@ -129,6 +129,7 @@ const SupportSection = () => {
 				{/* --- PART 2: FAQ (Redesigned) --- */}
 				<div className="bg-background  rounded-3xl p-8 md:p-12 shadow-lg border border-border">
 					<div className="text-center mb-12">
+
 						<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary text-muted-foreground text-xs font-bold uppercase tracking-wider mb-4">
 							<HelpCircle size={14} /> Help Center
 						</div>

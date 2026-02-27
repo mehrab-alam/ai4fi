@@ -216,9 +216,15 @@ import {
 } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 
-const FeatureCard = ({ icon: Icon, title, description, color }) => (
-	<div className="group relative p-8 glass-card rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+interface FeatureCardProps {
+	icon: React.ElementType;
+	title: string;
+	description: string;
+	color: string;
+}
 
+const FeatureCard: React.FC<FeatureCardProps> = ({ icon: Icon, title, description, color }) => (
+	<div className="group relative p-8 glass-card rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300 hover:-translate-y-1 overflow-hidden">
 		{/* Hover Gradient Overlay (Subtle) */}
 		<div className="absolute inset-0 bg-gradient-to-br from-transparent to-blue-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
@@ -303,9 +309,12 @@ const CuttingEdgeFeatures = () => {
 			<div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-100/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
 			<div className="max-w-7xl mx-auto">
-				<SectionHeader description='
-						Transform your fashion showcase with AI-powered innovation that delivers stunning results at a fraction of traditional costs.
-' title='Cutting-Edge Features' />
+				<SectionHeader
+					description="Transform your fashion showcase with AI-powered innovation that delivers stunning results at a fraction of traditional costs."
+					title="Cutting-Edge Features"
+					highlightedWord="Features"
+				/>
+
 
 
 				{/* Feature Grid */}

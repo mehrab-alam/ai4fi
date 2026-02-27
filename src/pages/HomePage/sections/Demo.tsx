@@ -1,4 +1,4 @@
-import React, { FC, useRef, useState } from "react";
+import { FC, useRef, useState } from "react";
 import {
 	Play,
 	Zap,
@@ -55,27 +55,19 @@ const DemoSection = () => {
 	// Animation finishes early (0 → 0.4)
 	const contentX = useTransform(
 		scrollYProgress,
-		[0, 0.20, 0.5],
+		[0, 0.2, 0.5],
 		["-100%", "-100%", "0%"]
 	);
 
-	const contentOpacity = useTransform(
-		scrollYProgress,
-		[0.2, 0.35],
-		[0, 1]
-	);
+	const contentOpacity = useTransform(scrollYProgress, [0.2, 0.35], [0, 1]);
 
 	const videoX = useTransform(
 		scrollYProgress,
-		[0, 0.20, 0.5],
+		[0, 0.2, 0.5],
 		["100%", "100%", "0%"]
 	);
 
-	const videoOpacity = useTransform(
-		scrollYProgress,
-		[0.2, 0.35],
-		[0, 1]
-	);
+	const videoOpacity = useTransform(scrollYProgress, [0.2, 0.35], [0, 1]);
 
 	const features = [
 		{
@@ -113,24 +105,22 @@ const DemoSection = () => {
 			ref={sectionRef}
 			className="relative lg:h-[180vh] h-auto bg-background overflow-hidden lg:overflow-clip py-20 lg:py-0"
 		>
-			<VideoModal
-				isOpen={isModalOpen}
-				onClose={() => setIsModalOpen(false)}
-			/>
+			<VideoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
 			{/* Sticky Wrapper */}
 			<div className="lg:sticky top-[40px] lg:h-screen flex items-center">
 				<div className="max-w-7xl mx-auto px-4 sm:px-8 w-full">
-
 					{/* Header */}
 					<div className="lg:mb-16  lg:mt-0">
 						<SectionHeader
 							title="See AI4FI in Action"
 							description="Watch how our AI transforms fashion visualization"
 							subtitle="Visual Demonstrations"
+							highlightedWord="AI4FI"
 							icon={<Zap className="text-muted-foreground" size={18} />}
 						/>
 					</div>
+
 
 					{/* Split Content */}
 					<div className="flex flex-col lg:flex-row items-center gap-12   lg:gap-20">

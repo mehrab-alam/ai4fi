@@ -219,6 +219,8 @@ export default function HomePageGallery() {
     m.name.toLowerCase().includes(search.toLowerCase()),
   );
 
+  const activeTool = AI_FEATURES.find(f => f.id === activeTrayTool) || AI_FEATURES[0];
+
   const scrollTray = (dir: "left" | "right") => {
     if (trayRef.current) {
       const scrollAmount = 200;
@@ -308,7 +310,7 @@ export default function HomePageGallery() {
             >
               <span className="rail-pip" />
               <span className="rail-icon">{c.icon}</span>
-              <span className="rail-label">{c.label}</span>
+              <span className="rail-label font-bold">{c.label}</span>
             </button>
           ))}
         </aside>
@@ -325,7 +327,7 @@ export default function HomePageGallery() {
                 >
                   <span className="eyebrow-line" />
                   <span className="trigger-label">
-                    Virtual Try On
+                    {activeTool.label}
                     <ChevronDown size={12} className={`chevron ${showFeatureDropdown ? "up" : ""}`} />
                   </span>
                   <span className="eyebrow-line" />
@@ -336,9 +338,9 @@ export default function HomePageGallery() {
                     {AI_FEATURES.map((f) => (
                       <div
                         key={f.id}
-                        className={`feature-item ${f.id === "vto" ? "selected" : ""}`}
+                        className={`feature-item ${f.id === activeTrayTool ? "selected" : ""}`}
                         onClick={() => {
-                          if (f.id !== "vto") navigate(f.path);
+                          setActiveTrayTool(f.id);
                           setShowFeatureDropdown(false);
                         }}
                       >
@@ -347,7 +349,7 @@ export default function HomePageGallery() {
                           <div className="item-label">{f.label}</div>
                           <div className="item-desc">{f.desc}</div>
                         </div>
-                        {f.id === "vto" && <Check size={12} className="check-icon" />}
+                        {f.id === activeTrayTool && <Check size={12} className="check-icon" />}
                       </div>
                     ))}
                   </div>
@@ -386,7 +388,7 @@ export default function HomePageGallery() {
               <div className="tray-slots" ref={trayRef}>
                 {selectedModel.length === 0 ? (
                   <div className="tray-empty">
-                    Select models from the gallery to begin your virtual try-on
+                    Select models from the gallery to begin your {activeTool.label.toLowerCase()}
                   </div>
                 ) : (
                   selectedModel.map((imgUrl, idx) => (
@@ -410,9 +412,9 @@ export default function HomePageGallery() {
                   className={`tool-trigger ${showTrayToolDropdown ? 'active' : ''}`}
                   onClick={() => setShowTrayToolDropdown(!showTrayToolDropdown)}
                 >
-                  {AI_FEATURES.find(f => f.id === activeTrayTool)?.icon}
+                  {activeTool.icon}
                   <span className="tool-name">
-                    {AI_FEATURES.find(f => f.id === activeTrayTool)?.label}
+                    {activeTool.label}
                   </span>
                   <ChevronDown size={14} className={`chevron ${showTrayToolDropdown ? 'up' : ''}`} />
                 </div>
@@ -443,12 +445,11 @@ export default function HomePageGallery() {
                 className="proceed-btn"
                 disabled={selectedModel.length === 0}
                 onClick={() => {
-                  const tool = AI_FEATURES.find(f => f.id === activeTrayTool);
-                  const path = activeTrayTool === 'vto' ? '/virtualtryon' : tool?.path;
+                  const path = activeTrayTool === 'vto' ? '/virtualtryon' : activeTool?.path;
                   if (path) navigate(path, { state: { from: "gallery", selectedModels: selectedModel } });
                 }}
               >
-                {activeTrayTool === 'vto' ? 'Start Try-On' : `Open ${AI_FEATURES.find(f => f.id === activeTrayTool)?.label}`}
+                {activeTrayTool === 'vto' ? 'Start Try-On' : `Open ${activeTool.label}`}
                 {selectedModel.length > 0 && (
                   <span className="proceed-count">{selectedModel.length}</span>
                 )}
@@ -537,7 +538,7 @@ export default function HomePageGallery() {
         {/* ─── MODAL GALLERY ─── */}
         {modalIdx !== null && (
           <div className="modal-gallery" onClick={() => setModalIdx(null)}>
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-content">
               <button className="modal-close" onClick={() => setModalIdx(null)}>
                 <X size={24} />
               </button>
@@ -545,7 +546,10 @@ export default function HomePageGallery() {
               <button
                 className="modal-nav prev"
                 disabled={modalIdx === 0}
-                onClick={() => setModalIdx(modalIdx - 1)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setModalIdx(modalIdx - 1);
+                }}
               >
                 <ChevronLeft size={32} />
               </button>
@@ -564,7 +568,10 @@ export default function HomePageGallery() {
                     </p>
                     <button
                       className={`modal-select-btn${selectedModel.includes(filtered[modalIdx].img) ? " selected" : ""}`}
-                      onClick={() => toggle(filtered[modalIdx].img)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggle(filtered[modalIdx].img);
+                      }}
                     >
                       {selectedModel.includes(filtered[modalIdx].img)
                         ? "Remove from Cast"
@@ -577,7 +584,10 @@ export default function HomePageGallery() {
               <button
                 className="modal-nav next"
                 disabled={modalIdx === filtered.length - 1}
-                onClick={() => setModalIdx(modalIdx + 1)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setModalIdx(modalIdx + 1);
+                }}
               >
                 <ChevronRight size={32} />
               </button>

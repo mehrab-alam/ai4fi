@@ -735,8 +735,10 @@
 .modal-gallery {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.98);
-    z-index: 99999;
+    background: #000;
+    /* Solid black to show nothing else */
+    z-index: 99999999;
+    /* Ultimate z-index */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -760,19 +762,34 @@ body.modal-open nav {
     align-items: center;
     position: relative;
     padding: 20px;
+    pointer-events: none;
+    /* Allow clicks to pass to modal-gallery background */
 }
 
 .modal-close {
     position: absolute;
     top: 30px;
     right: 30px;
-    background: none;
+    background: rgba(255, 255, 255, 0.1);
     border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
     color: white;
     cursor: pointer;
-    opacity: 0.6;
-    transition: opacity 0.2s;
-    z-index: 10;
+    opacity: 0.8;
+    transition: all 0.2s;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+    opacity: 1;
 }
 
 .modal-nav {
@@ -793,6 +810,7 @@ body.modal-open nav {
     /* Hidden by default */
     position: absolute;
     z-index: 100;
+    pointer-events: auto;
 }
 
 .modal-content:hover .modal-nav {
@@ -831,6 +849,8 @@ body.modal-open nav {
     align-items: center;
     max-width: 1000px;
     width: 100%;
+    pointer-events: none;
+    /* Clicks on "gap" pass through */
 }
 
 .modal-img {
@@ -838,15 +858,17 @@ body.modal-open nav {
     width: auto;
     object-fit: cover;
     object-position: top center;
-    /* Focus on face */
     border-radius: 4px;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
     animation: modalSlide 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: auto;
+    /* The image itself can be interactive if needed, but clicks here won't close it if we stop propagation */
 }
 
 .modal-meta {
     flex: 1;
     color: white;
+    pointer-events: auto;
 }
 
 .modal-name {
@@ -865,6 +887,7 @@ body.modal-open nav {
     letter-spacing: 0.2em;
     cursor: pointer;
     transition: all 0.3s;
+    pointer-events: auto;
 }
 
 .modal-select-btn.selected {

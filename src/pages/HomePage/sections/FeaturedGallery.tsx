@@ -432,8 +432,9 @@ const InfiniteShowcase = () => {
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 lg:px-8">
 				<SectionHeader
 					subtitle="Featured AI Model"
-					title={`Diverse Identities`}
+					title="Diverse Identities"
 					description="Discover our diverse range of AI-generated fashion models"
+					highlightedWord="Identities"
 				/>
 			</div>
 
@@ -454,14 +455,14 @@ const InfiniteShowcase = () => {
 				{/* Navigation Buttons for Marquee Row 1 */}
 				<button
 					onClick={() => scroll("left", marquee1Ref)}
-					className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all hover:bg-white/20 z-20 shadow-xl"
+					className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full text-black bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center  opacity-0 group-hover:opacity-100 transition-all hover:bg-white/20 z-20 shadow-xl"
 					aria-label="Scroll Left"
 				>
 					<ChevronLeft size={24} />
 				</button>
 				<button
 					onClick={() => scroll("right", marquee1Ref)}
-					className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all hover:bg-white/20 z-20 shadow-xl"
+					className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-black opacity-0 group-hover:opacity-100 transition-all hover:bg-white/20 z-20 shadow-xl"
 					aria-label="Scroll Right"
 				>
 					<ChevronRight size={24} />
@@ -490,14 +491,14 @@ const InfiniteShowcase = () => {
 				{/* Navigation Buttons for Marquee Row 2 */}
 				<button
 					onClick={() => scroll("left", marquee2Ref)}
-					className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all hover:bg-white/20 z-20 shadow-xl"
+					className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-black opacity-0 group-hover:opacity-100 transition-all hover:bg-white/20 z-20 shadow-xl"
 					aria-label="Scroll Left"
 				>
 					<ChevronLeft size={24} />
 				</button>
 				<button
 					onClick={() => scroll("right", marquee2Ref)}
-					className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all hover:bg-white/20 z-20 shadow-xl"
+					className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-black opacity-0 group-hover:opacity-100 transition-all hover:bg-white/20 z-20 shadow-xl"
 					aria-label="Scroll Right"
 				>
 					<ChevronRight size={24} />
@@ -567,14 +568,14 @@ const InfiniteShowcase = () => {
 							{/* Navigation Arrows */}
 							<button
 								onClick={() => scroll("left")}
-								className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:bg-white/20 z-20"
+								className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-black opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:bg-white/20 z-20"
 								aria-label="Scroll Left"
 							>
 								<ChevronLeft size={24} />
 							</button>
 							<button
 								onClick={() => scroll("right")}
-								className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:bg-white/20 z-20"
+								className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-black opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:bg-white/20 z-20"
 								aria-label="Scroll Right"
 							>
 								<ChevronRight size={24} />

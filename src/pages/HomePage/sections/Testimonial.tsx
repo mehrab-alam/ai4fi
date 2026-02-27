@@ -98,6 +98,7 @@ export default function TestimonialsStacked() {
           title="Trusted by Founders Backed by Results"
           subtitle="Success Stories"
           description="Hear from the visionary leaders who are transforming fashion with Seqtal's AI infrastructure."
+          highlightedWord="Backed by Results"
           icon={<MessageSquare className="w-4 h-4 text-brand" />}
         />
 

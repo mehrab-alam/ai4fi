@@ -800,10 +800,33 @@ const SECTIONS: Section[] = [
 ];
 
 // --- Lightbox ---
-function LightboxModal({ src, onClose }: { src: string; onClose: () => void }) {
+// --- Lightbox ---
+function LightboxModal({
+	images,
+	initialIndex,
+	onClose,
+}: {
+	images: string[];
+	initialIndex: number;
+	onClose: () => void;
+}) {
+	const [index, setIndex] = useState(initialIndex);
+
+	const next = useCallback((e?: React.MouseEvent) => {
+		e?.stopPropagation();
+		setIndex((prev) => (prev + 1) % images.length);
+	}, [images.length]);
+
+	const prev = useCallback((e?: React.MouseEvent) => {
+		e?.stopPropagation();
+		setIndex((prev) => (prev - 1 + images.length) % images.length);
+	}, [images.length]);
+
 	useEffect(() => {
 		const onKey = (e: KeyboardEvent) => {
 			if (e.key === "Escape") onClose();
+			if (e.key === "ArrowRight") next();
+			if (e.key === "ArrowLeft") prev();
 		};
 		document.addEventListener("keydown", onKey);
 		document.body.style.overflow = "hidden";
@@ -811,24 +834,52 @@ function LightboxModal({ src, onClose }: { src: string; onClose: () => void }) {
 			document.removeEventListener("keydown", onKey);
 			document.body.style.overflow = "";
 		};
-	}, [onClose]);
+	}, [onClose, next, prev]);
+
 	return (
 		<div
-			className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-md"
+			className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-md"
 			onClick={onClose}
 		>
 			<button
 				onClick={onClose}
-				className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white text-2xl transition"
+				className="absolute top-6 right-6 z-50 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white text-3xl transition-all"
 			>
 				&times;
 			</button>
-			<img
-				src={src}
-				alt=""
-				className="max-w-[92vw] max-h-[92vh] object-contain rounded-lg shadow-2xl"
-				onClick={(e) => e.stopPropagation()}
-			/>
+
+			{images.length > 1 && (
+				<>
+					<button
+						onClick={prev}
+						className="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 z-50 w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all"
+					>
+						<ChevronLeft size={32} />
+					</button>
+					<button
+						onClick={next}
+						className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 z-50 w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all"
+					>
+						<ChevronRight size={32} />
+					</button>
+				</>
+			)}
+
+			<div className="relative w-full h-full p-4 md:p-12 flex items-center justify-center">
+				<img
+					key={index}
+					src={images[index]}
+					alt=""
+					className="max-w-full max-h-full object-contain rounded-lg shadow-2xl transition-all duration-500 animate-in fade-in zoom-in-95"
+					onClick={(e) => e.stopPropagation()}
+				/>
+			</div>
+
+			{images.length > 1 && (
+				<div className="absolute bottom-10 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-white/70 text-sm font-medium">
+					{index + 1} / {images.length}
+				</div>
+			)}
 		</div>
 	);
 }
@@ -917,7 +968,7 @@ function ImageCard({
 }: {
 	card: TestimonialCard;
 	is4k?: boolean;
-	onImageClick?: (s: string) => void;
+	onImageClick?: (images: string[], index: number) => void;
 	index?: number;
 }) {
 	const { idx, hovered, setHovered, next, prev, touchBind } = useSlideshow(
@@ -934,8 +985,8 @@ function ImageCard({
 					onMouseEnter={() => setHovered(true)}
 					onMouseLeave={() => setHovered(false)}
 					{...touchBind}
-					onClick={() => is4k && onImageClick?.(card.images[idx])}
-					className={`showcase-card relative ${heightClass} w-[auto] overflow-hidden rounded-xl ${is4k ? "cursor-zoom-in" : "cursor-pointer"} group select-none`}
+					onClick={() => onImageClick?.(card.images, idx)}
+					className={`showcase-card relative ${heightClass} w-[auto] overflow-hidden rounded-xl cursor-pointer group select-none`}
 				>
 					<div
 						className="absolute inset-0 flex transition-transform duration-700 ease-in-out"
@@ -996,9 +1047,11 @@ function ImageCard({
 // --- Testimonial Card ---
 function TestimonialCardComponent({
 	card,
+	onImageClick,
 	index = 0,
 }: {
 	card: TestimonialCard;
+	onImageClick?: (images: string[], index: number) => void;
 	index?: number;
 }) {
 	const { idx, hovered, setHovered, next, prev, touchBind } = useSlideshow(
@@ -1012,6 +1065,7 @@ function TestimonialCardComponent({
 				onMouseEnter={() => setHovered(true)}
 				onMouseLeave={() => setHovered(false)}
 				{...touchBind}
+				onClick={() => onImageClick?.(card.images, idx)}
 				className={`showcase-card relative ${heightClass} w-full overflow-hidden rounded-xl cursor-pointer group select-none`}
 			>
 				<div
@@ -1093,7 +1147,7 @@ function TestimonialSection({
 	onImageClick,
 }: {
 	section: Section;
-	onImageClick?: (s: string) => void;
+	onImageClick?: (images: string[], index: number) => void;
 }) {
 	const is4k = section.id === "4k";
 	return (
@@ -1123,7 +1177,12 @@ function TestimonialSection({
 						.filter((c) => c.images.length > 0)
 						.map((card, i) => {
 							return card.testimonial ? (
-								<TestimonialCardComponent key={card.id} card={card} index={i} />
+								<TestimonialCardComponent
+									key={card.id}
+									card={card}
+									index={i}
+									onImageClick={onImageClick}
+								/>
 							) : (
 								<ImageCard
 									key={card.id}
@@ -1248,7 +1307,10 @@ function Sidebar({
 // --- Main ---
 export default function ClientShowcase() {
 	const [activeId, setActiveId] = useState(SECTIONS[0].id);
-	const [lightboxImg, setLightboxImg] = useState<string | null>(null);
+	const [lightboxData, setLightboxData] = useState<{
+		images: string[];
+		index: number;
+	} | null>(null);
 	const containerRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
@@ -1292,14 +1354,18 @@ export default function ClientShowcase() {
 						<TestimonialSection
 							key={section.id}
 							section={section}
-							onImageClick={(src) => setLightboxImg(src)}
+							onImageClick={(images, index) => setLightboxData({ images, index })}
 						/>
 					))}
 				</div>
 			</div>
 
-			{lightboxImg && (
-				<LightboxModal src={lightboxImg} onClose={() => setLightboxImg(null)} />
+			{lightboxData && (
+				<LightboxModal
+					images={lightboxData.images}
+					initialIndex={lightboxData.index}
+					onClose={() => setLightboxData(null)}
+				/>
 			)}
 		</div>
 	);

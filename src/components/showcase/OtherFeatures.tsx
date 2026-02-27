@@ -4,8 +4,8 @@ import { useState, useRef, useEffect } from "react";
 // ─── Types ───────────────────────────────────────────────────────────────────
 
 type MediaItem =
-	| { type: "image"; src: string; alt?: string }
-	| { type: "video"; src: string; poster?: string };
+	| { type: "image"; src: string; alt?: string; badge?: string }
+	| { type: "video"; src: string; poster?: string; badge?: string };
 
 interface FeatureFlow {
 	label: string; // e.g. "Male", "Female"
@@ -30,6 +30,7 @@ const FEATURE_GROUPS: FeatureGroup[] = [
 						type: "image",
 						src: "./Archive/unstrich_tryon/1/unstiched_cloth.webp",
 						alt: "Unstitched fabric male 1",
+						badge: "raw",
 					},
 					{
 						type: "image",
@@ -45,11 +46,13 @@ const FEATURE_GROUPS: FeatureGroup[] = [
 						type: "image",
 						src: "./Archive/unstrich_tryon/2/unstiched_cloth.jpg",
 						alt: "Unstitched fabric female 1",
+						badge: "raw",
 					},
 					{
 						type: "image",
 						src: "./Archive/unstrich_tryon/2/unstiched_cloth_pant.jpg",
 						alt: "Unstitched fabric female 1",
+						badge: "raw",
 					},
 					{
 						type: "image",
@@ -70,12 +73,12 @@ const FEATURE_GROUPS: FeatureGroup[] = [
 						type: "image",
 						src: "./Archive/ad/1/ads-product-img-B-Z9QbSE.png",
 						alt: "Ad concept 1",
+						badge: "raw",
 					},
 					{
 						type: "video",
 						src: "./Archive/ad/1/generated_video (5).mp4",
-						poster:
-							"https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600",
+
 					},
 				],
 			},
@@ -86,12 +89,12 @@ const FEATURE_GROUPS: FeatureGroup[] = [
 						type: "image",
 						src: "./Archive/ad/2/lays.jpg",
 						alt: "Ad concept 1",
+						badge: "raw",
 					},
 					{
 						type: "video",
 						src: "./Archive/ad/2/generated_video (7).mp4",
-						poster:
-							"https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600",
+
 					},
 				],
 			},
@@ -107,6 +110,7 @@ const FEATURE_GROUPS: FeatureGroup[] = [
 						type: "image",
 						src: "./Archive/product_photography/1/raw.jpeg",
 						alt: "Studio shot 1",
+						badge: "raw",
 					},
 					{
 						type: "image",
@@ -132,6 +136,7 @@ const FEATURE_GROUPS: FeatureGroup[] = [
 						type: "image",
 						src: "./Archive/product_photography/2/raw.JPG",
 						alt: "Studio shot 1",
+						badge: "raw",
 					},
 					{
 						type: "image",
@@ -148,21 +153,7 @@ const FEATURE_GROUPS: FeatureGroup[] = [
 						src: "./Archive/product_photography/2/third.jpeg",
 						alt: "Studio shot 4",
 					},
-					{
-						type: "image",
-						src: "./Archive/product_photography/2/fourth.jpeg",
-						alt: "Studio shot 4",
-					},
-					{
-						type: "image",
-						src: "./Archive/product_photography/2/fifth.jpeg",
-						alt: "Studio shot 4",
-					},
-					{
-						type: "image",
-						src: "./Archive/product_photography/2/sixth.jpeg",
-						alt: "Studio shot 4",
-					},
+
 				],
 			},
 		],
@@ -190,16 +181,16 @@ function getStepLabel(index: number, total: number): string {
 // ─── Flow Arrow ──────────────────────────────────────────────────────────────
 
 const FlowArrow = () => (
-	<div className="flex-shrink-0 flex items-center justify-center mx-1 sm:mx-2">
+	<div className="flex-shrink-0 flex items-center justify-center mx-4 sm:mx-8">
 		<div className="flex items-center gap-0">
 			<div
-				className="h-[2px] w-6 sm:w-10"
+				className="h-[2px] w-8 sm:w-12"
 				style={{
 					background:
 						"linear-gradient(90deg, var(--brand), color-mix(in srgb, var(--brand), transparent 60%))",
 				}}
 			/>
-			<ArrowRight size={18} className="text-brand -ml-1" strokeWidth={2.5} />
+			<ArrowRight size={22} className="text-brand -ml-1" strokeWidth={2.5} />
 		</div>
 	</div>
 );
@@ -228,7 +219,7 @@ const MediaCard: React.FC<MediaCardProps> = ({
 	useEffect(() => {
 		if (item.type === "video" && videoRef.current) {
 			if (isHovered) {
-				videoRef.current.play().catch(() => {});
+				videoRef.current.play().catch(() => { });
 			} else {
 				videoRef.current.pause();
 				videoRef.current.currentTime = 0;
@@ -290,17 +281,20 @@ const MediaCard: React.FC<MediaCardProps> = ({
 				/>
 
 				{/* Top: Step badge */}
-				<div className="absolute top-2.5 left-2.5 z-10">
-					<div
-						className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider backdrop-blur-md transition-all duration-300
-						${isActive ? "bg-brand text-white" : "bg-black/40 text-white/90 border border-white/10"}`}
-					>
-						<span
-							className={`w-1.5 h-1.5 rounded-full ${isActive ? "bg-white animate-pulse" : "bg-brand"}`}
-						/>
-						{label}
+				{item.badge && (
+					<div className="absolute top-2.5 left-2.5 z-10">
+						<div
+							className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider backdrop-blur-md transition-all duration-300
+							${isActive ? "bg-brand text-white" : "bg-black/40 text-white/90 border border-white/10"}`}
+						>
+							<span
+								className={`w-1.5 h-1.5 rounded-full ${isActive ? "bg-white animate-pulse" : "bg-brand"}`}
+							/>
+							{item.badge}
+						</div>
 					</div>
-				</div>
+				)}
+
 
 				{/* Video play icon */}
 				{item.type === "video" && (
@@ -405,19 +399,25 @@ const FlowRow: React.FC<FlowRowProps> = ({ flow, groupName, showLabel }) => {
 	return (
 		<div className="flex flex-col gap-3">
 			{/* Flow items with arrows */}
-			<div className="flex items-center flex-wrap gap-y-5 sm:gap-y-6">
-				{flow.items.map((item, i) => (
-					<div key={i} className="flex items-center">
-						<MediaCard
-							item={item}
-							index={i}
-							total={flow.items.length}
-							isActive={activeIdx === i}
-							onClick={() => setActiveIdx(activeIdx === i ? null : i)}
-						/>
-						{i < flow.items.length - 1 && <FlowArrow />}
-					</div>
-				))}
+			<div className="flex items-center flex-wrap gap-x-4 gap-y-5 sm:gap-y-6">
+				{flow.items.map((item, i) => {
+					// Show arrow if it's the first image OR if it has a 'raw' badge
+					// (But not after the final image)
+					const showArrow = (i === 0 || item.badge?.toLowerCase() === "raw") && i < flow.items.length - 1;
+
+					return (
+						<div key={i} className="flex items-center">
+							<MediaCard
+								item={item}
+								index={i}
+								total={flow.items.length}
+								isActive={activeIdx === i}
+								onClick={() => setActiveIdx(activeIdx === i ? null : i)}
+							/>
+							{showArrow && <FlowArrow />}
+						</div>
+					);
+				})}
 			</div>
 
 			{/* Lightbox */}

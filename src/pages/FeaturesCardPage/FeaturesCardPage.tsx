@@ -11,6 +11,8 @@ import CardImage3 from "../../assets/Gemini_Generated_Image_x1zejnx1zejnx1ze.png
 import bgImage from "../../assets/features-bg.png"
 
 
+import ScrollToTop from "../../components/common/ScrollToTop"
+
 export default function FeaturesPage() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
   const navigate = useNavigate()
@@ -80,6 +82,7 @@ export default function FeaturesPage() {
         backgroundPosition: "center",
       }}
     >
+      <ScrollToTop />
 
       <div className='p-3 relative  flex justify-between z-[100]'>
         <h2 className='text-xl font-bold flex items-center gap-2'>
@@ -87,17 +90,17 @@ export default function FeaturesPage() {
             <img src={DarkLogo} className='w-20 h-8' alt='AI4FI' />
           </Link>
           <Sparkles className='w-5 h-5 text-purple-600' />
-        
+
           <span className='text-white'>Try On V2 (beta)</span>
           {/* Model Generator */}
         </h2>
         <div className='flex items-center gap-2'>
-         <Link to={"/"}>
-          <button className='bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-800 hover:to-indigo-800 text-white  px-4 py-2  rounded-lg shadow-lg transition-transform transform hover:scale-105'>
-            Back
-          </button>
-         </Link>
-       </div>
+          <Link to={"/"}>
+            <button className='bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-800 hover:to-indigo-800 text-white  px-4 py-2  rounded-lg shadow-lg transition-transform transform hover:scale-105'>
+              Back
+            </button>
+          </Link>
+        </div>
       </div>
 
 
@@ -147,9 +150,8 @@ export default function FeaturesPage() {
                   onClick={() => navigate(tool.path)}
                 >
                   <div
-                    className={`h-96  rounded-3xl border-2 ${tool.borderColor} bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-xl  flex flex-col justify-between transition-all duration-300 ${
-                      hoveredCard === index ? "scale-105 shadow-2xl shadow-cyan-500/20" : ""
-                    }`}
+                    className={`h-96  rounded-3xl border-2 ${tool.borderColor} bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-xl  flex flex-col justify-between transition-all duration-300 ${hoveredCard === index ? "scale-105 shadow-2xl shadow-cyan-500/20" : ""
+                      }`}
                   >
                     <img src={tool.image} alt={tool.title} className="w-full h-full object-cover rounded-3xl" />
                   </div>
