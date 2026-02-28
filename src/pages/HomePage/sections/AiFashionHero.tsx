@@ -93,13 +93,12 @@ const AiFashionHero: React.FC<AiFashionHeroProps> = ({
 	}, []);
 
 	const partners = [
-		"./partners/chand.jpg.jpeg",
+		"./partners/chand.png",
 		"./partners/charkha_tales.webp",
-		"./partners/dhagaeawadh.jpg.jpeg",
-		"./partners/Mrignandani.jpg.jpeg",
-		"./partners/Zuni.jpg.jpeg",
-		"./partners/NoveltyGroomcollection.jpg.jpeg",
-
+		"./partners/dhaga.png",
+		"./partners/mrignandani.png",
+		"./partners/zuni.png",
+		"./partners/novelty.png",
 	];
 	// const partners = [
 	// 	SvgIcons.amazone,
